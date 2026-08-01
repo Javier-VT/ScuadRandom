@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scuad Random - Guía de Supervivencia</title>
+    <style>
+        /* Fuente moderna y limpia */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        :root {
+            --bg-color: #050101; 
+            --card-bg: #120505; 
+            --text-main: #f0f0f0;
+            --scuad-white: #ffffff;
+            --scuad-red: #d30000;
+            --scuad-gold: #ffaa00;
+            --scuad-naranja: #ff8c00;
+            --scuad-azul: #00bfff;
+            --scuad-verde: #00fa9a;
+            --scuad-morado: #9932cc;
+            --border-dark: #330000; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(20, 2, 2, 0.92), rgba(8, 0, 0, 0.98)),
+                url('https://www.transparenttextures.com/patterns/cubes.png');
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           HEADER PANTALLA COMPLETA & STICKY
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Pantalla Completa Inicial */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(58, 0, 0, 0.9) 0%, var(--bg-color) 100%),
+                        url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-size: auto;
+            box-shadow: 0 10px 40px rgba(211, 0, 0, 0.4), inset 0 -20px 50px rgba(0,0,0,0.9);
+            overflow: hidden;
+            z-index: 9999;
+            transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1), background 0.6s ease, border-bottom 0.6s ease;
+            border-bottom: 5px solid var(--scuad-red);
+            animation: pan-background 30s linear infinite;
+        }
+
+        /* Deslizamiento de textura de fondo */
+        @keyframes pan-background {
+            from { background-position: 0 0, 0 0; }
+            to { background-position: 0 0, 0 200px; }
+        }
+
+        /* Viñeta oscura para enfocar el centro */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.85) 100%);
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Scanlines Retro */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Resplandor central */
+        .header-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(211,0,0,0.2) 0%, transparent 60%);
+            animation: pulse-glow 6s infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .logo {
+            position: relative;
+            z-index: 3;
+            width: 90%;
+            max-width: 600px; /* Logo Inmenso */
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(211, 0, 0, 0.9));
+            animation: latido-logo 4s ease-in-out infinite alternate;
+            transition: max-width 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s ease, filter 0.6s ease;
+        }
+
+        @keyframes latido-logo {
+            0% { filter: drop-shadow(0 0 20px rgba(211, 0, 0, 0.7)); transform: scale(1); }
+            100% { filter: drop-shadow(0 0 50px rgba(211, 0, 0, 1)); transform: scale(1.03); }
+        }
+
+        .subtitle {
+            position: relative;
+            z-index: 3;
+            color: var(--scuad-gold);
+            font-size: 20px;
+            font-weight: 800;
+            margin-top: 30px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px rgba(255, 170, 0, 0.8);
+            animation: glow-text 2s ease-in-out infinite alternate;
+            transition: opacity 0.4s ease, margin-top 0.4s ease, font-size 0.4s ease, transform 0.4s ease;
+            height: 30px;
+        }
+
+        @keyframes glow-text {
+            from { text-shadow: 0 0 10px rgba(255, 170, 0, 0.5); }
+            to { text-shadow: 0 0 25px rgba(255, 170, 0, 0.9), 0 0 5px #fff; }
+        }
+
+        /* Indicador animado para hacer Scroll */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--scuad-red);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            text-shadow: 0 0 10px rgba(211,0,0,0.8);
+            animation: bounce-scroll 2s infinite;
+            transition: opacity 0.4s ease;
+        }
+
+        .arrow-down {
+            width: 0; height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid var(--scuad-red);
+            margin-top: 15px;
+            filter: drop-shadow(0 0 5px rgba(211,0,0,0.8));
+        }
+
+        @keyframes bounce-scroll {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* ===== ESTADO SCROLLED (HEADER FIJO PEQUEÑO) ===== */
+        header.scrolled {
+            height: 100px;
+            background: rgba(8, 1, 1, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--scuad-red);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.9);
+        }
+
+        header.scrolled .logo {
+            max-width: 220px; /* Logo encogido */
+            animation: none;
+            filter: drop-shadow(0 0 10px rgba(211, 0, 0, 0.5));
+            transform: translateY(0);
+        }
+
+        header.scrolled .subtitle {
+            opacity: 0;
+            margin-top: 0;
+            font-size: 0px;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+
+        header.scrolled::before, 
+        header.scrolled .header-glow, 
+        header.scrolled .scroll-indicator, 
+        header.scrolled .header-particles {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* FIX VISUAL: El Espaciador ahora da espacio suficiente para no tapar el título */
+        .header-spacer {
+            height: 100vh;
+            width: 100%;
+            transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .header-spacer.scrolled {
+            height: 180px; /* Mantiene 140px (100 del header + 40 de respiro) */
+        }
+
+        /* Contenedor Principal */
+        .container {
+            position: relative;
+            z-index: 5;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 40px 20px;
+        }
+
+        section {
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-title {
+            color: var(--scuad-red);
+            font-size: 26px;
+            border-bottom: 3px solid var(--scuad-gold);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(211, 0, 0, 0.5);
+            display: inline-block;
+        }
+
+        /* Grid de Tarjetas */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(211,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            left: 150%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--scuad-red);
+            box-shadow: 0 15px 30px rgba(211, 0, 0, 0.4), inset 0 0 20px rgba(211,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .icon-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: #220000;
+            border: 2px dashed var(--scuad-gold);
+            border-radius: 8px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--scuad-red);
+        }
+
+        .item-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+            transition: transform 0.3s;
+        }
+
+        .card:hover .item-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: var(--scuad-white);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #c4b5b5; 
+        }
+
+        .price {
+            display: inline-block;
+            background-color: #2a0505;
+            color: var(--scuad-gold);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 800;
+            margin-top: 15px;
+            font-size: 12px;
+            border: 1px solid var(--scuad-red);
+            box-shadow: 0 0 10px rgba(211, 0, 0, 0.2);
+        }
+
+        /* Fases de Dificultad */
+        .phase-box {
+            background-color: var(--card-bg);
+            border-left: 6px solid var(--scuad-red);
+            border-radius: 0 8px 8px 0;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .phase-box:hover {
+            transform: translateX(10px);
+        }
+        
+        .phase-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(211,0,0,0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .phase-box h4 {
+            color: var(--scuad-gold);
+            margin-bottom: 8px;
+            font-size: 16px;
+            position: relative;
+        }
+
+        /* ==========================================
+           SECCIÓN RULETA MAESTRA
+           ========================================== */
+        .ruleta-section-master {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(180deg, #050101 0%, #150202 50%, #050101 100%);
+            border-top: 3px solid var(--scuad-red);
+            border-bottom: 3px solid var(--scuad-red);
+            margin: 40px 0 80px 0;
+            padding: 80px 0;
+            box-shadow: inset 0 0 150px rgba(211, 0, 0, 0.15), 0 0 60px rgba(211, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Sistema de Partículas General */
+        .particles-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        .particle {
+            position: absolute;
+            bottom: -20px;
+            background-color: var(--scuad-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--scuad-red), 0 0 20px var(--scuad-gold);
+            animation: floatUp infinite linear;
+            opacity: 0;
+        }
+        
+        .p-small { width: 3px; height: 3px; }
+        .p-medium { width: 5px; height: 5px; }
+        .p-large { width: 7px; height: 7px; filter: blur(1px); }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-800px) translateX(40px) scale(0); opacity: 0; }
+        }
+
+        .ruleta-layout {
+            position: relative;
+            z-index: 5;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* FILA SUPERIOR: Ruleta Mitad + Botones */
+        .ruleta-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* Contenedor del MEDIO CÍRCULO */
+        .ruleta-half-wrapper {
+            width: 250px; /* Mitad de 500px */
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            border-right: 4px solid var(--scuad-red);
+            border-radius: 0 250px 250px 0; 
+            box-shadow: 20px 0 50px rgba(211, 0, 0, 0.4), inset -10px 0 20px rgba(0,0,0,0.8);
+            background-color: #050101;
+        }
+
+        .ruleta-half-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 25px; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(211,0,0,0.6));
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* EFECTO GLITCH PARA LA RULETA */
+        .ruleta-glitch-wrapper {
+            position: absolute;
+            left: -250px; 
+            top: 0;
+            width: 500px;
+            height: 500px;
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0%, 9% { transform: translate(0) skew(0deg); }
+            10% { transform: translate(-3px, 2px) skew(-1deg); filter: drop-shadow(4px 0 0 rgba(211,0,0,0.8)); }
+            11%, 49% { transform: translate(0) skew(0deg); }
+            50% { transform: translate(3px, -2px) skew(1deg); filter: drop-shadow(-4px 0 0 rgba(0,198,209,0.8)); }
+            51%, 89% { transform: translate(0) skew(0deg); }
+            90% { transform: translate(-2px, -1px); filter: drop-shadow(2px 0 0 var(--scuad-gold)); }
+            91%, 100% { transform: translate(0) skew(0deg); }
+        }
+
+        .ruleta-img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0; 
+            top: 0;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.15));
+            transition: filter 0.5s ease;
+        }
+
+        .spin-lento {
+            animation: giro-lento 30s linear infinite;
+        }
+
+        @keyframes giro-lento {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Controles a la derecha */
+        .ruleta-controles {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(10, 2, 2, 0.85);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-dark);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .ruleta-controles h2 {
+            color: var(--scuad-red);
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(211,0,0,0.8);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .ruleta-controles p {
+            color: #d1c4c4;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .filtros-colores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-filtro {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid;
+            background-color: #110505;
+            color: #fff;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 10px currentColor; }
+            50% { box-shadow: 0 0 25px currentColor, inset 0 0 15px currentColor; }
+            100% { box-shadow: 0 0 10px currentColor; }
+        }
+
+        .btn-filtro.activo {
+            animation: pulse-btn 2s infinite;
+            transform: scale(1.05);
+        }
+
+        .btn-filtro:hover { transform: scale(1.08) translateY(-2px); }
+
+        .btn-rojo { border-color: var(--scuad-red); color: var(--scuad-red); }
+        .btn-rojo:hover, .btn-rojo.activo { background-color: var(--scuad-red); color: #fff;}
+        
+        .btn-amarillo { border-color: var(--scuad-gold); color: var(--scuad-gold); }
+        .btn-amarillo:hover, .btn-amarillo.activo { background-color: var(--scuad-gold); color: #000;}
+        
+        .btn-naranja { border-color: var(--scuad-naranja); color: var(--scuad-naranja); }
+        .btn-naranja:hover, .btn-naranja.activo { background-color: var(--scuad-naranja); color: #000;}
+        
+        .btn-azul { border-color: var(--scuad-azul); color: var(--scuad-azul); }
+        .btn-azul:hover, .btn-azul.activo { background-color: var(--scuad-azul); color: #000;}
+        
+        .btn-verde { border-color: var(--scuad-verde); color: var(--scuad-verde); }
+        .btn-verde:hover, .btn-verde.activo { background-color: var(--scuad-verde); color: #000;}
+        
+        .btn-morado { border-color: var(--scuad-morado); color: var(--scuad-morado); }
+        .btn-morado:hover, .btn-morado.activo { background-color: var(--scuad-morado); color: #fff;}
+
+        .btn-reset { border-color: #888; color: #888; }
+        .btn-reset:hover, .btn-reset.activo { background-color: #555; color: #fff;}
+
+        /* FILA INFERIOR: Información */
+        .ruleta-bottom {
+            padding: 0 20px;
+        }
+
+        .eventos-info {
+            width: 100%;
+            padding: 40px;
+            background-color: #0a0202;
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+            min-height: 200px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.9), 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.5s ease;
+        }
+
+        .eventos-info h3 {
+            color: var(--scuad-white);
+            margin-bottom: 25px;
+            font-size: 22px;
+            border-bottom: 2px solid var(--border-dark);
+            padding-bottom: 15px;
+            transition: color 0.4s ease;
+        }
+
+        .eventos-lista {
+            list-style-type: none;
+            color: #d1c4c4;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .eventos-lista li {
+            position: relative;
+            padding-left: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+            padding: 15px 15px 15px 35px;
+            border-radius: 8px;
+            border-left: 2px solid rgba(255,255,255,0.05);
+            opacity: 0; 
+            transform: translateY(15px);
+        }
+
+        .eventos-lista li::before {
+            content: '►';
+            position: absolute;
+            left: 15px;
+            color: var(--scuad-red);
+            font-size: 14px;
+            transition: color 0.4s ease;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes slideInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividad */
+        @media (max-width: 950px) {
+            .ruleta-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            .ruleta-half-wrapper {
+                width: 100%;
+                height: 250px;
+                border-right: none;
+                border-bottom: 4px solid var(--scuad-red);
+                border-radius: 0 0 250px 250px; 
+            }
+            .ruleta-glitch-wrapper {
+                left: 50%;
+                margin-left: -250px;
+                top: -250px; 
+            }
+            .filtros-colores {
+                justify-content: center;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: #050101;
+            border-top: 3px solid var(--scuad-red);
+            font-weight: 600;
+            font-size: 14px;
+            color: #777;
+            box-shadow: 0 -10px 30px rgba(211, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================== HEADER DINÁMICO ================== -->
+    <header id="main-header">
+        <div class="header-glow"></div>
+        
+        <!-- Partículas exclusivas del Header -->
+        <div class="particles-container header-particles">
+            <div class="particle p-small" style="left: 15%; animation-duration: 4s; animation-delay: 0s;"></div>
+            <div class="particle p-medium" style="left: 35%; animation-duration: 5s; animation-delay: 1s;"></div>
+            <div class="particle p-large" style="left: 65%; animation-duration: 6s; animation-delay: 0.5s;"></div>
+            <div class="particle p-small" style="left: 85%; animation-duration: 4.5s; animation-delay: 2s;"></div>
+        </div>
+        
+        <img src="img/logo.png" alt="Scuad Random Last Time" class="logo">
+        <p class="subtitle">Wiki y Guía Oficial de Supervivencia</p>
+
+        <!-- Indicador de Scroll FIX -->
+        <div class="scroll-indicator">
+            <span>Desliza para comenzar</span>
+            <div class="arrow-down"></div>
+        </div>
+    </header>
+
+    <!-- FIX VISUAL: Espaciador fantasma animado ajustado -->
+    <div class="header-spacer" id="header-spacer"></div>
+
+    <div class="container">
+        
+        <!-- Mecánicas Básicas -->
+        <section>
+            <h2 class="section-title">Reglas del Realm</h2>
+            <div class="phase-box">
+                <h4 style="color: var(--scuad-red);">Muerte Permanente (Permadeath)</h4>
+                <p>Si mueres, pasarás a Modo Espectador. Pierdes tu inventario y dependes de tus compañeros para volver al juego. Las coordenadas están activas, pero no hay regeneración natural de salud (Modo UHC).</p>
+            </div>
+            <div class="phase-box">
+                <h4 style="color: var(--scuad-gold);">Economía: ScuadCoins</h4>
+                <p>La única forma de sobrevivir es la economía. Al matar monstruos, soltarán de 1 a 3 <strong>ScuadCoins</strong>. Usa estas monedas físicas para comerciar en los bloques interactivos o pagar tu resurrección.</p>
+            </div>
+        </section>
+
+        <!-- Bloques Interactivos -->
+        <section>
+            <h2 class="section-title">Estructuras Interactivas</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-placeholder">BLOQUE</div>
+                        <h3>Banco Central</h3>
+                    </div>
+                    <p>Bloque interactivo para salvaguardar tu dinero. Deposita tus ScuadCoins aquí; si mueres, el dinero en el banco estará a salvo de perderse en el mundo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-placeholder">BLOQUE</div>
+                        <h3>Tienda de Comida</h3>
+                    </div>
+                    <p>Compra provisiones básicas y avanzadas. Vende desde filetes cocinados hasta Manzanas Doradas Encantadas para curarte sin regeneración natural.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-placeholder">BLOQUE</div>
+                        <h3>Urna de Oro</h3>
+                    </div>
+                    <p>Bloque de sacrificios. Aquí puedes comprar <strong>Almas de Jugador</strong>, tótems de inmortalidad, o reparar instantáneamente la armadura que llevas puesta.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-placeholder">BLOQUE</div>
+                        <h3>Fosa de Almas</h3>
+                    </div>
+                    <p>El punto de resurrección. Interactúa con este pozo oscuro teniendo un <i>Alma de Jugador</i> en tu inventario para seleccionar qué jugador caído deseas revivir.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ítems Personalizados -->
+        <section>
+            <h2 class="section-title">Alquimia e Ítems Custom</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/player_soul.png" class="item-icon" alt="Alma de Jugador">
+                        <h3>Alma de Jugador</h3>
+                    </div>
+                    <p>Cristal espiritual necesario para operar la Fosa de Almas.</p>
+                    <span class="price">Costo: 64 Coins</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/panic_potion.png" class="item-icon" alt="Poción de Pánico">
+                        <h3>Poción de Pánico</h3>
+                    </div>
+                    <p>Te otorga Velocidad Extrema e Invisibilidad, pero te provoca Náuseas. Perfecta para huir de emboscadas.</p>
+                    <span class="price">Costo: 30 Coins</span>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/escape_potion.png" class="item-icon" alt="Poción de Escape" onerror="this.src='img/items/panic_potion.png'">
+                        <h3>Poción de Escape</h3>
+                    </div>
+                    <p>Te eleva rápidamente por los cielos y te otorga caída lenta, ideal para escapar de hordas terrestres.</p>
+                    <span class="price">Costo: 30 Coins</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/ultra_health_potion.png" class="item-icon" alt="Ultra Curación">
+                        <h3>Ultra Curación</h3>
+                    </div>
+                    <p><strong>Crafteable en la Mesa de Alquimia:</strong> Destila una Poción de Salud con una Manzana Dorada. Rellena tu salud de un solo trago.</p>
+                    <span class="price" style="color: #ff5555; border-color: #ff5555; box-shadow: 0 0 10px rgba(255, 85, 85, 0.2);">Item Crafteable</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/liquid_notch.png" class="item-icon" alt="Notch Líquida">
+                        <h3>Notch Líquida</h3>
+                    </div>
+                    <p><strong>Crafteable en la Mesa de Alquimia:</strong> Destila una Manzana de Notch con una Poción Rara. Otorga Regeneración IV y Resistencias extremas.</p>
+                    <span class="price" style="color: #ff5555; border-color: #ff5555; box-shadow: 0 0 10px rgba(255, 85, 85, 0.2);">Item Crafteable</span>
+                </div>
+
+                <div class="card" style="border-color: #004d52; box-shadow: 0 8px 20px rgba(0, 198, 209, 0.1);">
+                    <div class="card-header">
+                        <img src="img/items/echo_apple.png" class="item-icon" alt="Manzana de Eco" onerror="this.src='img/items/scuad_coin.png'">
+                        <h3 style="color: #00c6d1; text-shadow: 0 0 8px rgba(0, 198, 209, 0.4);">Manzana de Eco</h3>
+                    </div>
+                    <p>Otorga <strong>Health Boost X</strong> y <strong>Fuerza III</strong>, pero te ciega con Oscuridad. Se craftea rodeando una Manzana Dorada con 4 Fragmentos de Sculk en cruz.</p>
+                    <span class="price" style="color: #00c6d1; border-color: #00c6d1; box-shadow: 0 0 10px rgba(0, 198, 209, 0.2);">Item Crafteable</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Dificultad (0 a 5) -->
+        <section>
+            <h2 class="section-title">Evolución del Mundo</h2>
+            <p style="margin-bottom: 25px; color: #b3b3b3;">El Administrador subirá la fase del Realm con el tiempo. El entorno se volverá progresivamente más hostil a través de 6 fases ineludibles.</p>
+            
+            <div class="phase-box" style="border-left-color: #00fa9a;">
+                <h4 style="color: #00fa9a;">Fase 0: Paz Engañosa</h4>
+                <p>El mundo está en modo Pacífico. Aprovecha para recolectar recursos iniciales sin amenazas.</p>
+            </div>
+            <div class="phase-box">
+                <h4>Fase 1: El Despertar</h4>
+                <p>Supervivencia base. Los monstruos aparecen de noche y respetan las reglas estándar del juego.</p>
+            </div>
+            <div class="phase-box" style="border-left-color: var(--scuad-naranja);">
+                <h4 style="color: var(--scuad-naranja);">Fase 2: Dificultad Aumentada</h4>
+                <p>El sol ya no quema a los Zombis ni a los Esqueletos. Las arañas son mucho más rápidas.</p>
+            </div>
+            <div class="phase-box" style="border-left-color: var(--scuad-gold);">
+                <h4 style="color: var(--scuad-gold);">Fase 3: Pesadilla</h4>
+                <p>Las arañas ahora son permanentemente invisibles. Los Creepers corren a una velocidad aterradora y los esqueletos pegan más duro.</p>
+            </div>
+            <div class="phase-box" style="border-left-color: var(--scuad-red); background-color: #2a0505;">
+                <h4 style="color: var(--scuad-red);">Fase 4: Muerte Inminente</h4>
+                <p>Absorción de daño para todos los monstruos principales. Su fuerza bruta te matará de 2 o 3 golpes si no llevas protección máxima.</p>
+            </div>
+            <div class="phase-box" style="border-left-color: var(--scuad-morado); background-color: #1a051a;">
+                <h4 style="color: var(--scuad-morado);">Fase 5: Apocalipsis Total</h4>
+                <p>Las mecánicas más brutales. Jefes modificados, daño letal y supervivencia casi imposible. Solo los más fuertes sobrevivirán.</p>
+            </div>
+        </section>
+
+    </div> <!-- Cierre del container principal -->
+
+    <!-- ========================================================
+         SECCIÓN RULETA MAESTRA
+         ======================================================== -->
+    <section class="ruleta-section-master">
+        <!-- Generador de partículas CSS Aleatorias -->
+        <div class="particles-container">
+            <div class="particle p-small" style="left: 10%; animation-duration: 6s; animation-delay: 0s;"></div>
+            <div class="particle p-large" style="left: 25%; animation-duration: 4s; animation-delay: 1s;"></div>
+            <div class="particle p-medium" style="left: 45%; animation-duration: 7s; animation-delay: 2s;"></div>
+            <div class="particle p-small" style="left: 65%; animation-duration: 5s; animation-delay: 0.5s;"></div>
+            <div class="particle p-large" style="left: 85%; animation-duration: 6s; animation-delay: 3s;"></div>
+            <div class="particle p-medium" style="left: 5%; animation-duration: 5s; animation-delay: 2.5s;"></div>
+            <div class="particle p-small" style="left: 95%; animation-duration: 8s; animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="ruleta-layout">
+            
+            <!-- FILA SUPERIOR -->
+            <div class="ruleta-top">
+                <!-- Mitad de la Ruleta con GLITCH EFFECT -->
+                <div class="ruleta-half-wrapper" id="ruleta-borde">
+                    <div class="ruleta-glitch-wrapper">
+                        <img src="img/roulettes/ruleta_base.png" id="ruleta-visual" class="ruleta-img spin-lento" alt="Ruleta de Eventos">
+                    </div>
+                </div>
+                
+                <!-- Controles -->
+                <div class="ruleta-controles">
+                    <h2>El Destino Gira</h2>
+                    <p>Cada 4 horas reales, la ruleta decidirá el destino del Realm. Selecciona una ranura para estudiar a qué peligros o fortunas podrías enfrentarte.</p>
+                    
+                    <div class="filtros-colores">
+                        <button class="btn-filtro btn-rojo" onclick="mostrarEventos('ROJO')">Rojo</button>
+                        <button class="btn-filtro btn-amarillo" onclick="mostrarEventos('AMARILLO')">Amarillo</button>
+                        <button class="btn-filtro btn-naranja" onclick="mostrarEventos('NARANJA')">Naranja</button>
+                        <button class="btn-filtro btn-azul" onclick="mostrarEventos('AZUL')">Azul</button>
+                        <button class="btn-filtro btn-verde" onclick="mostrarEventos('VERDE')">Verde</button>
+                        <button class="btn-filtro btn-morado" onclick="mostrarEventos('MORADO')">Morado</button>
+                        <button class="btn-filtro btn-reset activo" onclick="mostrarEventos('BASE')">Ocultar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILA INFERIOR (Info) -->
+            <div class="ruleta-bottom">
+                <div class="eventos-info" id="caja-eventos">
+                    <h3 id="titulo-evento" style="color: var(--scuad-red);">Visor de Eventos</h3>
+                    <ul class="eventos-lista" id="lista-eventos">
+                        <li style="animation: slideInUp 0.4s ease forwards;">Selecciona un color arriba para explorar sus posibilidades.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Scuad Random Last Time © 2026</p>
+        <p style="margin-top: 5px; color: #555;">Wiki desarrollada para sobrevivir al Realm.</p>
+    </footer>
+
+    <script>
+        // ===============================================
+        // SISTEMA DE HEADER (PANTALLA COMPLETA A SCROLL)
+        // ===============================================
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            const spacer = document.getElementById('header-spacer');
+            if(window.scrollY > 50) {
+                header.classList.add('scrolled');
+                spacer.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                spacer.classList.remove('scrolled');
+            }
+        });
+
+        // ===============================================
+        // SISTEMA DE LA RULETA
+        // ===============================================
+        const datosRuleta = {
+            "BASE": {
+                imagen: "img/roulettes/ruleta_base.png",
+                colorCSS: "var(--scuad-red)",
+                titulo: "Visor de Eventos",
+                eventos: ["Selecciona un color arriba para explorar sus posibilidades."]
+            },
+            "ROJO": {
+                imagen: "img/roulettes/ruleta_roja.png",
+                colorCSS: "var(--scuad-red)",
+                titulo: "ROJO: Avance de Dificultad",
+                eventos: [
+                    "Avanza a la Fase 0: Pacífico",
+                    "Avanza a la Fase 1: Normal",
+                    "Avanza a la Fase 2: Difícil",
+                    "Avanza a la Fase 3: Pesadilla",
+                    "Avanza a la Fase 4: Muerte Inminente",
+                    "Avanza a la Fase 5: Apocalipsis Total"
+                ]
+            },
+            "AMARILLO": {
+                imagen: "img/roulettes/ruleta_amarilla.png",
+                colorCSS: "var(--scuad-gold)",
+                titulo: "AMARILLO: Desafíos (Recompensa en Coins)",
+                eventos: [
+                    "Matar 10 Zombies",
+                    "Matar 5 Creepers",
+                    "Matar 15 Arañas",
+                    "Matar 3 Endermen",
+                    "Matar 5 Esqueletos",
+                    "Matar 10 Cerdos",
+                    "Minar 64 Troncos de Roble",
+                    "Minar 32 Hierro",
+                    "Minar 16 Oro",
+                    "Minar 10 Diamantes"
+                ]
+            },
+            "NARANJA": {
+                imagen: "img/roulettes/ruleta_naranja.png",
+                colorCSS: "var(--scuad-naranja)",
+                titulo: "NARANJA: Maldiciones",
+                eventos: [
+                    "Noche de Sangre (Debilidad y monstruos dopados)",
+                    "Lluvia Ácida (Daño bajo el cielo abierto)",
+                    "Tormenta Eléctrica (Caída de rayos mortales)",
+                    "Niebla de Parásitos (Ceguera global)",
+                    "Hambre Voraz",
+                    "Fatiga Extrema"
+                ]
+            },
+            "AZUL": {
+                imagen: "img/roulettes/ruleta_azul.png",
+                colorCSS: "var(--scuad-azul)",
+                titulo: "AZUL: Bendiciones",
+                eventos: [
+                    "Lluvia de Monedas (16 Coins gratis a todos)",
+                    "Regeneración Divina",
+                    "Gravedad Abisal (Salto potenciado y Caída lenta)",
+                    "Piel de Hierro (Resistencia al daño)",
+                    "Visión Nocturna",
+                    "Experiencia Masiva (30 Niveles de XP)"
+                ]
+            },
+            "VERDE": {
+                imagen: "img/roulettes/ruleta_verde.png",
+                colorCSS: "var(--scuad-verde)",
+                titulo: "VERDE: Beneficios Globales (5 min)",
+                eventos: [
+                    "Minería Preciosa (El mineral de carbón dropea diamante)",
+                    "Fiebre del Oro (Triple ganancia de monedas por kill)",
+                    "Brazos de Acero (Prisa II al minar y atacar)",
+                    "Bendición de Vida (Regeneración II incesante)",
+                    "Abundancia (Saturación al máximo, adiós hambre)"
+                ]
+            },
+            "MORADO": {
+                imagen: "img/roulettes/ruleta_morada.png",
+                colorCSS: "var(--scuad-morado)",
+                titulo: "MORADO: El Más Buscado (PvP)",
+                eventos: [
+                    "Un jugador aleatorio del Realm es marcado como La Presa.",
+                    "La Presa emitirá partículas constantes y un título en pantalla (No puede esconderse).",
+                    "Quien logre cazarlo recibirá 100 ScuadCoins de recompensa instantánea."
+                ]
+            }
+        };
+
+        function mostrarEventos(colorTarget) {
+            const data = datosRuleta[colorTarget];
+            
+            // 1. Cambiar la imagen de la ruleta y glow del borde
+            const imgEl = document.getElementById("ruleta-visual");
+            const bordeEl = document.getElementById("ruleta-borde");
+            imgEl.src = data.imagen;
+            
+            if(colorTarget !== "BASE") {
+                imgEl.style.filter = `drop-shadow(0 0 50px ${data.colorCSS})`;
+                bordeEl.style.borderColor = data.colorCSS;
+                bordeEl.style.boxShadow = `20px 0 60px ${data.colorCSS}40, inset -10px 0 20px rgba(0,0,0,0.8)`;
+            } else {
+                imgEl.style.filter = `drop-shadow(0 0 25px rgba(255, 255, 255, 0.15))`;
+                bordeEl.style.borderColor = `var(--scuad-red)`;
+                bordeEl.style.boxShadow = `20px 0 50px rgba(211, 0, 0, 0.4), inset -10px 0 20px rgba(0,0,0,0.8)`;
+            }
+
+            // 2. Actualizar Título de Información
+            const tituloEl = document.getElementById("titulo-evento");
+            const cajaInfo = document.getElementById("caja-eventos");
+            
+            tituloEl.innerText = data.titulo;
+            tituloEl.style.color = data.colorCSS;
+            tituloEl.style.textShadow = `0 0 15px ${data.colorCSS}`;
+            cajaInfo.style.borderColor = data.colorCSS;
+
+            // 3. Actualizar Lista con Animación Fluida
+            const listaEl = document.getElementById("lista-eventos");
+            listaEl.innerHTML = "";
+            
+            // Re-inyectar estilo temporal a los "bullets" (las flechas)
+            let styleBullets = document.getElementById("dynamic-bullets");
+            if(!styleBullets) {
+                styleBullets = document.createElement("style");
+                styleBullets.id = "dynamic-bullets";
+                document.head.appendChild(styleBullets);
+            }
+            styleBullets.innerHTML = `.eventos-lista li { border-left-color: ${data.colorCSS}80 !important; } .eventos-lista li::before { color: ${data.colorCSS} !important; text-shadow: 0 0 10px ${data.colorCSS}; }`;
+
+            data.eventos.forEach((eventoText, index) => {
+                const li = document.createElement("li");
+                li.innerHTML = eventoText;
+                
+                // Retraso escalonado para la animación de entrada en cascada
+                li.style.animation = `slideInUp 0.4s ease forwards`;
+                li.style.animationDelay = `${index * 0.1}s`;
+                
+                listaEl.appendChild(li);
+            });
+
+            // 4. Resaltar botón activo
+            const botones = document.querySelectorAll(".btn-filtro");
+            botones.forEach(btn => btn.classList.remove("activo"));
+            
+            const botonActivo = document.querySelector(`.btn-${colorTarget.toLowerCase()}`);
+            if (botonActivo) botonActivo.classList.add("activo");
+        }
+    </script>
+</body>
+</html>
