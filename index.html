@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scuad Random - Guía de Supervivencia</title>
+    <title>Scuad Random Last Time - Guía del Jugador</title>
     <style>
         /* Fuente moderna y limpia */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
@@ -374,6 +374,27 @@
             position: relative;
         }
 
+        .phase-box.phase-locked {
+            border-left-color: #3f3f3f !important;
+            background-color: #0b0808 !important;
+            color: #666;
+        }
+
+        .phase-box.phase-locked::before {
+            background: repeating-linear-gradient(-45deg, transparent 0 10px, rgba(255,255,255,0.015) 10px 20px);
+        }
+
+        .phase-box.phase-locked h4 {
+            color: #686868 !important;
+        }
+
+        .phase-lock-label {
+            color: #777;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 9px;
+            line-height: 1.8;
+        }
+
         /* ==========================================
            SECCIÓN RULETA MAESTRA
            ========================================== */
@@ -681,6 +702,137 @@
             color: #777;
             box-shadow: 0 -10px 30px rgba(211, 0, 0, 0.1);
         }
+
+
+        /* ===== GUÍA DE JUGADORES ===== */
+        .guide-note {
+            background: linear-gradient(90deg, rgba(211,0,0,0.12), rgba(255,170,0,0.04));
+            border-left: 4px solid var(--scuad-red);
+            padding: 15px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 0 0 24px 0;
+            color: #d8caca;
+        }
+
+        .guide-note strong { color: var(--scuad-gold); }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 9px;
+            border-radius: 999px;
+            border: 1px solid #5a2020;
+            background: #160606;
+            color: #d9caca;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .tag.gold { color: var(--scuad-gold); border-color: #745000; }
+        .tag.red { color: #ff6666; border-color: #7d2020; }
+        .tag.cyan { color: #45e8f1; border-color: #0b6268; }
+        .tag.purple { color: #d886ff; border-color: #5f267b; }
+        .tag.green { color: #55f0ad; border-color: #1e694a; }
+
+        .recipe-line {
+            margin-top: 12px;
+            padding: 10px 12px;
+            background: rgba(0,0,0,0.35);
+            border-left: 3px solid #6d2020;
+            color: #bfb1b1;
+            font-size: 13px;
+        }
+
+        .recipe-line strong { color: #f1d2d2; }
+
+        .mini-title {
+            color: var(--scuad-gold);
+            font-size: 18px;
+            margin: 28px 0 15px;
+        }
+
+        .command-card {
+            background: #0b0303;
+            border: 1px solid #4c1111;
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+
+        .command-card code {
+            color: #ff7777;
+            background: #160404;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .phase-content-locked {
+            border-color: #303030 !important;
+            background: #090707 !important;
+            box-shadow: none !important;
+        }
+
+        .phase-content-locked .card-header,
+        .phase-content-locked .recipe-line,
+        .phase-content-locked .tag-row,
+        .phase-content-locked > p:not(.phase-lock-label) {
+            display: none !important;
+        }
+
+        .phase-content-locked::after {
+            content: 'CONTENIDO CLASIFICADO';
+            position: absolute;
+            right: 14px;
+            top: 12px;
+            color: #4d4d4d;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 7px;
+            letter-spacing: 1px;
+        }
+
+        .phase-content-locked .phase-lock-label {
+            display: block;
+            padding: 22px 6px 8px;
+            color: #777;
+        }
+
+        .armor-set-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .armor-set-row img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 6px rgba(196,60,255,.35));
+        }
+
+        .rarity-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .rarity-chip {
+            border: 1px solid #401111;
+            background: #0d0505;
+            padding: 9px 11px;
+            border-radius: 7px;
+            font-size: 12px;
+        }
+
     </style>
 </head>
 <body>
@@ -711,16 +863,62 @@
 
     <div class="container">
         
-        <!-- Mecánicas Básicas -->
+        <!-- Guía esencial -->
         <section>
             <h2 class="section-title">Reglas del Realm</h2>
-            <div class="phase-box">
-                <h4 style="color: var(--scuad-red);">Muerte Permanente (Permadeath)</h4>
-                <p>Si mueres, pasarás a Modo Espectador. Pierdes tu inventario y dependes de tus compañeros para volver al juego. Las coordenadas están activas, pero no hay regeneración natural de salud (Modo UHC).</p>
+            <div class="guide-note"><strong>Objetivo:</strong> sobrevivir en equipo mientras el Realm cambia por fases. Guarda recursos, administra tus ScuadCoins y no subestimes las ruletas.</div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/souls/player_soul.png" class="item-icon" alt="Alma de Jugador">
+                        <h3>Muerte Permanente</h3>
+                    </div>
+                    <p>Al morir pasarás a Espectador y no podrás continuar hasta ser revivido. Tu inventario se conserva, pero tu equipo queda fuera de la partida mientras sigas muerto.</p>
+                    <div class="tag-row"><span class="tag red">Espectador al morir</span><span class="tag green">Inventario conservado</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/scuad_coin.png" class="item-icon" alt="ScuadCoin">
+                        <h3>Economía</h3>
+                    </div>
+                    <p>Los enemigos derrotados entregan ScuadCoins. Llévalas a las tiendas para comprar suministros o deposítalas en el Banco para tener una reserva segura.</p>
+                    <div class="tag-row"><span class="tag gold">1–3 Coins por enemigo</span><span class="tag">Banco protegido</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/doom_sigil.png" class="item-icon" alt="Sello del Doom">
+                        <h3>Dimensiones por Fase</h3>
+                    </div>
+                    <p>El Nether, el End y la Dimensión Doom no están disponibles desde el inicio. Cada acceso se abre cuando el Realm alcanza su fase correspondiente.</p>
+                    <div class="tag-row"><span class="tag">Nether: Fase 1</span><span class="tag purple">End + Doom: Fase 2</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/survivor_ration.png" class="item-icon" alt="Ración del Superviviente">
+                        <h3>Protección del Evento</h3>
+                    </div>
+                    <p>Las coordenadas y la regeneración natural están activas. Los mobs no pueden destruir o alterar tus construcciones mediante griefing.</p>
+                    <div class="tag-row"><span class="tag green">Regeneración natural</span><span class="tag green">Mob Griefing desactivado</span></div>
+                </div>
             </div>
-            <div class="phase-box">
-                <h4 style="color: var(--scuad-gold);">Economía: ScuadCoins</h4>
-                <p>La única forma de sobrevivir es la economía. Al matar monstruos, soltarán de 1 a 3 <strong>ScuadCoins</strong>. Usa estas monedas físicas para comerciar en los bloques interactivos o pagar tu resurrección.</p>
+        </section>
+
+        <!-- Lectura rápida del HUD -->
+        <section>
+            <h2 class="section-title">Cómo leer el HUD</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Banco y temporizador</h3>
+                    <p>En la parte inferior izquierda puedes consultar tu saldo bancario. Cuando hay un desafío, beneficio, cacería u otro evento con duración, el mismo HUD muestra el tiempo restante.</p>
+                </div>
+                <div class="card">
+                    <h3>Más Buscado</h3>
+                    <p>Durante una ruleta morada puede aparecer un objetivo de cacería. Si existe un jugador marcado, su nombre se mostrará como Más Buscado y la recompensa será de 100 ScuadCoins.</p>
+                </div>
+                <div class="card">
+                    <h3>Estela de rareza</h3>
+                    <p>Algunos objetos especiales dejan una estela de color en su slot. Úsala como referencia rápida para reconocer equipo y consumibles importantes sin abrir sus detalles.</p>
+                </div>
             </div>
         </section>
 
@@ -730,125 +928,250 @@
             <div class="grid">
                 <div class="card">
                     <div class="card-header">
-                        <div class="icon-placeholder">BLOQUE</div>
+                        <img src="img/items/scuad_coin.png" class="item-icon" alt="ScuadCoin">
                         <h3>Banco Central</h3>
                     </div>
-                    <p>Bloque interactivo para salvaguardar tu dinero. Deposita tus ScuadCoins aquí; si mueres, el dinero en el banco estará a salvo de perderse en el mundo.</p>
+                    <p>Deposita o retira todas tus ScuadCoins. Lo depositado permanece guardado aunque mueras.</p>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <div class="icon-placeholder">BLOQUE</div>
+                        <img src="img/items/survivor_ration.png" class="item-icon" alt="Ración del Superviviente">
                         <h3>Tienda de Comida</h3>
                     </div>
-                    <p>Compra provisiones básicas y avanzadas. Vende desde filetes cocinados hasta Manzanas Doradas Encantadas para curarte sin regeneración natural.</p>
+                    <p>Provisiones para mantenerte con vida. Su catálogo crece conforme se revelan nuevas fases.</p>
+                    <div class="tag-row"><span class="tag gold">5 Coins: Filete x16</span><span class="tag gold">10 Coins: Manzana Dorada</span><span class="tag gold">12 Coins: Ración x2</span></div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <div class="icon-placeholder">BLOQUE</div>
+                        <img src="img/items/panic_potion.png" class="item-icon" alt="Poción de Pánico">
+                        <h3>Tienda de Pociones</h3>
+                    </div>
+                    <p>Compra pociones de emergencia y alquimia avanzada. Las opciones más poderosas se desbloquean con las fases.</p>
+                    <div class="tag-row"><span class="tag gold">15 Coins: Curación II</span><span class="tag gold">20 Coins: Resistencia al Fuego</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="img/items/souls/player_soul.png" class="item-icon" alt="Alma de Jugador">
                         <h3>Urna de Oro</h3>
                     </div>
-                    <p>Bloque de sacrificios. Aquí puedes comprar <strong>Almas de Jugador</strong>, tótems de inmortalidad, o reparar instantáneamente la armadura que llevas puesta.</p>
+                    <p>Intercambia riqueza por recursos especiales: Almas de Jugador, reparación de armadura, tótems, perlas y experiencia.</p>
+                    <div class="tag-row"><span class="tag gold">64 Coins: Alma</span><span class="tag gold">50 Coins: Reparación</span><span class="tag gold">128 Coins: Tótem</span></div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <div class="icon-placeholder">BLOQUE</div>
+                        <img src="img/items/souls/player_soul.png" class="item-icon" alt="Alma de Jugador">
                         <h3>Fosa de Almas</h3>
                     </div>
-                    <p>El punto de resurrección. Interactúa con este pozo oscuro teniendo un <i>Alma de Jugador</i> en tu inventario para seleccionar qué jugador caído deseas revivir.</p>
+                    <p>Usa 1 Alma de Jugador para devolver a un compañero desde Espectador. El jugador revivido aparecerá junto a la fosa.</p>
+                    <div class="tag-row"><span class="tag purple">Consume 1 Alma</span></div>
                 </div>
             </div>
         </section>
 
-        <!-- Ítems Personalizados -->
+        <!-- Alquimia e items -->
         <section>
-            <h2 class="section-title">Alquimia e Ítems Custom</h2>
+            <h2 class="section-title">Supervivencia y Alquimia</h2>
+            <p class="guide-note">Los objetos de fases futuras permanecen ocultos hasta que el Administrador revele esa fase en esta guía.</p>
             <div class="grid">
-                
                 <div class="card">
-                    <div class="card-header">
-                        <img src="img/items/player_soul.png" class="item-icon" alt="Alma de Jugador">
-                        <h3>Alma de Jugador</h3>
-                    </div>
-                    <p>Cristal espiritual necesario para operar la Fosa de Almas.</p>
-                    <span class="price">Costo: 64 Coins</span>
+                    <div class="card-header"><img src="img/items/scuad_coin.png" class="item-icon" alt="ScuadCoin"><h3>ScuadCoin</h3></div>
+                    <p>Moneda física del Realm. Se obtiene principalmente derrotando enemigos y completando eventos.</p>
+                    <div class="tag-row"><span class="tag gold">Stack: 64</span></div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <img src="img/items/panic_potion.png" class="item-icon" alt="Poción de Pánico">
-                        <h3>Poción de Pánico</h3>
-                    </div>
-                    <p>Te otorga Velocidad Extrema e Invisibilidad, pero te provoca Náuseas. Perfecta para huir de emboscadas.</p>
-                    <span class="price">Costo: 30 Coins</span>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <img src="img/items/escape_potion.png" class="item-icon" alt="Poción de Escape" onerror="this.src='img/items/panic_potion.png'">
-                        <h3>Poción de Escape</h3>
-                    </div>
-                    <p>Te eleva rápidamente por los cielos y te otorga caída lenta, ideal para escapar de hordas terrestres.</p>
-                    <span class="price">Costo: 30 Coins</span>
+                    <div class="card-header"><img src="img/items/souls/player_soul.png" class="item-icon" alt="Alma de Jugador"><h3>Alma de Jugador</h3></div>
+                    <p>Llave de resurrección. Compra una en la Urna de Oro y llévala a la Fosa de Almas para recuperar a un compañero.</p>
+                    <div class="tag-row"><span class="tag gold">64 Coins</span><span class="tag purple">Stack: 1</span></div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <img src="img/items/ultra_health_potion.png" class="item-icon" alt="Ultra Curación">
-                        <h3>Ultra Curación</h3>
-                    </div>
-                    <p><strong>Crafteable en la Mesa de Alquimia:</strong> Destila una Poción de Salud con una Manzana Dorada. Rellena tu salud de un solo trago.</p>
-                    <span class="price" style="color: #ff5555; border-color: #ff5555; box-shadow: 0 0 10px rgba(255, 85, 85, 0.2);">Item Crafteable</span>
+                    <div class="card-header"><img src="img/items/survivor_ration.png" class="item-icon" alt="Ración del Superviviente"><h3>Ración del Superviviente</h3></div>
+                    <p>Comida de emergencia que estabiliza tus heridas con absorción y una breve regeneración.</p>
+                    <div class="recipe-line"><strong>Receta:</strong> filete cocinado + pan + zanahoria dorada → 2 raciones.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 12 Coins x2</span><span class="tag">Stack: 16</span></div>
                 </div>
 
+                <div class="card" data-unlock-phase="1">
+                    <div class="card-header"><img src="img/items/panic_potion.png" class="item-icon" alt="Poción de Pánico"><h3>Poción de Pánico</h3></div>
+                    <p>Velocidad III durante 20 s y Resistencia I durante 10 s. Ideal para romper una emboscada y ganar distancia.</p>
+                    <div class="tag-row"><span class="tag gold">Tienda: 30 Coins</span><span class="tag red">Fase 1</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="1">
+                    <div class="card-header"><img src="img/items/escape_potion.png" class="item-icon" alt="Poción de Escape"><h3>Poción de Escape</h3></div>
+                    <p>Invisibilidad y Velocidad II durante 15 s, además de Caída Lenta durante 10 s.</p>
+                    <div class="tag-row"><span class="tag gold">Tienda: 30 Coins</span><span class="tag red">Fase 1</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="1">
+                    <div class="card-header"><img src="img/items/miners_tonic.png" class="item-icon" alt="Tónico del Minero"><h3>Tónico del Minero</h3></div>
+                    <p>Prisa II y Visión Nocturna durante 2 minutos, más Resistencia al Fuego durante 30 s.</p>
+                    <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Fragmento de Amatista.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 34 Coins</span><span class="tag red">Fase 1</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="2">
+                    <div class="card-header"><img src="img/items/golden_stew.png" class="item-icon" alt="Estofado Dorado"><h3>Estofado Dorado</h3></div>
+                    <p>Fortalece tu vida temporalmente y acelera la recuperación durante unos segundos.</p>
+                    <div class="recipe-line"><strong>Receta:</strong> cuenco + zanahoria dorada + hongo rojo + hongo marrón.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 28 Coins</span><span class="tag red">Fase 2</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="2">
+                    <div class="card-header"><img src="img/items/guardian_elixir.png" class="item-icon" alt="Elixir del Guardián"><h3>Elixir del Guardián</h3></div>
+                    <p>Absorción IV durante 2 minutos y Resistencia II durante 1 minuto.</p>
+                    <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Alma Punzante.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 48 Coins</span><span class="tag red">Fase 2</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="3">
+                    <div class="card-header"><img src="img/items/cleansing_serum.png" class="item-icon" alt="Suero Purificador"><h3>Suero Purificador</h3></div>
+                    <p>Limpia veneno, wither, debilidad, lentitud, ceguera, oscuridad, hambre, fatiga y náusea; después aplica Regeneración II.</p>
+                    <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Botella de Miel.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 42 Coins</span><span class="tag red">Fase 3</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="3">
+                    <div class="card-header"><img src="img/items/ultra_health_potion.png" class="item-icon" alt="Poción de Ultra Curación"><h3>Poción de Ultra Curación</h3></div>
+                    <p>Restaura toda tu salud inmediatamente y añade Regeneración III durante 10 s.</p>
+                    <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Manzana Dorada.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 64 Coins</span><span class="tag red">Fase 3</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="4">
+                    <div class="card-header"><img src="img/items/echo_apple.png" class="item-icon" alt="Manzana del Eco"><h3>Manzana del Eco</h3></div>
+                    <p>Aumento de Salud III durante 2 minutos y Fuerza II durante 30 s. El precio del poder es una breve Oscuridad.</p>
+                    <div class="recipe-line"><strong>Receta:</strong> una Manzana Dorada rodeada por 8 Fragmentos de Eco.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 80 Coins</span><span class="tag cyan">Stack: 16</span><span class="tag red">Fase 4</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="4">
+                    <div class="card-header"><img src="img/items/berserker_brew.png" class="item-icon" alt="Brebaje Berserker"><h3>Brebaje Berserker</h3></div>
+                    <p>Fuerza III y Velocidad II durante 30 s, a cambio de Hambre III durante 15 s.</p>
+                    <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Núcleo del Doom.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 55 Coins</span><span class="tag red">Fase 4</span></div>
+                </div>
+
+                <div class="card" data-unlock-phase="5">
+                    <div class="card-header"><img src="img/items/liquid_notch.png" class="item-icon" alt="Notch Líquida"><h3>Notch Líquida</h3></div>
+                    <p>Absorción IV y Resistencia I durante 2 minutos, además de Regeneración II durante 30 s.</p>
+                    <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Manzana Dorada Encantada.</div>
+                    <div class="tag-row"><span class="tag gold">Tienda: 128 Coins</span><span class="tag red">Fase 5</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Almas para Netherite -->
+        <section data-unlock-phase="2" class="phase-section">
+            <h2 class="section-title">Almas de Jefes y Netherite</h2>
+            <p class="guide-note">Los grandes enemigos pueden entregar almas únicas. Cada alma sirve como pieza clave para mejorar una parte concreta de armadura de diamante a Netherite.</p>
+            <div class="grid">
                 <div class="card">
-                    <div class="card-header">
-                        <img src="img/items/liquid_notch.png" class="item-icon" alt="Notch Líquida">
-                        <h3>Notch Líquida</h3>
-                    </div>
-                    <p><strong>Crafteable en la Mesa de Alquimia:</strong> Destila una Manzana de Notch con una Poción Rara. Otorga Regeneración IV y Resistencias extremas.</p>
-                    <span class="price" style="color: #ff5555; border-color: #ff5555; box-shadow: 0 0 10px rgba(255, 85, 85, 0.2);">Item Crafteable</span>
+                    <div class="card-header"><img src="img/items/souls/burning_soul.png" class="item-icon" alt="Alma Ígnea"><h3>Alma Ígnea</h3></div>
+                    <p>La entrega el Ghast Infernal. Se usa para mejorar el casco de diamante a Netherite.</p>
+                    <div class="tag-row"><span class="tag red">Casco</span><span class="tag">Stack: 1</span></div>
                 </div>
-
-                <div class="card" style="border-color: #004d52; box-shadow: 0 8px 20px rgba(0, 198, 209, 0.1);">
-                    <div class="card-header">
-                        <img src="img/items/echo_apple.png" class="item-icon" alt="Manzana de Eco" onerror="this.src='img/items/scuad_coin.png'">
-                        <h3 style="color: #00c6d1; text-shadow: 0 0 8px rgba(0, 198, 209, 0.4);">Manzana de Eco</h3>
-                    </div>
-                    <p>Otorga <strong>Health Boost X</strong> y <strong>Fuerza III</strong>, pero te ciega con Oscuridad. Se craftea rodeando una Manzana Dorada con 4 Fragmentos de Sculk en cruz.</p>
-                    <span class="price" style="color: #00c6d1; border-color: #00c6d1; box-shadow: 0 0 10px rgba(0, 198, 209, 0.2);">Item Crafteable</span>
+                <div class="card">
+                    <div class="card-header"><img src="img/items/souls/gelatinous_soul.png" class="item-icon" alt="Alma Gelatinosa"><h3>Alma Gelatinosa</h3></div>
+                    <p>La entrega el Giga Slime. Se usa para mejorar la pechera de diamante a Netherite.</p>
+                    <div class="tag-row"><span class="tag green">Pechera</span><span class="tag">Stack: 1</span></div>
                 </div>
+                <div class="card">
+                    <div class="card-header"><img src="img/items/souls/stinging_soul.png" class="item-icon" alt="Alma Punzante"><h3>Alma Punzante</h3></div>
+                    <p>La entrega el Emperador. Se usa para mejorar los pantalones de diamante a Netherite.</p>
+                    <div class="tag-row"><span class="tag gold">Pantalones</span><span class="tag">Stack: 1</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><img src="img/items/souls/howling_soul.png" class="item-icon" alt="Alma Aullante"><h3>Alma Aullante</h3></div>
+                    <p>La entrega el Devastador Espectral. Se usa para mejorar las botas de diamante a Netherite.</p>
+                    <div class="tag-row"><span class="tag cyan">Botas</span><span class="tag">Stack: 1</span></div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Doom -->
+        <section data-unlock-phase="2" class="phase-section">
+            <h2 class="section-title">Expediciones al Doom</h2>
+            <div class="guide-note"><strong>Consejo:</strong> entra preparado. Las islas flotantes, ruinas, castillo y zonas especiales esconden botín raro, pero también guardianes y oleadas. Los recursos se renuevan cada 2 días del mundo.</div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header"><img src="img/items/doom_sigil.png" class="item-icon" alt="Sello del Doom"><h3>Sello del Doom</h3></div>
+                    <p>Abre el menú de expedición a la Dimensión Doom. También puedes abrirlo con <strong>/scuad:doom</strong>.</p>
+                    <div class="recipe-line"><strong>Receta:</strong> 4 Obsidianas + 2 Fragmentos de Eco + 2 Esmeraldas + 1 Obsidiana Llorosa.</div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><img src="img/items/doom_core.png" class="item-icon" alt="Núcleo del Doom"><h3>Núcleo del Doom</h3></div>
+                    <p>Recurso raro de las expediciones. Puede aparecer en botines del Doom y es esencial para fabricar objetos de alto nivel.</p>
+                    <div class="tag-row"><span class="tag purple">Stack: 16</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><img src="img/items/doom_catalyst.png" class="item-icon" alt="Catalizador del Cataclismo"><h3>Catalizador del Cataclismo</h3></div>
+                    <p>Material necesario para transformar una pieza de Netherite en Armadura de la Perdición.</p>
+                    <div class="recipe-line"><strong>Receta:</strong> 4 Núcleos del Doom + 4 Fragmentos de Eco + una Estrella del Nether. También existe una variante con Bloque de Netherite.</div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><img src="img/items/doom_chestplate.png" class="item-icon" alt="Armadura de la Perdición"><h3>Armadura de la Perdición</h3></div>
+                    <div class="armor-set-row">
+                        <img src="img/items/doom_helmet.png" alt="Yelmo">
+                        <img src="img/items/doom_chestplate.png" alt="Coraza">
+                        <img src="img/items/doom_leggings.png" alt="Grebas">
+                        <img src="img/items/doom_boots.png" alt="Botas">
+                    </div>
+                    <p>Mejora cada pieza de Netherite usando un Catalizador del Cataclismo. El set completo es irrompible y otorga Fuerza, Resistencia II, Resistencia al Fuego, Visión Nocturna y 5 corazones extra.</p>
+                    <div class="tag-row"><span class="tag purple">Set completo</span><span class="tag red">Irrompible</span><span class="tag green">+5 corazones</span></div>
+                </div>
+            </div>
+            <p class="mini-title">Recompensas de expedición</p>
+            <div class="phase-box">
+                <p>Cada 12 enemigos derrotados dentro del Doom recibes suministros de expedición. Los cofres pueden contener Coins, diamantes, Netherite, Fragmentos de Eco, Núcleos del Doom y otros objetos raros.</p>
+            </div>
+        </section>
+
+        <!-- Comandos útiles -->
+        <section>
+            <h2 class="section-title">Comandos útiles para jugadores</h2>
+            <div class="grid">
+                <div class="command-card">
+                    <h3>/scuad:espectear</h3>
+                    <p>Si estás muerto y en Espectador, abre una lista de jugadores vivos para seguir su aventura mientras esperas una resurrección.</p>
+                </div>
+                <div class="command-card" data-unlock-phase="2">
+                    <h3>/scuad:doom</h3>
+                    <p>Abre el menú para entrar o salir de la Dimensión Doom una vez que la Fase 2 esté revelada.</p>
+                </div>
             </div>
         </section>
 
         <!-- Dificultad (0 a 5) -->
-        <section>
+        <section id="evolucion-fases">
             <h2 class="section-title">Evolución del Mundo</h2>
-            <p style="margin-bottom: 25px; color: #b3b3b3;">El Administrador subirá la fase del Realm con el tiempo. El entorno se volverá progresivamente más hostil a través de 6 fases ineludibles.</p>
-            
-            <div class="phase-box" style="border-left-color: #00fa9a;">
+            <p style="margin-bottom: 10px; color: #b3b3b3;">El Realm avanza por fases. Cuando una nueva fase sea revelada, esta guía mostrará automáticamente la información que los jugadores ya pueden conocer.</p>
+            <p style="margin-bottom: 25px; color: #777; font-size: 13px;">Expediente público actual: <strong id="fase-publica-label" style="color: var(--scuad-gold);">Fase 0</strong>. Las fases posteriores permanecen clasificadas.</p>
+
+            <div class="phase-box" data-phase="0" style="border-left-color: #00fa9a;">
                 <h4 style="color: #00fa9a;">Fase 0: Paz Engañosa</h4>
-                <p>El mundo está en modo Pacífico. Aprovecha para recolectar recursos iniciales sin amenazas.</p>
+                <p><strong>Día 0.</strong> El mundo permanece en Pacífico. Nether, End y Doom están cerrados. Es el momento para levantar una base, reunir comida, hierro, diamantes y una reserva de ScuadCoins.</p>
             </div>
-            <div class="phase-box">
+            <div class="phase-box" data-phase="1">
                 <h4>Fase 1: El Despertar</h4>
-                <p>Supervivencia base. Los monstruos aparecen de noche y respetan las reglas estándar del juego.</p>
+                <p><strong>Día 5.</strong> La dificultad sube a Normal y se abre el Nether. Comienzan a aparecer Exploradores Óseos y el mundo deja de ser seguro.</p>
             </div>
-            <div class="phase-box" style="border-left-color: var(--scuad-naranja);">
-                <h4 style="color: var(--scuad-naranja);">Fase 2: Dificultad Aumentada</h4>
-                <p>El sol ya no quema a los Zombis ni a los Esqueletos. Las arañas son mucho más rápidas.</p>
+            <div class="phase-box" data-phase="2" style="border-left-color: var(--scuad-naranja);">
+                <h4 style="color: var(--scuad-naranja);">Fase 2: Supervivencia</h4>
+                <p><strong>Día 40.</strong> La dificultad pasa a Difícil. Se abren el End y el Doom; aparecen Guardias Óseos, enemigos especiales y minijefes. Los no-muertos resisten el fuego y las arañas son más rápidas.</p>
             </div>
-            <div class="phase-box" style="border-left-color: var(--scuad-gold);">
+            <div class="phase-box" data-phase="3" style="border-left-color: var(--scuad-gold);">
                 <h4 style="color: var(--scuad-gold);">Fase 3: Pesadilla</h4>
-                <p>Las arañas ahora son permanentemente invisibles. Los Creepers corren a una velocidad aterradora y los esqueletos pegan más duro.</p>
+                <p><strong>Día 60.</strong> Las arañas pueden volverse invisibles, los Creepers son mucho más veloces y llegan los Tiradores Espectrales. Los asedios se vuelven más intensos.</p>
             </div>
-            <div class="phase-box" style="border-left-color: var(--scuad-red); background-color: #2a0505;">
+            <div class="phase-box" data-phase="4" style="border-left-color: var(--scuad-red); background-color: #2a0505;">
                 <h4 style="color: var(--scuad-red);">Fase 4: Muerte Inminente</h4>
-                <p>Absorción de daño para todos los monstruos principales. Su fuerza bruta te matará de 2 o 3 golpes si no llevas protección máxima.</p>
+                <p><strong>Día 80.</strong> Los principales hostiles ganan Fuerza y Resistencia, aparecen Verdugos Abisales y aumenta la presencia de minijefes. La alquimia de emergencia alcanza otro nivel.</p>
             </div>
-            <div class="phase-box" style="border-left-color: var(--scuad-morado); background-color: #1a051a;">
+            <div class="phase-box" data-phase="5" style="border-left-color: var(--scuad-morado); background-color: #1a051a;">
                 <h4 style="color: var(--scuad-morado);">Fase 5: Apocalipsis Total</h4>
-                <p>Las mecánicas más brutales. Jefes modificados, daño letal y supervivencia casi imposible. Solo los más fuertes sobrevivirán.</p>
+                <p><strong>Día 100.</strong> Los enemigos especiales alcanzan su máximo poder, los jefes pueden regenerarse y varias amenazas pueden coexistir al mismo tiempo.</p>
             </div>
         </section>
 
@@ -883,7 +1206,7 @@
                 <!-- Controles -->
                 <div class="ruleta-controles">
                     <h2>El Destino Gira</h2>
-                    <p>Cada 4 horas reales, la ruleta decidirá el destino del Realm. Selecciona una ranura para estudiar a qué peligros o fortunas podrías enfrentarte.</p>
+                    <p>Cada 4 horas reales gira una ruleta entre cinco colores. El rojo está reservado para los cambios de fase. Selecciona un color para estudiar sus posibles resultados.</p>
                     
                     <div class="filtros-colores">
                         <button class="btn-filtro btn-rojo" onclick="mostrarEventos('ROJO')">Rojo</button>
@@ -916,6 +1239,46 @@
     </footer>
 
     <script>
+        // CONTROL DE ADMINISTRACIÓN: cambia únicamente este valor (0 a 5)
+        // para revelar en la página los cambios de las fases correspondientes.
+        const FASE_PUBLICA = 0;
+
+        function aplicarBloqueoDeFases() {
+            const fasePermitida = Math.max(0, Math.min(5, Number(FASE_PUBLICA) || 0));
+            const etiqueta = document.getElementById('fase-publica-label');
+            if (etiqueta) etiqueta.textContent = `Fase ${fasePermitida}`;
+
+            document.querySelectorAll('#evolucion-fases .phase-box[data-phase]').forEach((caja) => {
+                const fase = Number(caja.dataset.phase);
+                if (fase <= fasePermitida) return;
+
+                caja.classList.add('phase-locked');
+                caja.innerHTML = `
+                    <h4>Fase ${fase}: Expediente Bloqueado</h4>
+                    <p class="phase-lock-label">◆ El Administrador todavía no ha desbloqueado la información de esta fase.</p>
+                `;
+            });
+
+            document.querySelectorAll('[data-unlock-phase]').forEach((elemento) => {
+                const fase = Number(elemento.dataset.unlockPhase);
+                if (fase <= fasePermitida) return;
+
+                if (elemento.classList.contains('phase-section')) {
+                    elemento.innerHTML = `
+                        <h2 class="section-title">Expediente Bloqueado</h2>
+                        <div class="phase-box phase-locked">
+                            <h4>Contenido de Fase ${fase}</h4>
+                            <p class="phase-lock-label">◆ Esta parte de la guía se revelará cuando el Administrador desbloquee la fase.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                elemento.classList.add('phase-content-locked');
+                elemento.innerHTML = `<p class="phase-lock-label">◆ Contenido de Fase ${fase} bloqueado por el Administrador.</p>`;
+            });
+        }
+
         // ===============================================
         // SISTEMA DE HEADER (PANTALLA COMPLETA A SCROLL)
         // ===============================================
@@ -934,6 +1297,34 @@
         // ===============================================
         // SISTEMA DE LA RULETA
         // ===============================================
+        const fasesDeRuleta = [
+            "Fase 0: Paz Engañosa",
+            "Fase 1: El Despertar",
+            "Fase 2: Supervivencia",
+            "Fase 3: Pesadilla",
+            "Fase 4: Muerte Inminente",
+            "Fase 5: Apocalipsis Total"
+        ];
+
+        const desafiosRuleta = [
+            { fase: 0, texto: "Minar 32 Hierro — 32 Coins" },
+            { fase: 0, texto: "Minar 10 Diamantes — 64 Coins" },
+            { fase: 1, texto: "Matar 10 Zombies — 32 Coins" },
+            { fase: 1, texto: "Matar 5 Creepers — 32 Coins" },
+            { fase: 2, texto: "Derrotar 4 Guardias Óseos — 48 Coins" },
+            { fase: 3, texto: "Derrotar 3 Tiradores Espectrales — 64 Coins" },
+            { fase: 4, texto: "Derrotar 2 Verdugos Abisales — 96 Coins" }
+        ];
+
+        const maldicionesRuleta = [
+            { fase: 1, texto: "Noche de Sangre: medianoche, tormenta, debilidad y asedio" },
+            { fase: 0, texto: "Lluvia Ácida: lluvia global" },
+            { fase: 0, texto: "Tormenta Eléctrica" },
+            { fase: 0, texto: "Niebla de Parásitos: ceguera" },
+            { fase: 0, texto: "Hambre Voraz" },
+            { fase: 0, texto: "Fatiga Extrema" }
+        ];
+
         const datosRuleta = {
             "BASE": {
                 imagen: "img/roulettes/ruleta_base.png",
@@ -944,79 +1335,55 @@
             "ROJO": {
                 imagen: "img/roulettes/ruleta_roja.png",
                 colorCSS: "var(--scuad-red)",
-                titulo: "ROJO: Avance de Dificultad",
-                eventos: [
-                    "Avanza a la Fase 0: Pacífico",
-                    "Avanza a la Fase 1: Normal",
-                    "Avanza a la Fase 2: Difícil",
-                    "Avanza a la Fase 3: Pesadilla",
-                    "Avanza a la Fase 4: Muerte Inminente",
-                    "Avanza a la Fase 5: Apocalipsis Total"
-                ]
+                titulo: "ROJO: Cambio de Fase",
+                eventos: fasesDeRuleta.map((evento, fase) => fase <= FASE_PUBLICA
+                    ? evento
+                    : `Fase ${fase}: Información bloqueada por el Administrador`)
             },
             "AMARILLO": {
                 imagen: "img/roulettes/ruleta_amarilla.png",
                 colorCSS: "var(--scuad-gold)",
-                titulo: "AMARILLO: Desafíos (Recompensa en Coins)",
-                eventos: [
-                    "Matar 10 Zombies",
-                    "Matar 5 Creepers",
-                    "Matar 15 Arañas",
-                    "Matar 3 Endermen",
-                    "Matar 5 Esqueletos",
-                    "Matar 10 Cerdos",
-                    "Minar 64 Troncos de Roble",
-                    "Minar 32 Hierro",
-                    "Minar 16 Oro",
-                    "Minar 10 Diamantes"
-                ]
+                titulo: "AMARILLO: Desafío de 30 minutos",
+                eventos: desafiosRuleta.filter(e => e.fase <= FASE_PUBLICA).map(e => e.texto)
             },
             "NARANJA": {
                 imagen: "img/roulettes/ruleta_naranja.png",
                 colorCSS: "var(--scuad-naranja)",
                 titulo: "NARANJA: Maldiciones",
-                eventos: [
-                    "Noche de Sangre (Debilidad y monstruos dopados)",
-                    "Lluvia Ácida (Daño bajo el cielo abierto)",
-                    "Tormenta Eléctrica (Caída de rayos mortales)",
-                    "Niebla de Parásitos (Ceguera global)",
-                    "Hambre Voraz",
-                    "Fatiga Extrema"
-                ]
+                eventos: maldicionesRuleta.filter(e => e.fase <= FASE_PUBLICA).map(e => e.texto)
             },
             "AZUL": {
                 imagen: "img/roulettes/ruleta_azul.png",
                 colorCSS: "var(--scuad-azul)",
-                titulo: "AZUL: Bendiciones",
+                titulo: "AZUL: Bendiciones instantáneas",
                 eventos: [
-                    "Lluvia de Monedas (16 Coins gratis a todos)",
+                    "Lluvia de Monedas: 16 ScuadCoins para cada superviviente",
                     "Regeneración Divina",
-                    "Gravedad Abisal (Salto potenciado y Caída lenta)",
-                    "Piel de Hierro (Resistencia al daño)",
+                    "Gravedad Abisal: Caída Lenta",
+                    "Piel de Hierro: Resistencia II",
                     "Visión Nocturna",
-                    "Experiencia Masiva (30 Niveles de XP)"
+                    "Experiencia Masiva: 30 niveles"
                 ]
             },
             "VERDE": {
                 imagen: "img/roulettes/ruleta_verde.png",
                 colorCSS: "var(--scuad-verde)",
-                titulo: "VERDE: Beneficios Globales (5 min)",
+                titulo: "VERDE: Beneficio global de 30 minutos",
                 eventos: [
-                    "Minería Preciosa (El mineral de carbón dropea diamante)",
-                    "Fiebre del Oro (Triple ganancia de monedas por kill)",
-                    "Brazos de Acero (Prisa II al minar y atacar)",
-                    "Bendición de Vida (Regeneración II incesante)",
-                    "Abundancia (Saturación al máximo, adiós hambre)"
+                    "Minería Preciosa: el carbón se convierte en diamante",
+                    "Fiebre del Oro: triple ScuadCoins por enemigo derrotado",
+                    "Brazos de Acero: Prisa II global"
                 ]
             },
             "MORADO": {
                 imagen: "img/roulettes/ruleta_morada.png",
                 colorCSS: "var(--scuad-morado)",
-                titulo: "MORADO: El Más Buscado (PvP)",
+                titulo: "MORADO: Cacería PvP de 1 hora",
                 eventos: [
-                    "Un jugador aleatorio del Realm es marcado como La Presa.",
-                    "La Presa emitirá partículas constantes y un título en pantalla (No puede esconderse).",
-                    "Quien logre cazarlo recibirá 100 ScuadCoins de recompensa instantánea."
+                    "El PvP se activa temporalmente.",
+                    "Si hay suficientes jugadores, uno será marcado como Más Buscado.",
+                    "Cazar al Más Buscado entrega 100 ScuadCoins.",
+                    "Al terminar la hora, el PvP vuelve a desactivarse."
                 ]
             }
         };
@@ -1076,9 +1443,13 @@
             const botones = document.querySelectorAll(".btn-filtro");
             botones.forEach(btn => btn.classList.remove("activo"));
             
-            const botonActivo = document.querySelector(`.btn-${colorTarget.toLowerCase()}`);
+            const botonActivo = colorTarget === "BASE"
+                ? document.querySelector(".btn-reset")
+                : document.querySelector(`.btn-${colorTarget.toLowerCase()}`);
             if (botonActivo) botonActivo.classList.add("activo");
         }
+
+        aplicarBloqueoDeFases();
     </script>
 </body>
 </html>
