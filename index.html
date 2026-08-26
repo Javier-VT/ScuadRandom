@@ -887,9 +887,396 @@
             border-color: #493067;
             box-shadow: 0 8px 24px rgba(94,45,145,.18), inset 0 0 24px rgba(54,215,255,.03);
         }
+
+
+/* =========================================================
+   SCUAD RANDOM — INTERFAZ EVOLUTIVA POR FASE
+   ========================================================= */
+:root {
+    --phase-accent: #ff8c00;
+    --phase-accent-rgb: 255, 140, 0;
+    --phase-secondary: #d30000;
+    --phase-glow: rgba(255, 140, 0, .35);
+    --phase-danger: 48%;
+}
+
+body[data-phase="0"] { --phase-accent:#00fa9a; --phase-accent-rgb:0,250,154; --phase-secondary:#37d67a; }
+body[data-phase="1"] { --phase-accent:#e03a32; --phase-accent-rgb:224,58,50; --phase-secondary:#ff7b42; }
+body[data-phase="2"] { --phase-accent:#ff8c00; --phase-accent-rgb:255,140,0; --phase-secondary:#e3261f; }
+body[data-phase="3"] { --phase-accent:#ffaa00; --phase-accent-rgb:255,170,0; --phase-secondary:#e04b20; }
+body[data-phase="4"] { --phase-accent:#ff2424; --phase-accent-rgb:255,36,36; --phase-secondary:#8d0000; }
+body[data-phase="5"] { --phase-accent:#c244ff; --phase-accent-rgb:194,68,255; --phase-secondary:#ff203c; }
+
+body {
+    background-attachment: fixed;
+    transition: background-color .8s ease;
+}
+
+.phase-ambient {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(var(--phase-accent-rgb), .10), transparent 28%),
+        radial-gradient(circle at 86% 42%, rgba(var(--phase-accent-rgb), .07), transparent 30%),
+        linear-gradient(180deg, transparent 0%, rgba(var(--phase-accent-rgb), .035) 45%, transparent 100%);
+    mix-blend-mode: screen;
+    opacity: .75;
+    transition: background .8s ease, opacity .8s ease;
+}
+
+body[data-phase="2"] .phase-ambient {
+    background:
+        radial-gradient(circle at 12% 10%, rgba(255,140,0,.16), transparent 26%),
+        radial-gradient(circle at 88% 38%, rgba(211,0,0,.14), transparent 32%),
+        repeating-linear-gradient(115deg, transparent 0 65px, rgba(255,140,0,.012) 66px 68px),
+        linear-gradient(180deg, transparent 0%, rgba(90,12,0,.12) 60%, transparent 100%);
+}
+
+body[data-phase="3"] .phase-ambient,
+body[data-phase="4"] .phase-ambient,
+body[data-phase="5"] .phase-ambient { opacity: .95; }
+
+body[data-phase="4"] .phase-ambient {
+    animation: dangerPulse 4s ease-in-out infinite alternate;
+}
+body[data-phase="5"] .phase-ambient {
+    animation: apocalypsePulse 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes dangerPulse { from { opacity:.72; } to { opacity:1; } }
+@keyframes apocalypsePulse {
+    from { opacity:.72; filter:hue-rotate(0deg); }
+    to { opacity:1; filter:hue-rotate(10deg); }
+}
+
+header {
+    background:
+        linear-gradient(to bottom, rgba(var(--phase-accent-rgb), .20) 0%, rgba(12,0,0,.96) 78%, var(--bg-color) 100%),
+        url('https://www.transparenttextures.com/patterns/cubes.png');
+    border-bottom-color: var(--phase-accent);
+    box-shadow: 0 12px 55px rgba(var(--phase-accent-rgb), .26), inset 0 -30px 70px rgba(0,0,0,.92);
+}
+header.scrolled { border-bottom-color: var(--phase-accent); }
+.header-glow {
+    background: radial-gradient(circle, rgba(var(--phase-accent-rgb), .23) 0%, transparent 62%);
+}
+.logo { filter: drop-shadow(0 0 30px rgba(var(--phase-accent-rgb), .76)); }
+
+.phase-status {
+    position: relative;
+    z-index: 4;
+    margin-top: 24px;
+    min-width: min(520px, 88vw);
+    padding: 13px 24px 12px;
+    text-align: center;
+    border: 1px solid rgba(var(--phase-accent-rgb), .55);
+    border-top: 3px solid var(--phase-accent);
+    background: linear-gradient(180deg, rgba(5,5,8,.78), rgba(12,2,2,.92));
+    box-shadow: 0 0 30px rgba(var(--phase-accent-rgb), .18), inset 0 0 25px rgba(var(--phase-accent-rgb), .045);
+    clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 14px, 100% 100%, 0 100%, 0 14px);
+}
+.phase-status-kicker {
+    display:block;
+    font: 8px 'Press Start 2P', monospace;
+    letter-spacing:2px;
+    color:#8c7777;
+    margin-bottom:7px;
+}
+.phase-status strong {
+    display:block;
+    color:var(--phase-accent);
+    font-size:17px;
+    letter-spacing:2px;
+    text-shadow:0 0 18px rgba(var(--phase-accent-rgb), .65);
+}
+.phase-status-sub {
+    display:block;
+    margin-top:4px;
+    color:#d7c9c9;
+    font-size:12px;
+    font-weight:600;
+}
+header.scrolled .phase-status {
+    opacity:0;
+    transform:translateY(-20px) scale(.95);
+    pointer-events:none;
+    position:absolute;
+}
+
+.phase-command-center {
+    margin: -18px 0 58px;
+    padding: 26px 28px;
+    border: 1px solid rgba(var(--phase-accent-rgb), .38);
+    border-top: 3px solid var(--phase-accent);
+    background:
+        linear-gradient(135deg, rgba(var(--phase-accent-rgb), .075), transparent 34%),
+        linear-gradient(180deg, rgba(18,7,7,.96), rgba(7,3,4,.97));
+    box-shadow: 0 18px 50px rgba(0,0,0,.55), 0 0 40px rgba(var(--phase-accent-rgb), .09);
+    border-radius: 10px;
+    overflow:hidden;
+    position:relative;
+}
+.phase-command-center::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:repeating-linear-gradient(90deg, transparent 0 79px, rgba(255,255,255,.018) 80px);
+}
+.phase-command-top {
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+}
+.command-eyebrow {
+    color:var(--phase-accent);
+    font:8px 'Press Start 2P', monospace;
+    letter-spacing:2px;
+}
+.phase-command-top h2 {
+    margin:7px 0 2px;
+    font-size:28px;
+    color:#fff;
+}
+.phase-command-top h2 span { color:var(--phase-accent); }
+.phase-command-top p {
+    max-width:720px;
+    color:#aa9999;
+    font-size:13px;
+}
+.phase-command-top code {
+    color:var(--phase-accent);
+    background:#090303;
+    padding:2px 5px;
+}
+.threat-meter {
+    width:230px;
+    flex:0 0 230px;
+    text-align:right;
+}
+.threat-meter > span {
+    display:block;
+    color:#846f6f;
+    font:7px 'Press Start 2P', monospace;
+    margin-bottom:8px;
+}
+.threat-track {
+    width:100%;
+    height:8px;
+    background:#190707;
+    border:1px solid #492020;
+    overflow:hidden;
+}
+.threat-track i {
+    display:block;
+    width:48%;
+    height:100%;
+    background:linear-gradient(90deg, var(--phase-secondary), var(--phase-accent));
+    box-shadow:0 0 15px rgba(var(--phase-accent-rgb), .7);
+    transition:width .9s cubic-bezier(.2,.8,.2,1);
+}
+.threat-meter strong {
+    display:block;
+    margin-top:6px;
+    color:var(--phase-accent);
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.phase-track {
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:8px;
+    margin-top:28px;
+}
+.phase-node {
+    position:relative;
+    min-height:70px;
+    padding:12px 8px 9px;
+    text-align:center;
+    border:1px solid #351717;
+    background:#0b0505;
+    color:#5f5555;
+    transition:.35s ease;
+}
+.phase-node::before {
+    content:'';
+    position:absolute;
+    left:-5px; right:-5px; top:-4px;
+    height:2px;
+    background:#351717;
+}
+.phase-node span {
+    display:flex;
+    width:27px; height:27px;
+    margin:0 auto 8px;
+    align-items:center; justify-content:center;
+    border:1px solid currentColor;
+    font:9px 'Press Start 2P', monospace;
+}
+.phase-node b { font-size:11px; text-transform:uppercase; letter-spacing:.6px; }
+.phase-node.is-complete { color:#a8854d; border-color:#5d451e; background:#100b05; }
+.phase-node.is-current {
+    color:var(--phase-accent);
+    border-color:var(--phase-accent);
+    background:linear-gradient(180deg, rgba(var(--phase-accent-rgb),.15), #0d0504);
+    box-shadow:0 0 22px rgba(var(--phase-accent-rgb),.20), inset 0 0 18px rgba(var(--phase-accent-rgb),.06);
+    transform:translateY(-4px);
+}
+.phase-node.is-current::before { background:var(--phase-accent); box-shadow:0 0 10px var(--phase-accent); }
+.phase-node.is-locked { opacity:.42; filter:saturate(.3); }
+
+.section-title {
+    position:relative;
+    border-bottom-color:var(--phase-accent);
+}
+.section-title::after {
+    content:'';
+    display:block;
+    width:56px;
+    height:2px;
+    margin-top:10px;
+    background:var(--phase-accent);
+    box-shadow:0 0 12px var(--phase-accent);
+}
+
+.phase-item-group {
+    margin: 30px 0 46px;
+    padding: 22px;
+    border:1px solid #351515;
+    border-left:3px solid var(--group-color, #6b2525);
+    background:linear-gradient(120deg, rgba(255,255,255,.018), transparent 38%), #090404;
+    border-radius:9px;
+    position:relative;
+}
+.phase-item-group[data-phase-group="0"] { --group-color:#00fa9a; }
+.phase-item-group[data-phase-group="1"] { --group-color:#e03a32; }
+.phase-item-group[data-phase-group="2"] { --group-color:#ff8c00; }
+.phase-item-group[data-phase-group="3"] { --group-color:#ffaa00; }
+.phase-item-group[data-phase-group="4"] { --group-color:#ff2424; }
+.phase-item-group[data-phase-group="5"] { --group-color:#c244ff; }
+.phase-item-group[data-phase-group="2"] {
+    border-color:rgba(255,140,0,.42);
+    box-shadow:0 12px 35px rgba(255,90,0,.08), inset 0 0 28px rgba(255,140,0,.035);
+}
+.phase-group-header {
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+    padding-bottom:16px;
+    border-bottom:1px solid #2c1515;
+}
+.phase-group-number {
+    flex:0 0 auto;
+    padding:8px 10px;
+    border:1px solid var(--group-color);
+    color:var(--group-color);
+    font:8px 'Press Start 2P', monospace;
+    box-shadow:inset 0 0 15px rgba(255,255,255,.02);
+}
+.phase-group-copy h3 {
+    margin:0;
+    color:#fff;
+    font-size:17px;
+}
+.phase-group-copy p {
+    margin:2px 0 0;
+    color:#8f7e7e;
+    font-size:12px;
+}
+.phase-now {
+    margin-left:auto;
+    padding:6px 10px;
+    color:#120800;
+    background:var(--group-color);
+    font:7px 'Press Start 2P', monospace;
+    box-shadow:0 0 15px var(--group-color);
+}
+.phase-item-group-locked {
+    filter:saturate(.25);
+}
+.classified-card {
+    grid-column:1/-1;
+    min-height:150px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-style:dashed;
+    background:repeating-linear-gradient(-45deg,#090707 0 12px,#0c0808 12px 24px);
+}
+.classified-code {
+    color:#665b5b;
+    font:8px 'Press Start 2P', monospace;
+    margin-bottom:12px;
+}
+
+.card {
+    border-top:1px solid rgba(var(--phase-accent-rgb), .10);
+}
+.card:hover {
+    border-color:var(--phase-accent);
+    box-shadow:0 15px 32px rgba(var(--phase-accent-rgb), .17), inset 0 0 22px rgba(var(--phase-accent-rgb),.04);
+}
+.price, .recipe-line { border-color:rgba(var(--phase-accent-rgb), .35); }
+
+#evolucion-fases .phase-box {
+    opacity:.72;
+    transition:transform .35s ease, opacity .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+#evolucion-fases .phase-box.phase-active {
+    opacity:1;
+    transform:translateX(12px) scale(1.012);
+    border-left-width:8px;
+    border-left-color:var(--phase-accent) !important;
+    box-shadow:0 12px 38px rgba(var(--phase-accent-rgb),.19), inset 0 0 28px rgba(var(--phase-accent-rgb),.045);
+}
+#evolucion-fases .phase-box.phase-active h4::after {
+    content:'  ·  FASE ACTUAL';
+    color:var(--phase-accent);
+    font:7px 'Press Start 2P', monospace;
+    margin-left:10px;
+}
+
+.ruleta-section-master {
+    border-color:var(--phase-accent);
+    box-shadow:inset 0 0 160px rgba(var(--phase-accent-rgb),.10), 0 0 65px rgba(var(--phase-accent-rgb),.20);
+}
+.ruleta-controles h2 { color:var(--phase-accent); text-shadow:0 0 22px rgba(var(--phase-accent-rgb),.55); }
+
+body[data-phase="3"] .card,
+body[data-phase="4"] .card,
+body[data-phase="5"] .card { border-radius:8px; }
+
+body[data-phase="4"] header::after,
+body[data-phase="5"] header::after { opacity:.9; }
+
+body[data-phase="5"] .section-title,
+body[data-phase="5"] .phase-command-top h2 {
+    text-shadow:0 0 18px rgba(194,68,255,.35);
+}
+
+@media (max-width: 760px) {
+    .phase-status { min-width:90vw; padding-left:12px; padding-right:12px; }
+    .phase-command-top { flex-direction:column; align-items:stretch; }
+    .threat-meter { width:100%; flex-basis:auto; text-align:left; }
+    .phase-track { grid-template-columns:repeat(3,1fr); }
+    .phase-node { min-height:64px; }
+    .phase-group-header { align-items:flex-start; flex-wrap:wrap; }
+    .phase-now { margin-left:0; }
+}
 </style>
 </head>
-<body>
+<body><div aria-hidden="true" class="phase-ambient"></div>
 <!-- ================== HEADER DINÁMICO ================== -->
 <header id="main-header">
 <div class="header-glow"></div>
@@ -900,7 +1287,11 @@
 <div class="particle p-large" style="left: 65%; animation-duration: 6s; animation-delay: 0.5s;"></div>
 <div class="particle p-small" style="left: 85%; animation-duration: 4.5s; animation-delay: 2s;"></div>
 </div>
-<img alt="Scuad Random Last Time" class="logo" src="img/logo.png"/>
+<img alt="Scuad Random Last Time" class="logo" src="img/logo.png"/><div class="phase-status" id="phase-status">
+<span class="phase-status-kicker">ESTADO DEL EVENTO</span>
+<strong id="phase-status-title">FASE 2 · SUPERVIVENCIA</strong>
+<span class="phase-status-sub" id="phase-status-sub">End y Doom desbloqueados · la presión aumenta</span>
+</div>
 <!-- Indicador de Scroll FIX -->
 <div class="scroll-indicator">
 <span>Desliza para comenzar</span>
@@ -909,7 +1300,28 @@
 </header>
 <!-- FIX VISUAL: Espaciador fantasma animado ajustado -->
 <div class="header-spacer" id="header-spacer"></div>
-<div class="container">
+<div class="container"><section class="phase-command-center" id="estado-fases">
+<div class="phase-command-top">
+<div>
+<span class="command-eyebrow">PROGRESIÓN DEL EVENTO</span>
+<h2>Fase actual: <span id="phase-current-number">2</span></h2>
+<p>Las fases las controla manualmente el Administrador. La guía cambia de intensidad y desbloquea contenido según <code>FASE_PUBLICA</code>.</p>
+</div>
+<div class="threat-meter">
+<span>NIVEL DE AMENAZA</span>
+<div class="threat-track"><i id="threat-fill"></i></div>
+<strong id="threat-label">ALTO</strong>
+</div>
+</div>
+<div class="phase-track" id="phase-track">
+<div class="phase-node" data-node-phase="0"><span>0</span><b>Preparación</b></div>
+<div class="phase-node" data-node-phase="1"><span>1</span><b>Despertar</b></div>
+<div class="phase-node" data-node-phase="2"><span>2</span><b>Supervivencia</b></div>
+<div class="phase-node" data-node-phase="3"><span>3</span><b>Pesadilla</b></div>
+<div class="phase-node" data-node-phase="4"><span>4</span><b>Muerte</b></div>
+<div class="phase-node" data-node-phase="5"><span>5</span><b>Apocalipsis</b></div>
+</div>
+</section>
 <!-- Guía esencial -->
 <section>
 <h2 class="section-title">Reglas del Realm</h2>
@@ -955,11 +1367,11 @@
 <div class="grid">
 <div class="card">
 <h3>Banco y temporizador</h3>
-<p>En la parte inferior izquierda puedes consultar tu saldo bancario. Cuando hay un desafío, beneficio, cacería u otro evento con duración, el mismo HUD muestra el tiempo restante.</p>
+<p>En la esquina superior izquierda se muestra tu Banco. Cuando existe un desafío, bendición, cacería u otro evento temporizado, el HUD se amplía únicamente lo necesario para mostrar el tiempo restante.</p>
 </div>
 <div class="card">
 <h3>Más Buscado</h3>
-<p>Durante una ruleta morada puede aparecer un objetivo de cacería. Si existe un jugador marcado, su nombre se mostrará como Más Buscado y la recompensa será de 300 ScuadCoins.</p>
+<p>Durante una Cacería PvP puede aparecer un jugador marcado. Su nombre se muestra junto al icono de Más Buscado; derrotarlo entrega 500 ScuadCoins y convierte al asesino en el nuevo objetivo. Si el objetivo actual sobrevive hasta el final, se lleva 500 ScuadCoins.</p>
 </div>
 <div class="card">
 <h3>Estela de rareza</h3>
@@ -1015,101 +1427,87 @@
 </section>
 <!-- Alquimia e items -->
 <section>
-<h2 class="section-title">Supervivencia y Alquimia</h2>
-<p class="guide-note">Los objetos de fases futuras permanecen ocultos hasta que el Administrador revele esa fase en esta guía.</p>
-<div class="grid">
-<div class="card">
+<h2 class="section-title">Arsenal y consumibles por fase</h2>
+<p class="guide-note"><strong>Progresión ordenada:</strong> cada grupo reúne los objetos que empiezan a formar parte de la progresión en esa fase. Las fases futuras permanecen clasificadas hasta que el Administrador las revele.</p>
+
+<div class="phase-item-group" data-phase-group="0" data-unlock-phase="0"><div class="phase-group-header"><span class="phase-group-number">FASE 0</span><div class="phase-group-copy"><h3>Preparación</h3><p>Equipo base, economía y supervivencia inicial.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/><h3>ScuadCoin</h3></div>
 <p>Moneda física del Realm. Se obtiene principalmente derrotando enemigos y completando eventos.</p>
 <div class="tag-row"><span class="tag gold">Stack: 64</span></div>
-</div>
-<div class="card">
+</div><div class="card">
 <div class="card-header"><img alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/><h3>Alma de Jugador</h3></div>
 <p>Llave de resurrección. Compra una en la Urna de Oro y llévala a la Fosa de Almas para recuperar a un compañero. En el endgame también funciona como plantilla de herrería para crear el Filo del Horizonte Roto.</p>
 <div class="tag-row"><span class="tag gold">89 Coins</span><span class="tag purple">Stack: 1</span></div>
-</div>
-<div class="card">
+</div><div class="card">
 <div class="card-header"><img alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/><h3>Ración del Superviviente</h3></div>
 <p>Comida de emergencia que estabiliza tus heridas con absorción y una breve regeneración.</p>
 <div class="recipe-line"><strong>Receta:</strong> filete cocinado + pan + zanahoria dorada → 2 raciones.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 17 Coins x2</span><span class="tag">Stack: 16</span></div>
-</div>
-<div class="card" data-unlock-phase="1">
+</div></div></div><div class="phase-item-group" data-phase-group="1" data-unlock-phase="1"><div class="phase-group-header"><span class="phase-group-number">FASE 1</span><div class="phase-group-copy"><h3>El Despertar</h3><p>Movilidad, escape y recursos para el Nether.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Poción de Pánico" class="item-icon" src="img/items/panic_potion.png"/><h3>Poción de Pánico</h3></div>
 <p>Velocidad III durante 20 s y Resistencia I durante 10 s. Ideal para romper una emboscada y ganar distancia.</p>
 <div class="tag-row"><span class="tag gold">Tienda: 31 Coins</span><span class="tag red">Fase 1</span></div>
-</div>
-<div class="card" data-unlock-phase="1">
+</div><div class="card">
 <div class="card-header"><img alt="Poción de Escape" class="item-icon" src="img/items/escape_potion.png"/><h3>Poción de Escape</h3></div>
 <p>Invisibilidad y Velocidad II durante 15 s, además de Caída Lenta durante 10 s.</p>
 <div class="tag-row"><span class="tag gold">Tienda: 31 Coins</span><span class="tag red">Fase 1</span></div>
-</div>
-<div class="card" data-unlock-phase="1">
+</div><div class="card">
 <div class="card-header"><img alt="Tónico del Minero" class="item-icon" src="img/items/miners_tonic.png"/><h3>Tónico del Minero</h3></div>
 <p>Prisa II y Visión Nocturna durante 2 minutos, más Resistencia al Fuego durante 30 s.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Fragmento de Amatista.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 37 Coins</span><span class="tag red">Fase 1</span></div>
-</div>
-<div class="card" data-unlock-phase="2">
+</div><div class="card">
+<div class="card-header"><img alt="Pan Ígneo" class="item-icon" src="img/items/ember_bread.png"/><h3>Pan Ígneo</h3></div>
+<p>Provisión compacta para expediciones; se vende en paquetes de dos desde Fase 1.</p>
+<div class="tag-row"><span class="tag gold">Tienda: 23 Coins x2</span><span class="tag red">Fase 1</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Tónico del Explorador" class="item-icon" src="img/items/scout_tonic.png"/><h3>Tónico del Explorador</h3></div>
+<p>Consumible de movilidad y exploración pensado para rutas peligrosas y retirada rápida.</p>
+<div class="tag-row"><span class="tag gold">Tienda: 41 Coins</span><span class="tag red">Fase 1</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="2" data-unlock-phase="2"><div class="phase-group-header"><span class="phase-group-number">FASE 2</span><div class="phase-group-copy"><h3>Supervivencia</h3><p>Consumibles avanzados para End, Doom y combates prolongados.</p></div><span class="phase-now">ACTUAL</span></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Estofado Dorado" class="item-icon" src="img/items/golden_stew.png"/><h3>Estofado Dorado</h3></div>
 <p>Fortalece tu vida temporalmente y acelera la recuperación durante unos segundos.</p>
 <div class="recipe-line"><strong>Receta:</strong> cuenco + zanahoria dorada + hongo rojo + hongo marrón.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 37 Coins</span><span class="tag red">Fase 2</span></div>
-</div>
-<div class="card" data-unlock-phase="2">
+</div><div class="card">
 <div class="card-header"><img alt="Elixir del Guardián" class="item-icon" src="img/items/guardian_elixir.png"/><h3>Elixir del Guardián</h3></div>
 <p>Absorción IV durante 2 minutos y Resistencia II durante 1 minuto.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Alma Punzante.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 53 Coins</span><span class="tag red">Fase 2</span></div>
-</div>
-<div class="card" data-unlock-phase="3">
+</div><div class="card">
+<div class="card-header"><img alt="Estofado del Acechador" class="item-icon" src="img/items/stalker_stew.png"/><h3>Estofado del Acechador</h3></div>
+<p>Comida avanzada para expediciones de Fase 2, pensada para sostener combates y exploración prolongada.</p>
+<div class="tag-row"><span class="tag gold">Tienda: 43 Coins</span><span class="tag red">Fase 2</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="3" data-unlock-phase="3"><div class="phase-group-header"><span class="phase-group-number">FASE 3</span><div class="phase-group-copy"><h3>Pesadilla</h3><p>Curación y defensa para amenazas de alta presión.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Suero Purificador" class="item-icon" src="img/items/cleansing_serum.png"/><h3>Suero Purificador</h3></div>
 <p>Limpia veneno, wither, debilidad, lentitud, ceguera, oscuridad, hambre, fatiga y náusea; después aplica Regeneración II.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Botella de Miel.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 47 Coins</span><span class="tag red">Fase 3</span></div>
-</div>
-<div class="card" data-unlock-phase="3">
+</div><div class="card">
 <div class="card-header"><img alt="Poción de Ultra Curación" class="item-icon" src="img/items/ultra_health_potion.png"/><h3>Poción de Ultra Curación</h3></div>
 <p>Restaura toda tu salud inmediatamente y añade Regeneración III durante 10 s.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Manzana Dorada.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 71 Coins</span><span class="tag red">Fase 3</span></div>
-</div>
-<div class="card" data-unlock-phase="4">
+</div><div class="card">
+<div class="card-header"><img alt="Tónico del Baluarte" class="item-icon" src="img/items/bulwark_tonic.png"/><h3>Tónico del Baluarte</h3></div>
+<p>Preparado defensivo de alto nivel para aguantar asedios, Doom y jefes en fases avanzadas.</p>
+<div class="tag-row"><span class="tag gold">Tienda: 61 Coins</span><span class="tag red">Fase 3</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="4" data-unlock-phase="4"><div class="phase-group-header"><span class="phase-group-number">FASE 4</span><div class="phase-group-copy"><h3>Muerte Inminente</h3><p>Consumibles de poder extremo para encuentros de élite.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Manzana del Eco" class="item-icon" src="img/items/echo_apple.png"/><h3>Manzana del Eco</h3></div>
 <p>Aumento de Salud III durante 2 minutos y Fuerza II durante 30 s. El precio del poder es una breve Oscuridad.</p>
 <div class="recipe-line"><strong>Receta:</strong> una Manzana Dorada rodeada por 8 Fragmentos de Eco.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 79 Coins</span><span class="tag cyan">Stack: 16</span><span class="tag red">Fase 4</span></div>
-</div>
-<div class="card" data-unlock-phase="4">
+</div><div class="card">
 <div class="card-header"><img alt="Brebaje Berserker" class="item-icon" src="img/items/berserker_brew.png"/><h3>Brebaje Berserker</h3></div>
 <p>Fuerza III y Velocidad II durante 30 s, a cambio de Hambre III durante 15 s.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Núcleo del Doom.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 67 Coins</span><span class="tag red">Fase 4</span></div>
-</div>
-<div class="card" data-unlock-phase="5">
+</div></div></div><div class="phase-item-group" data-phase-group="5" data-unlock-phase="5"><div class="phase-group-header"><span class="phase-group-number">FASE 5</span><div class="phase-group-copy"><h3>Apocalipsis Total</h3><p>Recursos finales para el cierre del evento.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Notch Líquida" class="item-icon" src="img/items/liquid_notch.png"/><h3>Notch Líquida</h3></div>
 <p>Absorción IV y Resistencia I durante 2 minutos, además de Regeneración II durante 30 s.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Manzana Dorada Encantada.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 149 Coins</span><span class="tag red">Fase 5</span></div>
-</div>
-<div class="card" data-unlock-phase="1">
-<div class="card-header"><img alt="Pan Ígneo" class="item-icon" src="img/items/ember_bread.png"/><h3>Pan Ígneo</h3></div>
-<p>Provisión compacta para expediciones; se vende en paquetes de dos desde Fase 1.</p>
-<div class="tag-row"><span class="tag gold">Tienda: 23 Coins x2</span><span class="tag red">Fase 1</span></div>
-</div><div class="card" data-unlock-phase="1">
-<div class="card-header"><img alt="Tónico del Explorador" class="item-icon" src="img/items/scout_tonic.png"/><h3>Tónico del Explorador</h3></div>
-<p>Consumible de movilidad y exploración pensado para rutas peligrosas y retirada rápida.</p>
-<div class="tag-row"><span class="tag gold">Tienda: 41 Coins</span><span class="tag red">Fase 1</span></div>
-</div><div class="card" data-unlock-phase="2">
-<div class="card-header"><img alt="Estofado del Acechador" class="item-icon" src="img/items/stalker_stew.png"/><h3>Estofado del Acechador</h3></div>
-<p>Comida avanzada para expediciones de Fase 2, pensada para sostener combates y exploración prolongada.</p>
-<div class="tag-row"><span class="tag gold">Tienda: 43 Coins</span><span class="tag red">Fase 2</span></div>
-</div><div class="card" data-unlock-phase="3">
-<div class="card-header"><img alt="Tónico del Baluarte" class="item-icon" src="img/items/bulwark_tonic.png"/><h3>Tónico del Baluarte</h3></div>
-<p>Preparado defensivo de alto nivel para aguantar asedios, Doom y jefes en fases avanzadas.</p>
-<div class="tag-row"><span class="tag gold">Tienda: 61 Coins</span><span class="tag red">Fase 3</span></div>
-</div></div>
-</section>
+</div></div></div></section>
 <!-- Almas para Netherite -->
 <section class="phase-section" data-unlock-phase="2">
 <h2 class="section-title">Almas de Jefes y Netherite</h2>
@@ -1201,9 +1599,7 @@
 </div>
 </section><section class="phase-section" data-unlock-phase="5" id="endgame-sr">
 <h2 class="section-title">Endgame: Cataclismo y Horizonte Roto</h2>
-
 <div class="grid">
-
 <div class="card endgame-card">
 <div class="card-header"><img alt="Fragmento del Horizonte" class="item-icon" src="img/items/horizon_core.png"/><h3>Fragmento del Horizonte</h3></div>
 <p>Material de ascensión que se habilita después de vencer al Coloso del Umbral. Se fabrica de uno en uno para que cada mejora requiera su propio fragmento.</p>
@@ -1260,10 +1656,10 @@
 <!-- Dificultad (0 a 5) -->
 <section id="evolucion-fases">
 <h2 class="section-title">Evolución del Mundo — Cambios completos</h2>
-<p class="guide-note"><strong>Importante:</strong> los cambios son acumulativos. Cada fase conserva las reglas de las anteriores y añade nuevas amenazas. La Fase 0 es preparación; después existen cinco escaladas reales de dificultad.</p>
+<p class="guide-note"><strong>Fase actual: 2 — Supervivencia.</strong> Los cambios son acumulativos: cada fase conserva reglas anteriores y añade nuevas amenazas. El avance lo controla manualmente el Administrador; esta guía no depende de días fijos.</p>
 <div class="phase-rule"><strong>Dificultad adaptativa:</strong> además de las reglas fijas, SR mide jugadores vivos, calidad media de armadura, victorias y muertes recientes. Puede generar Hostiles Adaptativos con Velocidad, Resistencia y Fuerza. Tras una muerte permanente se activa una tregua adaptativa, pero también comienza el <strong>Eco de Muerte</strong>, que fortalece únicamente a las criaturas nuevas durante unos minutos.</div>
 <div class="phase-box" data-phase="0" data-unlock-phase="0" style="border-left-color:#00fa9a;">
-<h4 style="color:#00fa9a;">Fase 0: Paz Engañosa — Día 0</h4>
+<h4 style="color:#00fa9a;">Fase 0: Paz Engañosa</h4>
 <p class="phase-summary">Preparación absoluta antes de que empiece la escalada.</p>
 <ul class="phase-list">
 <li>Dificultad mundial: <strong>Pacífico</strong>.</li>
@@ -1275,7 +1671,7 @@
 </ul>
 </div>
 <div class="phase-box" data-phase="1" data-unlock-phase="1">
-<h4>Fase 1: El Despertar — Día 5</h4>
+<h4>Fase 1: El Despertar</h4>
 <p class="phase-summary">Comienzan las mutaciones ligeras y se abre el primer frente dimensional.</p>
 <ul class="phase-list">
 <li>Dificultad mundial: <strong>Normal</strong>.</li>
@@ -1288,8 +1684,8 @@
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 5 min</strong>: los hostiles nuevos reciben Velocidad I.</li>
 </ul>
 </div>
-<div class="phase-box" data-phase="2" data-unlock-phase="2" style="border-left-color:var(--scuad-naranja);">
-<h4 style="color:var(--scuad-naranja);">Fase 2: Supervivencia — Día 40</h4>
+<div class="phase-box phase-active" data-phase="2" data-unlock-phase="2" style="border-left-color:var(--scuad-naranja);">
+<h4 style="color:var(--scuad-naranja);">Fase 2: Supervivencia</h4>
 <p class="phase-summary">El evento entra en Difícil y se abren las dimensiones de progresión avanzada.</p>
 <ul class="phase-list">
 <li>Dificultad mundial: <strong>Difícil</strong>.</li>
@@ -1308,7 +1704,7 @@
 </ul>
 </div>
 <div class="phase-box" data-phase="3" data-unlock-phase="3" style="border-left-color:var(--scuad-gold);">
-<h4 style="color:var(--scuad-gold);">Fase 3: Pesadilla — Día 60</h4>
+<h4 style="color:var(--scuad-gold);">Fase 3: Pesadilla</h4>
 <p class="phase-summary">El mundo empieza a forzar peleas rápidas, visión reducida y asedios más serios.</p>
 <ul class="phase-list">
 <li>Para dormir se requiere aproximadamente <strong>70%</strong> de los jugadores.</li>
@@ -1327,7 +1723,7 @@
 </ul>
 </div>
 <div class="phase-box" data-phase="4" data-unlock-phase="4" style="border-left-color:var(--scuad-red); background-color:#2a0505;">
-<h4 style="color:var(--scuad-red);">Fase 4: Muerte Inminente — Día 80</h4>
+<h4 style="color:var(--scuad-red);">Fase 4: Muerte Inminente</h4>
 <p class="phase-summary">Las criaturas comunes empiezan a comportarse como élites y los errores cuestan mucho más.</p>
 <ul class="phase-list">
 <li>Para dormir se requiere aproximadamente <strong>85%</strong> de los jugadores.</li>
@@ -1346,7 +1742,7 @@
 </ul>
 </div>
 <div class="phase-box" data-phase="5" data-unlock-phase="5" style="border-left-color:var(--scuad-morado); background-color:#1a051a;">
-<h4 style="color:var(--scuad-morado);">Fase 5: Apocalipsis Total — Día 100</h4>
+<h4 style="color:var(--scuad-morado);">Fase 5: Apocalipsis Total</h4>
 <p class="phase-summary">Máxima presión del Realm y acceso al contenido de cierre.</p>
 <ul class="phase-list">
 <li>Para dormir se requiere <strong>100% de los jugadores</strong>.</li>
@@ -1395,7 +1791,7 @@
 <!-- Controles -->
 <div class="ruleta-controles">
 <h2>El Destino Gira</h2>
-<p>Cada 4 horas reales gira una ruleta entre cinco colores. El rojo está reservado para los cambios de fase. Selecciona un color para estudiar sus posibles resultados.</p>
+<p>Las ruletas automáticas usan un intervalo configurable por el Administrador. El rojo queda reservado para cambios de fase; los demás colores pueden activar desafíos, maldiciones, bendiciones, beneficios o PvP. El sistema evita solapar eventos activos.</p>
 <div class="filtros-colores">
 <button class="btn-filtro btn-rojo" onclick="mostrarEventos('ROJO')">Rojo</button>
 <button class="btn-filtro btn-amarillo" onclick="mostrarEventos('AMARILLO')">Amarillo</button>
@@ -1423,7 +1819,7 @@
 <p style="margin-top: 5px; color: #555;">Wiki desarrollada para sobrevivir al Realm.</p>
 </footer>
 <script>
-        const FASE_PUBLICA = 1;
+        const FASE_PUBLICA = 2;
 
         function aplicarBloqueoDeFases() {
             const fasePermitida = Math.max(0, Math.min(5, Number(FASE_PUBLICA) || 0));
@@ -1431,6 +1827,19 @@
             document.querySelectorAll('[data-unlock-phase]').forEach((elemento) => {
                 const fase = Number(elemento.dataset.unlockPhase);
                 if (fase <= fasePermitida) return;
+
+                if (elemento.classList.contains('phase-item-group')) {
+                    elemento.classList.add('phase-item-group-locked');
+                    const grid = elemento.querySelector('.grid');
+                    if (grid) grid.innerHTML = `
+                        <div class="card classified-card">
+                            <span class="classified-code">FASE ${fase}</span>
+                            <h3>Contenido clasificado</h3>
+                            <p>Este arsenal se revelará cuando el Administrador desbloquee la fase.</p>
+                        </div>
+                    `;
+                    return;
+                }
 
                 if (elemento.classList.contains('phase-section')) {
                     elemento.innerHTML = `
@@ -1512,7 +1921,7 @@
             "AMARILLO": {
                 imagen: "img/roulettes/ruleta_amarilla.png",
                 colorCSS: "var(--scuad-gold)",
-                titulo: "AMARILLO: Desafío de 30 minutos",
+                titulo: "AMARILLO: Desafío temporizado",
                 eventos: desafiosRuleta.filter(e => e.fase <= FASE_PUBLICA).map(e => e.texto)
             },
             "NARANJA": {
@@ -1537,7 +1946,7 @@
             "VERDE": {
                 imagen: "img/roulettes/ruleta_verde.png",
                 colorCSS: "var(--scuad-verde)",
-                titulo: "VERDE: Beneficio global de 30 minutos",
+                titulo: "VERDE: Beneficio global temporizado",
                 eventos: [
                     "Minería Preciosa: el carbón se convierte en diamante",
                     "Fiebre del Oro: triple ScuadCoins por enemigo derrotado",
@@ -1547,12 +1956,14 @@
             "MORADO": {
                 imagen: "img/roulettes/ruleta_morada.png",
                 colorCSS: "var(--scuad-morado)",
-                titulo: "MORADO: Cacería PvP de 1 hora",
+                titulo: "MORADO: Evento PvP",
                 eventos: [
-                    "El PvP se activa temporalmente.",
-                    "Si hay suficientes jugadores, uno será marcado como Más Buscado.",
-                    "Cazar al Más Buscado entrega 300 ScuadCoins.",
-                    "Al terminar la hora, el PvP vuelve a desactivarse."
+                    "El PvP se activa temporalmente y el resto de ruletas se pausa.",
+                    "<strong>Más Buscado:</strong> el objetivo vale 500 ScuadCoins. Quien lo elimina cobra y hereda la marca.",
+                    "Si el Más Buscado actual sobrevive hasta el final, recibe 500 ScuadCoins.",
+                    "Durante la cacería sus coordenadas X/Z pueden revelarse periódicamente según la configuración del Administrador.",
+                    "<strong>Evento raro — Último en Pie:</strong> puede sustituir a Más Buscado.",
+                    "Último en Pie: 200 ScuadCoins por eliminación directa + 500 ScuadCoins para el último superviviente."
                 ]
             }
         };
@@ -1618,6 +2029,50 @@
             if (botonActivo) botonActivo.classList.add("activo");
         }
 
+
+        // ===============================================
+        // IDENTIDAD VISUAL EVOLUTIVA POR FASE
+        // ===============================================
+        const identidadFases = [
+            { nombre: "PREPARACIÓN", subtitulo: "Paz aparente · reúne recursos", amenaza: "BAJA", pct: 12 },
+            { nombre: "EL DESPERTAR", subtitulo: "Nether abierto · primeras mutaciones", amenaza: "MODERADA", pct: 30 },
+            { nombre: "SUPERVIVENCIA", subtitulo: "End y Doom desbloqueados · la presión aumenta", amenaza: "ALTA", pct: 48 },
+            { nombre: "PESADILLA", subtitulo: "Mutaciones avanzadas · ceniza y asedios", amenaza: "SEVERA", pct: 66 },
+            { nombre: "MUERTE INMINENTE", subtitulo: "Élites, tormentas y errores letales", amenaza: "CRÍTICA", pct: 84 },
+            { nombre: "APOCALIPSIS TOTAL", subtitulo: "El Realm ha dejado de perdonar", amenaza: "EXTREMA", pct: 100 }
+        ];
+
+        function aplicarIdentidadDeFase() {
+            const fase = Math.max(0, Math.min(5, Number(FASE_PUBLICA) || 0));
+            const data = identidadFases[fase];
+            document.body.dataset.phase = String(fase);
+
+            const title = document.getElementById("phase-status-title");
+            const sub = document.getElementById("phase-status-sub");
+            const num = document.getElementById("phase-current-number");
+            const fill = document.getElementById("threat-fill");
+            const label = document.getElementById("threat-label");
+
+            if (title) title.textContent = `FASE ${fase} · ${data.nombre}`;
+            if (sub) sub.textContent = data.subtitulo;
+            if (num) num.textContent = String(fase);
+            if (fill) fill.style.width = `${data.pct}%`;
+            if (label) label.textContent = data.amenaza;
+
+            document.querySelectorAll("[data-node-phase]").forEach(node => {
+                const nodePhase = Number(node.dataset.nodePhase);
+                node.classList.toggle("is-complete", nodePhase < fase);
+                node.classList.toggle("is-current", nodePhase === fase);
+                node.classList.toggle("is-locked", nodePhase > fase);
+            });
+
+            document.querySelectorAll("#evolucion-fases .phase-box[data-phase]").forEach(box => {
+                const p = Number(box.dataset.phase);
+                box.classList.toggle("phase-active", p === fase);
+            });
+        }
+
+        aplicarIdentidadDeFase();
         aplicarBloqueoDeFases();
     </script>
 </body>
