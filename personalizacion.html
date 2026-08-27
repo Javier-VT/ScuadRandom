@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><script>
+document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forja de Estelas - Scuad Random Last Time</title>
+<link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body class="site-page page-rarity">
+<div aria-hidden="true" class="phase-ambient"></div>
+<nav class="site-topbar">
+<a aria-label="Inicio de Scuad Random" class="site-brand" href="index.html">
+<img alt="Scuad Random Last Time" src="img/logo.png"/>
+</a>
+<div class="site-nav-links" id="site-nav-links"><a class="" href="index.html">Inicio</a><a class="" href="supervivencia.html">Supervivencia</a><a class="" href="arsenal.html">Arsenal</a><a class="active" href="personalizacion.html">Estelas</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></div>
+<button aria-label="Activar o silenciar audio" class="site-sfx-btn" id="site-sfx-btn" type="button"><i aria-hidden="true"></i><span>AUDIO</span></button><button aria-label="Abrir navegación" class="site-menu-btn" id="site-menu-btn" type="button">☰</button>
+</nav>
+<nav aria-label="Navegación móvil" class="mobile-dock"><a class="" href="index.html">Inicio</a><a class="" href="arsenal.html">Arsenal</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></nav>
+<main class="site-main">
+<section class="site-hero">
+<div class="hero-copy">
+<span class="hero-kicker">FORJA DE ESTELAS</span>
+<h1>Deja una firma en tu equipo.</h1>
+<p>Elige un color, escribe el nombre y obtén el texto exacto para copiar y pegar en el yunque. La vista previa responde en tiempo real.</p>
+</div>
+<aside aria-label="Estado actual del evento" class="hero-panel">
+<span class="hero-phase-label">ESTADO DEL REALM</span>
+<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">End y Doom desbloqueados - la presión aumenta</span>
+<div class="hero-meter"><i id="page-threat-fill"></i></div>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+</aside>
+</section>
+<div class="content-stack">
+<section class="rarity-lab-section" id="forja-estelas">
+<div class="rarity-lab">
+<div class="rarity-lab-copy">
+<span class="wiki-kicker">FORJA DE IDENTIDAD</span>
+<h2>Tu arma debe anunciar quién la empuña</h2>
+<p>Elige una estela, escribe el nombre que quieres y copia el resultado. Después pégalo como nombre en un yunque. No borres los símbolos del inicio o del final: forman parte del nombre que debes pegar.</p>
+<div class="rarity-steps">
+<span><b>1</b> Elige color</span>
+<span><b>2</b> Escribe el nombre</span>
+<span><b>3</b> Copia y pega en el yunque</span>
+</div>
+</div>
+<div aria-label="Generador de nombres con estela" class="rarity-builder">
+<div class="rarity-field">
+<span class="rarity-field-label">Color de la estela</span>
+<div aria-label="Color de estela" class="rarity-swatches" id="rarity-swatches" role="radiogroup">
+<button aria-label="Dorada" class="rarity-swatch" data-rarity="gold" style="--swatch:#ffe15b" type="button"><i></i><span>Dorada</span></button>
+<button aria-label="Naranja" class="rarity-swatch" data-rarity="orange" style="--swatch:#ff9d32" type="button"><i></i><span>Naranja</span></button>
+<button aria-label="Roja" class="rarity-swatch" data-rarity="red" style="--swatch:#ff4d57" type="button"><i></i><span>Roja</span></button>
+<button aria-checked="true" aria-label="Violeta" class="rarity-swatch is-selected" data-rarity="violet" style="--swatch:#c45cff" type="button"><i></i><span>Violeta</span></button>
+<button aria-label="Verde" class="rarity-swatch" data-rarity="green" style="--swatch:#56f09d" type="button"><i></i><span>Verde</span></button>
+<button aria-label="Cian" class="rarity-swatch" data-rarity="cyan" style="--swatch:#4ce7f2" type="button"><i></i><span>Cian</span></button>
+<button aria-label="Turquesa" class="rarity-swatch" data-rarity="teal" style="--swatch:#35c9bd" type="button"><i></i><span>Turquesa</span></button>
+<button aria-label="Blanca" class="rarity-swatch" data-rarity="white" style="--swatch:#f1f1f1" type="button"><i></i><span>Blanca</span></button>
+</div>
+</div>
+<label class="rarity-field" for="rarity-name">
+<span class="rarity-field-label">Nombre del objeto</span>
+<input autocomplete="off" class="rarity-name-input" id="rarity-name" maxlength="40" spellcheck="false" type="text" value="Filo del Vacío"/>
+</label>
+<label class="rarity-check">
+<input checked="" id="rarity-bold" type="checkbox"/>
+<span>Nombre en negrita</span>
+</label>
+<div aria-live="polite" class="rarity-preview" id="rarity-preview">
+<span class="rarity-preview-kicker">VISTA PREVIA</span>
+<strong id="rarity-preview-name">Filo del Vacío</strong>
+<small id="rarity-preview-color">Estela violeta</small>
+</div>
+<div class="rarity-output-wrap">
+<label for="rarity-output">Texto listo para el yunque</label>
+<textarea aria-label="Texto listo para copiar" id="rarity-output" readonly="" spellcheck="false"></textarea>
+<button class="copy-rarity-btn" id="copy-rarity" type="button">Copiar texto</button>
+<span aria-live="polite" class="copy-rarity-status" id="copy-rarity-status">Listo para copiar.</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<button aria-label="Volver arriba" class="back-top" id="back-top" type="button">↑</button>
+<footer class="site-footer">
+<p>Scuad Random Last Time © 2026</p>
+<p>Wiki del jugador - prepárate, adapta tu estrategia y sobrevive.</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

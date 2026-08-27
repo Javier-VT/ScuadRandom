@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><script>
+document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arsenal y recetas - Scuad Random Last Time</title>
+<link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body class="site-page page-arsenal">
+<div aria-hidden="true" class="phase-ambient"></div>
+<nav class="site-topbar">
+<a aria-label="Inicio de Scuad Random" class="site-brand" href="index.html">
+<img alt="Scuad Random Last Time" src="img/logo.png"/>
+</a>
+<div class="site-nav-links" id="site-nav-links"><a class="" href="index.html">Inicio</a><a class="" href="supervivencia.html">Supervivencia</a><a class="active" href="arsenal.html">Arsenal</a><a class="" href="personalizacion.html">Estelas</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></div>
+<button aria-label="Activar o silenciar audio" class="site-sfx-btn" id="site-sfx-btn" type="button"><i aria-hidden="true"></i><span>AUDIO</span></button><button aria-label="Abrir navegación" class="site-menu-btn" id="site-menu-btn" type="button">☰</button>
+</nav>
+<nav aria-label="Navegación móvil" class="mobile-dock"><a class="" href="index.html">Inicio</a><a class="active" href="arsenal.html">Arsenal</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></nav>
+<main class="site-main">
+<section class="site-hero">
+<div class="hero-copy">
+<span class="hero-kicker">ARSENAL</span>
+<h1>Cada objeto debe justificar su espacio.</h1>
+<p>Revisa crafteos, consumibles y equipo de progresión sin perderte entre secciones. Las recetas siguen siendo interactivas en PC y móvil.</p>
+</div>
+<aside aria-label="Estado actual del evento" class="hero-panel">
+<span class="hero-phase-label">ESTADO DEL REALM</span>
+<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">End y Doom desbloqueados - la presión aumenta</span>
+<div class="hero-meter"><i id="page-threat-fill"></i></div>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+</aside>
+</section>
+<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#utilidades-portatiles">Utilidades</a><a href="#arsenal">Consumibles</a><a href="#almas-jefes">Almas</a><a href="#horizonte-sr">Horizonte</a></nav>
+<div class="content-stack">
+<section data-unlock-phase="2" id="utilidades-portatiles">
+<div class="section-heading-row">
+<div>
+<span class="wiki-kicker">EQUIPO DE CAMPO</span>
+<h2 class="section-title">Utilidades Portátiles</h2>
+</div>
+<p class="section-heading-copy">Cuando una expedición se alarga, volver a la base puede costar más que los recursos que llevas. Estas herramientas convierten parte de tu infraestructura en equipo de campo.</p>
+</div>
+<div class="grid portable-grid">
+<div class="card feature-card portable-card">
+<div class="card-header">
+<img alt="Alcancía" class="item-icon" decoding="async" loading="lazy" src="img/items/piggy_bank.png"/>
+<h3>Alcancía</h3>
+</div>
+<p>Abre el Banco desde donde estés. Úsala para revisar, depositar o retirar tus ScuadCoins sin regresar al Banco Central.</p>
+<div class="tag-row"><span class="tag gold">Banco portátil</span><span class="tag">Reutilizable</span><span class="tag purple">Stack: 1</span></div>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Alcancía" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Alcancía" aria-label="Alcancía" class="recipe-icon recipe-head-output" data-src="img/items/piggy_bank.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alcancía" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover">
+<div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div><div aria-label="ScuadCoin" class="recipe-slot" title="ScuadCoin"><img alt="ScuadCoin" aria-label="ScuadCoin" class="recipe-icon" data-src="img/items/scuad_coin.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="ScuadCoin" width="48"/></div><div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div>
+<div aria-label="ScuadCoin" class="recipe-slot" title="ScuadCoin"><img alt="ScuadCoin" aria-label="ScuadCoin" class="recipe-icon" data-src="img/items/scuad_coin.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="ScuadCoin" width="48"/></div><div aria-label="Bloque de Oro" class="recipe-slot center" title="Bloque de Oro"><img alt="Bloque de Oro" aria-label="Bloque de Oro" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:gold_block/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Bloque de Oro" width="48"/></div><div aria-label="ScuadCoin" class="recipe-slot" title="ScuadCoin"><img alt="ScuadCoin" aria-label="ScuadCoin" class="recipe-icon" data-src="img/items/scuad_coin.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="ScuadCoin" width="48"/></div>
+<div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div><div aria-label="ScuadCoin" class="recipe-slot" title="ScuadCoin"><img alt="ScuadCoin" aria-label="ScuadCoin" class="recipe-icon" data-src="img/items/scuad_coin.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="ScuadCoin" width="48"/></div><div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div>
+</div>
+<div aria-label="Resultado: Alcancía" class="recipe-result" title="Alcancía"><span class="recipe-result-arrow">→</span><img alt="Alcancía" aria-label="Alcancía" class="recipe-icon recipe-result-icon" data-src="img/items/piggy_bank.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alcancía" width="48"/></div>
+</div>
+</div>
+</div>
+<div class="card feature-card portable-card">
+<div class="card-header">
+<img alt="Tienda Portátil" class="item-icon" decoding="async" loading="lazy" src="img/items/portable_shop.png"/>
+<h3>Tienda Portátil</h3>
+</div>
+<p>Despliega un acceso de campaña a la <strong>Tienda de Pociones</strong>, la <strong>Tienda de Comida</strong> y la <strong>Urna de Oro</strong>. Ideal para preparar una pelea sin abandonar la zona.</p>
+<div class="tag-row"><span class="tag gold">3 tiendas</span><span class="tag">Reutilizable</span><span class="tag purple">Stack: 1</span></div>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Tienda Portátil" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Tienda Portátil" aria-label="Tienda Portátil" class="recipe-icon recipe-head-output" data-src="img/items/portable_shop.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tienda Portátil" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover">
+<div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div><div aria-label="Bloque de Oro" class="recipe-slot" title="Bloque de Oro"><img alt="Bloque de Oro" aria-label="Bloque de Oro" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:gold_block/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Bloque de Oro" width="48"/></div><div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div>
+<div aria-label="Botella vacía" class="recipe-slot" title="Botella vacía"><img alt="Botella vacía" aria-label="Botella vacía" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:glass_bottle/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botella vacía" width="48"/></div><div aria-label="Cofre de Ender" class="recipe-slot center" title="Cofre de Ender"><img alt="Cofre de Ender" aria-label="Cofre de Ender" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:ender_chest/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Cofre de Ender" width="48"/></div><div aria-label="Manzana Dorada" class="recipe-slot" title="Manzana Dorada"><img alt="Manzana Dorada" aria-label="Manzana Dorada" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:golden_apple/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Manzana Dorada" width="48"/></div>
+<div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div><div aria-label="Alma de Jugador" class="recipe-slot" title="Alma de Jugador"><img alt="Alma de Jugador" aria-label="Alma de Jugador" class="recipe-icon" data-src="img/items/souls/player_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma de Jugador" width="48"/></div><div aria-label="Coraza de Shulker" class="recipe-slot" title="Coraza de Shulker"><img alt="Coraza de Shulker" aria-label="Coraza de Shulker" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:shulker_shell/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de Shulker" width="48"/></div>
+</div>
+<div aria-label="Resultado: Tienda Portátil" class="recipe-result" title="Tienda Portátil"><span class="recipe-result-arrow">→</span><img alt="Tienda Portátil" aria-label="Tienda Portátil" class="recipe-icon recipe-result-icon" data-src="img/items/portable_shop.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tienda Portátil" width="48"/></div>
+</div>
+</div>
+</div>
+<div class="card feature-card revive-field-card" data-unlock-phase="3">
+<div class="card-header">
+<img alt="Alma de Jugador" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/player_soul.png"/>
+<h3>Resurrección de Campo</h3>
+</div>
+<p>A partir de Fase 3, puedes usar un <strong>Alma de Jugador</strong> directamente para intentar revivir a un compañero sin llegar a la Fosa de Almas. Es un recurso de emergencia y exige Tótems de la Inmortalidad.</p>
+<div class="revive-cost-track">
+<span><b>F3</b> 2 Tótems</span>
+<span><b>F4</b> 3 Tótems</span>
+<span><b>F5</b> 4 Tótems</span>
+</div>
+<div class="player-only-note">El coste se paga al completar la resurrección: <strong>1 Alma de Jugador + los Tótems de la fase actual</strong>.</div>
+</div>
+</div>
+</section>
+<section id="arsenal">
+<h2 class="section-title">Arsenal y consumibles por fase</h2>
+<p class="guide-note"><strong>Progresión ordenada:</strong> cada grupo reúne los objetos que empiezan a formar parte de la progresión en esa fase. La wiki muestra todas las etapas para que puedas planear tu ruta de supervivencia.</p>
+<div class="phase-item-group" data-phase-group="0" data-unlock-phase="0"><div class="phase-group-header"><span class="phase-group-number">FASE 0</span><div class="phase-group-copy"><h3>Preparación</h3><p>Equipo base, economía y supervivencia inicial.</p></div></div><div class="grid"><div class="card">
+<div class="card-header"><img alt="ScuadCoin" class="item-icon" decoding="async" loading="lazy" src="img/items/scuad_coin.png"/><h3>ScuadCoin</h3></div>
+<p>Moneda física del Realm. Se obtiene principalmente derrotando enemigos y completando eventos.</p>
+<div class="tag-row"><span class="tag gold">Stack: 64</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Alma de Jugador" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/player_soul.png"/><h3>Alma de Jugador</h3></div>
+<p>Llave de resurrección. Compra una en la Urna de Oro y llévala a la Fosa de Almas para recuperar a un compañero. En el endgame también funciona como plantilla de herrería para crear el Filo del Horizonte Roto.</p>
+<div class="tag-row"><span class="tag gold">89 Coins</span><span class="tag purple">Stack: 1</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Ración del Superviviente" class="item-icon" decoding="async" loading="lazy" src="img/items/survivor_ration.png"/><h3>Ración del Superviviente</h3></div>
+<p>Comida de emergencia que estabiliza tus heridas con absorción y una breve regeneración.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Ración del Superviviente" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Ración del Superviviente" aria-label="Ración del Superviviente" class="recipe-icon recipe-head-output" data-src="img/items/survivor_ration.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Ración del Superviviente" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Filete cocinado" class="recipe-slot" title="Filete cocinado"><img alt="Filete cocinado" aria-label="Filete cocinado" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:cooked_beef/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Filete cocinado" width="48"/></div><div aria-label="Pan" class="recipe-slot" title="Pan"><img alt="Pan" aria-label="Pan" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:bread/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pan" width="48"/></div><div aria-label="Zanahoria dorada" class="recipe-slot" title="Zanahoria dorada"><img alt="Zanahoria dorada" aria-label="Zanahoria dorada" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:golden_carrot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Zanahoria dorada" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div></div>
+<div aria-label="Resultado: Ración" class="recipe-result" title="Ración"><span class="recipe-result-arrow">→</span><img alt="Ración" aria-label="Ración" class="recipe-icon recipe-result-icon" data-src="img/items/survivor_ration.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Ración" width="48"/></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 17 Coins x2</span><span class="tag">Stack: 16</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="1" data-unlock-phase="1"><div class="phase-group-header"><span class="phase-group-number">FASE 1</span><div class="phase-group-copy"><h3>El Despertar</h3><p>Movilidad, escape y recursos para el Nether.</p></div></div><div class="grid"><div class="card">
+<div class="card-header"><img alt="Poción de Pánico" class="item-icon" decoding="async" loading="lazy" src="img/items/panic_potion.png"/><h3>Poción de Pánico</h3></div>
+<p>Velocidad III durante 20 s y Resistencia I durante 10 s. Ideal para romper una emboscada y ganar distancia.</p>
+<div class="tag-row"><span class="tag gold">Tienda: 31 Coins</span><span class="tag red">Fase 1</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Poción de Escape" class="item-icon" decoding="async" loading="lazy" src="img/items/escape_potion.png"/><h3>Poción de Escape</h3></div>
+<p>Invisibilidad y Velocidad II durante 15 s, además de Caída Lenta durante 10 s.</p>
+<div class="tag-row"><span class="tag gold">Tienda: 31 Coins</span><span class="tag red">Fase 1</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Tónico del Minero" class="item-icon" decoding="async" loading="lazy" src="img/items/miners_tonic.png"/><h3>Tónico del Minero</h3></div>
+<p>Prisa II y Visión Nocturna durante 2 minutos, más Resistencia al Fuego durante 30 s.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Tónico del Minero" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Tónico del Minero" aria-label="Tónico del Minero" class="recipe-icon recipe-head-output" data-src="img/items/miners_tonic.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tónico del Minero" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento de Amatista" class="process-box" title="Fragmento de Amatista"><img alt="Fragmento de Amatista" aria-label="Fragmento de Amatista" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:amethyst_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Amatista" width="48"/></div><span class="process-arrow">→</span><div aria-label="Tónico del Minero" class="process-box process-output" title="Tónico del Minero"><img alt="Tónico del Minero" aria-label="Tónico del Minero" class="recipe-icon" data-src="img/items/miners_tonic.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tónico del Minero" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 37 Coins</span><span class="tag red">Fase 1</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Pan Ígneo" class="item-icon" decoding="async" loading="lazy" src="img/items/ember_bread.png"/><h3>Pan Ígneo</h3></div>
+<p>Provisión compacta para expediciones; se vende en paquetes de dos desde Fase 1.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Pan Ígneo" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Pan Ígneo" aria-label="Pan Ígneo" class="recipe-icon recipe-head-output" data-src="img/items/ember_bread.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pan Ígneo" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Pan" class="recipe-slot" title="Pan"><img alt="Pan" aria-label="Pan" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:bread/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pan" width="48"/></div><div aria-label="Polvo de Blaze" class="recipe-slot" title="Polvo de Blaze"><img alt="Polvo de Blaze" aria-label="Polvo de Blaze" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:blaze_powder/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Polvo de Blaze" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div></div>
+<div aria-label="Resultado: Pan Ígneo" class="recipe-result" title="Pan Ígneo"><span class="recipe-result-arrow">→</span><img alt="Pan Ígneo" aria-label="Pan Ígneo" class="recipe-icon recipe-result-icon" data-src="img/items/ember_bread.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pan Ígneo" width="48"/></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 23 Coins x2</span><span class="tag red">Fase 1</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Tónico del Explorador" class="item-icon" decoding="async" loading="lazy" src="img/items/scout_tonic.png"/><h3>Tónico del Explorador</h3></div>
+<p>Consumible de movilidad y exploración pensado para rutas peligrosas y retirada rápida.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Tónico del Explorador" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Tónico del Explorador" aria-label="Tónico del Explorador" class="recipe-icon recipe-head-output" data-src="img/items/scout_tonic.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tónico del Explorador" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Pluma" class="process-box" title="Pluma"><img alt="Pluma" aria-label="Pluma" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:feather/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pluma" width="48"/></div><span class="process-arrow">→</span><div aria-label="Tónico del Explorador" class="process-box process-output" title="Tónico del Explorador"><img alt="Tónico del Explorador" aria-label="Tónico del Explorador" class="recipe-icon" data-src="img/items/scout_tonic.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tónico del Explorador" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 41 Coins</span><span class="tag red">Fase 1</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="2" data-unlock-phase="2"><div class="phase-group-header"><span class="phase-group-number">FASE 2</span><div class="phase-group-copy"><h3>Supervivencia</h3><p>Consumibles avanzados para End, Doom y combates prolongados.</p></div></div><div class="grid"><div class="card">
+<div class="card-header"><img alt="Estofado Dorado" class="item-icon" decoding="async" loading="lazy" src="img/items/golden_stew.png"/><h3>Estofado Dorado</h3></div>
+<p>Fortalece tu vida temporalmente y acelera la recuperación durante unos segundos.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Estofado Dorado" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Estofado Dorado" aria-label="Estofado Dorado" class="recipe-icon recipe-head-output" data-src="img/items/golden_stew.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Estofado Dorado" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Cuenco" class="recipe-slot" title="Cuenco"><img alt="Cuenco" aria-label="Cuenco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:bowl/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Cuenco" width="48"/></div><div aria-label="Zanahoria dorada" class="recipe-slot" title="Zanahoria dorada"><img alt="Zanahoria dorada" aria-label="Zanahoria dorada" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:golden_carrot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Zanahoria dorada" width="48"/></div><div aria-label="Hongo rojo" class="recipe-slot" title="Hongo rojo"><img alt="Hongo rojo" aria-label="Hongo rojo" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:red_mushroom/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Hongo rojo" width="48"/></div><div aria-label="Hongo marrón" class="recipe-slot" title="Hongo marrón"><img alt="Hongo marrón" aria-label="Hongo marrón" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brown_mushroom/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Hongo marrón" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div></div>
+<div aria-label="Resultado: Estofado Dorado" class="recipe-result" title="Estofado Dorado"><span class="recipe-result-arrow">→</span><img alt="Estofado Dorado" aria-label="Estofado Dorado" class="recipe-icon recipe-result-icon" data-src="img/items/golden_stew.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Estofado Dorado" width="48"/></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 37 Coins</span><span class="tag red">Fase 2</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Elixir del Guardián" class="item-icon" decoding="async" loading="lazy" src="img/items/guardian_elixir.png"/><h3>Elixir del Guardián</h3></div>
+<p>Absorción IV durante 2 minutos y Resistencia II durante 1 minuto.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Elixir del Guardián" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Elixir del Guardián" aria-label="Elixir del Guardián" class="recipe-icon recipe-head-output" data-src="img/items/guardian_elixir.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Elixir del Guardián" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Alma Punzante" class="process-box" title="Alma Punzante"><img alt="Alma Punzante" aria-label="Alma Punzante" class="recipe-icon" data-src="img/items/souls/stinging_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Punzante" width="48"/></div><span class="process-arrow">→</span><div aria-label="Elixir del Guardián" class="process-box process-output" title="Elixir del Guardián"><img alt="Elixir del Guardián" aria-label="Elixir del Guardián" class="recipe-icon" data-src="img/items/guardian_elixir.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Elixir del Guardián" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 53 Coins</span><span class="tag red">Fase 2</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Estofado del Acechador" class="item-icon" decoding="async" loading="lazy" src="img/items/stalker_stew.png"/><h3>Estofado del Acechador</h3></div>
+<p>Comida avanzada para expediciones de Fase 2, pensada para sostener combates y exploración prolongada.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Estofado del Acechador" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Estofado del Acechador" aria-label="Estofado del Acechador" class="recipe-icon recipe-head-output" data-src="img/items/stalker_stew.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Estofado del Acechador" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Cuenco" class="recipe-slot" title="Cuenco"><img alt="Cuenco" aria-label="Cuenco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:bowl/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Cuenco" width="48"/></div><div aria-label="Filete cocinado" class="recipe-slot" title="Filete cocinado"><img alt="Filete cocinado" aria-label="Filete cocinado" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:cooked_beef/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Filete cocinado" width="48"/></div><div aria-label="Hongo marrón" class="recipe-slot" title="Hongo marrón"><img alt="Hongo marrón" aria-label="Hongo marrón" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brown_mushroom/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Hongo marrón" width="48"/></div><div aria-label="Hongo rojo" class="recipe-slot" title="Hongo rojo"><img alt="Hongo rojo" aria-label="Hongo rojo" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:red_mushroom/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Hongo rojo" width="48"/></div><div aria-label="Baya brillante" class="recipe-slot" title="Baya brillante"><img alt="Baya brillante" aria-label="Baya brillante" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:glow_berries/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Baya brillante" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div></div>
+<div aria-label="Resultado: Estofado del Acechador" class="recipe-result" title="Estofado del Acechador"><span class="recipe-result-arrow">→</span><img alt="Estofado del Acechador" aria-label="Estofado del Acechador" class="recipe-icon recipe-result-icon" data-src="img/items/stalker_stew.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Estofado del Acechador" width="48"/></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 43 Coins</span><span class="tag red">Fase 2</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="3" data-unlock-phase="3"><div class="phase-group-header"><span class="phase-group-number">FASE 3</span><div class="phase-group-copy"><h3>Pesadilla</h3><p>Curación y defensa para amenazas de alta presión.</p></div></div><div class="grid"><div class="card">
+<div class="card-header"><img alt="Suero Purificador" class="item-icon" decoding="async" loading="lazy" src="img/items/cleansing_serum.png"/><h3>Suero Purificador</h3></div>
+<p>Limpia veneno, wither, debilidad, lentitud, ceguera, oscuridad, hambre, fatiga y náusea; después aplica Regeneración II.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Suero Purificador" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Suero Purificador" aria-label="Suero Purificador" class="recipe-icon recipe-head-output" data-src="img/items/cleansing_serum.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Suero Purificador" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Botella de miel" class="process-box" title="Botella de miel"><img alt="Botella de miel" aria-label="Botella de miel" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:honey_bottle/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botella de miel" width="48"/></div><span class="process-arrow">→</span><div aria-label="Suero Purificador" class="process-box process-output" title="Suero Purificador"><img alt="Suero Purificador" aria-label="Suero Purificador" class="recipe-icon" data-src="img/items/cleansing_serum.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Suero Purificador" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 47 Coins</span><span class="tag red">Fase 3</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Poción de Ultra Curación" class="item-icon" decoding="async" loading="lazy" src="img/items/ultra_health_potion.png"/><h3>Poción de Ultra Curación</h3></div>
+<p>Restaura toda tu salud inmediatamente y añade Regeneración III durante 10 s.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Poción de Ultra Curación" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Poción de Ultra Curación" aria-label="Poción de Ultra Curación" class="recipe-icon recipe-head-output" data-src="img/items/ultra_health_potion.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción de Ultra Curación" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Manzana dorada" class="process-box" title="Manzana dorada"><img alt="Manzana dorada" aria-label="Manzana dorada" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:golden_apple/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Manzana dorada" width="48"/></div><span class="process-arrow">→</span><div aria-label="Poción de Ultra Curación" class="process-box process-output" title="Poción de Ultra Curación"><img alt="Poción de Ultra Curación" aria-label="Poción de Ultra Curación" class="recipe-icon" data-src="img/items/ultra_health_potion.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción de Ultra Curación" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 71 Coins</span><span class="tag red">Fase 3</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Tónico del Baluarte" class="item-icon" decoding="async" loading="lazy" src="img/items/bulwark_tonic.png"/><h3>Tónico del Baluarte</h3></div>
+<p>Preparado defensivo de alto nivel para aguantar asedios, Doom y jefes en fases avanzadas.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Tónico del Baluarte" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Tónico del Baluarte" aria-label="Tónico del Baluarte" class="recipe-icon recipe-head-output" data-src="img/items/bulwark_tonic.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tónico del Baluarte" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento de prismarina" class="process-box" title="Fragmento de prismarina"><img alt="Fragmento de prismarina" aria-label="Fragmento de prismarina" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:prismarine_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de prismarina" width="48"/></div><span class="process-arrow">→</span><div aria-label="Tónico del Baluarte" class="process-box process-output" title="Tónico del Baluarte"><img alt="Tónico del Baluarte" aria-label="Tónico del Baluarte" class="recipe-icon" data-src="img/items/bulwark_tonic.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Tónico del Baluarte" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 61 Coins</span><span class="tag red">Fase 3</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="4" data-unlock-phase="4"><div class="phase-group-header"><span class="phase-group-number">FASE 4</span><div class="phase-group-copy"><h3>Muerte Inminente</h3><p>Consumibles de poder extremo para encuentros de élite.</p></div></div><div class="grid"><div class="card">
+<div class="card-header"><img alt="Manzana del Eco" class="item-icon" decoding="async" loading="lazy" src="img/items/echo_apple.png"/><h3>Manzana del Eco</h3></div>
+<p>Aumento de Salud III durante 2 minutos y Fuerza II durante 30 s. El precio del poder es una breve Oscuridad.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Manzana del Eco" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Manzana del Eco" aria-label="Manzana del Eco" class="recipe-icon recipe-head-output" data-src="img/items/echo_apple.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Manzana del Eco" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Manzana dorada" class="recipe-slot" title="Manzana dorada"><img alt="Manzana dorada" aria-label="Manzana dorada" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:golden_apple/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Manzana dorada" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div></div>
+<div aria-label="Resultado: Manzana del Eco" class="recipe-result" title="Manzana del Eco"><span class="recipe-result-arrow">→</span><img alt="Manzana del Eco" aria-label="Manzana del Eco" class="recipe-icon recipe-result-icon" data-src="img/items/echo_apple.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Manzana del Eco" width="48"/></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 79 Coins</span><span class="tag cyan">Stack: 16</span><span class="tag red">Fase 4</span></div>
+</div><div class="card">
+<div class="card-header"><img alt="Brebaje Berserker" class="item-icon" decoding="async" loading="lazy" src="img/items/berserker_brew.png"/><h3>Brebaje Berserker</h3></div>
+<p>Fuerza III y Velocidad II durante 30 s, a cambio de Hambre III durante 15 s.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Brebaje Berserker" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Brebaje Berserker" aria-label="Brebaje Berserker" class="recipe-icon recipe-head-output" data-src="img/items/berserker_brew.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Brebaje Berserker" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Núcleo del Doom" class="process-box" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><span class="process-arrow">→</span><div aria-label="Brebaje Berserker" class="process-box process-output" title="Brebaje Berserker"><img alt="Brebaje Berserker" aria-label="Brebaje Berserker" class="recipe-icon" data-src="img/items/berserker_brew.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Brebaje Berserker" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 67 Coins</span><span class="tag red">Fase 4</span></div>
+</div><div class="card">
+<div class="card-header">
+<!-- Agrega tu imagen en img/items/dusk_shard.png -->
+<img alt="Esquirla del Ocaso" class="item-icon" decoding="async" loading="lazy" src="img/items/dusk_shard.png"/><h3>Esquirla del Ocaso</h3></div>
+<p>Material exclusivo de <strong>Fase 4+</strong> y compuerta de la progresión Horizonte. No posee receta: los minijefes garantizan progreso, el Ghast Infernal puede entregar 1–2, los élites tienen una posibilidad de soltarla y los cofres importantes del Doom pueden contenerla.</p>
+<div class="tag-row"><span class="tag red">Fase 4+</span><span class="tag cyan">Stack: 16</span><span class="tag cyan">Estela cian</span><span class="tag purple">Sin receta</span></div>
+</div></div></div><div class="phase-item-group" data-phase-group="5" data-unlock-phase="5"><div class="phase-group-header"><span class="phase-group-number">FASE 5</span><div class="phase-group-copy"><h3>Apocalipsis Total</h3><p>Recursos finales para el cierre del evento.</p></div></div><div class="grid"><div class="card performance-lite">
+<div class="card-header"><img alt="Notch Líquida" class="item-icon" decoding="async" fetchpriority="low" height="50" loading="lazy" src="img/items/liquid_notch.png" width="50"/><h3>Notch Líquida</h3></div>
+<p>Absorción IV y Resistencia I durante 2 minutos, además de Regeneración II durante 30 s.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Notch Líquida" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Soporte para pociones" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:brewing_stand/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Soporte para pociones" width="38"/><img alt="Notch Líquida" aria-label="Notch Líquida" class="recipe-icon recipe-head-output" data-src="img/items/liquid_notch.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Notch Líquida" width="48"/></div>
+<div class="recipe-process"><div aria-label="Poción Rara" class="process-box" title="Poción Rara"><img alt="Poción Rara" aria-label="Poción Rara" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:potion/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Poción Rara" width="48"/></div><span class="process-plus">+</span><div aria-label="Manzana dorada encantada" class="process-box" title="Manzana dorada encantada"><img alt="Manzana dorada encantada" aria-label="Manzana dorada encantada" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:enchanted_golden_apple/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Manzana dorada encantada" width="48"/></div><span class="process-arrow">→</span><div aria-label="Notch Líquida" class="process-box process-output" title="Notch Líquida"><img alt="Notch Líquida" aria-label="Notch Líquida" class="recipe-icon" data-src="img/items/liquid_notch.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Notch Líquida" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Tienda: 149 Coins</span><span class="tag red">Fase 5</span></div>
+</div></div></div></section>
+<section class="phase-section" data-unlock-phase="2" id="almas-jefes">
+<h2 class="section-title">Almas de Jefes y Netherite</h2>
+<p class="guide-note">La mejora vanilla a Netherite está restringida. Las piezas de armadura usan las almas de los jefes como plantillas de herrería; la espada y las herramientas no pueden saltarse la progresión con la plantilla vanilla.</p>
+<div class="grid">
+<div class="card">
+<div class="card-header"><img alt="Alma Ígnea" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/burning_soul.png"/><h3>Alma Ígnea</h3></div>
+<p>La entrega el Ghast Infernal. Funciona como plantilla para el casco de Netherite y vuelve a ser necesaria para ascender el Yelmo de la Perdición al Horizonte Roto.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Casco de Netherite" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Casco de Netherite" aria-label="Casco de Netherite" class="recipe-icon recipe-head-output" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_helmet/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Casco de Netherite" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Ígnea" class="process-box" title="Alma Ígnea"><img alt="Alma Ígnea" aria-label="Alma Ígnea" class="recipe-icon" data-src="img/items/souls/burning_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Ígnea" width="48"/></div><span class="process-plus">+</span><div aria-label="Casco de Diamante" class="process-box" title="Casco de Diamante"><img alt="Casco de Diamante" aria-label="Casco de Diamante" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:diamond_helmet/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Casco de Diamante" width="48"/></div><span class="process-plus">+</span><div aria-label="Lingote de Netherite" class="process-box" title="Lingote de Netherite"><img alt="Lingote de Netherite" aria-label="Lingote de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_ingot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Lingote de Netherite" width="48"/></div><span class="process-arrow">→</span><div aria-label="Casco de Netherite" class="process-box process-output" title="Casco de Netherite"><img alt="Casco de Netherite" aria-label="Casco de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_helmet/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Casco de Netherite" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag red">Casco</span><span class="tag">Stack: 1</span></div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Alma Gelatinosa" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/gelatinous_soul.png"/><h3>Alma Gelatinosa</h3></div>
+<p>La entrega el Giga Slime. Funciona como plantilla para la pechera de Netherite y vuelve a ser necesaria para ascender la Coraza de la Perdición al Horizonte Roto.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Pechera de Netherite" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Pechera de Netherite" aria-label="Pechera de Netherite" class="recipe-icon recipe-head-output" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_chestplate/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pechera de Netherite" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Gelatinosa" class="process-box" title="Alma Gelatinosa"><img alt="Alma Gelatinosa" aria-label="Alma Gelatinosa" class="recipe-icon" data-src="img/items/souls/gelatinous_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Gelatinosa" width="48"/></div><span class="process-plus">+</span><div aria-label="Pechera de Diamante" class="process-box" title="Pechera de Diamante"><img alt="Pechera de Diamante" aria-label="Pechera de Diamante" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:diamond_chestplate/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pechera de Diamante" width="48"/></div><span class="process-plus">+</span><div aria-label="Lingote de Netherite" class="process-box" title="Lingote de Netherite"><img alt="Lingote de Netherite" aria-label="Lingote de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_ingot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Lingote de Netherite" width="48"/></div><span class="process-arrow">→</span><div aria-label="Pechera de Netherite" class="process-box process-output" title="Pechera de Netherite"><img alt="Pechera de Netherite" aria-label="Pechera de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_chestplate/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pechera de Netherite" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag green">Pechera</span><span class="tag">Stack: 1</span></div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Alma Punzante" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/stinging_soul.png"/><h3>Alma Punzante</h3></div>
+<p>La entrega el Emperador. Funciona como plantilla para las grebas de Netherite y vuelve a ser necesaria para ascender las Grebas de la Perdición al Horizonte Roto.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Pantalones de Netherite" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Pantalones de Netherite" aria-label="Pantalones de Netherite" class="recipe-icon recipe-head-output" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_leggings/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pantalones de Netherite" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Punzante" class="process-box" title="Alma Punzante"><img alt="Alma Punzante" aria-label="Alma Punzante" class="recipe-icon" data-src="img/items/souls/stinging_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Punzante" width="48"/></div><span class="process-plus">+</span><div aria-label="Pantalones de Diamante" class="process-box" title="Pantalones de Diamante"><img alt="Pantalones de Diamante" aria-label="Pantalones de Diamante" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:diamond_leggings/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pantalones de Diamante" width="48"/></div><span class="process-plus">+</span><div aria-label="Lingote de Netherite" class="process-box" title="Lingote de Netherite"><img alt="Lingote de Netherite" aria-label="Lingote de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_ingot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Lingote de Netherite" width="48"/></div><span class="process-arrow">→</span><div aria-label="Pantalones de Netherite" class="process-box process-output" title="Pantalones de Netherite"><img alt="Pantalones de Netherite" aria-label="Pantalones de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_leggings/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pantalones de Netherite" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag gold">Pantalones</span><span class="tag">Stack: 1</span></div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Alma Aullante" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/howling_soul.png"/><h3>Alma Aullante</h3></div>
+<p>La entrega el Devastador Espectral. Funciona como plantilla para las botas de Netherite y vuelve a ser necesaria para ascender las Botas de la Perdición al Horizonte Roto.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Botas de Netherite" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Botas de Netherite" aria-label="Botas de Netherite" class="recipe-icon recipe-head-output" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_boots/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botas de Netherite" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Aullante" class="process-box" title="Alma Aullante"><img alt="Alma Aullante" aria-label="Alma Aullante" class="recipe-icon" data-src="img/items/souls/howling_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Aullante" width="48"/></div><span class="process-plus">+</span><div aria-label="Botas de Diamante" class="process-box" title="Botas de Diamante"><img alt="Botas de Diamante" aria-label="Botas de Diamante" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:diamond_boots/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botas de Diamante" width="48"/></div><span class="process-plus">+</span><div aria-label="Lingote de Netherite" class="process-box" title="Lingote de Netherite"><img alt="Lingote de Netherite" aria-label="Lingote de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_ingot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Lingote de Netherite" width="48"/></div><span class="process-arrow">→</span><div aria-label="Botas de Netherite" class="process-box process-output" title="Botas de Netherite"><img alt="Botas de Netherite" aria-label="Botas de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_boots/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botas de Netherite" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag cyan">Botas</span><span class="tag">Stack: 1</span></div>
+</div>
+</div>
+<div class="phase-box">
+<p><strong>Espada de Netherite:</strong> la mejora vanilla con Plantilla de Netherite está bloqueada en el evento. Puede obtenerse mediante el botín autorizado de SR, incluyendo determinados jefes y cofres de alto nivel del Doom, y después sirve como base para fabricar la Espada de la Perdición.</p>
+</div>
+</section>
+<section class="phase-section" data-unlock-phase="4" id="horizonte-sr">
+<h2 class="section-title">Fase 4: Horizonte Roto</h2>
+<p class="guide-note"><strong>Pre-Coloso:</strong> Horizonte Roto ya forma parte de la progresión de Fase 4. Tener Almas Ígneas desde fases anteriores no permite adelantarlo, porque cada Fragmento del Horizonte exige una Esquirla del Ocaso obtenible únicamente desde Fase 4.</p>
+<div class="grid">
+<div class="card endgame-card">
+<div class="card-header"><img alt="Fragmento del Horizonte" class="item-icon" decoding="async" loading="lazy" src="img/items/horizon_core.png"/><h3>Fragmento del Horizonte</h3></div>
+<p>Material de ascensión fabricado de uno en uno. La Esquirla del Ocaso es la llave que impide crear estos fragmentos antes de Fase 4.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Fragmento del Horizonte" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon recipe-head-output" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-label="Esquirla del Ocaso" class="recipe-slot" title="Esquirla del Ocaso"><img alt="Esquirla del Ocaso" aria-label="Esquirla del Ocaso" class="recipe-icon" data-src="img/items/dusk_shard.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Esquirla del Ocaso" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Alma Ígnea" class="recipe-slot" title="Alma Ígnea"><img alt="Alma Ígnea" aria-label="Alma Ígnea" class="recipe-icon" data-src="img/items/souls/burning_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Ígnea" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-label="Lingote de Netherite" class="recipe-slot" title="Lingote de Netherite"><img alt="Lingote de Netherite" aria-label="Lingote de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_ingot/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Lingote de Netherite" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div></div>
+<div aria-label="Resultado: Fragmento del Horizonte" class="recipe-result" title="Fragmento del Horizonte"><span class="recipe-result-arrow">→</span><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon recipe-result-icon" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag red">Fase 4+</span><span class="tag cyan">Pre-Coloso</span><span class="tag purple">Stack: 1</span></div>
+</div>
+<div class="card endgame-card">
+<div class="card-header"><img alt="Armadura del Horizonte Roto" class="item-icon" decoding="async" loading="lazy" src="img/items/horizon_chestplate.png"/><h3>Armadura del Horizonte Roto</h3></div>
+<div class="armor-set-row">
+<img alt="Visor del Horizonte" decoding="async" loading="lazy" src="img/items/horizon_helmet.png"/>
+<img alt="Coraza del Horizonte" decoding="async" loading="lazy" src="img/items/horizon_chestplate.png"/>
+<img alt="Grebas del Horizonte" decoding="async" loading="lazy" src="img/items/horizon_leggings.png"/>
+<img alt="Botas del Horizonte" decoding="async" loading="lazy" src="img/items/horizon_boots.png"/>
+</div>
+<p>Mejora cada pieza de Perdición en la mesa de herrería usando el alma correspondiente como plantilla y un Fragmento del Horizonte como material. El set completo suma <strong>32 puntos de protección</strong> y conserva Fuerza I, Resistencia II, Resistencia al Fuego y Visión Nocturna; añade Velocidad I, Salto II y <strong>10 corazones extra</strong>.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Yelmo del Horizonte Roto" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Yelmo del Horizonte Roto" aria-label="Yelmo del Horizonte Roto" class="recipe-icon recipe-head-output" data-src="img/items/horizon_helmet.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Yelmo del Horizonte Roto" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Ígnea" class="process-box" title="Alma Ígnea"><img alt="Alma Ígnea" aria-label="Alma Ígnea" class="recipe-icon" data-src="img/items/souls/burning_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Ígnea" width="48"/></div><span class="process-plus">+</span><div aria-label="Yelmo de la Perdición" class="process-box" title="Yelmo de la Perdición"><img alt="Yelmo de la Perdición" aria-label="Yelmo de la Perdición" class="recipe-icon" data-src="img/items/doom_helmet.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Yelmo de la Perdición" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento del Horizonte" class="process-box" title="Fragmento del Horizonte"><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div><span class="process-arrow">→</span><div aria-label="Yelmo del Horizonte Roto" class="process-box process-output" title="Yelmo del Horizonte Roto"><img alt="Yelmo del Horizonte Roto" aria-label="Yelmo del Horizonte Roto" class="recipe-icon" data-src="img/items/horizon_helmet.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Yelmo del Horizonte Roto" width="48"/></div></div>
+</div>
+</div>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Coraza del Horizonte Roto" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Coraza del Horizonte Roto" aria-label="Coraza del Horizonte Roto" class="recipe-icon recipe-head-output" data-src="img/items/horizon_chestplate.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza del Horizonte Roto" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Gelatinosa" class="process-box" title="Alma Gelatinosa"><img alt="Alma Gelatinosa" aria-label="Alma Gelatinosa" class="recipe-icon" data-src="img/items/souls/gelatinous_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Gelatinosa" width="48"/></div><span class="process-plus">+</span><div aria-label="Coraza de la Perdición" class="process-box" title="Coraza de la Perdición"><img alt="Coraza de la Perdición" aria-label="Coraza de la Perdición" class="recipe-icon" data-src="img/items/doom_chestplate.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza de la Perdición" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento del Horizonte" class="process-box" title="Fragmento del Horizonte"><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div><span class="process-arrow">→</span><div aria-label="Coraza del Horizonte Roto" class="process-box process-output" title="Coraza del Horizonte Roto"><img alt="Coraza del Horizonte Roto" aria-label="Coraza del Horizonte Roto" class="recipe-icon" data-src="img/items/horizon_chestplate.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Coraza del Horizonte Roto" width="48"/></div></div>
+</div>
+</div>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Grebas del Horizonte Roto" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Grebas del Horizonte Roto" aria-label="Grebas del Horizonte Roto" class="recipe-icon recipe-head-output" data-src="img/items/horizon_leggings.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Grebas del Horizonte Roto" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Punzante" class="process-box" title="Alma Punzante"><img alt="Alma Punzante" aria-label="Alma Punzante" class="recipe-icon" data-src="img/items/souls/stinging_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Punzante" width="48"/></div><span class="process-plus">+</span><div aria-label="Grebas de la Perdición" class="process-box" title="Grebas de la Perdición"><img alt="Grebas de la Perdición" aria-label="Grebas de la Perdición" class="recipe-icon" data-src="img/items/doom_leggings.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Grebas de la Perdición" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento del Horizonte" class="process-box" title="Fragmento del Horizonte"><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div><span class="process-arrow">→</span><div aria-label="Grebas del Horizonte Roto" class="process-box process-output" title="Grebas del Horizonte Roto"><img alt="Grebas del Horizonte Roto" aria-label="Grebas del Horizonte Roto" class="recipe-icon" data-src="img/items/horizon_leggings.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Grebas del Horizonte Roto" width="48"/></div></div>
+</div>
+</div>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Botas del Horizonte Roto" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Botas del Horizonte Roto" aria-label="Botas del Horizonte Roto" class="recipe-icon recipe-head-output" data-src="img/items/horizon_boots.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botas del Horizonte Roto" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma Aullante" class="process-box" title="Alma Aullante"><img alt="Alma Aullante" aria-label="Alma Aullante" class="recipe-icon" data-src="img/items/souls/howling_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma Aullante" width="48"/></div><span class="process-plus">+</span><div aria-label="Botas de la Perdición" class="process-box" title="Botas de la Perdición"><img alt="Botas de la Perdición" aria-label="Botas de la Perdición" class="recipe-icon" data-src="img/items/doom_boots.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botas de la Perdición" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento del Horizonte" class="process-box" title="Fragmento del Horizonte"><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div><span class="process-arrow">→</span><div aria-label="Botas del Horizonte Roto" class="process-box process-output" title="Botas del Horizonte Roto"><img alt="Botas del Horizonte Roto" aria-label="Botas del Horizonte Roto" class="recipe-icon" data-src="img/items/horizon_boots.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Botas del Horizonte Roto" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag purple">32 protección total</span><span class="tag cyan">+10 corazones</span><span class="tag green">Efectos estables</span><span class="tag red">Irrompible</span></div>
+<div class="player-only-note"><strong>Visión Nocturna estable:</strong> los efectos del set se renuevan con margen suficiente para que no aparezca el parpadeo de “efecto por terminar”.</div>
+</div>
+<div class="card endgame-card">
+<div class="card-header"><img alt="Filo del Horizonte Roto" class="item-icon" decoding="async" loading="lazy" src="img/items/horizon_sword.png"/><h3>Filo del Horizonte Roto</h3></div>
+<p>Ascensión de la Espada de la Perdición: 16 de daño base, irrompible y con encantabilidad 22.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Filo del Horizonte Roto" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Filo del Horizonte Roto" aria-label="Filo del Horizonte Roto" class="recipe-icon recipe-head-output" data-src="img/items/horizon_sword.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Filo del Horizonte Roto" width="48"/></div>
+<div class="recipe-process"><div aria-label="Alma de Jugador" class="process-box" title="Alma de Jugador"><img alt="Alma de Jugador" aria-label="Alma de Jugador" class="recipe-icon" data-src="img/items/souls/player_soul.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Alma de Jugador" width="48"/></div><span class="process-plus">+</span><div aria-label="Espada de la Perdición" class="process-box" title="Espada de la Perdición"><img alt="Espada de la Perdición" aria-label="Espada de la Perdición" class="recipe-icon" data-src="img/items/doom_sword.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Espada de la Perdición" width="48"/></div><span class="process-plus">+</span><div aria-label="Fragmento del Horizonte" class="process-box" title="Fragmento del Horizonte"><img alt="Fragmento del Horizonte" aria-label="Fragmento del Horizonte" class="recipe-icon" data-src="img/items/horizon_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento del Horizonte" width="48"/></div><span class="process-arrow">→</span><div aria-label="Filo del Horizonte Roto" class="process-box process-output" title="Filo del Horizonte Roto"><img alt="Filo del Horizonte Roto" aria-label="Filo del Horizonte Roto" class="recipe-icon" data-src="img/items/horizon_sword.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Filo del Horizonte Roto" width="48"/></div></div>
+</div>
+</div>
+<div class="tag-row"><span class="tag cyan">16 daño</span><span class="tag red">Irrompible</span><span class="tag purple">Encantabilidad 22</span></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<button aria-label="Volver arriba" class="back-top" id="back-top" type="button">↑</button>
+<footer class="site-footer">
+<p>Scuad Random Last Time © 2026</p>
+<p>Wiki del jugador - prepárate, adapta tu estrategia y sobrevive.</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><script>
+document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Supervivencia - Scuad Random Last Time</title>
+<link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body class="site-page page-survival">
+<div aria-hidden="true" class="phase-ambient"></div>
+<nav class="site-topbar">
+<a aria-label="Inicio de Scuad Random" class="site-brand" href="index.html">
+<img alt="Scuad Random Last Time" src="img/logo.png"/>
+</a>
+<div class="site-nav-links" id="site-nav-links"><a class="" href="index.html">Inicio</a><a class="active" href="supervivencia.html">Supervivencia</a><a class="" href="arsenal.html">Arsenal</a><a class="" href="personalizacion.html">Estelas</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></div>
+<button aria-label="Activar o silenciar audio" class="site-sfx-btn" id="site-sfx-btn" type="button"><i aria-hidden="true"></i><span>AUDIO</span></button><button aria-label="Abrir navegación" class="site-menu-btn" id="site-menu-btn" type="button">☰</button>
+</nav>
+<nav aria-label="Navegación móvil" class="mobile-dock"><a class="" href="index.html">Inicio</a><a class="" href="arsenal.html">Arsenal</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></nav>
+<main class="site-main">
+<section class="site-hero">
+<div class="hero-copy">
+<span class="hero-kicker">MANUAL DE CAMPO</span>
+<h1>Sobrevive antes de improvisar.</h1>
+<p>Aquí está lo que necesitas para mantenerte en la partida: muerte permanente, economía, HUD, movilidad y servicios del Realm.</p>
+</div>
+<aside aria-label="Estado actual del evento" class="hero-panel">
+<span class="hero-phase-label">ESTADO DEL REALM</span>
+<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">End y Doom desbloqueados - la presión aumenta</span>
+<div class="hero-meter"><i id="page-threat-fill"></i></div>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+</aside>
+</section>
+<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#reglas">Reglas</a><a href="#hud">HUD</a><a href="#homes">Homes</a><a href="#servicios">Servicios</a><a href="#comandos">Comandos</a></nav>
+<div class="content-stack">
+<section id="reglas">
+<h2 class="section-title">Reglas del Realm</h2>
+<div class="guide-note"><strong>Objetivo:</strong> sobrevivir en equipo mientras el Realm cambia por fases. Guarda recursos, administra tus ScuadCoins y no subestimes las ruletas.</div>
+<div class="grid">
+<div class="card">
+<div class="card-header">
+<img alt="Alma de Jugador" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/player_soul.png"/>
+<h3>Muerte Permanente</h3>
+</div>
+<p>Al morir pasarás a Espectador y no podrás continuar hasta ser revivido. Tu inventario se conserva, pero tu equipo queda fuera de la partida mientras sigas muerto.</p>
+<div class="tag-row"><span class="tag red">Espectador al morir</span><span class="tag green">Inventario conservado</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="ScuadCoin" class="item-icon" decoding="async" loading="lazy" src="img/items/scuad_coin.png"/>
+<h3>Economía</h3>
+</div>
+<p>Los enemigos derrotados entregan ScuadCoins. Llévalas a las tiendas para comprar suministros o deposítalas en el Banco para tener una reserva segura.</p>
+<div class="tag-row"><span class="tag gold">2–5 Coins por enemigo</span><span class="tag">Banco protegido</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="Sello del Doom" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_sigil.png"/>
+<h3>Dimensiones por Fase</h3>
+</div>
+<p>El Nether, el End y la Dimensión Doom no están disponibles desde el inicio. Cada acceso se abre cuando el Realm alcanza su fase correspondiente.</p>
+<div class="tag-row"><span class="tag">Nether: Fase 1</span><span class="tag purple">End + Doom: Fase 2</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="Ración del Superviviente" class="item-icon" decoding="async" loading="lazy" src="img/items/survivor_ration.png"/>
+<h3>Protección del Evento</h3>
+</div>
+<p>Las coordenadas y la regeneración natural están activas. Los mobs no pueden destruir o alterar tus construcciones mediante griefing.</p>
+<div class="tag-row"><span class="tag green">Regeneración natural</span><span class="tag green">Mob Griefing desactivado</span></div>
+</div>
+</div>
+</section>
+<section id="hud">
+<h2 class="section-title">Cómo leer el HUD</h2>
+<div class="grid">
+<div class="card">
+<h3>Banco y temporizador</h3>
+<p>En la esquina superior izquierda se muestra tu Banco. Cuando existe un desafío, bendición, cacería u otro evento temporizado, el HUD se amplía únicamente lo necesario para mostrar el tiempo restante.</p>
+</div>
+<div class="card">
+<h3>Más Buscado</h3>
+<p>Durante una Cacería PvP puede aparecer un jugador marcado. Su nombre se muestra junto al icono de Más Buscado; derrotarlo entrega 500 ScuadCoins y convierte al asesino en el nuevo objetivo. Si el objetivo actual sobrevive hasta el final, se lleva 500 ScuadCoins.</p>
+</div>
+<div class="card">
+<h3>Estela de rareza</h3>
+<p>Algunos objetos especiales dejan una estela de color en su slot. La <strong>Baya sobrecargada</strong> usa una estela violeta y la <strong>Esquirla del Ocaso</strong> una estela cian. También puedes personalizar tus propias armas desde la <a class="inline-action" href="personalizacion.html">Forja de Estelas</a>.</p>
+</div>
+</div>
+</section>
+<section id="homes">
+<h2 class="section-title">Homes y Baya sobrecargada</h2>
+<div class="guide-note"><strong>Viaje preparado:</strong> guarda tus ubicaciones con <code>/scuad:home</code>. Cada jugador puede registrar hasta 12 Homes con nombre propio, dimensión y coordenadas exactas, y elegir si cada uno será privado o público.</div>
+<div class="grid">
+<div class="card">
+<div class="card-header">
+<!-- Agrega tu imagen en img/items/overcharged_berry.png -->
+<img alt="Baya sobrecargada" class="item-icon" decoding="async" loading="lazy" src="img/items/overcharged_berry.png"/>
+<h3>Baya sobrecargada</h3>
+</div>
+<p>Comida especial de teletransporte. Tras <strong>10 segundos de consumo</strong> abre una interfaz con tus Homes y los Homes públicos disponibles. Al seleccionar uno, te lleva a esa dimensión y ubicación.</p>
+<div class="tag-row"><span class="tag purple">Cooldown: 15 min</span><span class="tag cyan">Stack: 16</span><span class="tag purple">Estela violeta</span></div>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Baya sobrecargada" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Baya sobrecargada" aria-label="Baya sobrecargada" class="recipe-icon recipe-head-output" data-src="img/items/overcharged_berry.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Baya sobrecargada" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover">
+<div aria-label="Perla de Ender" class="recipe-slot" title="Perla de Ender"><img alt="Perla de Ender" aria-label="Perla de Ender" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:ender_pearl/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Perla de Ender" width="48"/></div><div aria-label="Fragmento de Amatista" class="recipe-slot" title="Fragmento de Amatista"><img alt="Fragmento de Amatista" aria-label="Fragmento de Amatista" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:amethyst_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Amatista" width="48"/></div><div aria-label="Perla de Ender" class="recipe-slot" title="Perla de Ender"><img alt="Perla de Ender" aria-label="Perla de Ender" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:ender_pearl/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Perla de Ender" width="48"/></div>
+<div aria-label="Fragmento de Amatista" class="recipe-slot" title="Fragmento de Amatista"><img alt="Fragmento de Amatista" aria-label="Fragmento de Amatista" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:amethyst_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Amatista" width="48"/></div><div aria-label="Baya brillante" class="recipe-slot" title="Baya brillante"><img alt="Baya brillante" aria-label="Baya brillante" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:glow_berries/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Baya brillante" width="48"/></div><div aria-label="Fragmento de Amatista" class="recipe-slot" title="Fragmento de Amatista"><img alt="Fragmento de Amatista" aria-label="Fragmento de Amatista" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:amethyst_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Amatista" width="48"/></div>
+<div aria-label="Perla de Ender" class="recipe-slot" title="Perla de Ender"><img alt="Perla de Ender" aria-label="Perla de Ender" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:ender_pearl/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Perla de Ender" width="48"/></div><div aria-label="Fragmento de Amatista" class="recipe-slot" title="Fragmento de Amatista"><img alt="Fragmento de Amatista" aria-label="Fragmento de Amatista" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:amethyst_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Amatista" width="48"/></div><div aria-label="Perla de Ender" class="recipe-slot" title="Perla de Ender"><img alt="Perla de Ender" aria-label="Perla de Ender" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:ender_pearl/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Perla de Ender" width="48"/></div>
+</div>
+<div aria-label="Resultado: Baya sobrecargada" class="recipe-result" title="Baya sobrecargada"><span class="recipe-result-arrow">→</span><img alt="Baya sobrecargada" aria-label="Baya sobrecargada" class="recipe-icon recipe-result-icon" data-src="img/items/overcharged_berry.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Baya sobrecargada" width="48"/></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>/scuad:home</h3>
+<p>Abre el menú de Homes para guardar la posición en la que estás, asignarle el nombre que quieras, decidir si es <strong>pública o privada</strong> y administrar ubicaciones anteriores.</p>
+<div class="tag-row"><span class="tag green">Todos pueden usarlo</span><span class="tag">12 Homes por jugador</span></div>
+</div>
+<div class="card">
+<h3>Privados y públicos</h3>
+<p>Los Homes privados solo aparecen para su propietario. Los Homes públicos pueden aparecer en el selector de Baya de otros jugadores, permitiendo crear puntos comunitarios sin exponer tus bases privadas.</p>
+<div class="player-only-note">La Baya se consume al completar el uso. Su cooldown evita encadenar teletransportes de emergencia.</div>
+</div>
+</div>
+</section>
+<section id="servicios">
+<h2 class="section-title">Estructuras Interactivas</h2>
+<div class="grid">
+<div class="card">
+<div class="card-header">
+<img alt="ScuadCoin" class="item-icon" decoding="async" loading="lazy" src="img/items/scuad_coin.png"/>
+<h3>Banco Central</h3>
+</div>
+<p>Deposita todas las ScuadCoins que lleves encima o retira únicamente la cantidad que necesites. Lo depositado permanece guardado aunque mueras.</p>
+<div class="tag-row"><span class="tag gold">Retirar 1 stack: 64</span><span class="tag gold">2 stacks: 128</span><span class="tag gold">4 stacks: 256</span><span class="tag">Retirar todo</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="Ración del Superviviente" class="item-icon" decoding="async" loading="lazy" src="img/items/survivor_ration.png"/>
+<h3>Tienda de Comida</h3>
+</div>
+<p>Provisiones para mantenerte con vida. Su catálogo crece conforme avanza el evento por sus fases.</p>
+<div class="tag-row"><span class="tag gold">9 Coins: Filete x16</span><span class="tag gold">13 Coins: Manzana Dorada</span><span class="tag gold">17 Coins: Ración x2</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="Poción de Pánico" class="item-icon" decoding="async" loading="lazy" src="img/items/panic_potion.png"/>
+<h3>Tienda de Pociones</h3>
+</div>
+<p>Compra pociones de emergencia y alquimia avanzada. Las opciones más poderosas se desbloquean con las fases.</p>
+<div class="tag-row"><span class="tag gold">17 Coins: Curación II</span><span class="tag gold">21 Coins: Resistencia al Fuego</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="Alma de Jugador" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/player_soul.png"/>
+<h3>Urna de Oro</h3>
+</div>
+<p>Intercambia riqueza por recursos especiales: Almas de Jugador, tótems, Perlas de Ender y experiencia.</p>
+<div class="tag-row"><span class="tag gold">89 Coins: Alma</span><span class="tag gold">137 Coins: Tótem</span><span class="tag gold">23 Coins: Perlas x4</span><span class="tag gold">97 Coins: XP x64</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<img alt="Alma de Jugador" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/player_soul.png"/>
+<h3>Fosa de Almas</h3>
+</div>
+<p>Usa 1 Alma de Jugador para devolver a un compañero desde Espectador. El jugador revivido aparecerá junto a la fosa.</p>
+<div class="tag-row"><span class="tag purple">Consume 1 Alma</span></div>
+</div>
+</div>
+</section>
+<section id="comandos">
+<h2 class="section-title">Comandos útiles para jugadores</h2>
+<div class="grid">
+<div class="command-card">
+<h3>/scuad:home</h3>
+<p>Guarda, nombra y administra tus Homes privados o públicos. La Baya sobrecargada usa estas ubicaciones como destinos.</p>
+</div>
+<div class="command-card">
+<h3>/scuad:spectate</h3>
+<p>Si estás muerto y en Espectador, abre una lista de jugadores vivos para seguir su aventura mientras esperas una resurrección.</p>
+</div>
+<div class="command-card">
+<h3>/scuad:doom</h3>
+<p>Abre el menú para entrar o salir de la Dimensión Doom cuando el evento haya alcanzado la Fase 2.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<button aria-label="Volver arriba" class="back-top" id="back-top" type="button">↑</button>
+<footer class="site-footer">
+<p>Scuad Random Last Time © 2026</p>
+<p>Wiki del jugador - prepárate, adapta tu estrategia y sobrevive.</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

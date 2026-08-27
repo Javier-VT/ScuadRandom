@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><script>
+document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Doom y amenazas - Scuad Random Last Time</title>
+<link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body class="site-page page-doom">
+<div aria-hidden="true" class="phase-ambient"></div>
+<nav class="site-topbar">
+<a aria-label="Inicio de Scuad Random" class="site-brand" href="index.html">
+<img alt="Scuad Random Last Time" src="img/logo.png"/>
+</a>
+<div class="site-nav-links" id="site-nav-links"><a class="" href="index.html">Inicio</a><a class="" href="supervivencia.html">Supervivencia</a><a class="" href="arsenal.html">Arsenal</a><a class="" href="personalizacion.html">Estelas</a><a class="active" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></div>
+<button aria-label="Activar o silenciar audio" class="site-sfx-btn" id="site-sfx-btn" type="button"><i aria-hidden="true"></i><span>AUDIO</span></button><button aria-label="Abrir navegación" class="site-menu-btn" id="site-menu-btn" type="button">☰</button>
+</nav>
+<nav aria-label="Navegación móvil" class="mobile-dock"><a class="" href="index.html">Inicio</a><a class="" href="arsenal.html">Arsenal</a><a class="active" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="" href="eventos.html">Ruletas</a></nav>
+<main class="site-main">
+<section class="site-hero">
+<div class="hero-copy">
+<span class="hero-kicker">DOOM Y AMENAZAS</span>
+<h1>Entra preparado. Salir ya es otra historia.</h1>
+<p>Consulta expediciones, botín, jefes y el camino hacia el final. El contenido futuro permanece sellado hasta que corresponda.</p>
+</div>
+<aside aria-label="Estado actual del evento" class="hero-panel">
+<span class="hero-phase-label">ESTADO DEL REALM</span>
+<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">End y Doom desbloqueados - la presión aumenta</span>
+<div class="hero-meter"><i id="page-threat-fill"></i></div>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+</aside>
+</section>
+<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#doom">Doom</a><a href="#jefes">Amenazas</a><a href="#endgame-sr">Final</a></nav>
+<div class="content-stack">
+<section class="phase-section" data-unlock-phase="2" id="doom">
+<h2 class="section-title">Expediciones al Doom</h2>
+<div class="guide-note"><strong>Consejo:</strong> entra preparado. Las islas flotantes, ruinas, castillo y zonas especiales esconden botín raro, pero también guardianes y oleadas. Los recursos se renuevan cada 2 días del mundo.</div>
+<div class="grid">
+<div class="card">
+<div class="card-header"><img alt="Sello del Doom" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_sigil.png"/><h3>Sello del Doom</h3></div>
+<p>Abre el menú de expedición a la Dimensión Doom. También puedes abrirlo con <strong>/scuad:doom</strong>.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Sello del Doom" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Sello del Doom" aria-label="Sello del Doom" class="recipe-icon recipe-head-output" data-src="img/items/doom_sigil.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Sello del Doom" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Obsidiana" class="recipe-slot" title="Obsidiana"><img alt="Obsidiana" aria-label="Obsidiana" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:obsidian/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Obsidiana" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Obsidiana" class="recipe-slot" title="Obsidiana"><img alt="Obsidiana" aria-label="Obsidiana" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:obsidian/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Obsidiana" width="48"/></div><div aria-label="Esmeralda" class="recipe-slot" title="Esmeralda"><img alt="Esmeralda" aria-label="Esmeralda" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:emerald/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Esmeralda" width="48"/></div><div aria-label="Obsidiana Llorosa" class="recipe-slot" title="Obsidiana Llorosa"><img alt="Obsidiana Llorosa" aria-label="Obsidiana Llorosa" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crying_obsidian/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Obsidiana Llorosa" width="48"/></div><div aria-label="Esmeralda" class="recipe-slot" title="Esmeralda"><img alt="Esmeralda" aria-label="Esmeralda" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:emerald/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Esmeralda" width="48"/></div><div aria-label="Obsidiana" class="recipe-slot" title="Obsidiana"><img alt="Obsidiana" aria-label="Obsidiana" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:obsidian/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Obsidiana" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Obsidiana" class="recipe-slot" title="Obsidiana"><img alt="Obsidiana" aria-label="Obsidiana" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:obsidian/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Obsidiana" width="48"/></div></div>
+<div aria-label="Resultado: Sello del Doom" class="recipe-result" title="Sello del Doom"><span class="recipe-result-arrow">→</span><img alt="Sello del Doom" aria-label="Sello del Doom" class="recipe-icon recipe-result-icon" data-src="img/items/doom_sigil.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Sello del Doom" width="48"/></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Núcleo del Doom" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_core.png"/><h3>Núcleo del Doom</h3></div>
+<p>Recurso raro de las expediciones. Puede aparecer en botines del Doom y es esencial para fabricar objetos de alto nivel.</p>
+<div class="tag-row"><span class="tag purple">Stack: 16</span></div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Catalizador del Cataclismo" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_catalyst.png"/><h3>Catalizador del Cataclismo</h3></div>
+<p>Material necesario para transformar una pieza de Netherite en Armadura de la Perdición.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Catalizador del Cataclismo" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Catalizador del Cataclismo" aria-label="Catalizador del Cataclismo" class="recipe-icon recipe-head-output" data-src="img/items/doom_catalyst.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Catalizador del Cataclismo" width="48"/></div>
+<div aria-hidden="true" class="recipe-variant-title">Variante principal</div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Estrella del Nether" class="recipe-slot" title="Estrella del Nether"><img alt="Estrella del Nether" aria-label="Estrella del Nether" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:nether_star/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Estrella del Nether" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div></div>
+<div aria-label="Resultado: Catalizador" class="recipe-result" title="Catalizador"><span class="recipe-result-arrow">→</span><img alt="Catalizador" aria-label="Catalizador" class="recipe-icon recipe-result-icon" data-src="img/items/doom_catalyst.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Catalizador" width="48"/></div>
+<div aria-hidden="true" class="recipe-variant-title">Variante con Netherite</div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Bloque de Netherite" class="recipe-slot" title="Bloque de Netherite"><img alt="Bloque de Netherite" aria-label="Bloque de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_block/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Bloque de Netherite" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div><div aria-label="Fragmento de Eco" class="recipe-slot" title="Fragmento de Eco"><img alt="Fragmento de Eco" aria-label="Fragmento de Eco" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:echo_shard/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Fragmento de Eco" width="48"/></div><div aria-label="Núcleo del Doom" class="recipe-slot" title="Núcleo del Doom"><img alt="Núcleo del Doom" aria-label="Núcleo del Doom" class="recipe-icon" data-src="img/items/doom_core.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Núcleo del Doom" width="48"/></div></div>
+<div aria-label="Resultado: Catalizador" class="recipe-result" title="Catalizador"><span class="recipe-result-arrow">→</span><img alt="Catalizador" aria-label="Catalizador" class="recipe-icon recipe-result-icon" data-src="img/items/doom_catalyst.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Catalizador" width="48"/></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Armadura de la Perdición" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_chestplate.png"/><h3>Armadura de la Perdición</h3></div>
+<div class="armor-set-row">
+<img alt="Yelmo" decoding="async" loading="lazy" src="img/items/doom_helmet.png"/>
+<img alt="Coraza" decoding="async" loading="lazy" src="img/items/doom_chestplate.png"/>
+<img alt="Grebas" decoding="async" loading="lazy" src="img/items/doom_leggings.png"/>
+<img alt="Botas" decoding="async" loading="lazy" src="img/items/doom_boots.png"/>
+</div>
+<p>Mejora cada pieza de Netherite usando un Catalizador del Cataclismo. El set completo suma <strong>32 puntos de protección</strong>, es irrompible y otorga Fuerza, Resistencia II, Resistencia al Fuego, Visión Nocturna y 5 corazones extra.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Armadura de la Perdición" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de herrería" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:smithing_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de herrería" width="38"/><img alt="Armadura de la Perdición" aria-label="Armadura de la Perdición" class="recipe-icon recipe-head-output" data-src="img/items/doom_chestplate.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Armadura de la Perdición" width="48"/></div>
+<div class="recipe-process"><div aria-label="Plantilla de Mejora de Netherite" class="process-box" title="Plantilla de Mejora de Netherite"><img alt="Plantilla de Mejora de Netherite" aria-label="Plantilla de Mejora de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_upgrade_smithing_template/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Plantilla de Mejora de Netherite" width="48"/></div><span class="process-plus">+</span><div aria-label="Pieza de Netherite" class="process-box" title="Pieza de Netherite"><img alt="Pieza de Netherite" aria-label="Pieza de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_chestplate/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pieza de Netherite" width="48"/></div><span class="process-plus">+</span><div aria-label="Catalizador del Cataclismo" class="process-box" title="Catalizador del Cataclismo"><img alt="Catalizador del Cataclismo" aria-label="Catalizador del Cataclismo" class="recipe-icon" data-src="img/items/doom_catalyst.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Catalizador del Cataclismo" width="48"/></div><span class="process-arrow">→</span><div aria-label="Pieza de la Perdición" class="process-box process-output" title="Pieza de la Perdición"><img alt="Pieza de la Perdición" aria-label="Pieza de la Perdición" class="recipe-icon" data-src="img/items/doom_chestplate.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Pieza de la Perdición" width="48"/></div></div><p class="recipe-detail-note">La pieza base determina si obtienes yelmo, coraza, grebas o botas.</p>
+</div>
+</div>
+<div class="tag-row"><span class="tag purple">32 protección total</span><span class="tag red">Irrompible</span><span class="tag green">+5 corazones</span></div>
+</div>
+<div class="card">
+<div class="card-header"><img alt="Espada de la Perdición" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_sword.png"/><h3>Espada de la Perdición</h3></div>
+<p>Espada irrompible de 12 de daño base y encantabilidad 18. Es el arma del conjunto Perdición y sirve como base para el Filo del Horizonte.</p>
+<div class="recipe-entry">
+<button aria-expanded="false" class="recipe-toggle" type="button">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div aria-label="Receta de Espada de la Perdición" class="recipe-popover" role="region">
+<div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64" height="38" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Mesa de crafteo" width="38"/><img alt="Espada de la Perdición" aria-label="Espada de la Perdición" class="recipe-icon recipe-head-output" data-src="img/items/doom_sword.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Espada de la Perdición" width="48"/></div>
+<div class="recipe-grid recipe-grid-popover"><div aria-label="Espada de Netherite" class="recipe-slot" title="Espada de Netherite"><img alt="Espada de Netherite" aria-label="Espada de Netherite" class="recipe-icon" data-src="https://blocksitems.com/api/v1/items/minecraft:netherite_sword/icon?size=64" decoding="async" height="48" referrerpolicy="no-referrer" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Espada de Netherite" width="48"/></div><div aria-label="Catalizador del Cataclismo" class="recipe-slot" title="Catalizador del Cataclismo"><img alt="Catalizador del Cataclismo" aria-label="Catalizador del Cataclismo" class="recipe-icon" data-src="img/items/doom_catalyst.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Catalizador del Cataclismo" width="48"/></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div><div aria-hidden="true" class="recipe-slot recipe-slot-empty"></div></div>
+<div aria-label="Resultado: Espada de la Perdición" class="recipe-result" title="Espada de la Perdición"><span class="recipe-result-arrow">→</span><img alt="Espada de la Perdición" aria-label="Espada de la Perdición" class="recipe-icon recipe-result-icon" data-src="img/items/doom_sword.png" decoding="async" height="48" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" title="Espada de la Perdición" width="48"/></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
+<div class="tag-row"><span class="tag purple">12 daño</span><span class="tag red">Irrompible</span><span class="tag">Encantable</span></div>
+</div></div>
+<p class="mini-title">Recompensas de expedición</p>
+<div class="phase-box">
+<p>Cada 12 enemigos derrotados dentro del Doom recibes 20 + fase×8 ScuadCoins y suministros de expedición. Los cofres pueden contener Coins, diamantes, Netherite, Fragmentos de Eco, Núcleos del Doom y otros objetos raros.</p>
+</div>
+</section>
+<section class="phase-section" data-unlock-phase="2" id="jefes">
+<h2 class="section-title">Jefes, élites y recompensas</h2>
+<p class="guide-note">Los jefes fueron balanceados para convivir con armas de alto DPS. Las armas de Improvised Guns tienen control anti-ráfaga sobre jefes para evitar eliminaciones instantáneas, sin alterar el daño normal de espadas y equipo vanilla.</p>
+<div class="grid">
+<div class="card"><div class="card-header"><img alt="Giga Slime" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/gelatinous_soul.png"/><h3>Giga Slime</h3></div><p>Jefe gigante de presión cuerpo a cuerpo.</p><div class="tag-row"><span class="tag red">1200 HP</span><span class="tag purple">26 daño</span><span class="tag gold">Alma Gelatinosa</span></div></div>
+<div class="card"><div class="card-header"><img alt="Emperador" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/stinging_soul.png"/><h3>El Emperador</h3></div><p>Combatiente de Netherite, resistente y agresivo.</p><div class="tag-row"><span class="tag red">800 HP</span><span class="tag purple">18 daño</span><span class="tag gold">Alma Punzante</span></div></div>
+<div class="card"><div class="card-header"><img alt="Ghast Infernal" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/burning_soul.png"/><h3>Ghast Infernal</h3></div><p>Jefe aéreo de fuego con cadencia ofensiva reforzada.</p><div class="tag-row"><span class="tag red">1000 HP</span><span class="tag gold">Alma Ígnea</span></div></div>
+<div class="card"><div class="card-header"><img alt="Devastador Espectral" class="item-icon" decoding="async" loading="lazy" src="img/items/souls/howling_soul.png"/><h3>Devastador Espectral</h3></div><p>Jefe espectral pesado con persecución terrestre mejorada.</p><div class="tag-row"><span class="tag red">1400 HP</span><span class="tag purple">27 daño</span><span class="tag gold">Alma Aullante</span></div></div>
+<div class="card"><div class="card-header"><img alt="Coloso del Umbral" class="item-icon" decoding="async" loading="lazy" src="img/items/threshold_heart.png"/><h3>Coloso del Umbral</h3></div><p>Jefe de Fase 5 con segunda fase, esbirros, regeneración y grietas del Umbral. Horizonte ya puede prepararse desde Fase 4; derrotar al Coloso sigue siendo una prueba de endgame y entrega 2 Esquirlas del Ocaso.</p><div class="tag-row"><span class="tag red">3200 HP</span><span class="tag purple">32 / 42 daño</span><span class="tag cyan">2 Esquirlas</span></div></div>
+<div class="card"><div class="card-header"><img alt="Recompensas" class="item-icon" decoding="async" loading="lazy" src="img/items/scuad_coin.png"/><h3>Recompensas de jefe</h3></div><p>Los jefes entregan 55 + fase×15 Coins más un extra aleatorio, esmeraldas y probabilidades de botín raro. Dentro del Doom existe además una bonificación independiente.</p><div class="tag-row"><span class="tag gold">+30 a +50 en Doom</span><span class="tag green">Loot raro mejorado</span></div></div>
+<div class="card"><div class="card-header"><img alt="Élites" class="item-icon" decoding="async" loading="lazy" src="img/items/scuad_coin.png"/><h3>Élites</h3></div><p>Guardias Doom, hostiles adaptativos y variantes especiales tienen recompensa propia.</p><div class="tag-row"><span class="tag gold">15 + fase×3</span><span class="tag">0–10 extra</span></div></div>
+</div>
+</section>
+<section class="phase-section" data-unlock-phase="5" id="endgame-sr">
+<h2 class="section-title">Fase 5: Cataclismo y Boss Rush</h2>
+<div class="grid">
+<div class="card endgame-card">
+<div class="card-header"><img alt="Catalizador del Cataclismo" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_catalyst.png"/><h3>Dragona del Cataclismo</h3></div>
+<p>En Fase 5, usa un Catalizador en el End para despertar la variante final de la Dragona: escudos en 75/50/25%, meteoros, refuerzos, oscuridad y mayor resistencia contra ráfagas.</p>
+<div class="tag-row"><span class="tag red">Fase 5</span><span class="tag purple">3 etapas de escudo</span><span class="tag gold">Recompensa especial</span></div>
+</div>
+<div class="card endgame-card">
+<div class="card-header"><img alt="Boss Rush" class="item-icon" decoding="async" loading="lazy" src="img/items/doom_sigil.png"/><h3>Boss Rush final</h3></div>
+<p>Con la integración de Nameless activa, usar el Terminus dentro del Doom después de haber derrotado a Nameless inicia el evento final: Tier 1 Vanilla → Tier 2 SR → Tier 3 Nameless Deity.</p>
+<div class="tag-row"><span class="tag gold">Tier 1: Vanilla</span><span class="tag red">Tier 2: SR</span><span class="tag purple">Tier 3: Nameless</span></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<button aria-label="Volver arriba" class="back-top" id="back-top" type="button">↑</button>
+<footer class="site-footer">
+<p>Scuad Random Last Time © 2026</p>
+<p>Wiki del jugador - prepárate, adapta tu estrategia y sobrevive.</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

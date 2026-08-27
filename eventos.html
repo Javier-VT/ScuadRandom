@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head><script>
+document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ruletas y eventos - Scuad Random Last Time</title>
+<link href="assets/styles.css" rel="stylesheet"/>
+</head>
+<body class="site-page page-events">
+<div aria-hidden="true" class="phase-ambient"></div>
+<nav class="site-topbar">
+<a aria-label="Inicio de Scuad Random" class="site-brand" href="index.html">
+<img alt="Scuad Random Last Time" src="img/logo.png"/>
+</a>
+<div class="site-nav-links" id="site-nav-links"><a class="" href="index.html">Inicio</a><a class="" href="supervivencia.html">Supervivencia</a><a class="" href="arsenal.html">Arsenal</a><a class="" href="personalizacion.html">Estelas</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="active" href="eventos.html">Ruletas</a></div>
+<button aria-label="Activar o silenciar audio" class="site-sfx-btn" id="site-sfx-btn" type="button"><i aria-hidden="true"></i><span>AUDIO</span></button><button aria-label="Abrir navegación" class="site-menu-btn" id="site-menu-btn" type="button">☰</button>
+</nav>
+<nav aria-label="Navegación móvil" class="mobile-dock"><a class="" href="index.html">Inicio</a><a class="" href="arsenal.html">Arsenal</a><a class="" href="doom.html">Doom</a><a class="" href="fases.html">Fases</a><a class="active" href="eventos.html">Ruletas</a></nav>
+<main class="site-main events-wide">
+<section class="site-hero">
+<div class="hero-copy">
+<span class="hero-kicker">RULETAS Y EVENTOS</span>
+<h1>El destino no avisa dos veces.</h1>
+<p>Selecciona un color para revelar sus posibilidades. En móvil, los controles se mantienen táctiles y la información se adapta al ancho disponible.</p>
+</div>
+<aside aria-label="Estado actual del evento" class="hero-panel">
+<span class="hero-phase-label">ESTADO DEL REALM</span>
+<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">End y Doom desbloqueados - la presión aumenta</span>
+<div class="hero-meter"><i id="page-threat-fill"></i></div>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+</aside>
+</section>
+<div class="content-stack">
+<section class="ruleta-section-master" id="ruleta">
+<!-- Generador de partículas CSS Aleatorias -->
+<div class="particles-container">
+<div class="particle p-small" style="left: 10%; animation-duration: 6s; animation-delay: 0s;"></div>
+<div class="particle p-large" style="left: 25%; animation-duration: 4s; animation-delay: 1s;"></div>
+<div class="particle p-medium" style="left: 45%; animation-duration: 7s; animation-delay: 2s;"></div>
+<div class="particle p-small" style="left: 65%; animation-duration: 5s; animation-delay: 0.5s;"></div>
+<div class="particle p-large" style="left: 85%; animation-duration: 6s; animation-delay: 3s;"></div>
+<div class="particle p-medium" style="left: 5%; animation-duration: 5s; animation-delay: 2.5s;"></div>
+<div class="particle p-small" style="left: 95%; animation-duration: 8s; animation-delay: 1.5s;"></div>
+</div>
+<div class="ruleta-layout">
+<!-- FILA SUPERIOR -->
+<div class="ruleta-top">
+<!-- Mitad de la Ruleta con GLITCH EFFECT -->
+<div class="ruleta-half-wrapper" id="ruleta-borde">
+<div class="ruleta-glitch-wrapper">
+<img alt="Ruleta de Eventos" class="ruleta-img spin-lento" id="ruleta-visual" src="img/roulettes/ruleta_base.png"/>
+</div>
+</div>
+<!-- Controles -->
+<div class="ruleta-controles">
+<h2>El Destino Gira</h2>
+<p>Las ruletas aparecen durante el evento y no se solapan entre sí. El rojo representa cambios de fase; amarillo activa desafíos, naranja maldiciones, azul bendiciones, verde beneficios globales y morado eventos PvP. Las bendiciones y maldiciones duran <strong>30 minutos</strong> y morir no elimina sus efectos mientras el evento siga activo.</p>
+<div class="filtros-colores">
+<button class="btn-filtro btn-rojo" onclick="mostrarEventos('ROJO')">Rojo</button>
+<button class="btn-filtro btn-amarillo" onclick="mostrarEventos('AMARILLO')">Amarillo</button>
+<button class="btn-filtro btn-naranja" onclick="mostrarEventos('NARANJA')">Naranja</button>
+<button class="btn-filtro btn-azul" onclick="mostrarEventos('AZUL')">Azul</button>
+<button class="btn-filtro btn-verde" onclick="mostrarEventos('VERDE')">Verde</button>
+<button class="btn-filtro btn-morado" onclick="mostrarEventos('MORADO')">Morado</button>
+<button class="btn-filtro btn-reset activo" onclick="mostrarEventos('BASE')">Ocultar</button>
+</div>
+</div>
+</div>
+<!-- FILA INFERIOR (Info) -->
+<div class="ruleta-bottom">
+<div class="eventos-info" id="caja-eventos">
+<h3 id="titulo-evento" style="color: var(--scuad-red);">Visor de Eventos</h3>
+<ul class="eventos-lista" id="lista-eventos">
+<li style="animation: slideInUp 0.4s ease forwards;">Selecciona un color arriba para explorar sus posibilidades.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<button aria-label="Volver arriba" class="back-top" id="back-top" type="button">↑</button>
+<footer class="site-footer">
+<p>Scuad Random Last Time © 2026</p>
+<p>Wiki del jugador - prepárate, adapta tu estrategia y sobrevive.</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
