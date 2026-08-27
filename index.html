@@ -1257,6 +1257,58 @@ body[data-phase="5"] .phase-command-top h2 {
     .recipe-slot { font-size: 8px; }
 }
 
+
+/* ===== VISIBILIDAD DE CONTENIDO POR FASE ===== */
+.phase-item-group-locked {
+    filter: saturate(.28);
+    border-color: #2d2424 !important;
+    box-shadow: none !important;
+}
+.phase-gated-card {
+    grid-column: 1 / -1;
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-style: dashed;
+    border-color: #332929 !important;
+    background:
+        repeating-linear-gradient(-45deg, #090707 0 12px, #0c0808 12px 24px);
+    color: #5f5555;
+}
+.phase-gated-code {
+    color: #625757;
+    font: 8px 'Press Start 2P', monospace;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+.phase-gated-card h3 {
+    color: #655b5b;
+    letter-spacing: 5px;
+}
+.phase-section.phase-section-locked {
+    min-height: 150px;
+}
+.phase-section.phase-section-locked .phase-box {
+    border-left-color: #333 !important;
+    background: #090707 !important;
+    box-shadow: none !important;
+}
+.phase-section.phase-section-locked .phase-box h4 {
+    color: #625858 !important;
+    letter-spacing: 6px;
+}
+.phase-box.phase-locked {
+    border-left-color: #333 !important;
+    background: #090707 !important;
+    box-shadow: none !important;
+}
+.phase-box.phase-locked h4 {
+    color: #625858 !important;
+}
+
 </style>
 </head>
 <body><div aria-hidden="true" class="phase-ambient"></div>
@@ -1271,9 +1323,9 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="particle p-small" style="left: 85%; animation-duration: 4.5s; animation-delay: 2s;"></div>
 </div>
 <img alt="Scuad Random Last Time" class="logo" src="img/logo.png"/><div class="phase-status" id="phase-status">
-<span class="phase-status-kicker">WIKI DEL JUGADOR</span>
-<strong id="phase-status-title">SCUAD RANDOM · LAST TIME</strong>
-<span class="phase-status-sub" id="phase-status-sub">Reglas, objetos, fases, Doom, ruletas y endgame</span>
+<span class="phase-status-kicker">ESTADO DEL EVENTO</span>
+<strong id="phase-status-title">FASE 2 · SUPERVIVENCIA</strong>
+<span class="phase-status-sub" id="phase-status-sub">End y Doom desbloqueados · la presión aumenta</span>
 </div>
 <!-- Indicador de Scroll FIX -->
 <div class="scroll-indicator">
@@ -1287,22 +1339,22 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="phase-command-top">
 <div>
 <span class="command-eyebrow">PROGRESIÓN DEL EVENTO</span>
-<h2>Las <span>6 etapas</span> de SR</h2>
-<p>La dificultad escala de Fase 0 a Fase 5. Esta wiki muestra la progresión completa para que puedas planear equipo, expediciones y recursos con anticipación.</p>
+<h2>Fase actual: <span id="phase-current-number">2</span></h2>
+<p>El Realm evoluciona por etapas. La wiki muestra únicamente la información disponible en el estado actual del evento.</p>
 </div>
 <div class="threat-meter">
-<span>ESCALADA DE AMENAZA</span>
-<div class="threat-track"><i style="width:100%"></i></div>
-<strong>FASE 0 → 5</strong>
+<span>NIVEL DE AMENAZA</span>
+<div class="threat-track"><i id="threat-fill"></i></div>
+<strong id="threat-label">ALTO</strong>
 </div>
 </div>
 <div class="phase-track" id="phase-track">
-<div class="phase-node wiki-visible"><span>0</span><b>Preparación</b></div>
-<div class="phase-node wiki-visible"><span>1</span><b>Despertar</b></div>
-<div class="phase-node wiki-visible"><span>2</span><b>Supervivencia</b></div>
-<div class="phase-node wiki-visible"><span>3</span><b>Pesadilla</b></div>
-<div class="phase-node wiki-visible"><span>4</span><b>Muerte</b></div>
-<div class="phase-node wiki-visible"><span>5</span><b>Apocalipsis</b></div>
+<div class="phase-node" data-node-phase="0"><span>0</span><b>Preparación</b></div>
+<div class="phase-node" data-node-phase="1"><span>1</span><b>Despertar</b></div>
+<div class="phase-node" data-node-phase="2"><span>2</span><b>Supervivencia</b></div>
+<div class="phase-node" data-node-phase="3"><span>3</span><b>Pesadilla</b></div>
+<div class="phase-node" data-node-phase="4"><span>4</span><b>Muerte</b></div>
+<div class="phase-node" data-node-phase="5"><span>5</span><b>Apocalipsis</b></div>
 </div>
 </section>
 <!-- Guía esencial -->
@@ -1853,6 +1905,110 @@ body[data-phase="5"] .phase-command-top h2 {
 <p style="margin-top: 5px; color: #555;">Wiki desarrollada para sobrevivir al Realm.</p>
 </footer>
 <script>
+
+        // ===============================================
+        // ESTADO Y VISIBILIDAD DE FASES
+        // Cambia únicamente este valor cuando avance el evento.
+        // ===============================================
+        const FASE_ACTUAL = 2;
+
+        const identidadFases = [
+            { nombre: "PREPARACIÓN", subtitulo: "Paz aparente · reúne recursos", amenaza: "BAJA", pct: 12 },
+            { nombre: "EL DESPERTAR", subtitulo: "Nether abierto · primeras mutaciones", amenaza: "MODERADA", pct: 30 },
+            { nombre: "SUPERVIVENCIA", subtitulo: "End y Doom desbloqueados · la presión aumenta", amenaza: "ALTA", pct: 48 },
+            { nombre: "PESADILLA", subtitulo: "Mutaciones avanzadas · ceniza y asedios", amenaza: "SEVERA", pct: 66 },
+            { nombre: "MUERTE INMINENTE", subtitulo: "Élites, tormentas y errores letales", amenaza: "CRÍTICA", pct: 84 },
+            { nombre: "APOCALIPSIS TOTAL", subtitulo: "El Realm ha dejado de perdonar", amenaza: "EXTREMA", pct: 100 }
+        ];
+
+        function obtenerFaseActual() {
+            return Math.max(0, Math.min(5, Number(FASE_ACTUAL) || 0));
+        }
+
+        function aplicarIdentidadDeFase() {
+            const fase = obtenerFaseActual();
+            const data = identidadFases[fase];
+            document.body.dataset.phase = String(fase);
+
+            const title = document.getElementById("phase-status-title");
+            const sub = document.getElementById("phase-status-sub");
+            const num = document.getElementById("phase-current-number");
+            const fill = document.getElementById("threat-fill");
+            const label = document.getElementById("threat-label");
+
+            if (title) title.textContent = `FASE ${fase} · ${data.nombre}`;
+            if (sub) sub.textContent = data.subtitulo;
+            if (num) num.textContent = String(fase);
+            if (fill) fill.style.width = `${data.pct}%`;
+            if (label) label.textContent = data.amenaza;
+
+            document.querySelectorAll("[data-node-phase]").forEach(node => {
+                const nodePhase = Number(node.dataset.nodePhase);
+                node.classList.toggle("is-complete", nodePhase < fase);
+                node.classList.toggle("is-current", nodePhase === fase);
+                node.classList.toggle("is-locked", nodePhase > fase);
+            });
+
+            document.querySelectorAll("#evolucion-fases .phase-box[data-phase]").forEach(box => {
+                box.classList.toggle("phase-active", Number(box.dataset.phase) === fase);
+            });
+
+            document.querySelectorAll(".phase-item-group .phase-now").forEach(badge => badge.remove());
+            const currentGroup = document.querySelector(`.phase-item-group[data-phase-group="${fase}"] .phase-group-header`);
+            if (currentGroup) {
+                const badge = document.createElement("span");
+                badge.className = "phase-now";
+                badge.textContent = "ACTUAL";
+                currentGroup.appendChild(badge);
+            }
+        }
+
+        function aplicarBloqueoDeFases() {
+            const fasePermitida = obtenerFaseActual();
+
+            document.querySelectorAll('[data-unlock-phase]').forEach((elemento) => {
+                const fase = Number(elemento.dataset.unlockPhase);
+                if (!Number.isFinite(fase) || fase <= fasePermitida) return;
+
+                if (elemento.classList.contains('phase-item-group')) {
+                    elemento.classList.add('phase-item-group-locked');
+                    const grid = elemento.querySelector('.grid');
+                    if (grid) {
+                        grid.innerHTML = `
+                            <div class="card phase-gated-card" aria-label="Fase ${fase}">
+                                <span class="phase-gated-code">FASE ${fase}</span>
+                                <h3>••••••</h3>
+                            </div>
+                        `;
+                    }
+                    return;
+                }
+
+                if (elemento.classList.contains('phase-section')) {
+                    elemento.classList.add('phase-section-locked');
+                    elemento.innerHTML = `
+                        <h2 class="section-title">FASE ${fase}</h2>
+                        <div class="phase-box phase-locked">
+                            <h4>••••••</h4>
+                        </div>
+                    `;
+                    return;
+                }
+
+                if (elemento.classList.contains('phase-box')) {
+                    elemento.classList.add('phase-locked');
+                    elemento.innerHTML = `<h4>FASE ${fase} · ••••••</h4>`;
+                    return;
+                }
+
+                elemento.innerHTML = '';
+                elemento.setAttribute('hidden', '');
+            });
+        }
+
+        aplicarIdentidadDeFase();
+        aplicarBloqueoDeFases();
+
         // ===============================================
         // HEADER (PANTALLA COMPLETA A SCROLL)
         // ===============================================
@@ -1901,7 +2057,7 @@ body[data-phase="5"] .phase-command-top h2 {
                 imagen: "img/roulettes/ruleta_roja.png",
                 colorCSS: "var(--scuad-red)",
                 titulo: "ROJO: Cambio de Fase",
-                eventos: fasesDeRuleta
+                eventos: fasesDeRuleta.map((evento, fase) => fase <= obtenerFaseActual() ? evento : `Fase ${fase}: •••`)
             },
             "AMARILLO": {
                 imagen: "img/roulettes/ruleta_amarilla.png",
