@@ -1309,6 +1309,494 @@ body[data-phase="5"] .phase-command-top h2 {
     color: #625858 !important;
 }
 
+
+/* =========================================================
+   RECETAS INTERACTIVAS + OPTIMIZACIÓN MÓVIL
+   ========================================================= */
+.recipe-entry {
+    position: relative;
+    margin-top: 14px;
+    z-index: 12;
+}
+.recipe-toggle {
+    width: 100%;
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(var(--phase-accent-rgb), .45);
+    border-left: 3px solid var(--phase-accent);
+    border-radius: 7px;
+    background: linear-gradient(90deg, rgba(var(--phase-accent-rgb), .10), rgba(0,0,0,.30));
+    color: #eadede;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.recipe-toggle-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.recipe-eye {
+    color: var(--phase-accent);
+    font-size: 10px;
+    filter: drop-shadow(0 0 5px var(--phase-accent));
+}
+.recipe-toggle-hint {
+    color: #8e7e7e;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.recipe-entry:hover .recipe-toggle,
+.recipe-entry:focus-within .recipe-toggle,
+.recipe-entry.is-open .recipe-toggle {
+    border-color: var(--phase-accent);
+    background: linear-gradient(90deg, rgba(var(--phase-accent-rgb), .18), rgba(0,0,0,.42));
+    box-shadow: 0 0 18px rgba(var(--phase-accent-rgb), .14);
+}
+.recipe-popover {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 9px);
+    width: min(390px, calc(100vw - 34px));
+    transform: translate(-50%, 8px);
+    padding: 15px;
+    border: 1px solid rgba(var(--phase-accent-rgb), .55);
+    border-top: 3px solid var(--phase-accent);
+    border-radius: 9px;
+    background: rgba(8, 3, 4, .985);
+    box-shadow: 0 18px 45px rgba(0,0,0,.88), 0 0 28px rgba(var(--phase-accent-rgb), .15);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index: 1000;
+}
+.recipe-entry:hover .recipe-popover,
+.recipe-entry:focus-within .recipe-popover,
+.recipe-entry.is-open .recipe-popover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+.card:has(.recipe-entry) {
+    overflow: visible;
+}
+.card:has(.recipe-entry):hover {
+    z-index: 40;
+}
+.recipe-popover-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #352020;
+}
+.recipe-popover-head span {
+    color: var(--phase-accent);
+    font: 7px 'Press Start 2P', monospace;
+    line-height: 1.5;
+}
+.recipe-popover-head strong {
+    color: #fff;
+    font-size: 12px;
+    text-align: right;
+}
+.recipe-grid-popover {
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 64px);
+    grid-template-rows: repeat(3, 64px);
+    gap: 5px;
+    justify-content: center;
+}
+.recipe-grid-popover .recipe-slot {
+    width: 64px;
+    height: 64px;
+    margin: 0;
+    border: 1px solid #5a3030;
+    background: linear-gradient(145deg, #180909, #080303);
+    font-size: 8px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+.recipe-slot-empty {
+    opacity: .25;
+    border-style: dashed !important;
+}
+.recipe-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 11px;
+    padding: 8px 10px;
+    border: 1px solid #3e2929;
+    background: rgba(255,255,255,.025);
+    color: #d8cccc;
+    font-size: 11px;
+}
+.recipe-result span {
+    color: var(--phase-accent);
+    font-size: 18px;
+}
+.recipe-result strong {
+    color: #fff;
+}
+.recipe-variant-title {
+    margin: 12px 0 8px;
+    color: #baaaaa;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.recipe-variant-title:first-child { margin-top: 0; }
+.recipe-process {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.process-box {
+    flex: 1 1 78px;
+    min-width: 72px;
+    min-height: 66px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px;
+    border: 1px solid #513030;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #170808, #090303);
+    text-align: center;
+}
+.process-box small {
+    color: #8f7e7e;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+.process-box strong {
+    color: #e9dcdc;
+    font-size: 9px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+.process-output {
+    border-color: rgba(var(--phase-accent-rgb), .55);
+    box-shadow: inset 0 0 16px rgba(var(--phase-accent-rgb), .06);
+}
+.process-plus, .process-arrow {
+    align-self: center;
+    color: #8d7777;
+    font-weight: 900;
+}
+.process-arrow {
+    color: var(--phase-accent);
+    font-size: 17px;
+}
+.recipe-detail-note {
+    margin-top: 10px;
+    color: #9c8c8c;
+    font-size: 10px;
+    line-height: 1.45;
+}
+.recipe-detail-note strong { color: var(--scuad-gold); }
+
+/* Evita que las animaciones hover se sientan torpes en pantallas táctiles. */
+@media (hover: none), (pointer: coarse) {
+    .card:hover {
+        transform: none;
+    }
+    .card:hover .item-icon {
+        transform: none;
+    }
+    .recipe-entry:hover .recipe-popover {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .recipe-entry.is-open .recipe-popover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+/* Optimización específica para móvil */
+@media (max-width: 700px) {
+    html { scroll-behavior: smooth; }
+    body {
+        font-size: 15px;
+        background-attachment: scroll;
+        overflow-x: hidden;
+    }
+    header {
+        height: 100svh;
+        min-height: 520px;
+        animation: none;
+    }
+    header .header-particles { display: none; }
+    header.scrolled {
+        height: 76px;
+        backdrop-filter: none;
+    }
+    header.scrolled .logo { max-width: 155px; }
+    .logo {
+        width: 84vw;
+        max-width: 420px;
+    }
+    .phase-status {
+        min-width: 0;
+        width: calc(100vw - 28px);
+        margin-top: 18px;
+        padding: 11px 12px 10px;
+    }
+    .phase-status strong {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    .phase-status-sub {
+        font-size: 11px;
+    }
+    .scroll-indicator {
+        bottom: 22px;
+        font-size: 8px;
+    }
+    .header-spacer.scrolled { height: 108px; }
+
+    .container {
+        width: 100%;
+        padding: 24px 12px 34px;
+    }
+    section { margin-bottom: 46px; }
+    .section-title {
+        max-width: 100%;
+        font-size: 21px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+    .card, .command-card {
+        padding: 16px;
+        border-radius: 9px;
+    }
+    .card h3 { font-size: 16px; }
+    .card p { font-size: 14px; }
+    .card-header { align-items: center; }
+    .item-icon {
+        width: 43px;
+        height: 43px;
+        margin-right: 11px;
+        flex: 0 0 43px;
+    }
+    .tag-row { gap: 6px; }
+    .tag {
+        font-size: 10px;
+        padding: 4px 7px;
+    }
+    .guide-note, .player-only-note, .phase-rule {
+        font-size: 12px;
+        padding: 12px;
+    }
+
+    .phase-command-center {
+        margin: 0 0 38px;
+        padding: 18px 14px;
+    }
+    .phase-command-top {
+        gap: 16px;
+    }
+    .phase-command-top h2 {
+        font-size: 22px;
+        line-height: 1.15;
+    }
+    .threat-meter {
+        width: 100%;
+        flex-basis: auto;
+        text-align: left;
+    }
+    .phase-track {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        padding: 6px 2px 10px;
+        margin-left: -2px;
+        margin-right: -2px;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .phase-track::-webkit-scrollbar { display: none; }
+    .phase-node {
+        flex: 0 0 112px;
+        min-height: 64px;
+        scroll-snap-align: start;
+    }
+    .phase-node b { font-size: 10px; }
+
+    .phase-item-group {
+        margin: 22px 0 34px;
+        padding: 14px;
+    }
+    .phase-group-header {
+        gap: 10px;
+        padding-bottom: 12px;
+        margin-bottom: 14px;
+    }
+    .phase-group-copy h3 { font-size: 15px; }
+    .phase-group-copy p { font-size: 11px; }
+
+    .ruleta-section-master {
+        padding: 42px 0;
+        margin: 28px 0 55px;
+    }
+    .ruleta-layout { gap: 25px; }
+    .ruleta-top {
+        gap: 20px;
+        padding: 0 12px;
+    }
+    .ruleta-half-wrapper {
+        width: min(88vw, 320px);
+        height: 240px;
+        border-radius: 0 0 160px 160px;
+    }
+    .ruleta-controles {
+        width: 100%;
+        padding: 20px 14px;
+    }
+    .ruleta-controles h2 {
+        font-size: 25px;
+        line-height: 1.12;
+    }
+    .ruleta-controles p {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+    .filtros-colores { gap: 8px; }
+    .btn-filtro {
+        flex: 1 1 calc(50% - 8px);
+        min-height: 44px;
+        padding: 10px 8px;
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    .ruleta-bottom { padding: 0 12px; }
+    .eventos-info {
+        padding: 20px 14px;
+    }
+    .eventos-info h3 { font-size: 18px; }
+    .eventos-lista {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+    .eventos-lista li {
+        font-size: 13px;
+        padding: 12px 10px 12px 30px;
+    }
+
+    .armor-set-row {
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+    .armor-set-row img {
+        width: 34px;
+        height: 34px;
+    }
+    footer {
+        padding: 30px 14px;
+        font-size: 12px;
+    }
+
+    /* En teléfono la receta se integra como panel desplegable, sin salirse de la pantalla. */
+    .recipe-popover {
+        position: static;
+        width: 100%;
+        max-width: none;
+        margin-top: 8px;
+        padding: 12px;
+        transform: none !important;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        box-shadow: inset 0 0 22px rgba(0,0,0,.35);
+    }
+    .recipe-entry.is-open .recipe-popover {
+        display: block;
+    }
+    .recipe-entry:not(.is-open) .recipe-popover {
+        display: none;
+    }
+    .recipe-toggle {
+        min-height: 46px;
+        padding: 11px 12px;
+    }
+    .recipe-toggle-hint {
+        font-size: 9px;
+    }
+    .recipe-grid-popover {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(3, 58px);
+        width: min(100%, 280px);
+    }
+    .recipe-grid-popover .recipe-slot {
+        width: auto;
+        height: 58px;
+        font-size: 7.5px;
+        padding: 3px;
+    }
+    .recipe-process {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .process-box {
+        min-height: 52px;
+        min-width: 0;
+    }
+    .process-plus, .process-arrow {
+        line-height: 1;
+        justify-self: center;
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 380px) {
+    .container { padding-left: 9px; padding-right: 9px; }
+    .card, .command-card { padding: 14px; }
+    .section-title { font-size: 19px; }
+    .phase-node { flex-basis: 104px; }
+    .btn-filtro { flex-basis: 100%; }
+    .recipe-grid-popover { width: 100%; }
+    .recipe-grid-popover .recipe-slot { font-size: 7px; }
+}
+
+/* Menos carga gráfica si el dispositivo o usuario prefiere menos movimiento. */
+@media (prefers-reduced-motion: reduce), (max-width: 520px) {
+    *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+    .phase-ambient { animation: none !important; }
+}
+
 </style>
 </head>
 <body><div aria-hidden="true" class="phase-ambient"></div>
@@ -1364,7 +1852,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="grid">
 <div class="card">
 <div class="card-header">
-<img alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/>
+<img loading="lazy" decoding="async" alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/>
 <h3>Muerte Permanente</h3>
 </div>
 <p>Al morir pasarás a Espectador y no podrás continuar hasta ser revivido. Tu inventario se conserva, pero tu equipo queda fuera de la partida mientras sigas muerto.</p>
@@ -1372,7 +1860,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/>
+<img loading="lazy" decoding="async" alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/>
 <h3>Economía</h3>
 </div>
 <p>Los enemigos derrotados entregan ScuadCoins. Llévalas a las tiendas para comprar suministros o deposítalas en el Banco para tener una reserva segura.</p>
@@ -1380,7 +1868,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="Sello del Doom" class="item-icon" src="img/items/doom_sigil.png"/>
+<img loading="lazy" decoding="async" alt="Sello del Doom" class="item-icon" src="img/items/doom_sigil.png"/>
 <h3>Dimensiones por Fase</h3>
 </div>
 <p>El Nether, el End y la Dimensión Doom no están disponibles desde el inicio. Cada acceso se abre cuando el Realm alcanza su fase correspondiente.</p>
@@ -1388,7 +1876,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/>
+<img loading="lazy" decoding="async" alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/>
 <h3>Protección del Evento</h3>
 </div>
 <p>Las coordenadas y la regeneración natural están activas. Los mobs no pueden destruir o alterar tus construcciones mediante griefing.</p>
@@ -1422,17 +1910,26 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="card">
 <div class="card-header">
 <!-- Agrega tu imagen en img/items/overcharged_berry.png -->
-<img alt="Baya sobrecargada" class="item-icon" src="img/items/overcharged_berry.png"/>
+<img loading="lazy" decoding="async" alt="Baya sobrecargada" class="item-icon" src="img/items/overcharged_berry.png"/>
 <h3>Baya sobrecargada</h3>
 </div>
 <p>Comida especial de teletransporte. Tras <strong>10 segundos de consumo</strong> abre una interfaz con tus Homes y los Homes públicos disponibles. Al seleccionar uno, te lleva a esa dimensión y ubicación.</p>
 <div class="tag-row"><span class="tag purple">Cooldown: 15 min</span><span class="tag cyan">Stack: 16</span><span class="tag purple">Estela violeta</span></div>
-<div class="recipe-grid" aria-label="Receta de la Baya sobrecargada">
-<div class="recipe-slot">Perla de Ender</div><div class="recipe-slot">Amatista</div><div class="recipe-slot">Perla de Ender</div>
-<div class="recipe-slot">Amatista</div><div class="recipe-slot center">Baya brillante</div><div class="recipe-slot">Amatista</div>
-<div class="recipe-slot">Perla de Ender</div><div class="recipe-slot">Amatista</div><div class="recipe-slot">Perla de Ender</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Baya sobrecargada">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Baya sobrecargada</strong></div>
+<div class="recipe-grid recipe-grid-popover">
+<div class="recipe-slot ">Perla de Ender</div><div class="recipe-slot ">Fragmento de Amatista</div><div class="recipe-slot ">Perla de Ender</div>
+<div class="recipe-slot ">Fragmento de Amatista</div><div class="recipe-slot ">Baya brillante</div><div class="recipe-slot ">Fragmento de Amatista</div>
+<div class="recipe-slot ">Perla de Ender</div><div class="recipe-slot ">Fragmento de Amatista</div><div class="recipe-slot ">Perla de Ender</div>
 </div>
-<div class="recipe-line"><strong>Receta:</strong> Baya brillante al centro + 4 Perlas de Ender en las esquinas + 4 Fragmentos de Amatista formando la cruz → 1 Baya sobrecargada.</div>
+<div class="recipe-result"><span>→</span><strong>Baya sobrecargada ×1</strong></div>
+</div>
+</div>
 </div>
 <div class="card">
 <h3>/scuad:home</h3>
@@ -1452,7 +1949,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="grid">
 <div class="card">
 <div class="card-header">
-<img alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/>
+<img loading="lazy" decoding="async" alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/>
 <h3>Banco Central</h3>
 </div>
 <p>Deposita todas las ScuadCoins que lleves encima o retira únicamente la cantidad que necesites. Lo depositado permanece guardado aunque mueras.</p>
@@ -1460,7 +1957,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/>
+<img loading="lazy" decoding="async" alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/>
 <h3>Tienda de Comida</h3>
 </div>
 <p>Provisiones para mantenerte con vida. Su catálogo crece conforme avanza el evento por sus fases.</p>
@@ -1468,7 +1965,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="Poción de Pánico" class="item-icon" src="img/items/panic_potion.png"/>
+<img loading="lazy" decoding="async" alt="Poción de Pánico" class="item-icon" src="img/items/panic_potion.png"/>
 <h3>Tienda de Pociones</h3>
 </div>
 <p>Compra pociones de emergencia y alquimia avanzada. Las opciones más poderosas se desbloquean con las fases.</p>
@@ -1476,7 +1973,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/>
+<img loading="lazy" decoding="async" alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/>
 <h3>Urna de Oro</h3>
 </div>
 <p>Intercambia riqueza por recursos especiales: Almas de Jugador, tótems, Perlas de Ender y experiencia.</p>
@@ -1484,7 +1981,7 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <div class="card-header">
-<img alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/>
+<img loading="lazy" decoding="async" alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/>
 <h3>Fosa de Almas</h3>
 </div>
 <p>Usa 1 Alma de Jugador para devolver a un compañero desde Espectador. El jugador revivido aparecerá junto a la fosa.</p>
@@ -1498,87 +1995,223 @@ body[data-phase="5"] .phase-command-top h2 {
 <p class="guide-note"><strong>Progresión ordenada:</strong> cada grupo reúne los objetos que empiezan a formar parte de la progresión en esa fase. La wiki muestra todas las etapas para que puedas planear tu ruta de supervivencia.</p>
 
 <div class="phase-item-group" data-phase-group="0" data-unlock-phase="0"><div class="phase-group-header"><span class="phase-group-number">FASE 0</span><div class="phase-group-copy"><h3>Preparación</h3><p>Equipo base, economía y supervivencia inicial.</p></div></div><div class="grid"><div class="card">
-<div class="card-header"><img alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/><h3>ScuadCoin</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/><h3>ScuadCoin</h3></div>
 <p>Moneda física del Realm. Se obtiene principalmente derrotando enemigos y completando eventos.</p>
 <div class="tag-row"><span class="tag gold">Stack: 64</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/><h3>Alma de Jugador</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Alma de Jugador" class="item-icon" src="img/items/souls/player_soul.png"/><h3>Alma de Jugador</h3></div>
 <p>Llave de resurrección. Compra una en la Urna de Oro y llévala a la Fosa de Almas para recuperar a un compañero. En el endgame también funciona como plantilla de herrería para crear el Filo del Horizonte Roto.</p>
 <div class="tag-row"><span class="tag gold">89 Coins</span><span class="tag purple">Stack: 1</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/><h3>Ración del Superviviente</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/><h3>Ración del Superviviente</h3></div>
 <p>Comida de emergencia que estabiliza tus heridas con absorción y una breve regeneración.</p>
-<div class="recipe-line"><strong>Receta:</strong> filete cocinado + pan + zanahoria dorada → 2 raciones.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Ración del Superviviente">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Ración del Superviviente</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Filete cocinado</div><div class="recipe-slot ">Pan</div><div class="recipe-slot ">Zanahoria dorada</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div></div>
+<div class="recipe-result"><span>→</span><strong>Ración ×2</strong></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 17 Coins x2</span><span class="tag">Stack: 16</span></div>
 </div></div></div><div class="phase-item-group" data-phase-group="1" data-unlock-phase="1"><div class="phase-group-header"><span class="phase-group-number">FASE 1</span><div class="phase-group-copy"><h3>El Despertar</h3><p>Movilidad, escape y recursos para el Nether.</p></div></div><div class="grid"><div class="card">
-<div class="card-header"><img alt="Poción de Pánico" class="item-icon" src="img/items/panic_potion.png"/><h3>Poción de Pánico</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Poción de Pánico" class="item-icon" src="img/items/panic_potion.png"/><h3>Poción de Pánico</h3></div>
 <p>Velocidad III durante 20 s y Resistencia I durante 10 s. Ideal para romper una emboscada y ganar distancia.</p>
 <div class="tag-row"><span class="tag gold">Tienda: 31 Coins</span><span class="tag red">Fase 1</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Poción de Escape" class="item-icon" src="img/items/escape_potion.png"/><h3>Poción de Escape</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Poción de Escape" class="item-icon" src="img/items/escape_potion.png"/><h3>Poción de Escape</h3></div>
 <p>Invisibilidad y Velocidad II durante 15 s, además de Caída Lenta durante 10 s.</p>
 <div class="tag-row"><span class="tag gold">Tienda: 31 Coins</span><span class="tag red">Fase 1</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Tónico del Minero" class="item-icon" src="img/items/miners_tonic.png"/><h3>Tónico del Minero</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Tónico del Minero" class="item-icon" src="img/items/miners_tonic.png"/><h3>Tónico del Minero</h3></div>
 <p>Prisa II y Visión Nocturna durante 2 minutos, más Resistencia al Fuego durante 30 s.</p>
-<div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Fragmento de Amatista.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Tónico del Minero">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Tónico del Minero</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Fragmento de Amatista</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Tónico del Minero</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 37 Coins</span><span class="tag red">Fase 1</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Pan Ígneo" class="item-icon" src="img/items/ember_bread.png"/><h3>Pan Ígneo</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Pan Ígneo" class="item-icon" src="img/items/ember_bread.png"/><h3>Pan Ígneo</h3></div>
 <p>Provisión compacta para expediciones; se vende en paquetes de dos desde Fase 1.</p>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Pan Ígneo">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Pan Ígneo</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Pan</div><div class="recipe-slot ">Polvo de Blaze</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div></div>
+<div class="recipe-result"><span>→</span><strong>Pan Ígneo ×1</strong></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 23 Coins x2</span><span class="tag red">Fase 1</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Tónico del Explorador" class="item-icon" src="img/items/scout_tonic.png"/><h3>Tónico del Explorador</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Tónico del Explorador" class="item-icon" src="img/items/scout_tonic.png"/><h3>Tónico del Explorador</h3></div>
 <p>Consumible de movilidad y exploración pensado para rutas peligrosas y retirada rápida.</p>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Tónico del Explorador">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Tónico del Explorador</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Pluma</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Tónico del Explorador</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 41 Coins</span><span class="tag red">Fase 1</span></div>
 </div></div></div><div class="phase-item-group" data-phase-group="2" data-unlock-phase="2"><div class="phase-group-header"><span class="phase-group-number">FASE 2</span><div class="phase-group-copy"><h3>Supervivencia</h3><p>Consumibles avanzados para End, Doom y combates prolongados.</p></div></div><div class="grid"><div class="card">
-<div class="card-header"><img alt="Estofado Dorado" class="item-icon" src="img/items/golden_stew.png"/><h3>Estofado Dorado</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Estofado Dorado" class="item-icon" src="img/items/golden_stew.png"/><h3>Estofado Dorado</h3></div>
 <p>Fortalece tu vida temporalmente y acelera la recuperación durante unos segundos.</p>
-<div class="recipe-line"><strong>Receta:</strong> cuenco + zanahoria dorada + hongo rojo + hongo marrón.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Estofado Dorado">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Estofado Dorado</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Cuenco</div><div class="recipe-slot ">Zanahoria dorada</div><div class="recipe-slot ">Hongo rojo</div><div class="recipe-slot ">Hongo marrón</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div></div>
+<div class="recipe-result"><span>→</span><strong>Estofado Dorado ×1</strong></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 37 Coins</span><span class="tag red">Fase 2</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Elixir del Guardián" class="item-icon" src="img/items/guardian_elixir.png"/><h3>Elixir del Guardián</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Elixir del Guardián" class="item-icon" src="img/items/guardian_elixir.png"/><h3>Elixir del Guardián</h3></div>
 <p>Absorción IV durante 2 minutos y Resistencia II durante 1 minuto.</p>
-<div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Alma Punzante.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Elixir del Guardián">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Elixir del Guardián</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Alma Punzante</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Elixir del Guardián</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 53 Coins</span><span class="tag red">Fase 2</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Estofado del Acechador" class="item-icon" src="img/items/stalker_stew.png"/><h3>Estofado del Acechador</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Estofado del Acechador" class="item-icon" src="img/items/stalker_stew.png"/><h3>Estofado del Acechador</h3></div>
 <p>Comida avanzada para expediciones de Fase 2, pensada para sostener combates y exploración prolongada.</p>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Estofado del Acechador">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Estofado del Acechador</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Cuenco</div><div class="recipe-slot ">Filete cocinado</div><div class="recipe-slot ">Hongo marrón</div><div class="recipe-slot ">Hongo rojo</div><div class="recipe-slot ">Baya brillante</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div></div>
+<div class="recipe-result"><span>→</span><strong>Estofado del Acechador ×1</strong></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 43 Coins</span><span class="tag red">Fase 2</span></div>
 </div></div></div><div class="phase-item-group" data-phase-group="3" data-unlock-phase="3"><div class="phase-group-header"><span class="phase-group-number">FASE 3</span><div class="phase-group-copy"><h3>Pesadilla</h3><p>Curación y defensa para amenazas de alta presión.</p></div></div><div class="grid"><div class="card">
-<div class="card-header"><img alt="Suero Purificador" class="item-icon" src="img/items/cleansing_serum.png"/><h3>Suero Purificador</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Suero Purificador" class="item-icon" src="img/items/cleansing_serum.png"/><h3>Suero Purificador</h3></div>
 <p>Limpia veneno, wither, debilidad, lentitud, ceguera, oscuridad, hambre, fatiga y náusea; después aplica Regeneración II.</p>
-<div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Botella de Miel.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Suero Purificador">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Suero Purificador</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Botella de miel</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Suero Purificador</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 47 Coins</span><span class="tag red">Fase 3</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Poción de Ultra Curación" class="item-icon" src="img/items/ultra_health_potion.png"/><h3>Poción de Ultra Curación</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Poción de Ultra Curación" class="item-icon" src="img/items/ultra_health_potion.png"/><h3>Poción de Ultra Curación</h3></div>
 <p>Restaura toda tu salud inmediatamente y añade Regeneración III durante 10 s.</p>
-<div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Manzana Dorada.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Poción de Ultra Curación">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Poción de Ultra Curación</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Manzana dorada</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Poción de Ultra Curación</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 71 Coins</span><span class="tag red">Fase 3</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Tónico del Baluarte" class="item-icon" src="img/items/bulwark_tonic.png"/><h3>Tónico del Baluarte</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Tónico del Baluarte" class="item-icon" src="img/items/bulwark_tonic.png"/><h3>Tónico del Baluarte</h3></div>
 <p>Preparado defensivo de alto nivel para aguantar asedios, Doom y jefes en fases avanzadas.</p>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Tónico del Baluarte">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Tónico del Baluarte</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Fragmento de prismarina</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Tónico del Baluarte</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 61 Coins</span><span class="tag red">Fase 3</span></div>
 </div></div></div><div class="phase-item-group" data-phase-group="4" data-unlock-phase="4"><div class="phase-group-header"><span class="phase-group-number">FASE 4</span><div class="phase-group-copy"><h3>Muerte Inminente</h3><p>Consumibles de poder extremo para encuentros de élite.</p></div></div><div class="grid"><div class="card">
-<div class="card-header"><img alt="Manzana del Eco" class="item-icon" src="img/items/echo_apple.png"/><h3>Manzana del Eco</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Manzana del Eco" class="item-icon" src="img/items/echo_apple.png"/><h3>Manzana del Eco</h3></div>
 <p>Aumento de Salud III durante 2 minutos y Fuerza II durante 30 s. El precio del poder es una breve Oscuridad.</p>
-<div class="recipe-line"><strong>Receta:</strong> una Manzana Dorada rodeada por 8 Fragmentos de Eco.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Manzana del Eco">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Manzana del Eco</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Manzana dorada</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Fragmento de Eco</div></div>
+<div class="recipe-result"><span>→</span><strong>Manzana del Eco ×1</strong></div>
+
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 79 Coins</span><span class="tag cyan">Stack: 16</span><span class="tag red">Fase 4</span></div>
 </div><div class="card">
-<div class="card-header"><img alt="Brebaje Berserker" class="item-icon" src="img/items/berserker_brew.png"/><h3>Brebaje Berserker</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Brebaje Berserker" class="item-icon" src="img/items/berserker_brew.png"/><h3>Brebaje Berserker</h3></div>
 <p>Fuerza III y Velocidad II durante 30 s, a cambio de Hambre III durante 15 s.</p>
-<div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Núcleo del Doom.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Brebaje Berserker">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Brebaje Berserker</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Núcleo del Doom</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Brebaje Berserker</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 67 Coins</span><span class="tag red">Fase 4</span></div>
 </div><div class="card">
 <div class="card-header">
 <!-- Agrega tu imagen en img/items/dusk_shard.png -->
-<img alt="Esquirla del Ocaso" class="item-icon" src="img/items/dusk_shard.png"/><h3>Esquirla del Ocaso</h3></div>
+<img loading="lazy" decoding="async" alt="Esquirla del Ocaso" class="item-icon" src="img/items/dusk_shard.png"/><h3>Esquirla del Ocaso</h3></div>
 <p>Material exclusivo de <strong>Fase 4+</strong> y compuerta de la progresión Horizonte. No posee receta: los minijefes garantizan progreso, el Ghast Infernal puede entregar 1–2, los élites tienen una posibilidad de soltarla y los cofres importantes del Doom pueden contenerla.</p>
 <div class="tag-row"><span class="tag red">Fase 4+</span><span class="tag cyan">Stack: 16</span><span class="tag cyan">Estela cian</span><span class="tag purple">Sin receta</span></div>
 </div></div></div><div class="phase-item-group" data-phase-group="5" data-unlock-phase="5"><div class="phase-group-header"><span class="phase-group-number">FASE 5</span><div class="phase-group-copy"><h3>Apocalipsis Total</h3><p>Recursos finales para el cierre del evento.</p></div></div><div class="grid"><div class="card">
-<div class="card-header"><img alt="Notch Líquida" class="item-icon" src="img/items/liquid_notch.png"/><h3>Notch Líquida</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Notch Líquida" class="item-icon" src="img/items/liquid_notch.png"/><h3>Notch Líquida</h3></div>
 <p>Absorción IV y Resistencia I durante 2 minutos, además de Regeneración II durante 30 s.</p>
-<div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Manzana Dorada Encantada.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Notch Líquida">
+<div class="recipe-popover-head"><span>Soporte para pociones</span><strong>Notch Líquida</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Poción base</small><strong>Poción Rara</strong></div><span class="process-plus">+</span><div class="process-box"><small>Reactivo</small><strong>Manzana dorada encantada</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Notch Líquida</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Tienda: 149 Coins</span><span class="tag red">Fase 5</span></div>
 </div></div></div></section>
 <!-- Almas para Netherite -->
@@ -1587,27 +2220,63 @@ body[data-phase="5"] .phase-command-top h2 {
 <p class="guide-note">La mejora vanilla a Netherite está restringida. Las piezas de armadura usan las almas de los jefes como plantillas de herrería; la espada y las herramientas no pueden saltarse la progresión con la plantilla vanilla.</p>
 <div class="grid">
 <div class="card">
-<div class="card-header"><img alt="Alma Ígnea" class="item-icon" src="img/items/souls/burning_soul.png"/><h3>Alma Ígnea</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Alma Ígnea" class="item-icon" src="img/items/souls/burning_soul.png"/><h3>Alma Ígnea</h3></div>
 <p>La entrega el Ghast Infernal. Funciona como plantilla para el casco de Netherite y vuelve a ser necesaria para ascender el Yelmo de la Perdición al Horizonte Roto.</p>
-<div class="recipe-line"><strong>Herrería:</strong> Alma Ígnea + Casco de Diamante + Lingote de Netherite → Casco de Netherite.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Casco de Netherite">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Casco de Netherite</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Ígnea</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Casco de Diamante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Lingote de Netherite</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Casco de Netherite</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag red">Casco</span><span class="tag">Stack: 1</span></div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Alma Gelatinosa" class="item-icon" src="img/items/souls/gelatinous_soul.png"/><h3>Alma Gelatinosa</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Alma Gelatinosa" class="item-icon" src="img/items/souls/gelatinous_soul.png"/><h3>Alma Gelatinosa</h3></div>
 <p>La entrega el Giga Slime. Funciona como plantilla para la pechera de Netherite y vuelve a ser necesaria para ascender la Coraza de la Perdición al Horizonte Roto.</p>
-<div class="recipe-line"><strong>Herrería:</strong> Alma Gelatinosa + Pechera de Diamante + Lingote de Netherite → Pechera de Netherite.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Pechera de Netherite">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Pechera de Netherite</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Gelatinosa</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Pechera de Diamante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Lingote de Netherite</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Pechera de Netherite</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag green">Pechera</span><span class="tag">Stack: 1</span></div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Alma Punzante" class="item-icon" src="img/items/souls/stinging_soul.png"/><h3>Alma Punzante</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Alma Punzante" class="item-icon" src="img/items/souls/stinging_soul.png"/><h3>Alma Punzante</h3></div>
 <p>La entrega el Emperador. Funciona como plantilla para las grebas de Netherite y vuelve a ser necesaria para ascender las Grebas de la Perdición al Horizonte Roto.</p>
-<div class="recipe-line"><strong>Herrería:</strong> Alma Punzante + Pantalones de Diamante + Lingote de Netherite → Pantalones de Netherite.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Pantalones de Netherite">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Pantalones de Netherite</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Punzante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Pantalones de Diamante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Lingote de Netherite</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Pantalones de Netherite</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag gold">Pantalones</span><span class="tag">Stack: 1</span></div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Alma Aullante" class="item-icon" src="img/items/souls/howling_soul.png"/><h3>Alma Aullante</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Alma Aullante" class="item-icon" src="img/items/souls/howling_soul.png"/><h3>Alma Aullante</h3></div>
 <p>La entrega el Devastador Espectral. Funciona como plantilla para las botas de Netherite y vuelve a ser necesaria para ascender las Botas de la Perdición al Horizonte Roto.</p>
-<div class="recipe-line"><strong>Herrería:</strong> Alma Aullante + Botas de Diamante + Lingote de Netherite → Botas de Netherite.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Botas de Netherite">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Botas de Netherite</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Aullante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Botas de Diamante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Lingote de Netherite</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Botas de Netherite</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag cyan">Botas</span><span class="tag">Stack: 1</span></div>
 </div>
 </div>
@@ -1621,36 +2290,84 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="guide-note"><strong>Consejo:</strong> entra preparado. Las islas flotantes, ruinas, castillo y zonas especiales esconden botín raro, pero también guardianes y oleadas. Los recursos se renuevan cada 2 días del mundo.</div>
 <div class="grid">
 <div class="card">
-<div class="card-header"><img alt="Sello del Doom" class="item-icon" src="img/items/doom_sigil.png"/><h3>Sello del Doom</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Sello del Doom" class="item-icon" src="img/items/doom_sigil.png"/><h3>Sello del Doom</h3></div>
 <p>Abre el menú de expedición a la Dimensión Doom. También puedes abrirlo con <strong>/scuad:doom</strong>.</p>
-<div class="recipe-line"><strong>Receta:</strong> 4 Obsidianas + 2 Fragmentos de Eco + 2 Esmeraldas + 1 Obsidiana Llorosa.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Sello del Doom">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Sello del Doom</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Obsidiana</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Obsidiana</div><div class="recipe-slot ">Esmeralda</div><div class="recipe-slot ">Obsidiana Llorosa</div><div class="recipe-slot ">Esmeralda</div><div class="recipe-slot ">Obsidiana</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Obsidiana</div></div>
+<div class="recipe-result"><span>→</span><strong>Sello del Doom ×1</strong></div>
+
+</div>
+</div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Núcleo del Doom" class="item-icon" src="img/items/doom_core.png"/><h3>Núcleo del Doom</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Núcleo del Doom" class="item-icon" src="img/items/doom_core.png"/><h3>Núcleo del Doom</h3></div>
 <p>Recurso raro de las expediciones. Puede aparecer en botines del Doom y es esencial para fabricar objetos de alto nivel.</p>
 <div class="tag-row"><span class="tag purple">Stack: 16</span></div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Catalizador del Cataclismo" class="item-icon" src="img/items/doom_catalyst.png"/><h3>Catalizador del Cataclismo</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Catalizador del Cataclismo" class="item-icon" src="img/items/doom_catalyst.png"/><h3>Catalizador del Cataclismo</h3></div>
 <p>Material necesario para transformar una pieza de Netherite en Armadura de la Perdición.</p>
-<div class="recipe-line"><strong>Receta:</strong> 4 Núcleos del Doom + 4 Fragmentos de Eco + una Estrella del Nether. También existe una variante con Bloque de Netherite.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Catalizador del Cataclismo">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Catalizador del Cataclismo</strong></div>
+<div class="recipe-variant-title">Variante principal</div>
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Estrella del Nether</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Núcleo del Doom</div></div>
+<div class="recipe-result"><span>→</span><strong>Catalizador ×1</strong></div>
+<div class="recipe-variant-title">Variante con Netherite</div>
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Bloque de Netherite</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Núcleo del Doom</div></div>
+<div class="recipe-result"><span>→</span><strong>Catalizador ×1</strong></div>
+
+</div>
+</div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Armadura de la Perdición" class="item-icon" src="img/items/doom_chestplate.png"/><h3>Armadura de la Perdición</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Armadura de la Perdición" class="item-icon" src="img/items/doom_chestplate.png"/><h3>Armadura de la Perdición</h3></div>
 <div class="armor-set-row">
-<img alt="Yelmo" src="img/items/doom_helmet.png"/>
-<img alt="Coraza" src="img/items/doom_chestplate.png"/>
-<img alt="Grebas" src="img/items/doom_leggings.png"/>
-<img alt="Botas" src="img/items/doom_boots.png"/>
+<img loading="lazy" decoding="async" alt="Yelmo" src="img/items/doom_helmet.png"/>
+<img loading="lazy" decoding="async" alt="Coraza" src="img/items/doom_chestplate.png"/>
+<img loading="lazy" decoding="async" alt="Grebas" src="img/items/doom_leggings.png"/>
+<img loading="lazy" decoding="async" alt="Botas" src="img/items/doom_boots.png"/>
 </div>
 <p>Mejora cada pieza de Netherite usando un Catalizador del Cataclismo. El set completo suma <strong>32 puntos de protección</strong>, es irrompible y otorga Fuerza, Resistencia II, Resistencia al Fuego, Visión Nocturna y 5 corazones extra.</p>
-<div class="recipe-line"><strong>Herrería:</strong> Plantilla de Mejora de Netherite + pieza de Netherite + Catalizador del Cataclismo → pieza de la Perdición.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Armadura de la Perdición">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Armadura de la Perdición</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Plantilla de Mejora de Netherite</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Pieza de Netherite</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Catalizador del Cataclismo</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Pieza de la Perdición</strong></div></div><p class="recipe-detail-note">La pieza base determina si obtienes yelmo, coraza, grebas o botas.</p>
+</div>
+</div>
 <div class="tag-row"><span class="tag purple">32 protección total</span><span class="tag red">Irrompible</span><span class="tag green">+5 corazones</span></div>
 </div>
 <div class="card">
-<div class="card-header"><img alt="Espada de la Perdición" class="item-icon" src="img/items/doom_sword.png"/><h3>Espada de la Perdición</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Espada de la Perdición" class="item-icon" src="img/items/doom_sword.png"/><h3>Espada de la Perdición</h3></div>
 <p>Espada irrompible de 12 de daño base y encantabilidad 18. Es el arma del conjunto Perdición y sirve como base para el Filo del Horizonte.</p>
-<div class="recipe-line"><strong>Mesa de crafteo:</strong> Espada de Netherite + Catalizador del Cataclismo → Espada de la Perdición. La receta se desbloquea al obtener el Catalizador.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Espada de la Perdición">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Espada de la Perdición</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot ">Espada de Netherite</div><div class="recipe-slot ">Catalizador del Cataclismo</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div></div>
+<div class="recipe-result"><span>→</span><strong>Espada de la Perdición ×1</strong></div>
+<p class="recipe-detail-note"><strong>Sin forma:</strong> los ingredientes pueden colocarse en cualquier posición.</p>
+</div>
+</div>
 <div class="tag-row"><span class="tag purple">12 daño</span><span class="tag red">Irrompible</span><span class="tag">Encantable</span></div>
 </div></div>
 <p class="mini-title">Recompensas de expedición</p>
@@ -1662,44 +2379,101 @@ body[data-phase="5"] .phase-command-top h2 {
 <h2 class="section-title">Jefes, élites y recompensas</h2>
 <p class="guide-note">Los jefes fueron balanceados para convivir con armas de alto DPS. Las armas de Improvised Guns tienen control anti-ráfaga sobre jefes para evitar eliminaciones instantáneas, sin alterar el daño normal de espadas y equipo vanilla.</p>
 <div class="grid">
-<div class="card"><div class="card-header"><img alt="Giga Slime" class="item-icon" src="img/items/souls/gelatinous_soul.png"/><h3>Giga Slime</h3></div><p>Jefe gigante de presión cuerpo a cuerpo.</p><div class="tag-row"><span class="tag red">1200 HP</span><span class="tag purple">26 daño</span><span class="tag gold">Alma Gelatinosa</span></div></div>
-<div class="card"><div class="card-header"><img alt="Emperador" class="item-icon" src="img/items/souls/stinging_soul.png"/><h3>El Emperador</h3></div><p>Combatiente de Netherite, resistente y agresivo.</p><div class="tag-row"><span class="tag red">800 HP</span><span class="tag purple">18 daño</span><span class="tag gold">Alma Punzante</span></div></div>
-<div class="card"><div class="card-header"><img alt="Ghast Infernal" class="item-icon" src="img/items/souls/burning_soul.png"/><h3>Ghast Infernal</h3></div><p>Jefe aéreo de fuego con cadencia ofensiva reforzada.</p><div class="tag-row"><span class="tag red">1000 HP</span><span class="tag gold">Alma Ígnea</span></div></div>
-<div class="card"><div class="card-header"><img alt="Devastador Espectral" class="item-icon" src="img/items/souls/howling_soul.png"/><h3>Devastador Espectral</h3></div><p>Jefe espectral pesado con persecución terrestre mejorada.</p><div class="tag-row"><span class="tag red">1400 HP</span><span class="tag purple">27 daño</span><span class="tag gold">Alma Aullante</span></div></div>
-<div class="card"><div class="card-header"><img alt="Coloso del Umbral" class="item-icon" src="img/items/threshold_heart.png"/><h3>Coloso del Umbral</h3></div><p>Jefe de Fase 5 con segunda fase, esbirros, regeneración y grietas del Umbral. Horizonte ya puede prepararse desde Fase 4; derrotar al Coloso sigue siendo una prueba de endgame y entrega 2 Esquirlas del Ocaso.</p><div class="tag-row"><span class="tag red">3200 HP</span><span class="tag purple">32 / 42 daño</span><span class="tag cyan">2 Esquirlas</span></div></div>
-<div class="card"><div class="card-header"><img alt="Recompensas" class="item-icon" src="img/items/scuad_coin.png"/><h3>Recompensas de jefe</h3></div><p>Los jefes entregan 55 + fase×15 Coins más un extra aleatorio, esmeraldas y probabilidades de botín raro. Dentro del Doom existe además una bonificación independiente.</p><div class="tag-row"><span class="tag gold">+30 a +50 en Doom</span><span class="tag green">Loot raro mejorado</span></div></div>
-<div class="card"><div class="card-header"><img alt="Élites" class="item-icon" src="img/items/scuad_coin.png"/><h3>Élites</h3></div><p>Guardias Doom, hostiles adaptativos y variantes especiales tienen recompensa propia.</p><div class="tag-row"><span class="tag gold">15 + fase×3</span><span class="tag">0–10 extra</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Giga Slime" class="item-icon" src="img/items/souls/gelatinous_soul.png"/><h3>Giga Slime</h3></div><p>Jefe gigante de presión cuerpo a cuerpo.</p><div class="tag-row"><span class="tag red">1200 HP</span><span class="tag purple">26 daño</span><span class="tag gold">Alma Gelatinosa</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Emperador" class="item-icon" src="img/items/souls/stinging_soul.png"/><h3>El Emperador</h3></div><p>Combatiente de Netherite, resistente y agresivo.</p><div class="tag-row"><span class="tag red">800 HP</span><span class="tag purple">18 daño</span><span class="tag gold">Alma Punzante</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Ghast Infernal" class="item-icon" src="img/items/souls/burning_soul.png"/><h3>Ghast Infernal</h3></div><p>Jefe aéreo de fuego con cadencia ofensiva reforzada.</p><div class="tag-row"><span class="tag red">1000 HP</span><span class="tag gold">Alma Ígnea</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Devastador Espectral" class="item-icon" src="img/items/souls/howling_soul.png"/><h3>Devastador Espectral</h3></div><p>Jefe espectral pesado con persecución terrestre mejorada.</p><div class="tag-row"><span class="tag red">1400 HP</span><span class="tag purple">27 daño</span><span class="tag gold">Alma Aullante</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Coloso del Umbral" class="item-icon" src="img/items/threshold_heart.png"/><h3>Coloso del Umbral</h3></div><p>Jefe de Fase 5 con segunda fase, esbirros, regeneración y grietas del Umbral. Horizonte ya puede prepararse desde Fase 4; derrotar al Coloso sigue siendo una prueba de endgame y entrega 2 Esquirlas del Ocaso.</p><div class="tag-row"><span class="tag red">3200 HP</span><span class="tag purple">32 / 42 daño</span><span class="tag cyan">2 Esquirlas</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Recompensas" class="item-icon" src="img/items/scuad_coin.png"/><h3>Recompensas de jefe</h3></div><p>Los jefes entregan 55 + fase×15 Coins más un extra aleatorio, esmeraldas y probabilidades de botín raro. Dentro del Doom existe además una bonificación independiente.</p><div class="tag-row"><span class="tag gold">+30 a +50 en Doom</span><span class="tag green">Loot raro mejorado</span></div></div>
+<div class="card"><div class="card-header"><img loading="lazy" decoding="async" alt="Élites" class="item-icon" src="img/items/scuad_coin.png"/><h3>Élites</h3></div><p>Guardias Doom, hostiles adaptativos y variantes especiales tienen recompensa propia.</p><div class="tag-row"><span class="tag gold">15 + fase×3</span><span class="tag">0–10 extra</span></div></div>
 </div>
 </section><section class="phase-section" data-unlock-phase="4" id="horizonte-sr">
 <h2 class="section-title">Fase 4: Horizonte Roto</h2>
 <p class="guide-note"><strong>Pre-Coloso:</strong> Horizonte Roto ya forma parte de la progresión de Fase 4. Tener Almas Ígneas desde fases anteriores no permite adelantarlo, porque cada Fragmento del Horizonte exige una Esquirla del Ocaso obtenible únicamente desde Fase 4.</p>
 <div class="grid">
 <div class="card endgame-card">
-<div class="card-header"><img alt="Fragmento del Horizonte" class="item-icon" src="img/items/horizon_core.png"/><h3>Fragmento del Horizonte</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Fragmento del Horizonte" class="item-icon" src="img/items/horizon_core.png"/><h3>Fragmento del Horizonte</h3></div>
 <p>Material de ascensión fabricado de uno en uno. La Esquirla del Ocaso es la llave que impide crear estos fragmentos antes de Fase 4.</p>
-<div class="recipe-line"><strong>Receta:</strong> 1 Esquirla del Ocaso + 1 Fragmento de Eco + 1 Alma Ígnea + 1 Núcleo del Doom + 1 Lingote de Netherite → 1 Fragmento del Horizonte.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Fragmento del Horizonte">
+<div class="recipe-popover-head"><span>Mesa de crafteo</span><strong>Fragmento del Horizonte</strong></div>
+
+<div class="recipe-grid recipe-grid-popover"><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot ">Esquirla del Ocaso</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot ">Fragmento de Eco</div><div class="recipe-slot ">Alma Ígnea</div><div class="recipe-slot ">Núcleo del Doom</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div><div class="recipe-slot ">Lingote de Netherite</div><div class="recipe-slot recipe-slot-empty" aria-hidden="true"></div></div>
+<div class="recipe-result"><span>→</span><strong>Fragmento del Horizonte ×1</strong></div>
+
+</div>
+</div>
 <div class="tag-row"><span class="tag red">Fase 4+</span><span class="tag cyan">Pre-Coloso</span><span class="tag purple">Stack: 1</span></div>
 </div>
 <div class="card endgame-card">
-<div class="card-header"><img alt="Armadura del Horizonte Roto" class="item-icon" src="img/items/horizon_chestplate.png"/><h3>Armadura del Horizonte Roto</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Armadura del Horizonte Roto" class="item-icon" src="img/items/horizon_chestplate.png"/><h3>Armadura del Horizonte Roto</h3></div>
 <div class="armor-set-row">
-<img alt="Visor del Horizonte" src="img/items/horizon_helmet.png"/>
-<img alt="Coraza del Horizonte" src="img/items/horizon_chestplate.png"/>
-<img alt="Grebas del Horizonte" src="img/items/horizon_leggings.png"/>
-<img alt="Botas del Horizonte" src="img/items/horizon_boots.png"/>
+<img loading="lazy" decoding="async" alt="Visor del Horizonte" src="img/items/horizon_helmet.png"/>
+<img loading="lazy" decoding="async" alt="Coraza del Horizonte" src="img/items/horizon_chestplate.png"/>
+<img loading="lazy" decoding="async" alt="Grebas del Horizonte" src="img/items/horizon_leggings.png"/>
+<img loading="lazy" decoding="async" alt="Botas del Horizonte" src="img/items/horizon_boots.png"/>
 </div>
 <p>Mejora cada pieza de Perdición en la mesa de herrería usando el alma correspondiente como plantilla y un Fragmento del Horizonte como material. El set completo suma <strong>32 puntos de protección</strong> y conserva Fuerza I, Resistencia II, Resistencia al Fuego y Visión Nocturna; añade Velocidad I, Salto II y <strong>10 corazones extra</strong>.</p>
-<div class="recipe-line"><strong>Yelmo:</strong> Alma Ígnea + Yelmo de la Perdición + Fragmento del Horizonte → Yelmo del Horizonte Roto.</div>
-<div class="recipe-line"><strong>Coraza:</strong> Alma Gelatinosa + Coraza de la Perdición + Fragmento del Horizonte → Coraza del Horizonte Roto.</div>
-<div class="recipe-line"><strong>Grebas:</strong> Alma Punzante + Grebas de la Perdición + Fragmento del Horizonte → Grebas del Horizonte Roto.</div>
-<div class="recipe-line"><strong>Botas:</strong> Alma Aullante + Botas de la Perdición + Fragmento del Horizonte → Botas del Horizonte Roto.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Yelmo del Horizonte Roto">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Yelmo del Horizonte Roto</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Ígnea</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Yelmo de la Perdición</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Fragmento del Horizonte</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Yelmo del Horizonte Roto</strong></div></div>
+</div>
+</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Coraza del Horizonte Roto">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Coraza del Horizonte Roto</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Gelatinosa</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Coraza de la Perdición</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Fragmento del Horizonte</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Coraza del Horizonte Roto</strong></div></div>
+</div>
+</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Grebas del Horizonte Roto">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Grebas del Horizonte Roto</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Punzante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Grebas de la Perdición</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Fragmento del Horizonte</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Grebas del Horizonte Roto</strong></div></div>
+</div>
+</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Botas del Horizonte Roto">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Botas del Horizonte Roto</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma Aullante</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Botas de la Perdición</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Fragmento del Horizonte</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Botas del Horizonte Roto</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag purple">32 protección total</span><span class="tag cyan">+10 corazones</span><span class="tag green">Efectos estables</span><span class="tag red">Irrompible</span></div>
 <div class="player-only-note"><strong>Visión Nocturna estable:</strong> los efectos del set se renuevan con margen suficiente para que no aparezca el parpadeo de “efecto por terminar”.</div>
 </div>
 <div class="card endgame-card">
-<div class="card-header"><img alt="Filo del Horizonte Roto" class="item-icon" src="img/items/horizon_sword.png"/><h3>Filo del Horizonte Roto</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Filo del Horizonte Roto" class="item-icon" src="img/items/horizon_sword.png"/><h3>Filo del Horizonte Roto</h3></div>
 <p>Ascensión de la Espada de la Perdición: 16 de daño base, irrompible y con encantabilidad 22.</p>
-<div class="recipe-line"><strong>Herrería:</strong> Alma de Jugador + Espada de la Perdición + Fragmento del Horizonte → Filo del Horizonte Roto.</div>
+<div class="recipe-entry">
+<button class="recipe-toggle" type="button" aria-expanded="false">
+<span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span>
+<span class="recipe-toggle-hint">Cursor / toque</span>
+</button>
+<div class="recipe-popover" role="region" aria-label="Receta de Filo del Horizonte Roto">
+<div class="recipe-popover-head"><span>Mesa de herrería</span><strong>Filo del Horizonte Roto</strong></div>
+<div class="recipe-process"><div class="process-box"><small>Plantilla</small><strong>Alma de Jugador</strong></div><span class="process-plus">+</span><div class="process-box"><small>Base</small><strong>Espada de la Perdición</strong></div><span class="process-plus">+</span><div class="process-box"><small>Material</small><strong>Fragmento del Horizonte</strong></div><span class="process-arrow">→</span><div class="process-box process-output"><small>Resultado</small><strong>Filo del Horizonte Roto</strong></div></div>
+</div>
+</div>
 <div class="tag-row"><span class="tag cyan">16 daño</span><span class="tag red">Irrompible</span><span class="tag purple">Encantabilidad 22</span></div>
 </div>
 </div>
@@ -1708,12 +2482,12 @@ body[data-phase="5"] .phase-command-top h2 {
 <h2 class="section-title">Fase 5: Cataclismo y Boss Rush</h2>
 <div class="grid">
 <div class="card endgame-card">
-<div class="card-header"><img alt="Catalizador del Cataclismo" class="item-icon" src="img/items/doom_catalyst.png"/><h3>Dragona del Cataclismo</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Catalizador del Cataclismo" class="item-icon" src="img/items/doom_catalyst.png"/><h3>Dragona del Cataclismo</h3></div>
 <p>En Fase 5, usa un Catalizador en el End para despertar la variante final de la Dragona: escudos en 75/50/25%, meteoros, refuerzos, oscuridad y mayor resistencia contra ráfagas.</p>
 <div class="tag-row"><span class="tag red">Fase 5</span><span class="tag purple">3 etapas de escudo</span><span class="tag gold">Recompensa especial</span></div>
 </div>
 <div class="card endgame-card">
-<div class="card-header"><img alt="Boss Rush" class="item-icon" src="img/items/doom_sigil.png"/><h3>Boss Rush final</h3></div>
+<div class="card-header"><img loading="lazy" decoding="async" alt="Boss Rush" class="item-icon" src="img/items/doom_sigil.png"/><h3>Boss Rush final</h3></div>
 <p>Con la integración de Nameless activa, usar el Terminus dentro del Doom después de haber derrotado a Nameless inicia el evento final: Tier 1 Vanilla → Tier 2 SR → Tier 3 Nameless Deity.</p>
 <div class="tag-row"><span class="tag gold">Tier 1: Vanilla</span><span class="tag red">Tier 2: SR</span><span class="tag purple">Tier 3: Nameless</span></div>
 </div>
@@ -2169,6 +2943,46 @@ body[data-phase="5"] .phase-command-top h2 {
                 : document.querySelector(`.btn-${colorTarget.toLowerCase()}`);
             if (botonActivo) botonActivo.classList.add("activo");
         }
+
+        // ===============================================
+        // RECETAS INTERACTIVAS — hover en PC / toque en móvil
+        // ===============================================
+        const recipeEntries = Array.from(document.querySelectorAll(".recipe-entry"));
+
+        function cerrarRecetas(excepto = null) {
+            recipeEntries.forEach(entry => {
+                if (entry === excepto) return;
+                entry.classList.remove("is-open");
+                const btn = entry.querySelector(".recipe-toggle");
+                if (btn) btn.setAttribute("aria-expanded", "false");
+            });
+        }
+
+        recipeEntries.forEach(entry => {
+            const btn = entry.querySelector(".recipe-toggle");
+            if (!btn) return;
+
+            btn.addEventListener("click", (event) => {
+                event.preventDefault();
+                const abrir = !entry.classList.contains("is-open");
+                cerrarRecetas(entry);
+                entry.classList.toggle("is-open", abrir);
+                btn.setAttribute("aria-expanded", abrir ? "true" : "false");
+            });
+
+            btn.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    entry.classList.remove("is-open");
+                    btn.setAttribute("aria-expanded", "false");
+                    btn.blur();
+                }
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".recipe-entry")) cerrarRecetas();
+        });
+
     </script>
 </body>
 </html>
