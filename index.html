@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Scuad Random Last Time - Guía del Jugador</title>
+<title>Scuad Random Last Time - Wiki del Jugador</title>
 <style>
         /* Fuente moderna y limpia */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
@@ -373,27 +373,6 @@
             margin-bottom: 8px;
             font-size: 16px;
             position: relative;
-        }
-
-        .phase-box.phase-locked {
-            border-left-color: #3f3f3f !important;
-            background-color: #0b0808 !important;
-            color: #666;
-        }
-
-        .phase-box.phase-locked::before {
-            background: repeating-linear-gradient(-45deg, transparent 0 10px, rgba(255,255,255,0.015) 10px 20px);
-        }
-
-        .phase-box.phase-locked h4 {
-            color: #686868 !important;
-        }
-
-        .phase-lock-label {
-            color: #777;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 9px;
-            line-height: 1.8;
         }
 
         /* ==========================================
@@ -772,36 +751,6 @@
             border-radius: 5px;
             font-family: monospace;
             font-size: 14px;
-        }
-
-        .phase-content-locked {
-            border-color: #303030 !important;
-            background: #090707 !important;
-            box-shadow: none !important;
-        }
-
-        .phase-content-locked .card-header,
-        .phase-content-locked .recipe-line,
-        .phase-content-locked .tag-row,
-        .phase-content-locked > p:not(.phase-lock-label) {
-            display: none !important;
-        }
-
-        .phase-content-locked::after {
-            content: 'CONTENIDO CLASIFICADO';
-            position: absolute;
-            right: 14px;
-            top: 12px;
-            color: #4d4d4d;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 7px;
-            letter-spacing: 1px;
-        }
-
-        .phase-content-locked .phase-lock-label {
-            display: block;
-            padding: 22px 6px 8px;
-            color: #777;
         }
 
         .armor-set-row {
@@ -1200,25 +1149,6 @@ header.scrolled .phase-status {
     font:7px 'Press Start 2P', monospace;
     box-shadow:0 0 15px var(--group-color);
 }
-.phase-item-group-locked {
-    filter:saturate(.25);
-}
-.classified-card {
-    grid-column:1/-1;
-    min-height:150px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    border-style:dashed;
-    background:repeating-linear-gradient(-45deg,#090707 0 12px,#0c0808 12px 24px);
-}
-.classified-code {
-    color:#665b5b;
-    font:8px 'Press Start 2P', monospace;
-    margin-bottom:12px;
-}
 
 .card {
     border-top:1px solid rgba(var(--phase-accent-rgb), .10);
@@ -1239,12 +1169,6 @@ header.scrolled .phase-status {
     border-left-width:8px;
     border-left-color:var(--phase-accent) !important;
     box-shadow:0 12px 38px rgba(var(--phase-accent-rgb),.19), inset 0 0 28px rgba(var(--phase-accent-rgb),.045);
-}
-#evolucion-fases .phase-box.phase-active h4::after {
-    content:'  ·  FASE ACTUAL';
-    color:var(--phase-accent);
-    font:7px 'Press Start 2P', monospace;
-    margin-left:10px;
 }
 
 .ruleta-section-master {
@@ -1274,6 +1198,65 @@ body[data-phase="5"] .phase-command-top h2 {
     .phase-group-header { align-items:flex-start; flex-wrap:wrap; }
     .phase-now { margin-left:0; }
 }
+
+
+/* ===== WIKI PÚBLICA DEL JUGADOR ===== */
+.wiki-kicker {
+    color: var(--phase-accent);
+    font: 8px 'Press Start 2P', monospace;
+    letter-spacing: 2px;
+}
+.phase-node.wiki-visible {
+    color: #d8caca;
+    opacity: 1;
+    filter: none;
+    border-color: #542020;
+    background: linear-gradient(180deg, rgba(var(--phase-accent-rgb),.06), #0b0505);
+}
+.phase-node.wiki-visible span { color: var(--scuad-gold); }
+.phase-node.wiki-visible::before { background: #542020; }
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 58px);
+    grid-template-rows: repeat(3, 58px);
+    gap: 6px;
+    margin: 16px 0 8px;
+}
+.recipe-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #5a2020;
+    background: linear-gradient(145deg, #170606, #090303);
+    border-radius: 7px;
+    color: #d9caca;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.15;
+    padding: 4px;
+    box-shadow: inset 0 0 12px rgba(0,0,0,.55);
+}
+.recipe-slot.center {
+    border-color: #a638d0;
+    color: #f0a8ff;
+    box-shadow: 0 0 12px rgba(194,68,255,.2), inset 0 0 12px rgba(0,0,0,.55);
+}
+.player-only-note {
+    margin-top: 14px;
+    padding: 11px 13px;
+    border: 1px solid #4b2020;
+    border-left: 3px solid var(--scuad-gold);
+    background: rgba(0,0,0,.28);
+    color: #bfaeae;
+    font-size: 13px;
+    border-radius: 7px;
+}
+@media (max-width: 520px) {
+    .recipe-grid { grid-template-columns: repeat(3, 50px); grid-template-rows: repeat(3, 50px); }
+    .recipe-slot { font-size: 8px; }
+}
+
 </style>
 </head>
 <body><div aria-hidden="true" class="phase-ambient"></div>
@@ -1288,9 +1271,9 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="particle p-small" style="left: 85%; animation-duration: 4.5s; animation-delay: 2s;"></div>
 </div>
 <img alt="Scuad Random Last Time" class="logo" src="img/logo.png"/><div class="phase-status" id="phase-status">
-<span class="phase-status-kicker">ESTADO DEL EVENTO</span>
-<strong id="phase-status-title">FASE 2 · SUPERVIVENCIA</strong>
-<span class="phase-status-sub" id="phase-status-sub">End y Doom desbloqueados · la presión aumenta</span>
+<span class="phase-status-kicker">WIKI DEL JUGADOR</span>
+<strong id="phase-status-title">SCUAD RANDOM · LAST TIME</strong>
+<span class="phase-status-sub" id="phase-status-sub">Reglas, objetos, fases, Doom, ruletas y endgame</span>
 </div>
 <!-- Indicador de Scroll FIX -->
 <div class="scroll-indicator">
@@ -1304,21 +1287,22 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="phase-command-top">
 <div>
 <span class="command-eyebrow">PROGRESIÓN DEL EVENTO</span>
-<h2>Fase actual: <span id="phase-current-number">2</span></h2>
+<h2>Las <span>6 etapas</span> de SR</h2>
+<p>La dificultad escala de Fase 0 a Fase 5. Esta wiki muestra la progresión completa para que puedas planear equipo, expediciones y recursos con anticipación.</p>
 </div>
 <div class="threat-meter">
-<span>NIVEL DE AMENAZA</span>
-<div class="threat-track"><i id="threat-fill"></i></div>
-<strong id="threat-label">ALTO</strong>
+<span>ESCALADA DE AMENAZA</span>
+<div class="threat-track"><i style="width:100%"></i></div>
+<strong>FASE 0 → 5</strong>
 </div>
 </div>
 <div class="phase-track" id="phase-track">
-<div class="phase-node" data-node-phase="0"><span>0</span><b>Preparación</b></div>
-<div class="phase-node" data-node-phase="1"><span>1</span><b>Despertar</b></div>
-<div class="phase-node" data-node-phase="2"><span>2</span><b>Supervivencia</b></div>
-<div class="phase-node" data-node-phase="3"><span>3</span><b>Pesadilla</b></div>
-<div class="phase-node" data-node-phase="4"><span>4</span><b>Muerte</b></div>
-<div class="phase-node" data-node-phase="5"><span>5</span><b>Apocalipsis</b></div>
+<div class="phase-node wiki-visible"><span>0</span><b>Preparación</b></div>
+<div class="phase-node wiki-visible"><span>1</span><b>Despertar</b></div>
+<div class="phase-node wiki-visible"><span>2</span><b>Supervivencia</b></div>
+<div class="phase-node wiki-visible"><span>3</span><b>Pesadilla</b></div>
+<div class="phase-node wiki-visible"><span>4</span><b>Muerte</b></div>
+<div class="phase-node wiki-visible"><span>5</span><b>Apocalipsis</b></div>
 </div>
 </section>
 <!-- Guía esencial -->
@@ -1374,7 +1358,39 @@ body[data-phase="5"] .phase-command-top h2 {
 </div>
 <div class="card">
 <h3>Estela de rareza</h3>
-<p>Algunos objetos especiales dejan una estela de color en su slot. Úsala como referencia rápida para reconocer equipo y consumibles importantes sin abrir sus detalles.</p>
+<p>Algunos objetos especiales dejan una estela de color en su slot. La <strong>Baya sobrecargada</strong> usa una estela violeta y la <strong>Esquirla del Ocaso</strong> una estela cian, además de las rarezas ya presentes en el resto del equipo especial.</p>
+</div>
+</div>
+</section>
+<!-- Homes y movilidad -->
+<section id="homes">
+<h2 class="section-title">Homes y Baya sobrecargada</h2>
+<div class="guide-note"><strong>Viaje preparado:</strong> guarda tus ubicaciones con <code>/scuad:home</code>. Cada jugador puede registrar hasta 12 Homes con nombre propio, dimensión y coordenadas exactas, y elegir si cada uno será privado o público.</div>
+<div class="grid">
+<div class="card">
+<div class="card-header">
+<!-- Agrega tu imagen en img/items/overcharged_berry.png -->
+<img alt="Baya sobrecargada" class="item-icon" src="img/items/overcharged_berry.png"/>
+<h3>Baya sobrecargada</h3>
+</div>
+<p>Comida especial de teletransporte. Tras <strong>10 segundos de consumo</strong> abre una interfaz con tus Homes y los Homes públicos disponibles. Al seleccionar uno, te lleva a esa dimensión y ubicación.</p>
+<div class="tag-row"><span class="tag purple">Cooldown: 15 min</span><span class="tag cyan">Stack: 16</span><span class="tag purple">Estela violeta</span></div>
+<div class="recipe-grid" aria-label="Receta de la Baya sobrecargada">
+<div class="recipe-slot">Perla de Ender</div><div class="recipe-slot">Amatista</div><div class="recipe-slot">Perla de Ender</div>
+<div class="recipe-slot">Amatista</div><div class="recipe-slot center">Baya brillante</div><div class="recipe-slot">Amatista</div>
+<div class="recipe-slot">Perla de Ender</div><div class="recipe-slot">Amatista</div><div class="recipe-slot">Perla de Ender</div>
+</div>
+<div class="recipe-line"><strong>Receta:</strong> Baya brillante al centro + 4 Perlas de Ender en las esquinas + 4 Fragmentos de Amatista formando la cruz → 1 Baya sobrecargada.</div>
+</div>
+<div class="card">
+<h3>/scuad:home</h3>
+<p>Abre el menú de Homes para guardar la posición en la que estás, asignarle el nombre que quieras, decidir si es <strong>pública o privada</strong> y administrar ubicaciones anteriores.</p>
+<div class="tag-row"><span class="tag green">Todos pueden usarlo</span><span class="tag">12 Homes por jugador</span></div>
+</div>
+<div class="card">
+<h3>Privados y públicos</h3>
+<p>Los Homes privados solo aparecen para su propietario. Los Homes públicos pueden aparecer en el selector de Baya de otros jugadores, permitiendo crear puntos comunitarios sin exponer tus bases privadas.</p>
+<div class="player-only-note">La Baya se consume al completar el uso. Su cooldown evita encadenar teletransportes de emergencia.</div>
 </div>
 </div>
 </section>
@@ -1395,7 +1411,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <img alt="Ración del Superviviente" class="item-icon" src="img/items/survivor_ration.png"/>
 <h3>Tienda de Comida</h3>
 </div>
-<p>Provisiones para mantenerte con vida. Su catálogo crece conforme se revelan nuevas fases.</p>
+<p>Provisiones para mantenerte con vida. Su catálogo crece conforme avanza el evento por sus fases.</p>
 <div class="tag-row"><span class="tag gold">9 Coins: Filete x16</span><span class="tag gold">13 Coins: Manzana Dorada</span><span class="tag gold">17 Coins: Ración x2</span></div>
 </div>
 <div class="card">
@@ -1427,7 +1443,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <!-- Alquimia e items -->
 <section>
 <h2 class="section-title">Arsenal y consumibles por fase</h2>
-<p class="guide-note"><strong>Progresión ordenada:</strong> cada grupo reúne los objetos que empiezan a formar parte de la progresión en esa fase. Las fases futuras permanecen clasificadas hasta que el Administrador las revele.</p>
+<p class="guide-note"><strong>Progresión ordenada:</strong> cada grupo reúne los objetos que empiezan a formar parte de la progresión en esa fase. La wiki muestra todas las etapas para que puedas planear tu ruta de supervivencia.</p>
 
 <div class="phase-item-group" data-phase-group="0" data-unlock-phase="0"><div class="phase-group-header"><span class="phase-group-number">FASE 0</span><div class="phase-group-copy"><h3>Preparación</h3><p>Equipo base, economía y supervivencia inicial.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="ScuadCoin" class="item-icon" src="img/items/scuad_coin.png"/><h3>ScuadCoin</h3></div>
@@ -1463,7 +1479,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="card-header"><img alt="Tónico del Explorador" class="item-icon" src="img/items/scout_tonic.png"/><h3>Tónico del Explorador</h3></div>
 <p>Consumible de movilidad y exploración pensado para rutas peligrosas y retirada rápida.</p>
 <div class="tag-row"><span class="tag gold">Tienda: 41 Coins</span><span class="tag red">Fase 1</span></div>
-</div></div></div><div class="phase-item-group" data-phase-group="2" data-unlock-phase="2"><div class="phase-group-header"><span class="phase-group-number">FASE 2</span><div class="phase-group-copy"><h3>Supervivencia</h3><p>Consumibles avanzados para End, Doom y combates prolongados.</p></div><span class="phase-now">ACTUAL</span></div><div class="grid"><div class="card">
+</div></div></div><div class="phase-item-group" data-phase-group="2" data-unlock-phase="2"><div class="phase-group-header"><span class="phase-group-number">FASE 2</span><div class="phase-group-copy"><h3>Supervivencia</h3><p>Consumibles avanzados para End, Doom y combates prolongados.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Estofado Dorado" class="item-icon" src="img/items/golden_stew.png"/><h3>Estofado Dorado</h3></div>
 <p>Fortalece tu vida temporalmente y acelera la recuperación durante unos segundos.</p>
 <div class="recipe-line"><strong>Receta:</strong> cuenco + zanahoria dorada + hongo rojo + hongo marrón.</div>
@@ -1501,6 +1517,12 @@ body[data-phase="5"] .phase-command-top h2 {
 <p>Fuerza III y Velocidad II durante 30 s, a cambio de Hambre III durante 15 s.</p>
 <div class="recipe-line"><strong>Alquimia:</strong> Poción Rara + Núcleo del Doom.</div>
 <div class="tag-row"><span class="tag gold">Tienda: 67 Coins</span><span class="tag red">Fase 4</span></div>
+</div><div class="card">
+<div class="card-header">
+<!-- Agrega tu imagen en img/items/dusk_shard.png -->
+<img alt="Esquirla del Ocaso" class="item-icon" src="img/items/dusk_shard.png"/><h3>Esquirla del Ocaso</h3></div>
+<p>Material exclusivo de <strong>Fase 4+</strong> y compuerta de la progresión Horizonte. No posee receta: los minijefes garantizan progreso, el Ghast Infernal puede entregar 1–2, los élites tienen una posibilidad de soltarla y los cofres importantes del Doom pueden contenerla.</p>
+<div class="tag-row"><span class="tag red">Fase 4+</span><span class="tag cyan">Stack: 16</span><span class="tag cyan">Estela cian</span><span class="tag purple">Sin receta</span></div>
 </div></div></div><div class="phase-item-group" data-phase-group="5" data-unlock-phase="5"><div class="phase-group-header"><span class="phase-group-number">FASE 5</span><div class="phase-group-copy"><h3>Apocalipsis Total</h3><p>Recursos finales para el cierre del evento.</p></div></div><div class="grid"><div class="card">
 <div class="card-header"><img alt="Notch Líquida" class="item-icon" src="img/items/liquid_notch.png"/><h3>Notch Líquida</h3></div>
 <p>Absorción IV y Resistencia I durante 2 minutos, además de Regeneración II durante 30 s.</p>
@@ -1569,9 +1591,9 @@ body[data-phase="5"] .phase-command-top h2 {
 <img alt="Grebas" src="img/items/doom_leggings.png"/>
 <img alt="Botas" src="img/items/doom_boots.png"/>
 </div>
-<p>Mejora cada pieza de Netherite usando un Catalizador del Cataclismo. El set completo es irrompible y otorga Fuerza, Resistencia II, Resistencia al Fuego, Visión Nocturna y 5 corazones extra.</p>
+<p>Mejora cada pieza de Netherite usando un Catalizador del Cataclismo. El set completo suma <strong>32 puntos de protección</strong>, es irrompible y otorga Fuerza, Resistencia II, Resistencia al Fuego, Visión Nocturna y 5 corazones extra.</p>
 <div class="recipe-line"><strong>Herrería:</strong> Plantilla de Mejora de Netherite + pieza de Netherite + Catalizador del Cataclismo → pieza de la Perdición.</div>
-<div class="tag-row"><span class="tag purple">Set completo</span><span class="tag red">Irrompible</span><span class="tag green">+5 corazones</span></div>
+<div class="tag-row"><span class="tag purple">32 protección total</span><span class="tag red">Irrompible</span><span class="tag green">+5 corazones</span></div>
 </div>
 <div class="card">
 <div class="card-header"><img alt="Espada de la Perdición" class="item-icon" src="img/items/doom_sword.png"/><h3>Espada de la Perdición</h3></div>
@@ -1592,18 +1614,19 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="card"><div class="card-header"><img alt="Emperador" class="item-icon" src="img/items/souls/stinging_soul.png"/><h3>El Emperador</h3></div><p>Combatiente de Netherite, resistente y agresivo.</p><div class="tag-row"><span class="tag red">800 HP</span><span class="tag purple">18 daño</span><span class="tag gold">Alma Punzante</span></div></div>
 <div class="card"><div class="card-header"><img alt="Ghast Infernal" class="item-icon" src="img/items/souls/burning_soul.png"/><h3>Ghast Infernal</h3></div><p>Jefe aéreo de fuego con cadencia ofensiva reforzada.</p><div class="tag-row"><span class="tag red">1000 HP</span><span class="tag gold">Alma Ígnea</span></div></div>
 <div class="card"><div class="card-header"><img alt="Devastador Espectral" class="item-icon" src="img/items/souls/howling_soul.png"/><h3>Devastador Espectral</h3></div><p>Jefe espectral pesado con persecución terrestre mejorada.</p><div class="tag-row"><span class="tag red">1400 HP</span><span class="tag purple">27 daño</span><span class="tag gold">Alma Aullante</span></div></div>
-<div class="card"><div class="card-header"><img alt="Coloso del Umbral" class="item-icon" src="img/items/threshold_heart.png"/><h3>Coloso del Umbral</h3></div><p>Jefe de Fase 5 con segunda fase, esbirros, regeneración y grietas del Umbral. Es la prueba previa al equipo Horizonte.</p><div class="tag-row"><span class="tag red">3200 HP</span><span class="tag purple">32 / 42 daño</span><span class="tag cyan">Pre-Nameless</span></div></div>
+<div class="card"><div class="card-header"><img alt="Coloso del Umbral" class="item-icon" src="img/items/threshold_heart.png"/><h3>Coloso del Umbral</h3></div><p>Jefe de Fase 5 con segunda fase, esbirros, regeneración y grietas del Umbral. Horizonte ya puede prepararse desde Fase 4; derrotar al Coloso sigue siendo una prueba de endgame y entrega 2 Esquirlas del Ocaso.</p><div class="tag-row"><span class="tag red">3200 HP</span><span class="tag purple">32 / 42 daño</span><span class="tag cyan">2 Esquirlas</span></div></div>
 <div class="card"><div class="card-header"><img alt="Recompensas" class="item-icon" src="img/items/scuad_coin.png"/><h3>Recompensas de jefe</h3></div><p>Los jefes entregan 55 + fase×15 Coins más un extra aleatorio, esmeraldas y probabilidades de botín raro. Dentro del Doom existe además una bonificación independiente.</p><div class="tag-row"><span class="tag gold">+30 a +50 en Doom</span><span class="tag green">Loot raro mejorado</span></div></div>
 <div class="card"><div class="card-header"><img alt="Élites" class="item-icon" src="img/items/scuad_coin.png"/><h3>Élites</h3></div><p>Guardias Doom, hostiles adaptativos y variantes especiales tienen recompensa propia.</p><div class="tag-row"><span class="tag gold">15 + fase×3</span><span class="tag">0–10 extra</span></div></div>
 </div>
-</section><section class="phase-section" data-unlock-phase="5" id="endgame-sr">
-<h2 class="section-title">Endgame: Cataclismo y Horizonte Roto</h2>
+</section><section class="phase-section" data-unlock-phase="4" id="horizonte-sr">
+<h2 class="section-title">Fase 4: Horizonte Roto</h2>
+<p class="guide-note"><strong>Pre-Coloso:</strong> Horizonte Roto ya forma parte de la progresión de Fase 4. Tener Almas Ígneas desde fases anteriores no permite adelantarlo, porque cada Fragmento del Horizonte exige una Esquirla del Ocaso obtenible únicamente desde Fase 4.</p>
 <div class="grid">
 <div class="card endgame-card">
 <div class="card-header"><img alt="Fragmento del Horizonte" class="item-icon" src="img/items/horizon_core.png"/><h3>Fragmento del Horizonte</h3></div>
-<p>Material de ascensión que se habilita después de vencer al Coloso del Umbral. Se fabrica de uno en uno para que cada mejora requiera su propio fragmento.</p>
-<div class="recipe-line"><strong>Receta:</strong> Corazón del Umbral + 1 Fragmento de Eco + 1 Núcleo del Doom + Reliquia del Coloso → 1 Fragmento del Horizonte. El Corazón y la Reliquia se devuelven al completar el crafteo.</div>
-<div class="tag-row"><span class="tag cyan">Pre-Nameless</span><span class="tag purple">Stack: 1</span><span class="tag purple">Rareza alta</span></div>
+<p>Material de ascensión fabricado de uno en uno. La Esquirla del Ocaso es la llave que impide crear estos fragmentos antes de Fase 4.</p>
+<div class="recipe-line"><strong>Receta:</strong> 1 Esquirla del Ocaso + 1 Fragmento de Eco + 1 Alma Ígnea + 1 Núcleo del Doom + 1 Lingote de Netherite → 1 Fragmento del Horizonte.</div>
+<div class="tag-row"><span class="tag red">Fase 4+</span><span class="tag cyan">Pre-Coloso</span><span class="tag purple">Stack: 1</span></div>
 </div>
 <div class="card endgame-card">
 <div class="card-header"><img alt="Armadura del Horizonte Roto" class="item-icon" src="img/items/horizon_chestplate.png"/><h3>Armadura del Horizonte Roto</h3></div>
@@ -1613,12 +1636,13 @@ body[data-phase="5"] .phase-command-top h2 {
 <img alt="Grebas del Horizonte" src="img/items/horizon_leggings.png"/>
 <img alt="Botas del Horizonte" src="img/items/horizon_boots.png"/>
 </div>
-<p>Mejora cada pieza de Perdición en la mesa de herrería usando el alma correspondiente como plantilla y un Fragmento del Horizonte como material de adición. Hereda Fuerza I, Resistencia II, Resistencia al Fuego y Visión Nocturna; añade Velocidad I, Salto II y <strong>10 corazones extra</strong>.</p>
+<p>Mejora cada pieza de Perdición en la mesa de herrería usando el alma correspondiente como plantilla y un Fragmento del Horizonte como material. El set completo suma <strong>32 puntos de protección</strong> y conserva Fuerza I, Resistencia II, Resistencia al Fuego y Visión Nocturna; añade Velocidad I, Salto II y <strong>10 corazones extra</strong>.</p>
 <div class="recipe-line"><strong>Yelmo:</strong> Alma Ígnea + Yelmo de la Perdición + Fragmento del Horizonte → Yelmo del Horizonte Roto.</div>
 <div class="recipe-line"><strong>Coraza:</strong> Alma Gelatinosa + Coraza de la Perdición + Fragmento del Horizonte → Coraza del Horizonte Roto.</div>
 <div class="recipe-line"><strong>Grebas:</strong> Alma Punzante + Grebas de la Perdición + Fragmento del Horizonte → Grebas del Horizonte Roto.</div>
 <div class="recipe-line"><strong>Botas:</strong> Alma Aullante + Botas de la Perdición + Fragmento del Horizonte → Botas del Horizonte Roto.</div>
-<div class="tag-row"><span class="tag cyan">+10 corazones</span><span class="tag green">Velocidad I</span><span class="tag purple">Salto II</span><span class="tag red">Irrompible</span></div>
+<div class="tag-row"><span class="tag purple">32 protección total</span><span class="tag cyan">+10 corazones</span><span class="tag green">Efectos estables</span><span class="tag red">Irrompible</span></div>
+<div class="player-only-note"><strong>Visión Nocturna estable:</strong> los efectos del set se renuevan con margen suficiente para que no aparezca el parpadeo de “efecto por terminar”.</div>
 </div>
 <div class="card endgame-card">
 <div class="card-header"><img alt="Filo del Horizonte Roto" class="item-icon" src="img/items/horizon_sword.png"/><h3>Filo del Horizonte Roto</h3></div>
@@ -1626,6 +1650,11 @@ body[data-phase="5"] .phase-command-top h2 {
 <div class="recipe-line"><strong>Herrería:</strong> Alma de Jugador + Espada de la Perdición + Fragmento del Horizonte → Filo del Horizonte Roto.</div>
 <div class="tag-row"><span class="tag cyan">16 daño</span><span class="tag red">Irrompible</span><span class="tag purple">Encantabilidad 22</span></div>
 </div>
+</div>
+</section>
+<section class="phase-section" data-unlock-phase="5" id="endgame-sr">
+<h2 class="section-title">Fase 5: Cataclismo y Boss Rush</h2>
+<div class="grid">
 <div class="card endgame-card">
 <div class="card-header"><img alt="Catalizador del Cataclismo" class="item-icon" src="img/items/doom_catalyst.png"/><h3>Dragona del Cataclismo</h3></div>
 <p>En Fase 5, usa un Catalizador en el End para despertar la variante final de la Dragona: escudos en 75/50/25%, meteoros, refuerzos, oscuridad y mayor resistencia contra ráfagas.</p>
@@ -1643,19 +1672,23 @@ body[data-phase="5"] .phase-command-top h2 {
 <h2 class="section-title">Comandos útiles para jugadores</h2>
 <div class="grid">
 <div class="command-card">
-<h3>/scuad:espectear</h3>
+<h3>/scuad:home</h3>
+<p>Guarda, nombra y administra tus Homes privados o públicos. La Baya sobrecargada usa estas ubicaciones como destinos.</p>
+</div>
+<div class="command-card">
+<h3>/scuad:spectate</h3>
 <p>Si estás muerto y en Espectador, abre una lista de jugadores vivos para seguir su aventura mientras esperas una resurrección.</p>
 </div>
-<div class="command-card" data-unlock-phase="2">
+<div class="command-card">
 <h3>/scuad:doom</h3>
-<p>Abre el menú para entrar o salir de la Dimensión Doom una vez que la Fase 2 esté revelada.</p>
+<p>Abre el menú para entrar o salir de la Dimensión Doom cuando el evento haya alcanzado la Fase 2.</p>
 </div>
 </div>
 </section>
 <!-- Dificultad (0 a 5) -->
 <section id="evolucion-fases">
 <h2 class="section-title">Evolución del Mundo — Cambios completos</h2>
-<p class="guide-note"><strong>Fase actual: 2 — Supervivencia.</strong> Los cambios son acumulativos: cada fase conserva reglas anteriores y añade nuevas amenazas. El avance lo controla manualmente el Administrador; esta guía no depende de días fijos.</p>
+<p class="guide-note"><strong>Progresión acumulativa:</strong> cada fase conserva las reglas anteriores y añade nuevas amenazas, recursos y encuentros. Consulta esta sección como referencia completa del evento.</p>
 <div class="phase-rule"><strong>Dificultad adaptativa:</strong> además de las reglas fijas, SR mide jugadores vivos, calidad media de armadura, victorias y muertes recientes. Puede generar Hostiles Adaptativos con Velocidad, Resistencia y Fuerza. Tras una muerte permanente se activa una tregua adaptativa, pero también comienza el <strong>Eco de Muerte</strong>, que fortalece únicamente a las criaturas nuevas durante unos minutos.</div>
 <div class="phase-box" data-phase="0" data-unlock-phase="0" style="border-left-color:#00fa9a;">
 <h4 style="color:#00fa9a;">Fase 0: Paz Engañosa</h4>
@@ -1683,7 +1716,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 5 min</strong>: los hostiles nuevos reciben Velocidad I.</li>
 </ul>
 </div>
-<div class="phase-box phase-active" data-phase="2" data-unlock-phase="2" style="border-left-color:var(--scuad-naranja);">
+<div class="phase-box" data-phase="2" data-unlock-phase="2" style="border-left-color:var(--scuad-naranja);">
 <h4 style="color:var(--scuad-naranja);">Fase 2: Supervivencia</h4>
 <p class="phase-summary">El evento entra en Difícil y se abren las dimensiones de progresión avanzada.</p>
 <ul class="phase-list">
@@ -1737,6 +1770,8 @@ body[data-phase="5"] .phase-command-top h2 {
 <li>Minijefes: <strong>23% base cada 2 min</strong>; el pool añade Warden, Blaze y Creeper cargado.</li>
 <li>Al entrar en la fase: medianoche, tormenta y <strong>2 unidades óseas por superviviente</strong>.</li>
 <li>Doom añade Ravagers y Breeze a la fauna; los defensores pueden incluir Verdugos y aparece el <strong>Centinela del Cohete</strong>.</li>
+<li>La <strong>Esquirla del Ocaso</strong> entra al loot de Fase 4+: minijefes, élites y cofres importantes del Doom pueden entregarla.</li>
+<li>Con una Esquirla del Ocaso ya puedes fabricar <strong>Fragmentos del Horizonte</strong> y comenzar la Armadura del Horizonte Roto <strong>antes del Coloso</strong>.</li>
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 8 min</strong>: nuevos hostiles reciben Velocidad I + Fuerza I + Resistencia I.</li>
 </ul>
 </div>
@@ -1758,7 +1793,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <li>Al entrar en la fase: medianoche, tormenta y <strong>3 unidades óseas por superviviente</strong>.</li>
 <li>Se activa el combate exclusivo contra el <strong>Coloso del Umbral</strong> dentro de Doom.</li>
 <li>El <strong>Catalizador del Cataclismo</strong> puede usarse en el End para despertar a la Dragona del Cataclismo.</li>
-<li>Tras derrotar al Coloso se desbloquea la progresión del <strong>Horizonte Roto</strong>, equipo previo a Nameless Deity.</li>
+<li>El <strong>Coloso del Umbral</strong> sigue siendo una amenaza principal de Fase 5 y entrega 2 Esquirlas del Ocaso, pero ya no bloquea el inicio de Horizonte.</li>
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 9 min</strong>: nuevos hostiles reciben Velocidad I + Fuerza I + Resistencia I.</li>
 </ul>
 </div>
@@ -1790,7 +1825,7 @@ body[data-phase="5"] .phase-command-top h2 {
 <!-- Controles -->
 <div class="ruleta-controles">
 <h2>El Destino Gira</h2>
-<p>Las ruletas automáticas usan un intervalo configurable por el Administrador. El rojo queda reservado para cambios de fase; los demás colores pueden activar desafíos, maldiciones, bendiciones, beneficios o PvP. El sistema evita solapar eventos activos.</p>
+<p>Las ruletas aparecen durante el evento y no se solapan entre sí. El rojo representa cambios de fase; amarillo activa desafíos, naranja maldiciones, azul bendiciones, verde beneficios globales y morado eventos PvP. Las bendiciones y maldiciones duran <strong>30 minutos</strong> y morir no elimina sus efectos mientras el evento siga activo.</p>
 <div class="filtros-colores">
 <button class="btn-filtro btn-rojo" onclick="mostrarEventos('ROJO')">Rojo</button>
 <button class="btn-filtro btn-amarillo" onclick="mostrarEventos('AMARILLO')">Amarillo</button>
@@ -1818,46 +1853,8 @@ body[data-phase="5"] .phase-command-top h2 {
 <p style="margin-top: 5px; color: #555;">Wiki desarrollada para sobrevivir al Realm.</p>
 </footer>
 <script>
-        const FASE_PUBLICA = 2;
-
-        function aplicarBloqueoDeFases() {
-            const fasePermitida = Math.max(0, Math.min(5, Number(FASE_PUBLICA) || 0));
-
-            document.querySelectorAll('[data-unlock-phase]').forEach((elemento) => {
-                const fase = Number(elemento.dataset.unlockPhase);
-                if (fase <= fasePermitida) return;
-
-                if (elemento.classList.contains('phase-item-group')) {
-                    elemento.classList.add('phase-item-group-locked');
-                    const grid = elemento.querySelector('.grid');
-                    if (grid) grid.innerHTML = `
-                        <div class="card classified-card">
-                            <span class="classified-code">FASE ${fase}</span>
-                            <h3>Contenido clasificado</h3>
-                            <p>Este arsenal se revelará cuando el Administrador desbloquee la fase.</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                if (elemento.classList.contains('phase-section')) {
-                    elemento.innerHTML = `
-                        <h2 class="section-title">Expediente Bloqueado</h2>
-                        <div class="phase-box phase-locked">
-                            <h4>Contenido de Fase ${fase}</h4>
-                            <p class="phase-lock-label">◆ Esta parte de la guía se revelará cuando el Administrador desbloquee la fase.</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                elemento.classList.add('phase-content-locked');
-                elemento.innerHTML = `<p class="phase-lock-label">◆ Contenido de Fase ${fase} bloqueado por el Administrador.</p>`;
-            });
-        }
-
         // ===============================================
-        // SISTEMA DE HEADER (PANTALLA COMPLETA A SCROLL)
+        // HEADER (PANTALLA COMPLETA A SCROLL)
         // ===============================================
         window.addEventListener('scroll', function() {
             const header = document.getElementById('main-header');
@@ -1872,7 +1869,7 @@ body[data-phase="5"] .phase-command-top h2 {
         });
 
         // ===============================================
-        // SISTEMA DE LA RULETA
+        // VISOR DE RULETAS — INFORMACIÓN DEL EVENTO
         // ===============================================
         const fasesDeRuleta = [
             "Fase 0: Paz Engañosa",
@@ -1884,22 +1881,13 @@ body[data-phase="5"] .phase-command-top h2 {
         ];
 
         const desafiosRuleta = [
-            { fase: 0, texto: "Minar 32 Hierro — 59 Coins" },
-            { fase: 0, texto: "Minar 10 Diamantes — 101 Coins" },
-            { fase: 1, texto: "Matar 10 Zombies — 47 Coins" },
-            { fase: 1, texto: "Matar 5 Creepers — 53 Coins" },
-            { fase: 2, texto: "Derrotar 4 Guardias Óseos — 89 Coins" },
-            { fase: 3, texto: "Derrotar 3 Tiradores Espectrales — 127 Coins" },
-            { fase: 4, texto: "Derrotar 2 Verdugos Abisales — 173 Coins" }
-        ];
-
-        const maldicionesRuleta = [
-            { fase: 1, texto: "Noche de Sangre: medianoche, tormenta, debilidad y asedio" },
-            { fase: 0, texto: "Lluvia Ácida: lluvia global" },
-            { fase: 0, texto: "Tormenta Eléctrica" },
-            { fase: 0, texto: "Niebla de Parásitos: ceguera" },
-            { fase: 0, texto: "Hambre Voraz" },
-            { fase: 0, texto: "Fatiga Extrema" }
+            "Minar 32 Hierro — 59 Coins",
+            "Minar 10 Diamantes — 101 Coins",
+            "Matar 10 Zombies — 47 Coins",
+            "Matar 5 Creepers — 53 Coins",
+            "Derrotar 4 Guardias Óseos — 89 Coins",
+            "Derrotar 3 Tiradores Espectrales — 127 Coins",
+            "Derrotar 2 Verdugos Abisales — 173 Coins"
         ];
 
         const datosRuleta = {
@@ -1907,47 +1895,58 @@ body[data-phase="5"] .phase-command-top h2 {
                 imagen: "img/roulettes/ruleta_base.png",
                 colorCSS: "var(--scuad-red)",
                 titulo: "Visor de Eventos",
-                eventos: ["Selecciona un color arriba para explorar sus posibilidades."]
+                eventos: ["Selecciona un color arriba para explorar las posibilidades del evento."]
             },
             "ROJO": {
                 imagen: "img/roulettes/ruleta_roja.png",
                 colorCSS: "var(--scuad-red)",
                 titulo: "ROJO: Cambio de Fase",
-                eventos: fasesDeRuleta.map((evento, fase) => fase <= FASE_PUBLICA
-                    ? evento
-                    : `Fase ${fase}: Información bloqueada por el Administrador`)
+                eventos: fasesDeRuleta
             },
             "AMARILLO": {
                 imagen: "img/roulettes/ruleta_amarilla.png",
                 colorCSS: "var(--scuad-gold)",
                 titulo: "AMARILLO: Desafío temporizado",
-                eventos: desafiosRuleta.filter(e => e.fase <= FASE_PUBLICA).map(e => e.texto)
+                eventos: desafiosRuleta
             },
             "NARANJA": {
                 imagen: "img/roulettes/ruleta_naranja.png",
                 colorCSS: "var(--scuad-naranja)",
-                titulo: "NARANJA: Maldiciones",
-                eventos: maldicionesRuleta.filter(e => e.fase <= FASE_PUBLICA).map(e => e.texto)
+                titulo: "NARANJA: Maldiciones · 30 minutos",
+                eventos: [
+                    "Noche de Sangre: medianoche, tormenta, Debilidad II, Oscuridad y asedio",
+                    "Lluvia Ácida: lluvia, Debilidad I y Hambre II",
+                    "Tormenta Eléctrica: tormenta, Lentitud I y Debilidad I",
+                    "Niebla de Parásitos: Oscuridad y Lentitud I",
+                    "Hambre Voraz: Hambre III durante 30 minutos",
+                    "Fatiga Extrema: Fatiga Minera III",
+                    "Huesos de Plomo: Lentitud II",
+                    "Manos Malditas: Debilidad II + Fatiga Minera II",
+                    "Morir no elimina una maldición mientras sus 30 minutos sigan activos."
+                ]
             },
             "AZUL": {
                 imagen: "img/roulettes/ruleta_azul.png",
                 colorCSS: "var(--scuad-azul)",
-                titulo: "AZUL: Bendiciones instantáneas",
+                titulo: "AZUL: Bendiciones · 30 minutos",
                 eventos: [
-                    "Lluvia de Monedas: 16 ScuadCoins para cada superviviente",
-                    "Regeneración Divina",
-                    "Gravedad Abisal: Caída Lenta",
+                    "Lluvia de Monedas: cada superviviente recibe una cantidad aleatoria de 0 a 64 ScuadCoins al activarse y cada 2 minutos",
+                    "Regeneración Divina: Regeneración I",
+                    "Gravedad Abisal: Caída Lenta + Salto I",
                     "Piel de Hierro: Resistencia II",
-                    "Visión Nocturna",
-                    "Experiencia Masiva: 30 niveles"
+                    "Ojos del Vacío: Visión Nocturna + Velocidad I",
+                    "Favor del Héroe: Fuerza I + Absorción II",
+                    "Sangre de la Forja: Resistencia al Fuego + Prisa II",
+                    "Paso del Vendaval: Velocidad II + Salto II",
+                    "Morir no elimina una bendición mientras sus 30 minutos sigan activos."
                 ]
             },
             "VERDE": {
                 imagen: "img/roulettes/ruleta_verde.png",
                 colorCSS: "var(--scuad-verde)",
-                titulo: "VERDE: Beneficio global temporizado",
+                titulo: "VERDE: Beneficio global · 30 minutos",
                 eventos: [
-                    "Minería Preciosa: el carbón se convierte en diamante",
+                    "Minería Preciosa: el carbón minado se convierte en diamante",
                     "Fiebre del Oro: triple ScuadCoins por enemigo derrotado",
                     "Brazos de Acero: Prisa II global"
                 ]
@@ -1957,11 +1956,10 @@ body[data-phase="5"] .phase-command-top h2 {
                 colorCSS: "var(--scuad-morado)",
                 titulo: "MORADO: Evento PvP",
                 eventos: [
-                    "El PvP se activa temporalmente y el resto de ruletas se pausa.",
+                    "El PvP se activa temporalmente y las demás ruletas se pausan.",
                     "<strong>Más Buscado:</strong> el objetivo vale 500 ScuadCoins. Quien lo elimina cobra y hereda la marca.",
                     "Si el Más Buscado actual sobrevive hasta el final, recibe 500 ScuadCoins.",
-                    "Durante la cacería sus coordenadas X/Z pueden revelarse periódicamente según la configuración del Administrador.",
-                    "<strong>Evento raro — Último en Pie:</strong> puede sustituir a Más Buscado.",
+                    "<strong>Evento raro — Último en Pie:</strong> tiene 15% de probabilidad de sustituir a Más Buscado.",
                     "Último en Pie: 200 ScuadCoins por eliminación directa + 500 ScuadCoins para el último superviviente."
                 ]
             }
@@ -1969,12 +1967,10 @@ body[data-phase="5"] .phase-command-top h2 {
 
         function mostrarEventos(colorTarget) {
             const data = datosRuleta[colorTarget];
-            
-            // 1. Cambiar la imagen de la ruleta y glow del borde
             const imgEl = document.getElementById("ruleta-visual");
             const bordeEl = document.getElementById("ruleta-borde");
             imgEl.src = data.imagen;
-            
+
             if(colorTarget !== "BASE") {
                 imgEl.style.filter = `drop-shadow(0 0 50px ${data.colorCSS})`;
                 bordeEl.style.borderColor = data.colorCSS;
@@ -1985,20 +1981,16 @@ body[data-phase="5"] .phase-command-top h2 {
                 bordeEl.style.boxShadow = `20px 0 50px rgba(211, 0, 0, 0.4), inset -10px 0 20px rgba(0,0,0,0.8)`;
             }
 
-            // 2. Actualizar Título de Información
             const tituloEl = document.getElementById("titulo-evento");
             const cajaInfo = document.getElementById("caja-eventos");
-            
             tituloEl.innerText = data.titulo;
             tituloEl.style.color = data.colorCSS;
             tituloEl.style.textShadow = `0 0 15px ${data.colorCSS}`;
             cajaInfo.style.borderColor = data.colorCSS;
 
-            // 3. Actualizar Lista con Animación Fluida
             const listaEl = document.getElementById("lista-eventos");
             listaEl.innerHTML = "";
-            
-            // Re-inyectar estilo temporal a los "bullets" (las flechas)
+
             let styleBullets = document.getElementById("dynamic-bullets");
             if(!styleBullets) {
                 styleBullets = document.createElement("style");
@@ -2010,69 +2002,17 @@ body[data-phase="5"] .phase-command-top h2 {
             data.eventos.forEach((eventoText, index) => {
                 const li = document.createElement("li");
                 li.innerHTML = eventoText;
-                
-                // Retraso escalonado para la animación de entrada en cascada
                 li.style.animation = `slideInUp 0.4s ease forwards`;
                 li.style.animationDelay = `${index * 0.1}s`;
-                
                 listaEl.appendChild(li);
             });
 
-            // 4. Resaltar botón activo
-            const botones = document.querySelectorAll(".btn-filtro");
-            botones.forEach(btn => btn.classList.remove("activo"));
-            
+            document.querySelectorAll(".btn-filtro").forEach(btn => btn.classList.remove("activo"));
             const botonActivo = colorTarget === "BASE"
                 ? document.querySelector(".btn-reset")
                 : document.querySelector(`.btn-${colorTarget.toLowerCase()}`);
             if (botonActivo) botonActivo.classList.add("activo");
         }
-
-
-        // ===============================================
-        // IDENTIDAD VISUAL EVOLUTIVA POR FASE
-        // ===============================================
-        const identidadFases = [
-            { nombre: "PREPARACIÓN", subtitulo: "Paz aparente · reúne recursos", amenaza: "BAJA", pct: 12 },
-            { nombre: "EL DESPERTAR", subtitulo: "Nether abierto · primeras mutaciones", amenaza: "MODERADA", pct: 30 },
-            { nombre: "SUPERVIVENCIA", subtitulo: "End y Doom desbloqueados · la presión aumenta", amenaza: "ALTA", pct: 48 },
-            { nombre: "PESADILLA", subtitulo: "Mutaciones avanzadas · ceniza y asedios", amenaza: "SEVERA", pct: 66 },
-            { nombre: "MUERTE INMINENTE", subtitulo: "Élites, tormentas y errores letales", amenaza: "CRÍTICA", pct: 84 },
-            { nombre: "APOCALIPSIS TOTAL", subtitulo: "El Realm ha dejado de perdonar", amenaza: "EXTREMA", pct: 100 }
-        ];
-
-        function aplicarIdentidadDeFase() {
-            const fase = Math.max(0, Math.min(5, Number(FASE_PUBLICA) || 0));
-            const data = identidadFases[fase];
-            document.body.dataset.phase = String(fase);
-
-            const title = document.getElementById("phase-status-title");
-            const sub = document.getElementById("phase-status-sub");
-            const num = document.getElementById("phase-current-number");
-            const fill = document.getElementById("threat-fill");
-            const label = document.getElementById("threat-label");
-
-            if (title) title.textContent = `FASE ${fase} · ${data.nombre}`;
-            if (sub) sub.textContent = data.subtitulo;
-            if (num) num.textContent = String(fase);
-            if (fill) fill.style.width = `${data.pct}%`;
-            if (label) label.textContent = data.amenaza;
-
-            document.querySelectorAll("[data-node-phase]").forEach(node => {
-                const nodePhase = Number(node.dataset.nodePhase);
-                node.classList.toggle("is-complete", nodePhase < fase);
-                node.classList.toggle("is-current", nodePhase === fase);
-                node.classList.toggle("is-locked", nodePhase > fase);
-            });
-
-            document.querySelectorAll("#evolucion-fases .phase-box[data-phase]").forEach(box => {
-                const p = Number(box.dataset.phase);
-                box.classList.toggle("phase-active", p === fase);
-            });
-        }
-
-        aplicarIdentidadDeFase();
-        aplicarBloqueoDeFases();
     </script>
 </body>
 </html>
