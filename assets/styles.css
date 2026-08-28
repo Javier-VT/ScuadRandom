@@ -4384,3 +4384,1844 @@ body.site-page:not(:has(.sr-intro)) .site-topbar {
         display:none !important;
     }
 }
+
+
+/* ==========================================================
+   IDENTIDAD DEL EVENTO POR FASE
+   ========================================================== */
+body[data-phase="0"] { --phase-complement-rgb: 60, 220, 255; }
+body[data-phase="1"] { --phase-complement-rgb: 255, 132, 45; }
+body[data-phase="2"] { --phase-complement-rgb: 35, 205, 255; }
+body[data-phase="3"] { --phase-complement-rgb: 230, 55, 38; }
+body[data-phase="4"] { --phase-complement-rgb: 255, 174, 38; }
+body[data-phase="5"] { --phase-complement-rgb: 255, 44, 116; }
+
+.sr-phase-backdrop {
+    position: fixed;
+    inset: var(--nav-h) 0 0;
+    z-index: 75;
+    pointer-events: none;
+    overflow: hidden;
+    contain: strict;
+}
+
+/* Número y nombre de fase gigantes detrás del contenido. */
+.sr-phase-watermark {
+    position: absolute;
+    right: clamp(-34px, 1.5vw, 26px);
+    bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    opacity: .065;
+    transform: rotate(-90deg) translateX(26%);
+    transform-origin: right bottom;
+    user-select: none;
+}
+.sr-phase-watermark span {
+    color: rgb(var(--phase-accent-rgb));
+    font-size: clamp(72px, 13vw, 190px);
+    font-weight: 900;
+    line-height: .78;
+    letter-spacing: -8px;
+}
+.sr-phase-watermark b {
+    margin-top: 10px;
+    color: rgb(var(--phase-complement-rgb));
+    font: 8px 'Press Start 2P', monospace;
+    letter-spacing: 4px;
+    white-space: nowrap;
+}
+
+/* Órbitas / sellos grandes que cambian de color con la fase. */
+.sr-phase-orbit {
+    position: absolute;
+    width: min(48vw, 620px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--phase-accent-rgb), .11);
+    box-shadow:
+        inset 0 0 0 34px rgba(var(--phase-complement-rgb), .008),
+        0 0 0 68px rgba(var(--phase-accent-rgb), .006);
+    animation: srPhaseOrbit 30s linear infinite;
+}
+.sr-phase-orbit.one { left: -16vw; top: 12vh; }
+.sr-phase-orbit.two {
+    right: -19vw;
+    top: 44vh;
+    width: min(40vw, 500px);
+    animation-direction: reverse;
+    animation-duration: 38s;
+}
+.sr-phase-orbit::before,
+.sr-phase-orbit::after {
+    content:'';
+    position:absolute;
+    inset:12%;
+    border-radius:50%;
+    border-top:1px solid rgba(var(--phase-complement-rgb), .15);
+    border-bottom:1px solid rgba(var(--phase-accent-rgb), .08);
+}
+.sr-phase-orbit::after {
+    inset:28%;
+    border-left:1px solid rgba(var(--phase-accent-rgb), .15);
+    border-right:1px solid rgba(var(--phase-complement-rgb), .10);
+}
+@keyframes srPhaseOrbit { to { transform: rotate(360deg); } }
+
+/* Líneas geométricas de fase. */
+.sr-phase-geometry {
+    position:absolute;
+    inset:0;
+    opacity:.38;
+}
+.sr-phase-geometry i {
+    position:absolute;
+    display:block;
+    width:1px;
+    height:140px;
+    background:linear-gradient(180deg, transparent, rgba(var(--phase-complement-rgb),.20), transparent);
+    transform:rotate(var(--geo-r, 28deg));
+    animation:srGeoDrift var(--geo-speed, 16s) ease-in-out infinite alternate;
+}
+@keyframes srGeoDrift {
+    from { translate:0 -18px; opacity:.20; }
+    to { translate:var(--geo-x, 24px) 36px; opacity:.55; }
+}
+
+/* FASE 0: preparación, círculos limpios y señales verdes. */
+body[data-phase="0"] .sr-phase-backdrop {
+    background:
+        radial-gradient(circle at 18% 28%, rgba(var(--phase-complement-rgb),.05), transparent 24%),
+        radial-gradient(circle at 80% 70%, rgba(var(--phase-accent-rgb),.055), transparent 26%);
+}
+
+/* FASE 1: grietas diagonales rojas/naranja. */
+body[data-phase="1"] .sr-phase-backdrop::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    opacity:.22;
+    background:
+        repeating-linear-gradient(132deg, transparent 0 96px, rgba(var(--phase-complement-rgb),.06) 97px 98px, transparent 99px 164px);
+}
+
+/* FASE 2: supervivencia — radar ámbar + señales cian. */
+body[data-phase="2"] .sr-phase-backdrop::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    opacity:.34;
+    background:
+        linear-gradient(30deg, rgba(var(--phase-accent-rgb),.025) 12%, transparent 12.5%, transparent 87%, rgba(var(--phase-accent-rgb),.025) 87.5%),
+        linear-gradient(150deg, rgba(var(--phase-complement-rgb),.020) 12%, transparent 12.5%, transparent 87%, rgba(var(--phase-complement-rgb),.020) 87.5%);
+    background-size: 86px 148px;
+}
+body[data-phase="2"] .sr-phase-backdrop::after {
+    content:'';
+    position:absolute;
+    left:0; right:0; top:31%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(var(--phase-complement-rgb),.20), transparent);
+    box-shadow:
+        0 28vh 0 rgba(var(--phase-accent-rgb),.08),
+        0 56vh 0 rgba(var(--phase-complement-rgb),.06);
+}
+
+/* FASE 3: ceniza / presión dorada. */
+body[data-phase="3"] .sr-phase-backdrop::before {
+    content:'';
+    position:absolute;
+    inset:-20%;
+    opacity:.15;
+    background:
+        repeating-linear-gradient(165deg, transparent 0 80px, rgba(var(--phase-accent-rgb),.07) 82px 83px, transparent 85px 152px);
+    animation:srAshBands 22s linear infinite;
+}
+@keyframes srAshBands { to { transform:translate3d(5vw,6vh,0); } }
+
+/* FASE 4: advertencias rojas + cortes ámbar. */
+body[data-phase="4"] .sr-phase-backdrop::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    opacity:.24;
+    background:
+        repeating-linear-gradient(118deg, transparent 0 112px, rgba(var(--phase-accent-rgb),.08) 114px 115px, transparent 117px 220px),
+        radial-gradient(circle at 50% 42%, rgba(var(--phase-complement-rgb),.04), transparent 36%);
+}
+
+/* FASE 5: anomalía violeta / magenta. */
+body[data-phase="5"] .sr-phase-backdrop::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    opacity:.25;
+    background:
+        repeating-radial-gradient(circle at 82% 38%, transparent 0 48px, rgba(var(--phase-complement-rgb),.055) 49px 50px, transparent 51px 92px);
+    animation:srVoidPulse 6s ease-in-out infinite alternate;
+}
+@keyframes srVoidPulse {
+    from { opacity:.16; transform:scale(1); }
+    to { opacity:.31; transform:scale(1.025); }
+}
+
+/* ==========================================================
+   POCIÓN RARA — BASE DE ALQUIMIA
+   ========================================================== */
+.brewing-global-note {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:-12px 0 24px;
+    padding:11px 14px;
+    border:1px solid rgba(92,190,255,.28);
+    border-left:3px solid #55c8ff;
+    border-radius:8px;
+    background:linear-gradient(90deg, rgba(50,160,255,.08), rgba(0,0,0,.20));
+    color:#b8acac;
+    font-size:12px;
+    font-weight:700;
+}
+.brewing-global-note img,
+.brewing-base-note img {
+    image-rendering:pixelated;
+    object-fit:contain;
+}
+.brewing-global-note strong { color:#8edcff; }
+
+.brewing-base-note {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    width:max-content;
+    max-width:100%;
+    margin:12px 0 -2px;
+    padding:5px 9px 5px 6px;
+    border:1px solid rgba(65,175,255,.24);
+    border-radius:999px;
+    background:rgba(20,80,120,.10);
+    color:#9dcbe2;
+    font-size:10px;
+    font-weight:800;
+}
+
+/* ==========================================================
+   ESTELA DE RAREZA DE LAS TARJETAS
+   Colores tomados del mismo sistema del addon.
+   ========================================================== */
+.card[data-rarity] {
+    --rarity-rgb: 255,255,255;
+    --rarity-energy: .30;
+}
+.card[data-rarity="gold"]   { --rarity-rgb:255,184,26; }
+.card[data-rarity="orange"] { --rarity-rgb:255,92,13; }
+.card[data-rarity="red"]    { --rarity-rgb:255,20,31; }
+.card[data-rarity="violet"] { --rarity-rgb:158,38,230; }
+.card[data-rarity="green"]  { --rarity-rgb:46,255,61; }
+.card[data-rarity="cyan"]   { --rarity-rgb:0,235,255; }
+.card[data-rarity="teal"]   { --rarity-rgb:0,158,179; }
+.card[data-rarity="white"]  { --rarity-rgb:224,235,255; }
+
+.card[data-rarity-level="1"] { --rarity-energy:.24; }
+.card[data-rarity-level="2"] { --rarity-energy:.36; }
+.card[data-rarity-level="3"] { --rarity-energy:.52; }
+.card[data-rarity-level="4"] { --rarity-energy:.72; }
+.card[data-rarity-level="5"] { --rarity-energy:1; }
+
+.sr-rarity-field {
+    position:absolute !important;
+    inset:0 !important;
+    z-index:0 !important;
+    overflow:hidden !important;
+    border-radius:inherit;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .22s ease;
+}
+.card[data-rarity]:hover .sr-rarity-field,
+.card[data-rarity]:focus-within .sr-rarity-field {
+    opacity:1;
+}
+
+/* Núcleo del color de rareza, sin barridos blancos. */
+.sr-rarity-core {
+    position:absolute;
+    inset:-22%;
+    background:
+        radial-gradient(circle at var(--mx,50%) var(--my,50%),
+            rgba(var(--rarity-rgb), calc(.14 * var(--rarity-energy))),
+            transparent 36%),
+        radial-gradient(circle at 50% 118%,
+            rgba(var(--rarity-rgb), calc(.20 * var(--rarity-energy))),
+            transparent 48%);
+    transform:scale(.94);
+    transition:transform .36s cubic-bezier(.2,.8,.2,1);
+}
+.card[data-rarity]:hover .sr-rarity-core {
+    transform:scale(1.06);
+}
+
+/* Anillo aparece desde rareza media. */
+.sr-rarity-ring {
+    position:absolute;
+    width:72%;
+    aspect-ratio:1;
+    right:-32%;
+    bottom:-48%;
+    border-radius:50%;
+    border:1px solid rgba(var(--rarity-rgb), calc(.22 * var(--rarity-energy)));
+    opacity:0;
+}
+.card[data-rarity-level="2"]:hover .sr-rarity-ring,
+.card[data-rarity-level="3"]:hover .sr-rarity-ring,
+.card[data-rarity-level="4"]:hover .sr-rarity-ring,
+.card[data-rarity-level="5"]:hover .sr-rarity-ring {
+    opacity:.80;
+    animation:srRarityRing 8s linear infinite;
+}
+.sr-rarity-ring::before,
+.sr-rarity-ring::after {
+    content:'';
+    position:absolute;
+    border-radius:50%;
+    border-top:1px solid rgba(var(--rarity-rgb), calc(.30 * var(--rarity-energy)));
+    border-bottom:1px solid rgba(var(--rarity-rgb), calc(.10 * var(--rarity-energy)));
+}
+.sr-rarity-ring::before { inset:17%; }
+.sr-rarity-ring::after { inset:34%; }
+@keyframes srRarityRing { to { transform:rotate(360deg); } }
+
+/* Partículas de la rareza. */
+.sr-rarity-trails i {
+    position:absolute;
+    bottom:-10px;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:rgb(var(--rarity-rgb));
+    box-shadow:0 0 9px rgba(var(--rarity-rgb),.55);
+    opacity:0;
+}
+.sr-rarity-trails i:nth-child(1){left:18%;--rx:12px;--rd:1.7s;}
+.sr-rarity-trails i:nth-child(2){left:41%;--rx:-16px;--rd:2.0s;}
+.sr-rarity-trails i:nth-child(3){left:67%;--rx:18px;--rd:1.55s;}
+.sr-rarity-trails i:nth-child(4){left:84%;--rx:-10px;--rd:1.85s;}
+
+.card[data-rarity-level="3"]:hover .sr-rarity-trails i,
+.card[data-rarity-level="4"]:hover .sr-rarity-trails i,
+.card[data-rarity-level="5"]:hover .sr-rarity-trails i {
+    animation:srRarityTrail var(--rd) ease-out infinite;
+}
+.card[data-rarity-level="3"]:hover .sr-rarity-trails i { opacity:.32; }
+.card[data-rarity-level="4"]:hover .sr-rarity-trails i { opacity:.48; }
+.card[data-rarity-level="5"]:hover .sr-rarity-trails i {
+    opacity:.70;
+    width:4px;
+    height:4px;
+}
+@keyframes srRarityTrail {
+    0% { transform:translate3d(0,0,0) scale(.5); opacity:0; }
+    18% { opacity:inherit; }
+    100% { transform:translate3d(var(--rx),-165px,0) scale(1.3); opacity:0; }
+}
+
+/* Rarezas altas: la tarjeta recibe presencia extra, siempre en su color. */
+.card[data-rarity-level="4"]:hover {
+    border-color:rgba(var(--rarity-rgb),.58) !important;
+    box-shadow:
+        0 18px 38px rgba(0,0,0,.58),
+        0 0 24px rgba(var(--rarity-rgb),.13),
+        inset 0 0 22px rgba(var(--rarity-rgb),.04) !important;
+}
+.card[data-rarity-level="5"]:hover {
+    border-color:rgba(var(--rarity-rgb),.76) !important;
+    box-shadow:
+        0 20px 42px rgba(0,0,0,.62),
+        0 0 30px rgba(var(--rarity-rgb),.20),
+        inset 0 0 28px rgba(var(--rarity-rgb),.065) !important;
+}
+.card[data-rarity-level="5"]:hover .item-icon {
+    filter:
+        drop-shadow(0 6px 8px rgba(0,0,0,.58))
+        drop-shadow(0 0 11px rgba(var(--rarity-rgb),.42)) !important;
+}
+
+/* La rareza blanca NO usa barrido ni partículas ascendentes para evitar
+   el artefacto visual que ya habíamos eliminado. */
+.card[data-rarity="white"] .sr-rarity-ring,
+.card[data-rarity="white"] .sr-rarity-trails {
+    display:none !important;
+}
+.card[data-rarity="white"]:hover .sr-rarity-core {
+    background:
+        radial-gradient(circle at 50% 100%, rgba(210,230,255,.11), transparent 48%),
+        linear-gradient(180deg, transparent, rgba(210,230,255,.025));
+}
+
+/* Notch Líquida mantiene el modo ligero: solo aura estática, cero animaciones. */
+.performance-lite .sr-rarity-ring,
+.performance-lite .sr-rarity-trails {
+    display:none !important;
+}
+.performance-lite .sr-rarity-core {
+    transition:none !important;
+}
+.performance-lite:hover .sr-rarity-core {
+    transform:none !important;
+}
+
+/* Nota en Forja de Estelas */
+.rarity-addon-note {
+    margin-top:18px;
+    padding:11px 13px;
+    border:1px solid rgba(var(--phase-accent-rgb),.24);
+    border-left:3px solid var(--phase-accent);
+    border-radius:8px;
+    background:rgba(var(--phase-accent-rgb),.045);
+    color:#978888;
+    font-size:11px;
+    line-height:1.55;
+}
+
+@media (max-width:720px), (hover:none), (pointer:coarse) {
+    .sr-phase-orbit.two { display:none; }
+    .sr-phase-orbit.one { opacity:.55; width:76vw; }
+    .sr-phase-watermark { opacity:.035; right:-70px; }
+    .sr-phase-geometry i:nth-child(n+5){ display:none; }
+
+    /* En táctil la rareza se activa al tocar/foco y usa menos partículas. */
+    .card[data-rarity]:focus-within .sr-rarity-field { opacity:1; }
+    .sr-rarity-trails i:nth-child(n+3){ display:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .sr-phase-orbit,
+    .sr-phase-geometry,
+    .sr-rarity-ring,
+    .sr-rarity-trails {
+        animation:none !important;
+    }
+    .sr-rarity-trails { display:none !important; }
+}
+
+
+/* ==========================================================
+   FONDO 200% - ATMÓSFERA MUCHO MÁS LLENA
+   ========================================================== */
+.sr-deep-bg {
+    position: fixed;
+    inset: var(--nav-h) 0 0;
+    z-index: 50;
+    pointer-events: none;
+    overflow: hidden;
+    contain: strict;
+}
+.sr-bg-nebula,
+.sr-bg-stars,
+.sr-bg-sigils,
+.sr-bg-hazards,
+.sr-bg-grid,
+.sr-bg-flares {
+    position: absolute;
+    inset: 0;
+}
+
+/* Nebulosas suaves por fase */
+.sr-bg-nebula {
+    background:
+        radial-gradient(circle at 16% 22%, rgba(var(--phase-accent-rgb), .080), transparent 18%),
+        radial-gradient(circle at 76% 18%, rgba(var(--phase-complement-rgb), .060), transparent 18%),
+        radial-gradient(circle at 18% 78%, rgba(var(--phase-complement-rgb), .042), transparent 20%),
+        radial-gradient(circle at 84% 72%, rgba(var(--phase-accent-rgb), .050), transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(var(--phase-accent-rgb), .028), transparent 40%);
+    filter: blur(12px) saturate(1.15);
+    opacity: .92;
+}
+
+/* Puntos de energía/estrellas */
+.sr-bg-stars i {
+    position: absolute;
+    width: var(--star-size, 2px);
+    height: var(--star-size, 2px);
+    border-radius: 50%;
+    background: rgba(var(--star-rgb, var(--phase-accent-rgb)), .90);
+    box-shadow: 0 0 8px rgba(var(--star-rgb, var(--phase-accent-rgb)), .35);
+    opacity: 0;
+    animation: srStarPulse var(--star-speed, 5.5s) ease-in-out infinite;
+    animation-delay: var(--star-delay, 0s);
+}
+@keyframes srStarPulse {
+    0%, 100% { opacity: .10; transform: scale(.8); }
+    50% { opacity: .72; transform: scale(1.25); }
+}
+
+/* Sigilos circulares grandes */
+.sr-bg-sigils i {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--phase-accent-rgb), .08);
+    box-shadow:
+        inset 0 0 0 22px rgba(var(--phase-complement-rgb), .008),
+        0 0 0 46px rgba(var(--phase-accent-rgb), .005);
+    animation: srSigilSpin var(--sigil-speed, 28s) linear infinite;
+}
+.sr-bg-sigils i::before,
+.sr-bg-sigils i::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    inset: 14%;
+    border-top: 1px solid rgba(var(--phase-complement-rgb), .10);
+    border-bottom: 1px solid rgba(var(--phase-accent-rgb), .07);
+}
+.sr-bg-sigils i::after {
+    inset: 32%;
+    border-left: 1px solid rgba(var(--phase-accent-rgb), .14);
+    border-right: 1px solid rgba(var(--phase-complement-rgb), .10);
+}
+@keyframes srSigilSpin { to { transform: rotate(360deg); } }
+
+/* Barras/hazard marks por fase */
+.sr-bg-hazards i {
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--phase-complement-rgb), .18), transparent);
+    opacity: .18;
+    transform: rotate(var(--hz-rot, 20deg));
+    animation: srHazardShift var(--hz-speed, 18s) ease-in-out infinite alternate;
+}
+@keyframes srHazardShift {
+    from { transform: rotate(var(--hz-rot, 20deg)) translate3d(0,0,0); opacity: .10; }
+    to { transform: rotate(var(--hz-rot, 20deg)) translate3d(var(--hz-x, 18px), var(--hz-y, 22px), 0); opacity: .28; }
+}
+
+/* Grid tenue secundario */
+.sr-bg-grid {
+    background:
+        linear-gradient(rgba(var(--phase-accent-rgb), .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--phase-accent-rgb), .018) 1px, transparent 1px);
+    background-size: 88px 88px;
+    opacity: .28;
+    mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,.92), transparent 95%);
+}
+
+/* Flare en bordes */
+.sr-bg-flares::before,
+.sr-bg-flares::after {
+    content: '';
+    position: absolute;
+    width: min(36vw, 460px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(26px);
+    opacity: .18;
+}
+.sr-bg-flares::before {
+    left: -8%;
+    top: 18%;
+    background: radial-gradient(circle, rgba(var(--phase-complement-rgb), .22), transparent 62%);
+}
+.sr-bg-flares::after {
+    right: -10%;
+    bottom: 12%;
+    background: radial-gradient(circle, rgba(var(--phase-accent-rgb), .20), transparent 62%);
+}
+
+/* ==========================================================
+   RAREZAS MÁS ÉPICAS
+   ========================================================== */
+.rarity-immersive-note {
+    margin-top: 18px;
+    padding: 11px 13px;
+    border: 1px solid rgba(var(--phase-accent-rgb), .24);
+    border-left: 3px solid var(--phase-accent);
+    border-radius: 8px;
+    background: rgba(var(--phase-accent-rgb), .042);
+    color: #998b8b;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+/* Asegura que la capa de rareza siga por debajo del contenido real de la tarjeta */
+.card[data-rarity] > *:not(.sr-rarity-field) {
+    position: relative;
+    z-index: 1;
+}
+
+.card[data-rarity-level="1"] { --rarity-energy: .26; }
+.card[data-rarity-level="2"] { --rarity-energy: .42; }
+.card[data-rarity-level="3"] { --rarity-energy: .58; }
+.card[data-rarity-level="4"] { --rarity-energy: .80; }
+.card[data-rarity-level="5"] { --rarity-energy: 1; }
+
+.card[data-rarity] .sr-rarity-field {
+    backdrop-filter: blur(0px);
+}
+.card[data-rarity]:hover .sr-rarity-field,
+.card[data-rarity]:focus-within .sr-rarity-field {
+    backdrop-filter: blur(.6px);
+}
+
+/* Core mejorado */
+.card[data-rarity] .sr-rarity-core {
+    background:
+        radial-gradient(circle at var(--mx,50%) var(--my,50%),
+            rgba(var(--rarity-rgb), calc(.16 * var(--rarity-energy))),
+            transparent 34%),
+        radial-gradient(circle at 52% 112%,
+            rgba(var(--rarity-rgb), calc(.22 * var(--rarity-energy))),
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(var(--rarity-rgb), calc(.02 * var(--rarity-energy))),
+            transparent 32%,
+            rgba(var(--rarity-rgb), calc(.04 * var(--rarity-energy))) 100%);
+}
+
+/* Segunda órbita desde rareza alta */
+.sr-rarity-field .sr-rarity-ring::after {
+    box-shadow: 0 0 16px rgba(var(--rarity-rgb), .12);
+}
+.card[data-rarity-level="4"]:hover .sr-rarity-ring,
+.card[data-rarity-level="5"]:hover .sr-rarity-ring {
+    box-shadow:
+        0 0 18px rgba(var(--rarity-rgb), .12),
+        inset 0 0 16px rgba(var(--rarity-rgb), .05);
+}
+
+/* Trazo diagonal energético */
+.card[data-rarity]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(122deg,
+            transparent 0 24%,
+            rgba(var(--rarity-rgb), calc(.045 * var(--rarity-energy))) 34%,
+            transparent 46%,
+            transparent 54%,
+            rgba(var(--rarity-rgb), calc(.055 * var(--rarity-energy))) 66%,
+            transparent 78%);
+    transition: opacity .25s ease;
+}
+.card[data-rarity]:hover::after,
+.card[data-rarity]:focus-within::after {
+    opacity: 1;
+}
+
+/* Rareza 3+: partículas extra */
+.sr-rarity-comets {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.sr-rarity-comets i {
+    position: absolute;
+    width: 44px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--rarity-rgb), .55), transparent);
+    opacity: 0;
+    transform: rotate(var(--cr, -35deg));
+}
+.card[data-rarity-level="3"]:hover .sr-rarity-comets i,
+.card[data-rarity-level="4"]:hover .sr-rarity-comets i,
+.card[data-rarity-level="5"]:hover .sr-rarity-comets i {
+    animation: srCometSweep var(--cd, 2.4s) linear infinite;
+}
+@keyframes srCometSweep {
+    0%   { opacity: 0; transform: translate3d(-26px, 30px, 0) rotate(var(--cr, -35deg)); }
+    18%  { opacity: .28; }
+    100% { opacity: 0; transform: translate3d(128px, -104px, 0) rotate(var(--cr, -35deg)); }
+}
+
+/* Rareza 4+: borde vivo */
+.card[data-rarity-level="4"]:hover,
+.card[data-rarity-level="5"]:hover {
+    transform: translateY(-3px) scale(1.005);
+}
+
+.card[data-rarity-level="4"]:hover::before,
+.card[data-rarity-level="5"]:hover::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+        linear-gradient(135deg,
+            rgba(var(--rarity-rgb), .58),
+            rgba(var(--rarity-rgb), .12),
+            rgba(var(--rarity-rgb), .58));
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .75;
+}
+
+/* Rareza 5: corona energética */
+.sr-rarity-crown {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+}
+.sr-rarity-crown i {
+    position: absolute;
+    top: 10px;
+    width: 1px;
+    height: 18px;
+    background: linear-gradient(180deg, rgba(var(--rarity-rgb), .88), transparent);
+    transform-origin: bottom center;
+}
+.card[data-rarity-level="5"]:hover .sr-rarity-crown {
+    opacity: 1;
+}
+.card[data-rarity-level="5"]:hover .sr-rarity-crown i {
+    animation: srCrownPulse 1.8s ease-in-out infinite;
+}
+@keyframes srCrownPulse {
+    0%, 100% { transform: translateY(0) scaleY(.85); opacity: .42; }
+    50% { transform: translateY(-4px) scaleY(1.18); opacity: .92; }
+}
+
+/* Blanca sigue segura, pero algo más elegante */
+.card[data-rarity="white"]:hover {
+    border-color: rgba(220,235,255,.55) !important;
+    box-shadow:
+        0 16px 34px rgba(0,0,0,.55),
+        0 0 18px rgba(220,235,255,.08),
+        inset 0 0 16px rgba(220,235,255,.035) !important;
+}
+.card[data-rarity="white"] .sr-rarity-core {
+    background:
+        radial-gradient(circle at 50% 100%, rgba(210,230,255,.12), transparent 48%),
+        radial-gradient(circle at 48% 40%, rgba(210,230,255,.055), transparent 28%);
+}
+
+/* Rareza máxima: brilla más el icono */
+.card[data-rarity-level="5"]:hover .item-icon {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* ==========================================================
+   FASE 2 MÁS LLENA (actual)
+   ========================================================== */
+body[data-phase="2"] .sr-bg-nebula {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255, 160, 40, .085), transparent 18%),
+        radial-gradient(circle at 78% 18%, rgba(35,205,255,.070), transparent 18%),
+        radial-gradient(circle at 22% 72%, rgba(255, 180, 60, .060), transparent 24%),
+        radial-gradient(circle at 84% 76%, rgba(35,205,255,.055), transparent 20%),
+        radial-gradient(circle at 50% 38%, rgba(255, 154, 25, .032), transparent 42%);
+}
+body[data-phase="2"] .sr-bg-grid {
+    opacity: .34;
+}
+body[data-phase="2"] .sr-bg-hazards i {
+    background: linear-gradient(90deg, transparent, rgba(35,205,255,.18), transparent);
+}
+
+/* ==========================================================
+   MÓVIL Y REDUCED MOTION
+   ========================================================== */
+@media (max-width:720px), (hover:none), (pointer:coarse) {
+    .sr-bg-stars i:nth-child(n+17),
+    .sr-bg-hazards i:nth-child(n+7) {
+        display: none;
+    }
+    .sr-bg-sigils i:nth-child(2) {
+        opacity: .55;
+    }
+    .sr-bg-flares::after {
+        display: none;
+    }
+    .sr-rarity-comets i:nth-child(n+3),
+    .sr-rarity-crown i:nth-child(n+5) {
+        display: none;
+    }
+}
+@media (prefers-reduced-motion:reduce) {
+    .sr-deep-bg,
+    .sr-rarity-comets,
+    .sr-rarity-crown {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   FONDO MÁS VIVO — FASE 2 ACTUAL
+   ========================================================== */
+body.site-page {
+    background:
+        radial-gradient(circle at 18% 11%, rgba(255,151,35,.16), transparent 28%),
+        radial-gradient(circle at 82% 24%, rgba(30,205,255,.115), transparent 28%),
+        radial-gradient(circle at 48% 58%, rgba(255,105,20,.060), transparent 36%),
+        linear-gradient(180deg, #170806 0%, #10080a 35%, #091017 72%, #080509 100%) !important;
+}
+
+/* Fase 2: más luz ambiente, menos vacío negro */
+body[data-phase="2"] {
+    --page-illumination: .95;
+}
+body[data-phase="2"]::before {
+    content:'';
+    position:fixed;
+    inset:var(--nav-h) 0 0;
+    z-index:30;
+    pointer-events:none;
+    background:
+        linear-gradient(110deg, rgba(255,133,25,.050), transparent 24%, transparent 70%, rgba(28,190,255,.050)),
+        radial-gradient(ellipse at 50% 0%, rgba(255,169,64,.085), transparent 43%),
+        radial-gradient(ellipse at 52% 100%, rgba(24,192,255,.045), transparent 40%);
+}
+
+/* Añade “auroras” de fase */
+.sr-phase-aurora {
+    position:fixed;
+    inset:var(--nav-h) 0 0;
+    z-index:55;
+    pointer-events:none;
+    overflow:hidden;
+    contain:strict;
+}
+.sr-phase-aurora i {
+    position:absolute;
+    width:55vw;
+    height:12vh;
+    min-height:90px;
+    border-radius:50%;
+    filter:blur(34px);
+    opacity:.22;
+    animation:srAuroraDrift var(--aurora-speed,18s) ease-in-out infinite alternate;
+    will-change:transform,opacity;
+}
+.sr-phase-aurora i:nth-child(1) {
+    left:-8vw; top:16vh;
+    background:linear-gradient(90deg, transparent, rgba(255,132,30,.42), transparent);
+    transform:rotate(-12deg);
+}
+.sr-phase-aurora i:nth-child(2) {
+    right:-10vw; top:44vh;
+    background:linear-gradient(90deg, transparent, rgba(27,196,255,.32), transparent);
+    transform:rotate(10deg);
+    --aurora-speed:23s;
+}
+.sr-phase-aurora i:nth-child(3) {
+    left:20vw; bottom:5vh;
+    width:48vw;
+    background:linear-gradient(90deg, transparent, rgba(255,177,60,.24), rgba(24,190,255,.18), transparent);
+    --aurora-speed:27s;
+}
+@keyframes srAuroraDrift {
+    from { translate:-2vw -1vh; opacity:.14; }
+    to { translate:4vw 3vh; opacity:.30; }
+}
+
+/* Glow vertical de “balizas” */
+.sr-phase-beacons {
+    position:fixed;
+    inset:var(--nav-h) 0 0;
+    z-index:56;
+    pointer-events:none;
+    overflow:hidden;
+}
+.sr-phase-beacons i {
+    position:absolute;
+    bottom:-10vh;
+    width:1px;
+    height:42vh;
+    background:linear-gradient(180deg,
+        transparent,
+        rgba(var(--phase-complement-rgb),.18),
+        rgba(var(--phase-accent-rgb),.10),
+        transparent);
+    opacity:.20;
+    box-shadow:0 0 12px rgba(var(--phase-complement-rgb),.08);
+    animation:srBeaconPulse var(--beacon-speed,8s) ease-in-out infinite alternate;
+}
+@keyframes srBeaconPulse {
+    from { opacity:.10; transform:scaleY(.84); }
+    to   { opacity:.30; transform:scaleY(1.08); }
+}
+
+/* Más geometría visible en fondo */
+.sr-bg-grid {
+    opacity:.48 !important;
+    background-size:72px 72px !important;
+}
+body[data-phase="2"] .sr-bg-grid {
+    background:
+        linear-gradient(rgba(255,149,35,.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,197,255,.025) 1px, transparent 1px),
+        linear-gradient(30deg, transparent 48%, rgba(255,159,45,.018) 49%, rgba(255,159,45,.018) 51%, transparent 52%);
+    background-size:72px 72px,72px 72px,144px 144px !important;
+}
+
+/* Watermark y sigilos más visibles */
+.sr-phase-watermark { opacity:.105 !important; }
+.sr-bg-sigils i { opacity:.56 !important; }
+.sr-phase-orbit { border-color:rgba(var(--phase-accent-rgb),.17) !important; }
+
+/* ==========================================================
+   RAREZA: CHISPAS TIPO TOOLTIP / OBSCURE-INSPIRED
+   ========================================================== */
+.card[data-rarity] {
+    transition:
+        transform .24s cubic-bezier(.2,.8,.2,1),
+        border-color .20s ease,
+        box-shadow .22s ease !important;
+}
+.card[data-rarity] .sr-rarity-field {
+    transition:opacity .16s ease !important;
+}
+
+/* Shimmer de rareza, nunca blanco: siempre usa el color del item */
+.sr-rarity-shimmer {
+    position:absolute;
+    inset:-20%;
+    pointer-events:none;
+    opacity:0;
+    background:
+        linear-gradient(110deg,
+            transparent 0 36%,
+            rgba(var(--rarity-rgb), calc(.10 * var(--rarity-energy))) 43%,
+            rgba(var(--rarity-rgb), calc(.26 * var(--rarity-energy))) 48%,
+            rgba(var(--rarity-rgb), calc(.08 * var(--rarity-energy))) 54%,
+            transparent 62%);
+    transform:translateX(-36%) rotate(2deg);
+}
+.card[data-rarity-level="3"]:hover .sr-rarity-shimmer,
+.card[data-rarity-level="4"]:hover .sr-rarity-shimmer,
+.card[data-rarity-level="5"]:hover .sr-rarity-shimmer {
+    opacity:1;
+    animation:srRarityShimmer var(--shimmer-speed,2.4s) ease-in-out infinite;
+}
+.card[data-rarity-level="4"] { --shimmer-speed:1.95s; }
+.card[data-rarity-level="5"] { --shimmer-speed:1.45s; }
+@keyframes srRarityShimmer {
+    0%,28% { transform:translateX(-62%) rotate(2deg); opacity:0; }
+    42% { opacity:.70; }
+    70%,100% { transform:translateX(58%) rotate(2deg); opacity:0; }
+}
+
+/* Sparks visuales: cortos y eléctricos */
+.sr-rarity-sparks {
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+.sr-rarity-sparks i {
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:rgb(var(--rarity-rgb));
+    box-shadow:
+        0 0 4px rgba(var(--rarity-rgb),.95),
+        0 0 9px rgba(var(--rarity-rgb),.46);
+    opacity:0;
+}
+.card[data-rarity]:hover .sr-rarity-sparks i {
+    animation:srTooltipSpark var(--sd,1.6s) steps(7,end) infinite;
+    animation-delay:var(--sdelay,0s);
+}
+@keyframes srTooltipSpark {
+    0%,100% { opacity:0; transform:translate3d(0,0,0) scale(.4); }
+    8% { opacity:.95; transform:translate3d(var(--sx,4px),var(--sy,-6px),0) scale(1.45); }
+    14% { opacity:.25; }
+    20% { opacity:0; transform:translate3d(calc(var(--sx,4px)*1.7),calc(var(--sy,-6px)*1.7),0) scale(.6); }
+}
+
+/* Más rareza = más “electricidad” */
+.card[data-rarity-level="1"] .sr-rarity-sparks i:nth-child(n+3) { display:none; }
+.card[data-rarity-level="2"] .sr-rarity-sparks i:nth-child(n+4) { display:none; }
+.card[data-rarity-level="3"] .sr-rarity-sparks i:nth-child(n+6) { display:none; }
+.card[data-rarity-level="4"] .sr-rarity-sparks i:nth-child(n+8) { display:none; }
+
+/* Rareza 5: pulso de borde y corona más marcada */
+.card[data-rarity-level="5"]:hover {
+    animation:srLegendBorder 2.0s ease-in-out infinite alternate;
+}
+@keyframes srLegendBorder {
+    from {
+        box-shadow:
+            0 20px 42px rgba(0,0,0,.60),
+            0 0 26px rgba(var(--rarity-rgb),.16),
+            inset 0 0 22px rgba(var(--rarity-rgb),.050) !important;
+    }
+    to {
+        box-shadow:
+            0 22px 46px rgba(0,0,0,.62),
+            0 0 42px rgba(var(--rarity-rgb),.30),
+            inset 0 0 34px rgba(var(--rarity-rgb),.090) !important;
+    }
+}
+
+/* Blanca: conserva spark de color frío, sin barrido blanco bugueado */
+.card[data-rarity="white"] .sr-rarity-shimmer { display:none !important; }
+.card[data-rarity="white"] .sr-rarity-sparks i {
+    background:rgb(190,225,255);
+    box-shadow:0 0 5px rgba(190,225,255,.60);
+}
+
+/* Notch líquida: mantiene rendimiento; no shimmer ni sparks animados */
+.performance-lite .sr-rarity-shimmer,
+.performance-lite .sr-rarity-sparks {
+    display:none !important;
+}
+
+@media (max-width:720px), (hover:none), (pointer:coarse) {
+    .sr-phase-aurora i:nth-child(3),
+    .sr-phase-beacons i:nth-child(n+5) { display:none; }
+    .sr-rarity-sparks i:nth-child(n+5) { display:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .sr-phase-aurora,
+    .sr-phase-beacons,
+    .sr-rarity-shimmer,
+    .sr-rarity-sparks {
+        display:none !important;
+    }
+}
+
+
+/* ==========================================================
+   BACKGROUND ANIMATION BOOST
+   ========================================================== */
+body.site-page {
+    background:
+        radial-gradient(circle at 15% 10%, rgba(255,162,53,.22), transparent 31%),
+        radial-gradient(circle at 83% 22%, rgba(36,205,255,.15), transparent 29%),
+        radial-gradient(circle at 50% 80%, rgba(255,127,34,.09), transparent 35%),
+        linear-gradient(180deg, #22100e 0%, #160d10 34%, #10121a 68%, #0b0910 100%) !important;
+}
+body[data-phase="2"]::before {
+    background:
+        linear-gradient(110deg, rgba(255,146,42,.08), transparent 24%, transparent 70%, rgba(28,190,255,.07)),
+        radial-gradient(ellipse at 50% 0%, rgba(255,185,89,.14), transparent 45%),
+        radial-gradient(ellipse at 52% 100%, rgba(24,192,255,.09), transparent 43%) !important;
+}
+
+.sr-bg-nebula {
+    filter: blur(10px) saturate(1.22) !important;
+    opacity: 1 !important;
+}
+body[data-phase="2"] .sr-bg-nebula {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255, 160, 40, .13), transparent 20%),
+        radial-gradient(circle at 78% 18%, rgba(35,205,255,.10), transparent 20%),
+        radial-gradient(circle at 22% 72%, rgba(255, 184, 60, .11), transparent 24%),
+        radial-gradient(circle at 84% 76%, rgba(35,205,255,.08), transparent 22%),
+        radial-gradient(circle at 48% 42%, rgba(255, 142, 35, .06), transparent 46%),
+        radial-gradient(circle at 56% 58%, rgba(32,198,255,.04), transparent 42%) !important;
+}
+.sr-phase-watermark { opacity: .13 !important; }
+.sr-bg-sigils i { opacity: .62 !important; }
+.sr-bg-grid { opacity: .58 !important; background-size: 64px 64px !important; }
+body[data-phase="2"] .sr-bg-grid {
+    background:
+        linear-gradient(rgba(255,149,35,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,197,255,.04) 1px, transparent 1px),
+        linear-gradient(30deg, transparent 48%, rgba(255,159,45,.03) 49%, rgba(255,159,45,.03) 51%, transparent 52%) !important;
+    background-size:64px 64px,64px 64px,128px 128px !important;
+}
+
+.sr-bg-streams,
+.sr-bg-glyphs,
+.sr-bg-meteors,
+.sr-bg-orbs2 {
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:54;
+}
+.sr-bg-streams i {
+    position:absolute;
+    width: clamp(160px, 28vw, 360px);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(var(--phase-complement-rgb), .18), rgba(var(--phase-accent-rgb), .08), transparent);
+    filter: blur(.2px);
+    opacity: .22;
+    transform: rotate(var(--stream-r, -26deg));
+    animation: srBgStreamMove var(--stream-speed, 18s) ease-in-out infinite alternate;
+}
+@keyframes srBgStreamMove {
+    from { transform: translate3d(0,0,0) rotate(var(--stream-r,-26deg)); opacity:.10; }
+    to { transform: translate3d(var(--stream-x, 36px), var(--stream-y, 26px), 0) rotate(var(--stream-r,-26deg)); opacity:.32; }
+}
+.sr-bg-glyphs i {
+    position:absolute;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(var(--phase-accent-rgb), .16);
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 1px rgba(var(--phase-complement-rgb), .08) inset, 0 0 12px rgba(var(--phase-accent-rgb), .06);
+    opacity: .18;
+    animation: srGlyphFloat var(--glyph-speed, 15s) ease-in-out infinite alternate;
+}
+.sr-bg-glyphs i::before,
+.sr-bg-glyphs i::after {
+    content:'';
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+}
+.sr-bg-glyphs i::before { width:8px; height:8px; border:1px solid rgba(var(--phase-complement-rgb), .14); }
+.sr-bg-glyphs i::after { width:2px; height:2px; background:rgba(var(--phase-accent-rgb), .35); }
+@keyframes srGlyphFloat {
+    from { transform: translate3d(0,0,0) rotate(45deg) scale(.92); opacity:.12; }
+    to { transform: translate3d(var(--glyph-x, 18px), var(--glyph-y, -22px),0) rotate(75deg) scale(1.08); opacity:.26; }
+}
+.sr-bg-orbs2 i {
+    position:absolute;
+    width: var(--orb2-size, 7px);
+    height: var(--orb2-size, 7px);
+    border-radius: 50%;
+    background: rgba(var(--orb2-rgb, var(--phase-accent-rgb)), .72);
+    box-shadow: 0 0 12px rgba(var(--orb2-rgb, var(--phase-accent-rgb)), .26), 0 0 26px rgba(var(--orb2-rgb, var(--phase-accent-rgb)), .11);
+    opacity: 0;
+    animation: srOrb2Rise var(--orb2-speed, 16s) linear infinite;
+    animation-delay: var(--orb2-delay, 0s);
+}
+@keyframes srOrb2Rise {
+    0% { transform: translate3d(0, 12vh, 0) scale(.6); opacity:0; }
+    12% { opacity:.28; }
+    58% { opacity:.22; }
+    100% { transform: translate3d(var(--orb2-drift, 30px), -110vh, 0) scale(1.24); opacity:0; }
+}
+.sr-bg-meteors i {
+    position:absolute;
+    width: 78px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--phase-complement-rgb), .55), rgba(var(--phase-accent-rgb), .18), transparent);
+    opacity: 0;
+    transform: rotate(-35deg);
+    animation: srMeteorFly var(--meteor-speed, 9s) linear infinite;
+    animation-delay: var(--meteor-delay, 0s);
+}
+@keyframes srMeteorFly {
+    0%, 82% { opacity:0; transform: translate3d(0,0,0) rotate(-35deg); }
+    84% { opacity:.75; }
+    100% { opacity:0; transform: translate3d(28vw, 22vh, 0) rotate(-35deg); }
+}
+
+.sr-rarity-prisms {
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+.sr-rarity-prisms i {
+    position:absolute;
+    width:8px;
+    height:8px;
+    transform:rotate(45deg);
+    border:1px solid rgba(var(--rarity-rgb), .52);
+    box-shadow:0 0 8px rgba(var(--rarity-rgb), .18), inset 0 0 6px rgba(var(--rarity-rgb), .08);
+    opacity:0;
+}
+.card[data-rarity-level="3"]:hover .sr-rarity-prisms i,
+.card[data-rarity-level="4"]:hover .sr-rarity-prisms i,
+.card[data-rarity-level="5"]:hover .sr-rarity-prisms i,
+.card[data-rarity-level="3"]:focus-within .sr-rarity-prisms i,
+.card[data-rarity-level="4"]:focus-within .sr-rarity-prisms i,
+.card[data-rarity-level="5"]:focus-within .sr-rarity-prisms i {
+    animation: srPrismBlink var(--pd, 1.8s) ease-in-out infinite;
+    animation-delay: var(--pdelay, 0s);
+}
+@keyframes srPrismBlink {
+    0%, 100% { opacity:0; transform: translate3d(0,0,0) rotate(45deg) scale(.6); }
+    18% { opacity:.75; }
+    34% { opacity:.15; }
+    50% { opacity:.66; transform: translate3d(var(--px, 8px), var(--py, -10px), 0) rotate(45deg) scale(1.05); }
+    70% { opacity:0; }
+}
+
+.card[data-rarity]:hover .sr-rarity-sparks i,
+.card[data-rarity]:focus-within .sr-rarity-sparks i {
+    animation:srTooltipSpark var(--sd,1.5s) steps(7,end) infinite !important;
+}
+.card[data-rarity-level="4"] .sr-rarity-sparks i,
+.card[data-rarity-level="5"] .sr-rarity-sparks i {
+    box-shadow:
+        0 0 4px rgba(var(--rarity-rgb),.98),
+        0 0 10px rgba(var(--rarity-rgb),.58),
+        0 0 18px rgba(var(--rarity-rgb),.14);
+}
+.card[data-rarity-level="5"] .sr-rarity-shimmer {
+    filter: blur(.2px) saturate(1.2);
+}
+.card[data-rarity-level="5"]:hover .sr-rarity-crown i {
+    animation-duration: 1.25s !important;
+}
+.card[data-rarity="white"] .sr-rarity-prisms i {
+    border-color: rgba(196,228,255,.48);
+    box-shadow:0 0 8px rgba(196,228,255,.15);
+}
+.performance-lite .sr-rarity-prisms { display:none !important; }
+
+@media (max-width:720px), (hover:none), (pointer:coarse) {
+    .sr-bg-streams i:nth-child(n+6),
+    .sr-bg-glyphs i:nth-child(n+7),
+    .sr-bg-meteors i:nth-child(n+3),
+    .sr-bg-orbs2 i:nth-child(n+8) { display:none; }
+    .sr-rarity-prisms i:nth-child(n+3) { display:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .sr-bg-streams,
+    .sr-bg-glyphs,
+    .sr-bg-meteors,
+    .sr-bg-orbs2,
+    .sr-rarity-prisms { display:none !important; }
+}
+
+
+/* ==========================================================
+   PERFORMANCE EDITION
+   Mantiene la estética, reduce mucho el coste de GPU/CPU.
+   ========================================================== */
+
+/* Quitar filtros caros de pantalla completa */
+.sr-bg-nebula,
+.sr-phase-aurora i,
+.sr-bg-flares::before,
+.sr-bg-flares::after {
+    filter: none !important;
+}
+
+/* Fondo más ligero: misma paleta, menos capas pesadas */
+body.site-page {
+    background:
+        radial-gradient(circle at 16% 12%, rgba(255,157,47,.18), transparent 31%),
+        radial-gradient(circle at 84% 22%, rgba(36,205,255,.12), transparent 29%),
+        linear-gradient(180deg, #21100e 0%, #160d10 38%, #10131a 72%, #0c0a10 100%) !important;
+}
+
+.sr-bg-nebula {
+    opacity: .78 !important;
+}
+.sr-bg-grid {
+    opacity: .34 !important;
+    background-size: 86px 86px !important;
+}
+.sr-phase-watermark {
+    opacity: .085 !important;
+}
+.sr-bg-sigils i {
+    opacity: .34 !important;
+    box-shadow: none !important;
+}
+.sr-phase-orbit {
+    box-shadow: none !important;
+}
+
+/* Menos glow en elementos móviles */
+.sr-bg-orbs2 i,
+.sr-world-orb,
+.sr-bg-stars i,
+.sr-rarity-sparks i,
+.sr-rarity-prisms i {
+    box-shadow: none !important;
+}
+
+/* Reducir coste de animaciones ambientales */
+.sr-bg-streams i {
+    opacity: .14 !important;
+    height: 1px !important;
+}
+.sr-bg-glyphs i {
+    opacity: .12 !important;
+    box-shadow: none !important;
+}
+.sr-bg-meteors i {
+    opacity: 0;
+    width: 64px !important;
+}
+.sr-phase-beacons i {
+    box-shadow: none !important;
+    opacity: .12 !important;
+}
+
+/* Desactivar animaciones más costosas e innecesarias */
+.sr-bg-sigils i,
+.sr-phase-orbit,
+.site-hero::before {
+    animation-duration: 42s !important;
+}
+
+.sr-bg-flares {
+    display: none !important;
+}
+
+/* Tarjetas: no blur ni tilt continuo */
+.card[data-rarity] .sr-rarity-field {
+    backdrop-filter: none !important;
+}
+.card,
+.hub-card,
+.command-card {
+    will-change: auto !important;
+}
+
+/* Rarezas siguen siendo épicas, pero sin demasiadas capas simultáneas */
+.sr-rarity-comets {
+    display: none !important;
+}
+.card[data-rarity-level="1"] .sr-rarity-prisms,
+.card[data-rarity-level="2"] .sr-rarity-prisms {
+    display: none !important;
+}
+.card[data-rarity-level="3"] .sr-rarity-crown,
+.card[data-rarity-level="4"] .sr-rarity-crown {
+    display: none !important;
+}
+
+/* Rareza 5: mantener corona y shimmer, pero sin animar box-shadow */
+.card[data-rarity-level="5"]:hover {
+    animation: none !important;
+    box-shadow:
+        0 18px 34px rgba(0,0,0,.58),
+        0 0 22px rgba(var(--rarity-rgb),.18),
+        inset 0 0 16px rgba(var(--rarity-rgb),.045) !important;
+}
+
+/* Sparks: menos elementos visuales */
+.card[data-rarity-level="1"] .sr-rarity-sparks i:nth-child(n+2) { display:none !important; }
+.card[data-rarity-level="2"] .sr-rarity-sparks i:nth-child(n+3) { display:none !important; }
+.card[data-rarity-level="3"] .sr-rarity-sparks i:nth-child(n+4) { display:none !important; }
+.card[data-rarity-level="4"] .sr-rarity-sparks i:nth-child(n+5) { display:none !important; }
+.card[data-rarity-level="5"] .sr-rarity-sparks i:nth-child(n+6) { display:none !important; }
+
+/* El shimmer sigue solo desde rareza 4 */
+.card[data-rarity-level="3"] .sr-rarity-shimmer {
+    display: none !important;
+}
+
+/* Evitar que toda la página repinte por seguimiento de cursor */
+.site-page::after {
+    display: none !important;
+}
+
+/* Notch líquida ultra ligera */
+.performance-lite,
+.performance-lite * {
+    animation: none !important;
+}
+.performance-lite .sr-rarity-field {
+    display: none !important;
+}
+
+/* Mobile aún más ligero */
+@media (max-width: 900px) {
+    .sr-bg-streams i:nth-child(n+3),
+    .sr-bg-glyphs i:nth-child(n+3),
+    .sr-bg-orbs2 i:nth-child(n+5),
+    .sr-bg-stars i:nth-child(n+9),
+    .sr-world-orb:nth-child(n+5),
+    .sr-phase-beacons i:nth-child(n+3),
+    .sr-bg-meteors i:nth-child(n+2) {
+        display: none !important;
+    }
+    .sr-bg-grid {
+        opacity: .22 !important;
+    }
+}
+
+/* Respectar ahorro de energía */
+@media (prefers-reduced-motion: reduce) {
+    .sr-phase-aurora,
+    .sr-phase-beacons,
+    .sr-bg-streams,
+    .sr-bg-glyphs,
+    .sr-bg-meteors,
+    .sr-bg-orbs2,
+    .sr-world-decor,
+    .ambient-motes,
+    .sr-energy-lines {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   ULTRA PERFORMANCE MODE
+   ========================================================== */
+
+/* Apagar casi todas las capas ambientales permanentes.
+   Se conserva color, profundidad y algunos efectos ligeros. */
+.ambient-motes,
+.sr-energy-lines,
+.sr-world-decor,
+.sr-edge-runes,
+.sr-bg-streams,
+.sr-bg-glyphs,
+.sr-bg-meteors,
+.sr-bg-orbs2,
+.sr-phase-beacons,
+.sr-bg-hazards,
+.sr-bg-stars,
+.sr-phase-geometry {
+    display: none !important;
+}
+
+/* El fondo conserva atmósfera sin animar decenas de nodos. */
+body.site-page {
+    background:
+        radial-gradient(circle at 17% 12%, rgba(255,157,47,.16), transparent 30%),
+        radial-gradient(circle at 83% 24%, rgba(36,205,255,.10), transparent 28%),
+        radial-gradient(circle at 51% 82%, rgba(255,120,36,.055), transparent 34%),
+        linear-gradient(180deg, #21100e 0%, #171014 38%, #11141a 72%, #0c0b10 100%) !important;
+}
+
+/* Nebulosa estática */
+.sr-bg-nebula {
+    opacity: .72 !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Grid estático tenue */
+.sr-bg-grid {
+    opacity: .20 !important;
+    background-size: 96px 96px !important;
+    animation: none !important;
+}
+
+/* Solo una órbita muy lenta */
+.sr-phase-orbit.two,
+.sr-bg-sigils i:nth-child(n+2) {
+    display: none !important;
+}
+.sr-phase-orbit.one,
+.sr-bg-sigils i:first-child {
+    animation-duration: 70s !important;
+    opacity: .22 !important;
+    box-shadow: none !important;
+}
+
+/* Aurora estática/lenta: solo una capa */
+.sr-phase-aurora i:nth-child(n+2) {
+    display: none !important;
+}
+.sr-phase-aurora i:first-child {
+    filter: none !important;
+    opacity: .14 !important;
+    animation-duration: 36s !important;
+}
+
+/* Hero sin rotación continua */
+.site-hero::before {
+    animation: none !important;
+    opacity: .22 !important;
+}
+
+/* Secciones sin sparks automáticos */
+.sr-section-sparks {
+    display: none !important;
+}
+
+/* Cards sin movimiento/scale continuo */
+.card[data-rarity-level="4"]:hover,
+.card[data-rarity-level="5"]:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Rarezas: mantener identidad, quitar capas que recalculan mucho */
+.sr-rarity-comets,
+.sr-rarity-crown,
+.sr-rarity-prisms {
+    display: none !important;
+}
+
+/* Solo shimmer en rareza máxima, y lento */
+.sr-rarity-shimmer {
+    display: none !important;
+}
+.card[data-rarity-level="5"] .sr-rarity-shimmer {
+    display: block !important;
+}
+.card[data-rarity-level="5"]:hover .sr-rarity-shimmer,
+.card[data-rarity-level="5"]:focus-within .sr-rarity-shimmer {
+    animation-duration: 2.8s !important;
+}
+
+/* Sparks visuales muy limitados */
+.card[data-rarity] .sr-rarity-sparks i {
+    display: none !important;
+}
+.card[data-rarity-level="3"] .sr-rarity-sparks i:nth-child(1),
+.card[data-rarity-level="4"] .sr-rarity-sparks i:nth-child(-n+2),
+.card[data-rarity-level="5"] .sr-rarity-sparks i:nth-child(-n+3) {
+    display: block !important;
+}
+
+/* Sin blur, sin filter complejo, sin sombras en movimiento */
+.card[data-rarity] .sr-rarity-field,
+.card[data-rarity] .sr-rarity-core {
+    backdrop-filter: none !important;
+    filter: none !important;
+}
+
+/* Reduce repaint de imágenes */
+.item-icon {
+    will-change: auto !important;
+}
+
+/* Notch líquida: absolutamente estática */
+.performance-lite,
+.performance-lite *,
+.performance-lite::before,
+.performance-lite::after {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+}
+
+/* Modo móvil / equipos modestos */
+@media (max-width: 1100px) {
+    .sr-phase-aurora,
+    .sr-bg-sigils,
+    .sr-phase-orbit,
+    .sr-rarity-sparks {
+        display: none !important;
+    }
+    .sr-bg-grid {
+        opacity: .13 !important;
+    }
+}
+
+/* Si el sistema pide menos movimiento, se queda casi estático */
+@media (prefers-reduced-motion: reduce) {
+    .sr-phase-aurora,
+    .sr-bg-sigils,
+    .sr-phase-orbit,
+    .sr-rarity-shimmer,
+    .sr-rarity-sparks {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================
+   DARK MOTION + FOOTER FIX
+   ========================================================== */
+html, body { min-height:100%; }
+body.site-page {
+    min-height:100dvh !important;
+    display:flex !important;
+    flex-direction:column !important;
+    padding-bottom:0 !important;
+    overflow-x:clip;
+    background:
+        radial-gradient(circle at 17% 12%, rgba(190,78,24,.080), transparent 31%),
+        radial-gradient(circle at 84% 24%, rgba(20,92,122,.060), transparent 29%),
+        linear-gradient(180deg, #0d0506 0%, #090609 38%, #07090d 72%, #050506 100%) !important;
+}
+body.site-page > .site-main {
+    flex:1 0 auto !important;
+}
+
+/* Reemplaza casi todo el movimiento del fondo con UNA sola capa compuesta. */
+.sr-phase-aurora,
+.sr-phase-orbit,
+.sr-bg-sigils {
+    display:none !important;
+}
+.sr-dark-motion {
+    position:fixed;
+    inset:var(--nav-h) 0 0;
+    z-index:52;
+    pointer-events:none;
+    overflow:hidden;
+    contain:strict;
+}
+.sr-dark-motion::before,
+.sr-dark-motion::after {
+    content:'';
+    position:absolute;
+    inset:-12%;
+    will-change:transform,opacity;
+    transform:translate3d(0,0,0);
+}
+.sr-dark-motion::before {
+    background:
+        radial-gradient(circle at 22% 30%, rgba(var(--phase-accent-rgb),.075), transparent 22%),
+        radial-gradient(circle at 76% 58%, rgba(var(--phase-complement-rgb),.052), transparent 24%),
+        radial-gradient(circle at 55% 84%, rgba(var(--phase-accent-rgb),.032), transparent 26%);
+    opacity:.76;
+    animation:srDarkDriftA 28s ease-in-out infinite alternate;
+}
+.sr-dark-motion::after {
+    background:
+        linear-gradient(118deg, transparent 0 42%, rgba(var(--phase-complement-rgb),.035) 48%, transparent 54%),
+        repeating-linear-gradient(135deg, transparent 0 118px, rgba(var(--phase-accent-rgb),.020) 119px 120px, transparent 121px 236px);
+    opacity:.42;
+    animation:srDarkDriftB 36s ease-in-out infinite alternate;
+}
+@keyframes srDarkDriftA {
+    from { transform:translate3d(-2.5vw,-1vh,0) scale(1.03); opacity:.62; }
+    to   { transform:translate3d(3.5vw,2.5vh,0) scale(1.08); opacity:.84; }
+}
+@keyframes srDarkDriftB {
+    from { transform:translate3d(2vw,-1vh,0) rotate(-1deg); opacity:.28; }
+    to   { transform:translate3d(-3vw,2vh,0) rotate(1deg); opacity:.48; }
+}
+
+/* Grid todavía presente, pero oscuro y estático. */
+.sr-bg-grid {
+    opacity:.12 !important;
+    background-size:110px 110px !important;
+}
+.sr-bg-nebula { opacity:.42 !important; }
+.sr-phase-watermark { opacity:.060 !important; }
+
+/* FOOTER: ocupa el ancho real de la ventana y nunca queda flotando/desfasado. */
+.site-footer {
+    position:relative !important;
+    width:100% !important;
+    max-width:none !important;
+    flex:0 0 auto !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:24px max(20px, calc((100vw - 1260px)/2)) 30px !important;
+    border-top:1px solid rgba(var(--phase-accent-rgb),.18) !important;
+    background:
+        linear-gradient(180deg, rgba(10,6,8,.90), rgba(5,4,5,.98)) !important;
+    box-shadow:0 -12px 32px rgba(0,0,0,.18);
+    overflow:hidden;
+}
+.site-footer::before {
+    content:'';
+    position:absolute;
+    left:50%; top:-1px;
+    width:min(520px,72vw);
+    height:1px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,transparent,rgba(var(--phase-accent-rgb),.42),transparent);
+    pointer-events:none;
+}
+.site-footer p { margin:4px 0 !important; }
+
+/* Remove possible bottom artifact from old mobile body padding. */
+@media (max-width:720px) {
+    body.site-page { padding-bottom:0 !important; }
+    .site-footer {
+        padding-bottom:calc(86px + env(safe-area-inset-bottom)) !important;
+    }
+}
+
+/* Rarity hover stays strong but cheap. */
+.card[data-rarity-level="5"]:hover {
+    box-shadow:
+        0 18px 36px rgba(0,0,0,.62),
+        0 0 24px rgba(var(--rarity-rgb),.18),
+        inset 0 0 16px rgba(var(--rarity-rgb),.04) !important;
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .sr-dark-motion { display:none !important; }
+}
+
+
+/* ==========================================================
+   FINAL DARK BACKGROUND + TRUE FOOTER FIX
+   ========================================================== */
+
+/* Desactiva TODAS las capas antiguas de fondo que competían entre sí. */
+.phase-ambient,
+.sr-phase-backdrop,
+.sr-deep-bg,
+.sr-world-decor,
+.sr-edge-runes,
+.sr-energy-lines,
+.ambient-motes,
+.sr-phase-aurora,
+.sr-phase-beacons,
+.sr-bg-streams,
+.sr-bg-glyphs,
+.sr-bg-meteors,
+.sr-bg-orbs2 {
+    display: none !important;
+}
+
+/* El bug del footer venía de min-height:100dvh + padding-top del header.
+   Con border-box ese padding ya forma parte del alto del viewport. */
+html {
+    min-height: 100%;
+    background: #050608 !important;
+}
+body.site-page {
+    box-sizing: border-box !important;
+    min-height: 100dvh !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    padding-top: var(--nav-h) !important;
+    padding-bottom: 0 !important;
+    overflow-x: clip !important;
+
+    /* Fondo base realmente oscuro. */
+    background:
+        radial-gradient(circle at 12% 8%, rgba(105,41,12,.13), transparent 30%),
+        radial-gradient(circle at 88% 20%, rgba(8,47,66,.12), transparent 31%),
+        linear-gradient(180deg, #050506 0%, #06070a 48%, #050609 100%) !important;
+}
+
+/* Mata el pseudo-fondo original para que el nuevo sí se vea. */
+body.site-page::before,
+body.site-page::after {
+    display: none !important;
+}
+
+/* Una única capa animada, muy barata: solo transform + opacity. */
+.sr-dark-motion {
+    display: block !important;
+    position: fixed !important;
+    inset: var(--nav-h) 0 0 !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    contain: strict !important;
+    isolation: isolate;
+}
+
+.sr-dark-motion::before,
+.sr-dark-motion::after {
+    content: '';
+    position: absolute;
+    inset: -18%;
+    transform: translate3d(0,0,0);
+    will-change: transform, opacity;
+}
+
+/* Masa ámbar/cian oscura claramente visible. */
+.sr-dark-motion::before {
+    background:
+        radial-gradient(ellipse 36% 28% at 18% 22%,
+            rgba(190,72,14,.24) 0%,
+            rgba(126,43,10,.13) 35%,
+            transparent 72%),
+        radial-gradient(ellipse 38% 30% at 82% 38%,
+            rgba(0,101,137,.18) 0%,
+            rgba(0,59,82,.11) 40%,
+            transparent 74%),
+        radial-gradient(ellipse 40% 28% at 46% 82%,
+            rgba(151,53,9,.13) 0%,
+            transparent 72%);
+    opacity: .86;
+    animation: srFinalDarkFlowA 24s ease-in-out infinite alternate;
+}
+
+/* Ondas geométricas oscuras; no blur, no partículas. */
+.sr-dark-motion::after {
+    background:
+        linear-gradient(118deg,
+            transparent 0 31%,
+            rgba(170,67,17,.050) 38%,
+            transparent 45% 61%,
+            rgba(0,104,139,.045) 68%,
+            transparent 75%),
+        repeating-linear-gradient(
+            132deg,
+            transparent 0 148px,
+            rgba(179,71,19,.026) 149px 150px,
+            transparent 151px 296px
+        );
+    opacity: .68;
+    animation: srFinalDarkFlowB 31s ease-in-out infinite alternate;
+}
+
+@keyframes srFinalDarkFlowA {
+    from {
+        transform: translate3d(-3.0vw,-1.6vh,0) scale(1.02);
+        opacity: .72;
+    }
+    to {
+        transform: translate3d(3.4vw,2.2vh,0) scale(1.07);
+        opacity: .94;
+    }
+}
+@keyframes srFinalDarkFlowB {
+    from {
+        transform: translate3d(2.2vw,-1.2vh,0) rotate(-.7deg);
+        opacity: .46;
+    }
+    to {
+        transform: translate3d(-2.8vw,1.8vh,0) rotate(.7deg);
+        opacity: .74;
+    }
+}
+
+/* Contenido encima del fondo. */
+body.site-page > .site-main,
+body.site-page > .site-footer {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Header/dock siguen por encima de todo. */
+.site-topbar {
+    z-index: var(--z-header) !important;
+}
+.mobile-dock {
+    z-index: var(--z-mobile-dock) !important;
+}
+
+/* Main ocupa el espacio disponible y empuja el footer. */
+body.site-page > .site-main {
+    flex: 1 0 auto !important;
+}
+
+/* Footer como último bloque REAL de la página. */
+.site-footer {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    margin: auto 0 0 0 !important;
+    padding: 24px max(20px, calc((100vw - 1260px)/2)) 28px !important;
+    border-top: 1px solid rgba(var(--phase-accent-rgb),.20) !important;
+    border-bottom: 0 !important;
+    background: #050405 !important;
+    box-shadow: 0 -12px 30px rgba(0,0,0,.24) !important;
+}
+
+/* No puede existir espacio de layout debajo del footer. */
+.site-footer:last-of-type {
+    margin-bottom: 0 !important;
+}
+
+/* El botón back-to-top no participa en el flujo. */
+.back-top {
+    position: fixed !important;
+}
+
+/* En móvil, el espacio del dock se reserva DENTRO del footer, no debajo. */
+@media (max-width:720px) {
+    body.site-page {
+        box-sizing: border-box !important;
+        min-height: 100dvh !important;
+        padding-bottom: 0 !important;
+    }
+    .site-footer {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .sr-dark-motion::before,
+    .sr-dark-motion::after {
+        animation: none !important;
+    }
+}
