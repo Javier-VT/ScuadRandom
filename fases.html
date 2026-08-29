@@ -29,7 +29,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <aside aria-label="Estado actual del evento" class="hero-panel">
 <span class="hero-phase-label">ESTADO DEL EVENTO</span>
 <strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
-<span class="hero-phase-sub" id="page-phase-sub">End y Doom desbloqueados - la presión aumenta</span>
+<span class="hero-phase-sub" id="page-phase-sub">End desbloqueado - Doom permanece sellado hasta Fase 3</span>
 <div class="hero-meter"><i id="page-threat-fill"></i></div>
 <span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
 </aside>
@@ -48,7 +48,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>La muerte permanente y el sistema de Espectador ya están activos.</li>
 <li>Solo hace falta aproximadamente <strong>1% de jugadores durmiendo</strong> para saltar la noche o tormenta.</li>
 <li>El Nether permanece cerrado; entrar antes de Fase 1 provoca muerte instantánea.</li>
-<li>El End y la Dimensión Doom permanecen cerrados hasta Fase 2.</li>
+<li>El End permanece cerrado hasta Fase 2 y la Dimensión Doom permanece cerrada hasta Fase 3.</li>
 <li>No existen mutaciones adicionales ni reemplazos de esqueletos.</li>
 </ul>
 </div>
@@ -68,10 +68,10 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </div>
 <div class="phase-box" data-phase="2" data-unlock-phase="2" style="border-left-color:var(--scuad-naranja);">
 <h4 style="color:var(--scuad-naranja);">Fase 2: Supervivencia</h4>
-<p class="phase-summary">El evento entra en Difícil y se abren las dimensiones de progresión avanzada.</p>
+<p class="phase-summary">El Evento entra en Difícil, se abre el End y comienza la cacería de Almas de los cuatro minijefes.</p>
 <ul class="phase-list">
 <li>Dificultad mundial: <strong>Difícil</strong>.</li>
-<li>Se abren el <strong>End</strong> y la <strong>Dimensión Doom</strong>.</li>
+<li>Se abre el End. La Dimensión Doom continúa sellada hasta Fase 3.</li>
 <li>Para dormir se requiere aproximadamente <strong>50%</strong> de los jugadores.</li>
 <li><strong>12%</strong> de los esqueletos naturales pueden convertirse en unidades de SR: 72% Explorador / 28% Guardia.</li>
 <li>Arañas mantienen 1 efecto aleatorio y además reciben <strong>Velocidad I</strong>.</li>
@@ -79,18 +79,18 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Aproximadamente <strong>19%</strong> de los Phantoms pueden convertirse en <strong>Mega Phantoms</strong> con Velocidad I y Resistencia I.</li>
 <li><strong>12%</strong> de Zombies/Creepers pueden convertirse en variantes especiales; los Zombies Pestilentes reciben Velocidad, Fuerza y Resistencia.</li>
 <li>Ravagers: <strong>1%</strong> de probabilidad adicional de soltar un Tótem de la Inmortalidad.</li>
-<li>Empiezan los intentos de minijefe: <strong>12% base cada 2 min</strong>, ajustados por la presión adaptativa y con límite de jefes activos.</li>
+<li>Empiezan los cuatro minijefes de progresión con 20% de probabilidad total cada 2 minutos: Giga Slime y Devastador Espectral en Overworld; Emperador y Ghast Infernal en Nether.</li>
 <li>En el Nether pueden aparecer santuarios/ruinas de SR con guardianes y botín dependiente de fase. SR no genera estructuras adicionales en el End.</li>
-<li>En Doom se activan fauna, guardianes y oleadas adaptativas alrededor de los jugadores.</li>
+<li>Cada uno de esos cuatro minijefes tiene 5% de probabilidad de soltar 1 Núcleo del Doom, permitiendo preparar algunos materiales antes de abrir la dimensión.</li>
 <li>Las <strong>utilidades portátiles</strong> ya pueden formar parte de tu equipo: la Alcancía abre el Banco y la Tienda Portátil reúne Comida, Pociones y Urna de Oro.</li>
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 6 min</strong>: los hostiles nuevos reciben Velocidad I.</li>
 </ul>
 </div>
 <div class="phase-box" data-phase="3" data-unlock-phase="3" style="border-left-color:var(--scuad-gold);">
 <h4 style="color:var(--scuad-gold);">Fase 3: Pesadilla</h4>
-<p class="phase-summary">El mundo empieza a forzar peleas rápidas, visión reducida y asedios más serios.</p>
+<p class="phase-summary">Se abre el Doom y la progresión post-End entra en expediciones, botín del Umbral y asedios más serios.</p>
 <ul class="phase-list">
-<li>Para dormir se requiere aproximadamente <strong>70%</strong> de los jugadores.</li>
+<li><strong>Se abre la Dimensión Doom</strong>: el Sello deja de estar inerte y puede activarse para iniciar expediciones.</li><li>Para dormir se requiere aproximadamente <strong>70%</strong> de los jugadores.</li>
 <li><strong>18%</strong> de los esqueletos pueden transformarse: 45% Explorador / 33% Guardia / 22% Tirador Espectral.</li>
 <li>Arañas y arañas de cueva reciben <strong>2 efectos aleatorios</strong>, Velocidad I e <strong>Invisibilidad</strong>.</li>
 <li>Todos los Creepers reciben <strong>Velocidad II</strong>; además, <strong>22%</strong> pueden aparecer cargados.</li>
@@ -98,7 +98,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Esqueletos vanilla, Strays, Bogged, Exploradores y Tiradores reciben <strong>Fuerza I</strong>.</li>
 <li>Aproximadamente <strong>22.5%</strong> de los Phantoms pueden convertirse en Mega Phantoms.</li>
 <li>Ravagers: <strong>2%</strong> de probabilidad adicional de Tótem.</li>
-<li>Minijefes: <strong>17% base cada 2 min</strong>; el pool añade Ravagers y Evocadores.</li>
+<li>Los minijefes mantienen 20% de probabilidad total cada 2 minutos. En Doom pueden aparecer los cuatro minijefes de progresión.</li>
 <li>Al entrar en la fase, el Overworld pasa a <strong>medianoche con tormenta</strong> y aparecen <strong>2 unidades óseas por superviviente</strong>.</li>
 <li>Doom añade Shulkers, Vex y Brujas a su fauna; sus defensores pueden incluir Tiradores Espectrales.</li>
 <li>En Doom comienzan <strong>tormentas de ceniza periódicas</strong> con Oscuridad y Lentitud breves.</li>
@@ -119,7 +119,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Ravagers reciben Velocidad I; Guardianes ganan Resistencia y Brujas ganan Velocidad.</li>
 <li>Aproximadamente <strong>26%</strong> de los Phantoms pueden convertirse en Mega Phantoms y ya pueden recibir Fuerza.</li>
 <li>Ravagers: <strong>4%</strong> de probabilidad adicional de Tótem.</li>
-<li>Minijefes: <strong>23% base cada 2 min</strong>; el pool añade Warden, Blaze y Creeper cargado.</li>
+<li>Los cuatro minijefes mantienen 20% de probabilidad total cada 2 minutos; en Doom comparten el mismo pool.</li>
 <li>Al entrar en la fase: medianoche, tormenta y <strong>2 unidades óseas por superviviente</strong>.</li>
 <li>Doom añade Ravagers y Breeze a la fauna; los defensores pueden incluir Verdugos y aparece el <strong>Centinela del Cohete</strong>.</li>
 <li>La <strong>Esquirla del Ocaso</strong> entra al loot de Fase 4+: minijefes, élites y cofres importantes del Doom pueden entregarla.</li>
@@ -142,7 +142,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Los jefes personalizados de SR reciben <strong>Regeneración I durante 60 s</strong> al aparecer; los Hostiles Adaptativos pueden regenerarse durante 30 s.</li>
 <li>Aproximadamente <strong>29.5%</strong> de los Phantoms pueden convertirse en Mega Phantoms, con Fuerza II en esta fase.</li>
 <li>Ravagers: <strong>6%</strong> de probabilidad adicional de Tótem.</li>
-<li>Minijefes: <strong>30% base cada 2 min</strong>; el pool añade Guardianes Ancianos y Esqueletos Wither. Los minijefes reciben Resistencia III.</li>
+<li>Los cuatro minijefes mantienen 20% de probabilidad total cada 2 minutos y reciben las mejoras de dificultad correspondientes a la fase.</li>
 <li>Al entrar en la fase: medianoche, tormenta y <strong>3 unidades óseas por superviviente</strong>.</li>
 <li>Se activa el combate exclusivo contra el <strong>Coloso del Umbral</strong> dentro de Doom.</li>
 <li>El <strong>Catalizador del Cataclismo</strong> puede usarse en el End para despertar a la Dragona del Cataclismo.</li>

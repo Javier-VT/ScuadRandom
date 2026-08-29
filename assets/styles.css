@@ -6225,3 +6225,40 @@ body.site-page > .site-main {
         animation: none !important;
     }
 }
+
+
+/* ==========================================================
+   FIX NOTCH LÍQUIDA - POPOVER SIN RECORTE
+   ==========================================================
+   Notch usa performance-lite para reducir efectos visuales.
+   contain: paint recortaba el panel de receta al borde de la tarjeta.
+   Conservamos el modo ligero, pero permitimos que la receta salga de ella.
+*/
+.performance-lite:has(.recipe-entry) {
+    contain: style !important;
+    overflow: visible !important;
+    isolation: auto !important;
+}
+
+.performance-lite:has(.recipe-entry) .recipe-entry {
+    overflow: visible !important;
+    z-index: var(--z-recipes) !important;
+}
+
+.performance-lite:has(.recipe-entry) .recipe-popover {
+    overflow: visible !important;
+    z-index: calc(var(--z-recipes) + 10) !important;
+}
+
+/* En navegadores sin :has(), Notch es actualmente la única tarjeta
+   performance-lite, por lo que este fallback evita el mismo recorte. */
+@supports not selector(:has(*)) {
+    .performance-lite {
+        contain: style !important;
+        overflow: visible !important;
+    }
+    .performance-lite .recipe-entry,
+    .performance-lite .recipe-popover {
+        overflow: visible !important;
+    }
+}
