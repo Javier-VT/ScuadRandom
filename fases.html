@@ -36,7 +36,15 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </section>
 <nav aria-label="Secciones de esta página" class="page-tabs"><a href="#evolucion-fases">Cambios por fase</a></nav>
 <div class="content-stack">
-<section id="evolucion-fases">
+<section id="progresion-jefes"><h2 class="section-title">Progresión del Evento</h2>
+<div class="guide-note"><strong>Cadena de avance:</strong> el mundo ya no cambia solo por una lista de días. Cada gran hito desbloquea la siguiente etapa: <strong>Día 20 → Wither → Dragona Ascendente → Custodio del Nexo → Dragona del Cataclismo</strong>.</div>
+<div class="progression-ladder">
+<div class="progression-step phase-tone-1" data-unlock-phase="0"><div class="phase-step-number">1</div><div><span>FASE 1</span><h3>Día 20 de Minecraft</h3><p>Al alcanzar el día 20 comienza El Despertar.</p></div></div>
+<div class="progression-step phase-tone-2" data-unlock-phase="1"><div class="phase-step-number">2</div><div><span>FASE 2</span><h3>Derrota al primer Wither</h3><p>La victoria abre Supervivencia y el siguiente tramo de progresión.</p></div></div>
+<div class="progression-step phase-tone-3" data-unlock-phase="2"><div class="phase-step-number">3</div><div><span>FASE 3</span><h3>Derrota a la Dragona Ascendente</h3><p>Vencerla abre Pesadilla.</p></div><a href="boss-dragona-ascendente.html">Guía del combate</a></div>
+<div class="progression-step phase-tone-4" data-unlock-phase="3"><div class="phase-step-number">4</div><div><span>SIGUIENTE HITO</span><h3>Derrota al Custodio del Nexo</h3><p>Su derrota desbloquea Muerte Inminente.</p></div><a href="boss-custodio-nexo.html">Guía del combate</a></div>
+<div class="progression-step phase-tone-5" data-unlock-phase="4"><div class="phase-step-number">5</div><div><span>FASE 5</span><h3>Derrota a la Dragona del Cataclismo</h3><p>Su caída abre Apocalipsis Total.</p></div><a href="boss-dragona-cataclismo.html">Guía del combate</a></div>
+</div></section><section id="evolucion-fases">
 <h2 class="section-title">Evolución del Mundo — Cambios completos</h2>
 <p class="guide-note"><strong>Progresión acumulativa:</strong> cada fase conserva las reglas anteriores y añade nuevas amenazas, recursos y encuentros. Consulta esta sección como referencia completa del evento.</p>
 <div class="phase-rule"><strong>Dificultad adaptativa:</strong> además de las reglas fijas, SR mide jugadores vivos, calidad media de armadura, victorias y muertes recientes. Puede generar Hostiles Adaptativos con Velocidad, Resistencia y Fuerza. Tras una muerte permanente se activa una tregua adaptativa, pero también comienza el <strong>Eco de Muerte</strong>, que fortalece únicamente a las criaturas nuevas durante unos minutos.</div>
@@ -79,7 +87,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Aproximadamente <strong>19%</strong> de los Phantoms pueden convertirse en <strong>Mega Phantoms</strong> con Velocidad I y Resistencia I.</li>
 <li><strong>12%</strong> de Zombies/Creepers pueden convertirse en variantes especiales; los Zombies Pestilentes reciben Velocidad, Fuerza y Resistencia.</li>
 <li>Ravagers: <strong>1%</strong> de probabilidad adicional de soltar un Tótem de la Inmortalidad.</li>
-<li>Empiezan los cuatro minijefes de progresión con 20% de probabilidad total cada 2 minutos: Giga Slime y Devastador Espectral en Overworld; Emperador y Ghast Infernal en Nether.</li>
+<li>Las apariciones probabilísticas de jefe comienzan con <strong>15% de probabilidad cada 5 minutos</strong>. Antes de aparecer, el Evento concede <strong>5 minutos de preparación</strong> y toma tu posición al terminar la cuenta para que puedas moverte a una arena adecuada.</li>
 <li>En el Nether pueden aparecer santuarios/ruinas de SR con guardianes y botín dependiente de fase. SR no genera estructuras adicionales en el End.</li>
 <li>Cada uno de esos cuatro minijefes tiene 5% de probabilidad de soltar 1 Núcleo del Doom, permitiendo preparar algunos materiales antes de abrir la dimensión.</li>
 <li>Las <strong>utilidades portátiles</strong> ya pueden formar parte de tu equipo: la Alcancía abre el Banco y la Tienda Portátil reúne Comida, Pociones y Urna de Oro.</li>
@@ -98,7 +106,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Esqueletos vanilla, Strays, Bogged, Exploradores y Tiradores reciben <strong>Fuerza I</strong>.</li>
 <li>Aproximadamente <strong>22.5%</strong> de los Phantoms pueden convertirse en Mega Phantoms.</li>
 <li>Ravagers: <strong>2%</strong> de probabilidad adicional de Tótem.</li>
-<li>Los minijefes mantienen 20% de probabilidad total cada 2 minutos. En Doom pueden aparecer los cuatro minijefes de progresión.</li>
+<li>Las apariciones probabilísticas mantienen <strong>15% de probabilidad cada 5 minutos</strong> y conservan el aviso de 5 minutos. En esta fase entran Bestia del Eclipse, Arconte del Vacío y el Custodio del Nexo.</li>
 <li>Al entrar en la fase, el Overworld pasa a <strong>medianoche con tormenta</strong> y aparecen <strong>2 unidades óseas por superviviente</strong>.</li>
 <li>Doom añade Shulkers, Vex y Brujas a su fauna; sus defensores pueden incluir Tiradores Espectrales.</li>
 <li>En Doom comienzan <strong>tormentas de ceniza periódicas</strong> con Oscuridad y Lentitud breves.</li>
@@ -119,14 +127,14 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Ravagers reciben Velocidad I; Guardianes ganan Resistencia y Brujas ganan Velocidad.</li>
 <li>Aproximadamente <strong>26%</strong> de los Phantoms pueden convertirse en Mega Phantoms y ya pueden recibir Fuerza.</li>
 <li>Ravagers: <strong>4%</strong> de probabilidad adicional de Tótem.</li>
-<li>Los cuatro minijefes mantienen 20% de probabilidad total cada 2 minutos; en Doom comparten el mismo pool.</li>
+<li>Las apariciones probabilísticas mantienen <strong>15% de probabilidad cada 5 minutos</strong> y el aviso previo. Se añaden las amenazas propias de Fase 4.</li>
 <li>Al entrar en la fase: medianoche, tormenta y <strong>2 unidades óseas por superviviente</strong>.</li>
 <li>Doom añade Ravagers y Breeze a la fauna; los defensores pueden incluir Verdugos y aparece el <strong>Centinela del Cohete</strong>.</li>
 <li>La <strong>Esquirla del Ocaso</strong> entra al loot de Fase 4+: minijefes, élites y cofres importantes del Doom pueden entregarla.</li>
 <li>Con una Esquirla del Ocaso ya puedes fabricar <strong>Fragmentos del Horizonte</strong> y comenzar la Armadura del Horizonte Roto <strong>antes del Coloso</strong>.</li>
 <li>La Resurrección de Campo aumenta su exigencia: 1 Alma de Jugador + <strong>3 Tótems de la Inmortalidad</strong>.</li>
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 8 min</strong>: nuevos hostiles reciben Velocidad I + Fuerza I + Resistencia I.</li>
-</ul>
+<li>El <strong>Catalizador del Cataclismo</strong> permite despertar a la Dragona del Cataclismo en el End. Derrotarla desbloquea la Fase 5.</li></ul>
 </div>
 <div class="phase-box" data-phase="5" data-unlock-phase="5" style="border-left-color:var(--scuad-morado); background-color:#1a051a;">
 <h4 style="color:var(--scuad-morado);">Fase 5: Apocalipsis Total</h4>
@@ -142,14 +150,14 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <li>Los jefes personalizados de SR reciben <strong>Regeneración I durante 60 s</strong> al aparecer; los Hostiles Adaptativos pueden regenerarse durante 30 s.</li>
 <li>Aproximadamente <strong>29.5%</strong> de los Phantoms pueden convertirse en Mega Phantoms, con Fuerza II en esta fase.</li>
 <li>Ravagers: <strong>6%</strong> de probabilidad adicional de Tótem.</li>
-<li>Los cuatro minijefes mantienen 20% de probabilidad total cada 2 minutos y reciben las mejoras de dificultad correspondientes a la fase.</li>
+<li>Las apariciones probabilísticas mantienen <strong>15% de probabilidad cada 5 minutos</strong> y el aviso previo; los jefes reciben las mejoras de dificultad correspondientes a la fase.</li>
 <li>Al entrar en la fase: medianoche, tormenta y <strong>3 unidades óseas por superviviente</strong>.</li>
 <li>Se activa el combate exclusivo contra el <strong>Coloso del Umbral</strong> dentro de Doom.</li>
 <li>El <strong>Catalizador del Cataclismo</strong> puede usarse en el End para despertar a la Dragona del Cataclismo.</li>
 <li>El <strong>Coloso del Umbral</strong> sigue siendo una amenaza principal de Fase 5 y entrega 2 Esquirlas del Ocaso, pero ya no bloquea el inicio de Horizonte.</li>
 <li>La Resurrección de Campo alcanza su coste máximo: 1 Alma de Jugador + <strong>4 Tótems de la Inmortalidad</strong>.</li>
 <li>Una muerte permanente activa <strong>Eco de Muerte durante 9 min</strong>: nuevos hostiles reciben Velocidad I + Fuerza I + Resistencia I.</li>
-</ul>
+<li>La Fase 5 comienza después de derrotar a la <strong>Dragona del Cataclismo</strong>; a partir de aquí se abre el contenido de cierre.</li></ul>
 </div>
 </section>
 </div>

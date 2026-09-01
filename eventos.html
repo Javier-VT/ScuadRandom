@@ -35,7 +35,13 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </aside>
 </section>
 <div class="content-stack">
-<section class="ruleta-section-master" id="ruleta">
+<section class="pvp-cycle" id="ciclo-pvp"><h2 class="section-title">Ciclo de 12 ruletas y PvP</h2>
+<div class="guide-note"><strong>Regla principal:</strong> las primeras <strong>12 ruletas</strong> del ciclo son aleatorias únicamente entre <strong>amarillo, naranja, azul y verde</strong>. Rojo y morado no forman parte del pool normal.</div>
+<div class="cycle-track"><span class="cycle-count">01</span><i class="active"></i><span class="cycle-count">06</span><i class="active"></i><span class="cycle-count">12</span><i class="active"></i><span class="cycle-pvp">PVP · 2 HORAS</span></div>
+<div class="grid cycle-notes"><article><h3>Al completar la 12</h3><p>Aparece la ruleta morada anunciando el inicio y el HUD cambia a <strong>PvP Activo</strong>.</p></article><article><h3>Durante PvP</h3><p>El PvP dura <strong>2 horas</strong>. Pueden ocurrir entre 1 y 3 ruletas normales según el intervalo, pero no cuentan para el siguiente ciclo.</p></article><article><h3>Al terminar</h3><p>La ruleta morada anuncia el cierre y el HUD vuelve a mostrar <strong>PvP Desactivado</strong>. El conteo de 12 comienza de nuevo.</p></article></div>
+<div class="roulette-rule-grid"><div class="roulette-rule yellow"><b>AMARILLA</b><span>Desafío</span></div><div class="roulette-rule orange"><b>NARANJA</b><span>Maldición</span></div><div class="roulette-rule blue"><b>AZUL</b><span>Bendición</span></div><div class="roulette-rule green"><b>VERDE</b><span>Beneficio global</span></div></div>
+<div class="roulette-special-grid"><div class="roulette-special red"><img alt="Ruleta roja" src="img/roulettes/ruleta_roja.png"/><div><h3>Roja · Progresión</h3><p>Solo aparece cuando el Evento avanza de fase por sus hitos de progresión.</p></div></div><div class="roulette-special purple"><img alt="Ruleta morada" src="img/roulettes/ruleta_morada.png"/><div><h3>Morada · Estado PvP</h3><p>Presenta el inicio y el final del periodo global de PvP.</p></div></div></div>
+</section><section class="ruleta-section-master" id="ruleta">
 <!-- Generador de partículas CSS Aleatorias -->
 <div class="particles-container">
 <div class="particle p-small" style="left: 10%; animation-duration: 6s; animation-delay: 0s;"></div>
@@ -58,7 +64,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <!-- Controles -->
 <div class="ruleta-controles">
 <h2>El Destino Gira</h2>
-<p>Las ruletas aparecen durante el evento y no se solapan entre sí. El rojo representa cambios de fase; amarillo activa desafíos, naranja maldiciones, azul bendiciones, verde beneficios globales y morado eventos PvP. Las bendiciones y maldiciones duran <strong>30 minutos</strong> y morir no elimina sus efectos mientras el evento siga activo.</p>
+<p>Las ruletas normales del ciclo usan <strong>amarillo, naranja, azul y verde</strong>. La roja queda reservada para progresión y la morada para el inicio o cierre del PvP. El visor de abajo permite consultar todos los colores y sus posibles efectos. Las bendiciones y maldiciones duran <strong>30 minutos</strong>.</p>
 <div class="filtros-colores">
 <button class="btn-filtro btn-rojo" onclick="mostrarEventos('ROJO')">Rojo</button>
 <button class="btn-filtro btn-amarillo" onclick="mostrarEventos('AMARILLO')">Amarillo</button>
