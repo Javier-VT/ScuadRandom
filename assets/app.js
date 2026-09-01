@@ -3,7 +3,7 @@ const SR_EMBEDDED_PAGES = {"index.html":{"title":"Wiki del Jugador - Scuad Rando
 // SCUAD RANDOM - WIKI DEL JUGADOR
 // Cambia solo este valor cuando avance el evento.
 // ======================================================
-const FASE_ACTUAL = 2;
+const FASE_ACTUAL = 3;
 
 const identidadFases = [
   { nombre:"PREPARACIÓN", subtitulo:"Paz aparente - reúne recursos", amenaza:"BAJA", pct:12 },
