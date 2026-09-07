@@ -28,13 +28,13 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </div>
 <aside aria-label="Estado actual del evento" class="hero-panel">
 <span class="hero-phase-label">ESTADO DEL EVENTO</span>
-<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
-<span class="hero-phase-sub" id="page-phase-sub">End desbloqueado - Doom permanece sellado hasta Fase 3</span>
+<strong class="hero-phase-name" id="page-phase-name">FASE 3 - PESADILLA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">Doom abierto - cacerías y expediciones de Pesadilla</span>
 <div class="hero-meter"><i id="page-threat-fill"></i></div>
-<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">SEVERA</b></span>
 </aside>
 </section>
-<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#utilidades-portatiles">Utilidades</a><a href="#arsenal">Consumibles</a><a href="#almas-jefes">Almas</a><a href="#horizonte-sr">Horizonte</a><a href="#invocadores">Invocadores</a><a href="#insignia-vuelo">Vuelo</a></nav>
+<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#utilidades-portatiles">Utilidades</a><a href="#arsenal">Consumibles</a><a href="#almas-jefes">Almas</a><a href="#horizonte-sr">Horizonte</a><a href="#invocadores">Invocadores</a><a href="#preparacion-pesadilla">Fase 3</a></nav>
 <div class="content-stack">
 <section data-unlock-phase="2" id="utilidades-portatiles">
 <div class="section-heading-row">
@@ -106,18 +106,13 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </div>
 </div>
 </section>
-<section class="phase-section sr-new-section" data-unlock-phase="3" id="insignia-vuelo">
-<h2 class="section-title">Insignia del Vuelo</h2>
-<div class="guide-note"><strong>Progresión:</strong> está pensada para fabricarse después de enfrentar a Bestia del Eclipse y Arconte del Vacío, pero antes del Custodio del Nexo. A partir del Nexo, los combates posteriores pasan a ser aéreos.</div>
-<div class="grid"><div class="card" data-rarity="cyan" data-rarity-level="4" data-rarity-source="addon">
-<div class="card-header"><img alt="Insignia del Vuelo" class="item-icon" src="img/items/flight_insignia.png"/><h3>Insignia del Vuelo</h3></div>
-<p>Llévala en cualquier espacio del inventario. Con la Insignia en la mano, úsala para alternar <strong>ENCENDIDA / APAGADA</strong>. Encendida: salto activa el vuelo y permite subir; agacharse permite bajar. Puede activarse incluso durante una caída.</p>
-<div class="recipe-entry"><button class="recipe-toggle" type="button">Ver receta</button><div aria-label="Receta de Insignia del Vuelo" class="recipe-popover" role="region"><div class="recipe-popover-head"><img alt="Mesa de crafteo" class="recipe-workstation-icon" height="38" src="https://blocksitems.com/api/v1/items/minecraft:crafting_table/icon?size=64"/><img alt="Insignia del Vuelo" class="recipe-icon recipe-head-output" height="48" src="img/items/flight_insignia.png"/></div><div class="recipe-grid recipe-grid-popover">
-<div class="recipe-slot" title="Bloque de Netherite"><img alt="Bloque de Netherite" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:netherite_block/icon?size=64"/></div><div class="recipe-slot" title="Aliento de Dragón"><img alt="Aliento de Dragón" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:dragon_breath/icon?size=64"/></div><div class="recipe-slot" title="Bloque de Netherite"><img alt="Bloque de Netherite" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:netherite_block/icon?size=64"/></div>
-<div class="recipe-slot" title="Aliento de Dragón"><img alt="Aliento de Dragón" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:dragon_breath/icon?size=64"/></div><div class="recipe-slot" title="Catalizador del Cataclismo"><img alt="Catalizador del Cataclismo" class="recipe-icon" src="img/items/doom_catalyst.png"/></div><div class="recipe-slot" title="Aliento de Dragón"><img alt="Aliento de Dragón" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:dragon_breath/icon?size=64"/></div>
-<div class="recipe-slot" title="Bloque de Netherite"><img alt="Bloque de Netherite" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:netherite_block/icon?size=64"/></div><div class="recipe-slot" title="Aliento de Dragón"><img alt="Aliento de Dragón" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:dragon_breath/icon?size=64"/></div><div class="recipe-slot" title="Bloque de Netherite"><img alt="Bloque de Netherite" class="recipe-icon" src="https://blocksitems.com/api/v1/items/minecraft:netherite_block/icon?size=64"/></div></div><div class="recipe-result"><span class="recipe-result-arrow">→</span><img alt="Insignia del Vuelo" class="recipe-icon recipe-result-icon" src="img/items/flight_insignia.png"/></div></div></div>
-<div class="tag-row"><span class="tag cyan">Rareza cyan</span><span class="tag purple">4 Alientos de Dragón</span><span class="tag red">4 Bloques de Netherite</span></div></div>
-<div class="card"><h3>Reglas de combate</h3><p><strong>Custodio del Nexo en adelante:</strong> la Insignia forma parte del combate. El Ascenso del Nexo la apaga y debes encenderla manualmente durante la caída. En Boss Rush permanece bloqueada hasta el Custodio, funciona contra Custodio, Cataclismo y Coloso, y vuelve a quedar bloqueada contra Nameless Deity.</p><div class="tag-row"><span class="tag gold">Boss Rush: tramo Nexus–Coloso</span><span class="tag red">Bloqueada contra Nameless</span></div></div></div>
+<section class="phase-section sr-new-section" data-unlock-phase="3" id="preparacion-pesadilla">
+<div class="section-heading-row"><div><span class="wiki-kicker">EQUIPO DE FASE 3</span><h2 class="section-title">Preparación de Pesadilla</h2></div><p class="section-heading-copy">La progresión de esta fase gira alrededor de supervivencia, invocadores y lectura de cacerías terrestres.</p></div>
+<div class="grid">
+<div class="card"><div class="card-header"><img alt="Talismán de Calma" class="item-icon" src="img/items/calm_talisman.png"/><h3>Talismán de Calma</h3></div><p>Úsalo cuando quieras explorar o construir sin exponerte a una aparición probabilística de jefe sobre tu posición.</p><div class="tag-row"><span class="tag cyan">Control de riesgo</span></div></div>
+<div class="card"><div class="card-header"><img alt="Baya Sobrecargada" class="item-icon" src="img/items/overcharged_berry.png"/><h3>Baya Sobrecargada</h3></div><p>Una herramienta de regreso pensada para expediciones largas. Ten tus Homes preparados antes de depender de ella.</p><div class="tag-row"><span class="tag gold">Movilidad</span></div></div>
+<div class="card"><div class="card-header"><img alt="Sello del Doom" class="item-icon" src="img/items/doom_sigil.png"/><h3>Sello del Doom</h3></div><p>La puerta a expediciones más peligrosas ya está activa en Fase 3. Entra con equipo de emergencia y una ruta de salida.</p><div class="tag-row"><span class="tag red">Doom</span><span class="tag">Fase 3</span></div></div>
+</div>
 </section><section class="sr-new-section" id="invocadores"><h2 class="section-title">Invocadores de jefes</h2><div class="guide-note"><strong>Regla de fase:</strong> cada invocador es reutilizable y solo funciona cuando el Evento ya alcanzó la fase indicada. Los invocadores de <strong>Fase 2 ya no requieren almas de jefe</strong>; se fabrican con materiales de exploración y combate normales.</div><div class="phase-item-group invoker-phase-group" data-phase-group="2" data-unlock-phase="2"><div class="phase-group-header"><span class="phase-group-number">FASE 2</span><div class="phase-group-copy"><h3>Supervivencia</h3><p>Invocadores disponibles a partir de esta fase.</p></div></div><div class="grid invoker-web-grid"><div class="invoker-web-card"><img alt="Invocador de Giga Slime" src="img/items/invoker_giga_slime.png"/><b>Giga Slime</b><span>Reutilizable · Fase 2</span><small class="invoker-cost-summary">4 Bola de Slime · 2 Bloque de Slime · 1 Diamante</small><div class="recipe-entry invoker-recipe-entry">
 <button aria-expanded="false" class="recipe-toggle" type="button"><span class="recipe-toggle-main"><span class="recipe-eye">◆</span> Ver receta</span><span class="recipe-toggle-hint">Toque</span></button>
 <div aria-label="Receta del Invocador de Giga Slime" class="recipe-popover" role="region">
@@ -582,6 +577,21 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </div>
 <div class="tag-row"><span class="tag cyan">16 daño</span><span class="tag red">Irrompible</span><span class="tag purple">Encantabilidad 22</span></div>
 </div>
+</div>
+</section>
+
+<section class="phase-section sr-new-section" data-unlock-phase="4" id="resonancia-futura">
+<div class="section-heading-row"><div><span class="wiki-kicker">EQUIPO DE ALTA PROGRESIÓN</span><h2 class="section-title">Resonancia y variantes de Horizonte</h2></div><p class="section-heading-copy">Este equipo pertenece a una etapa posterior del Evento y se revelará cuando la progresión lo permita.</p></div>
+<div class="grid">
+<div class="card"><div class="card-header"><img alt="Foco de Resonancia" class="item-icon" src="img/items/resonance_focus.png"/><h3>Foco de Resonancia</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Resonancia de Guardia" class="item-icon" src="img/items/resonance_guard.png"/><h3>Resonancia de Guardia</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Resonancia de Poder" class="item-icon" src="img/items/resonance_power.png"/><h3>Resonancia de Poder</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Resonancia de Zancada" class="item-icon" src="img/items/resonance_stride.png"/><h3>Resonancia de Zancada</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Casco Horizonte Resonante" class="item-icon" src="img/items/horizon_helmet_resonant.png"/><h3>Horizonte Resonante</h3></div><p>Variante avanzada del conjunto Horizonte. Su información se revelará cuando el Evento alcance la fase correspondiente.</p></div>
+<div class="card"><div class="card-header"><img alt="Peto Horizonte Resonante" class="item-icon" src="img/items/horizon_chestplate_resonant.png"/><h3>Coraza Resonante</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Grebas Horizonte Resonante" class="item-icon" src="img/items/horizon_leggings_resonant.png"/><h3>Grebas Resonantes</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Botas Horizonte Resonante" class="item-icon" src="img/items/horizon_boots_resonant.png"/><h3>Botas Resonantes</h3></div></div>
+<div class="card"><div class="card-header"><img alt="Sello de herramienta de Netherite" class="item-icon" src="img/items/netherite_tool_seal.png"/><h3>Sello de Herramienta</h3></div></div>
 </div>
 </section>
 </div>

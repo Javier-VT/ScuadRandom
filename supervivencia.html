@@ -28,10 +28,10 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </div>
 <aside aria-label="Estado actual del evento" class="hero-panel">
 <span class="hero-phase-label">ESTADO DEL EVENTO</span>
-<strong class="hero-phase-name" id="page-phase-name">SUPERVIVENCIA</strong>
-<span class="hero-phase-sub" id="page-phase-sub">End desbloqueado - Doom permanece sellado hasta Fase 3</span>
+<strong class="hero-phase-name" id="page-phase-name">FASE 3 - PESADILLA</strong>
+<span class="hero-phase-sub" id="page-phase-sub">Doom abierto - cacerías y expediciones de Pesadilla</span>
 <div class="hero-meter"><i id="page-threat-fill"></i></div>
-<span class="hero-threat">Amenaza: <b id="page-threat-label">ALTA</b></span>
+<span class="hero-threat">Amenaza: <b id="page-threat-label">SEVERA</b></span>
 </aside>
 </section>
 <nav aria-label="Secciones de esta página" class="page-tabs"><a href="#reglas">Reglas</a><a href="#hud">HUD</a><a href="#homes">Homes</a><a href="#servicios">Servicios</a><a href="#comandos">Comandos</a><a href="#novedades">Novedades</a></nav>
@@ -62,7 +62,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <h3>Dimensiones por Fase</h3>
 </div>
 <p>El Nether, el End y la Dimensión Doom no están disponibles desde el inicio. Cada acceso se abre cuando el Evento alcanza su fase correspondiente.</p>
-<div class="tag-row"><span class="tag">Nether: Fase 1</span><span class="tag purple">End + Doom: Fase 2</span></div>
+<div class="tag-row"><span class="tag">Nether: Fase 1</span><span class="tag purple">End: Fase 2 · Doom: Fase 3</span></div>
 </div>
 <div class="card" data-rarity="orange" data-rarity-level="3" data-rarity-source="addon"><div aria-hidden="true" class="sr-rarity-field"><i class="sr-rarity-core"></i><i class="sr-rarity-ring"></i><div class="sr-rarity-trails"><i></i><i></i><i></i><i></i></div><div class="sr-rarity-comets"><i style="left:14%; top:52px; --cr:-28deg; --cd:2.0s;"></i><i style="left:35%; top:43px; --cr:-39deg; --cd:2.2800000000000002s;"></i><i style="left:56%; top:34px; --cr:-50deg; --cd:2.56s;"></i></div><div class="sr-rarity-crown"><i style="left:18%; transform:rotate(-34deg);"></i><i style="left:29%; transform:rotate(-20deg);"></i><i style="left:40%; transform:rotate(-6deg);"></i><i style="left:51%; transform:rotate(8deg);"></i><i style="left:62%; transform:rotate(22deg);"></i><i style="left:73%; transform:rotate(36deg);"></i></div><div class="sr-rarity-shimmer"></div><div class="sr-rarity-sparks"><i style="left:8%;top:12%;--sx:-6px;--sy:-4px;--sd:1.2s;--sdelay:-0.00s;"></i><i style="left:25%;top:35%;--sx:-2px;--sy:-8px;--sd:1.43s;--sdelay:-1.23s;"></i><i style="left:42%;top:58%;--sx:2px;--sy:-12px;--sd:1.66s;--sdelay:-1.06s;"></i><i style="left:59%;top:81%;--sx:6px;--sy:-16px;--sd:1.8900000000000001s;--sdelay:-0.89s;"></i><i style="left:76%;top:28%;--sx:10px;--sy:-4px;--sd:1.2s;--sdelay:-0.72s;"></i><i style="left:8%;top:51%;--sx:-6px;--sy:-8px;--sd:1.43s;--sdelay:-0.55s;"></i><i style="left:25%;top:74%;--sx:-2px;--sy:-12px;--sd:1.66s;--sdelay:-0.38s;"></i><i style="left:42%;top:21%;--sx:2px;--sy:-16px;--sd:1.8900000000000001s;--sdelay:-0.21s;"></i><i style="left:59%;top:44%;--sx:6px;--sy:-4px;--sd:1.2s;--sdelay:-0.04s;"></i></div><div class="sr-rarity-prisms"><i style="left:12%;top:18%;--px:7px;--py:-12px;--pd:1.55s;--pdelay:-0.10s;"></i><i style="left:76%;top:20%;--px:-8px;--py:-10px;--pd:1.85s;--pdelay:-0.45s;"></i><i style="left:20%;top:72%;--px:9px;--py:-8px;--pd:1.95s;--pdelay:-0.8s;"></i><i style="left:72%;top:70%;--px:-6px;--py:-9px;--pd:1.72s;--pdelay:-1.1s;"></i></div></div>
 <div class="card-header">
@@ -175,11 +175,12 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <div class="tag-row"><span class="tag purple">Consume 1 Alma</span></div>
 </div>
 </div>
-</section><section id="novedades"><h2 class="section-title">Sistemas recientes del Evento</h2><div class="grid">
-<div class="card"><h3>Banco directo en tiendas</h3><p>Al comprar, primero se usan las ScuadCoins que llevas contigo y el Banco completa automáticamente lo que falte. No necesitas retirar dinero antes de comprar.</p></div>
-<div class="card"><h3>Mercado de minerales</h3><p>Desde Fase 2, el Banco permite comprar y vender minerales en lotes de 16. Las ventas se depositan directamente en tu saldo.</p></div>
-<div class="card"><h3>Aviso de jefe</h3><p>Cuando una aparición probabilística va a ocurrir, el Evento avisa con <strong>5 minutos de preparación</strong>. Puedes moverte a una arena más cómoda antes de que aparezca.</p></div>
-<div class="card"><h3>Ciclo PvP</h3><p>Después de <strong>12 ruletas normales</strong> comienza un periodo de <strong>2 horas de PvP</strong>. El HUD indica claramente si PvP está activo o desactivado.</p></div>
+</section><section id="novedades"><div class="section-heading-row"><div><span class="wiki-kicker">SISTEMAS CLAVE</span><h2 class="section-title">Herramientas que cambian una pelea</h2></div><p class="section-heading-copy">No son detalles secundarios: úsalos para ahorrar recursos y evitar muertes.</p></div><div class="grid">
+<div class="card"><h3>Parry al agacharte</h3><p>Algunos golpes importantes permiten una ventana breve de Parry. Agáchate con el impacto, no durante todo el telegráfico.</p><div class="tag-row"><span class="tag cyan">Timing</span><span class="tag">Defensa activa</span></div></div>
+<div class="card"><h3>Aviso de tótem</h3><p>Cuando un jugador consume un tótem, el Evento lo comunica al grupo. Úsalo como señal para reagruparse, curar o cambiar la estrategia.</p><div class="tag-row"><span class="tag gold">Alerta de grupo</span></div></div>
+<div class="card"><h3>Banco directo en tiendas</h3><p>Las compras pueden completar el costo con tu saldo del Banco. No necesitas retirar todas tus ScuadCoins antes de preparar una expedición.</p></div>
+<div class="card"><h3>Aviso de jefe</h3><p>Una aparición probabilística importante da tiempo de preparación. Muévete a una zona cómoda, equipa consumibles y avisa al grupo.</p></div>
+<div class="card"><h3>Ciclo PvP</h3><p>Después de <strong>12 ruletas normales</strong> comienza un periodo de <strong>2 horas de PvP</strong>. El HUD indica el estado para que nadie entre desprevenido.</p></div>
 </div></section>
 <section id="comandos">
 <h2 class="section-title">Comandos útiles para jugadores</h2>
@@ -194,7 +195,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 </div>
 <div class="command-card">
 <h3>/scuad:doom</h3>
-<p>Abre el menú para entrar o salir de la Dimensión Doom cuando el evento haya alcanzado la Fase 2.</p>
+<p>Abre el menú para entrar o salir de la Dimensión Doom cuando el Evento haya alcanzado la Fase 3.</p>
 </div>
 <div class="command-card"><h3>/leaderboard</h3><p>Abre la clasificación del Evento en cuatro categorías: <strong>más dinero</strong>, <strong>más jugadores eliminados</strong>, <strong>más jefes derrotados</strong> y <strong>más muertes</strong>.</p></div><div class="command-card"><h3>/scuad:revive</h3><p>Abre la interfaz de resurrección cuando las reglas de la fase permitan devolver a un compañero a la partida.</p></div></div>
 </section>
