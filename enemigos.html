@@ -24,7 +24,7 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <div class="hero-copy"><span class="hero-kicker">ARCHIVO DE AMENAZAS</span><h1>Cada enemigo exige otra forma de sobrevivir.</h1><p>Identifica al jefe, lee la forma del ataque y cambia de estrategia. Las peleas escalan con la fase del Evento y con la vida restante del jefe.</p><div class="hero-actions"><a class="hero-btn" href="#fase-2-amenazas">Ver amenazas activas</a><a class="hero-btn secondary" href="#lectura-combate">Cómo leer un ataque</a></div></div>
 <aside aria-label="Reglas de combate" class="hero-panel danger-panel"><span class="hero-phase-label">PROTOCOLO DE COMBATE</span><strong class="hero-phase-name">NO TANQUEES EL TELEGRÁFICO</strong><span class="hero-phase-sub">Los ataques especiales suben de ritmo al 66% y 34% de vida. Los avisos INSTAKILL requieren una acción concreta o un tótem.</span><div class="hero-meter"><i style="width:92%"></i></div><span class="hero-threat">Prioridad: <b>LEER · ESQUIVAR · CASTIGAR</b></span></aside>
 </section>
-<nav aria-label="Secciones de amenazas" class="page-tabs threat-tabs"><a href="#lectura-combate">Lectura</a><a href="#fase-2-amenazas">Fase 2</a><a href="#fase-3-amenazas">Fase 3</a><a href="#fase-4-amenazas">Fase 4</a><a href="#fase-5-amenazas">Fase 5</a><a href="#dragonas">Dragonas</a><a href="#enemigos-fase">Enemigos</a></nav>
+<nav aria-label="Secciones de amenazas" class="page-tabs threat-tabs"><a href="#lectura-combate">Lectura</a><a href="#movilidad-jefes">Movilidad</a><a href="#custodio-destacado">Custodio</a><a href="#fase-2-amenazas">Fase 2</a><a href="#fase-3-amenazas">Fase 3</a><a href="#fase-4-amenazas">Fase 4</a><a href="#fase-5-amenazas">Fase 5</a><a href="#dragonas">Dragonas</a><a href="#enemigos-fase">Enemigos</a></nav>
 <div class="content-stack threat-stack">
 <section class="combat-primer" id="lectura-combate">
 <div class="primer-copy"><span class="command-eyebrow">REGLAS DE SUPERVIVENCIA</span><h2>El daño importa, pero la lectura importa más.</h2><p>Cada encuentro usa un repertorio propio. Reconoce muros, líneas, ondas, espirales, zonas seguras y ejecuciones antes de buscar daño.</p></div>
@@ -35,6 +35,35 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <div class="card"><h3>Invocadores reutilizables</h3><p>Cada jefe SR no-dragón tiene su propio invocador. Solo funciona desde su fase correspondiente.</p><a class="boss-guide-link" href="arsenal.html#invocadores">Ver invocadores</a></div>
 <div class="card"><div class="card-header"><img alt="Talismán de Calma" class="item-icon" src="img/items/calm_talisman.png"/><h3>Talismán de Calma</h3></div><p>Bestia del Eclipse y Arconte del Vacío pueden soltarlo. Si lo llevas en el inventario, una aparición probabilística no puede elegirte como objetivo.</p></div>
 </div></section>
+<section class="mobility-overview" id="movilidad-jefes">
+<div class="threat-section-head"><span>LECTURA AVANZADA</span><h2 class="section-title">Movilidad de los jefes</h2><p>La forma del modelo importa: algunos encuentros gobiernan el aire y otros castigan sobre el suelo. Saberlo cambia dónde te paras y qué clase rinde mejor.</p></div>
+<div class="mobility-grid">
+<article class="card mobility-card">
+<span class="class-label">JEFES TERRESTRES</span>
+<h3>Control de espacio</h3>
+<p>Giga Slime, Emperador, Caballero de Ceniza, Devastador Espectral, Leviatán Ancestral, Arconte del Vacío, Guardián del Doom, Reactor del Doom y Coloso del Umbral concentran su peligro en líneas, muros, ondas y cierres de la arena.</p>
+</article>
+<article class="card mobility-card">
+<span class="class-label">JEFES VOLADORES</span>
+<h3>Persecución y altura</h3>
+<p>Ghast Infernal, Bestia del Eclipse, Custodio del Nexo, Heraldo Ígneo y las dos Dragonas pueden presionar desde más altura y exigen mejor lectura del eje vertical del combate.</p>
+</article>
+<article class="card mobility-card">
+<span class="class-label">ELECCIÓN DE ROL</span>
+<h3>No todas las armas se sienten igual</h3>
+<p>Contra enemigos aéreos suele rendir mejor el disparo o la magia; contra encuentros terrestres, el melee agresivo también encuentra más ventanas si sabes leer el patrón.</p>
+</article>
+</div>
+</section>
+<section class="threat-gallery" id="galeria-amenazas">
+<div class="section-heading-row"><div><span class="wiki-kicker">GALERÍA DE AMENAZAS</span><h2 class="section-title">Tres formas de perder el control de la arena</h2></div><p class="section-heading-copy">Reconocer el tipo de amenaza antes de atacar te ayuda a elegir mejor la distancia y la ruta de escape.</p></div>
+<div class="threat-gallery-grid">
+<article class="threat-gallery-card"><span class="gallery-code">TIERRA</span><h3>Coloso del Umbral</h3><p>Presión masiva de suelo, fracturas y golpes de gran volumen.</p><a href="boss-coloso-umbral.html">Ver guía →</a></article>
+<article class="threat-gallery-card"><span class="gallery-code">AIRE</span><h3>Custodio del Nexo</h3><p>Cambios de altura, persecución y presión desde ángulos difíciles.</p><a href="boss-custodio-nexo.html">Ver guía →</a></article>
+<article class="threat-gallery-card"><span class="gallery-code">END</span><h3>Dragona Ascendente</h3><p>Patrones geométricos, cristales y lectura de grandes trayectorias.</p><a href="boss-dragona-ascendente.html">Ver guía →</a></article>
+</div>
+</section>
+
 <section class="phase-section threats-section" data-unlock-phase="2" id="fase-2-amenazas">
 <div class="threat-section-head"><span>FASE 2 · EQUIPO ESPERADO: DIAMANTE / NETHERITE PROT IV</span><h2 class="section-title">Primera cacería</h2><p>Los cuatro minijefes de progresión ya no son simples variantes de mobs vanilla: cada uno fuerza una forma distinta de esquivar.</p></div>
 <div class="boss-grid"><article class="boss-card tone-toxic">
@@ -78,7 +107,13 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <div class="boss-patterns"><span class="pattern-label">REPERTORIO</span><ol><li><span>01</span>MORTERO TRIPLE</li><li><span>02</span>CORTINA DE BRASA</li><li><span>03</span>CORONA DE BOMBAS</li><li><span>04</span>CRUZ INFERNAL</li><li><span>05</span>BOCAS DE CENIZA</li><li><span>06</span>LLUVIA DE AZUFRE</li><li><span>07</span>ESPIRAL DE FUEGO</li><li><span>08</span>ECLIPSE DE MAGMA</li><li><span>09</span>CADENA DE IGNICIÓN</li><li><span>10</span>REFUGIO DE CENIZA</li><li><span>11</span>HORNO DE AZUFRE</li></ol></div>
 <p class="boss-tip"><strong>Lectura:</strong> No persigas el daño a toda costa: mira las marcas del suelo antes de volver a disparar.</p>
 </article></div>
-</section><section class="phase-section threats-section" data-unlock-phase="3" id="fase-3-amenazas">
+</section>
+<section class="boss-spotlight" id="custodio-destacado">
+<div class="boss-spotlight-mark"><span>CN</span></div>
+<div class="boss-spotlight-copy"><span class="wiki-kicker">ENCUENTRO DESTACADO</span><h2>Custodio del Nexo</h2><p>Un jefe volador basado en Vex que castiga la lectura tardía y el mal posicionamiento. Sus patrones se sienten mejor cuando el grupo separa funciones: quien lleva disparo o magia puede mantener presión mientras los jugadores de filo esperan ventanas limpias.</p><div class="boss-spotlight-tags"><span>Volador</span><span>Alta movilidad</span><span>Patrones de Nexo</span><span>Fase 3</span></div><a class="boss-spotlight-link" href="boss-custodio-nexo.html">Abrir guía completa →</a></div>
+<div class="boss-spotlight-side"><b>REGLA DE ORO</b><p>No persigas cada cambio de posición. Lee el patrón primero y recupera daño después.</p></div>
+</section>
+<section class="phase-section threats-section" data-unlock-phase="3" id="fase-3-amenazas">
 <div class="threat-section-head"><span>FASE 3 · CACERÍAS DE PESADILLA</span><h2 class="section-title">Cacerías de Pesadilla</h2><p>Bestia del Eclipse y Arconte preparan el salto de dificultad. El Custodio del Nexo lleva el control de arena y las geometrías al siguiente nivel.</p></div>
 <div class="boss-grid"><article class="boss-card tone-eclipse">
 <div class="boss-card-top">
@@ -132,7 +167,6 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <p class="boss-desc">Cortes vectoriales, guillotinas apiladas y una catedral de espadas suspendida.</p>
 <div class="boss-meta"><span class="threat-chip phase">Amenaza de Fase 4</span><span class="threat-chip stage">3 etapas de vida</span><span class="threat-chip pattern">Patrones avanzados</span></div>
 <div class="boss-patterns"><span class="pattern-label">REPERTORIO</span><ol><li><span>01</span>DUELO VECTORIAL</li><li><span>02</span>MOLINO DE HOJAS</li><li><span>03</span>GUILLOTINAS APILADAS</li><li><span>04</span>PASO FANTASMA </li><li><span>05</span>CATEDRAL DE ESPADAS</li><li><span>06</span>CORTE DEL VEREDICTO</li></ol></div>
-
 <p class="boss-tip"><strong>Lectura:</strong> ÚLTIMO TAJO es un ataque de ejecución. Si aparece el aviso INSTAKILL: ESQUIVA, no intentes tanquearlo.</p>
 </article></div>
 </section><section class="phase-section threats-section" data-unlock-phase="5" id="fase-5-amenazas">
@@ -146,7 +180,6 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <p class="boss-desc">Ondas, laberintos y una ejecución que castiga permanecer en el lugar equivocado.</p>
 <div class="boss-meta"><span class="threat-chip phase">Doom · Fase 5</span><span class="threat-chip stage">3 etapas de vida</span><span class="threat-chip pattern">Patrones avanzados</span></div>
 <div class="boss-patterns"><span class="pattern-label">REPERTORIO</span><ol><li><span>01</span>ECOLOCALIZACIÓN ESFÉRICA</li><li><span>02</span>LABERINTO SÓNICO </li><li><span>03</span>GRITOS CAZADORES</li><li><span>04</span>PULSOS ANTIFASE</li><li><span>05</span>CONO DE OSCURIDAD</li><li><span>06</span>SILENCIO DE LA INSIGNIA</li></ol></div>
-
 <p class="boss-tip"><strong>Lectura:</strong> SILENCIO FINAL es una ejecución: agáchate cuando aparezca el aviso. El tótem también puede salvarte.</p>
 </article><article class="boss-card tone-reactor">
 <div class="boss-card-top">
@@ -164,10 +197,9 @@ document.documentElement.classList.add("sr-intro-seen","sr-intro-complete");
 <div class="boss-identity"><span class="boss-class">JEFE DOOM · FASE 5</span><h3>Coloso del Umbral</h3><p>Titán del Umbral</p></div>
 <div class="boss-hp"><b>4400</b><span>HP BASE</span></div>
 <a class="boss-guide-link" href="boss-coloso-umbral.html">Ver ataques y cómo esquivarlos</a></div>
-<p class="boss-desc">Puños, placas, menhires y monolitos ocupan grandes volúmenes del Doom.</p>
+<p class="boss-desc">Titán terrestre del Umbral. Puños, placas, menhires y monolitos ocupan grandes volúmenes del Doom.</p>
 <div class="boss-meta"><span class="threat-chip phase">Doom · Fase 5</span><span class="threat-chip stage">3 etapas de vida</span><span class="threat-chip pattern">Patrones avanzados</span></div>
 <div class="boss-patterns"><span class="pattern-label">REPERTORIO</span><ol><li><span>01</span>PUÑOS CELESTES </li><li><span>02</span>PLACAS EN ÓRBITA</li><li><span>03</span>MENHIRES EN CAÍDA</li><li><span>04</span>FRACTURA GRAVITATORIA</li><li><span>05</span>MARTILLO TITÁN </li><li><span>06</span>SOMBRA DEL MONOLITO</li></ol></div>
-
 <p class="boss-tip"><strong>Lectura:</strong> COLAPSO DEL UMBRAL es una ejecución. Salta cuando aparezca el aviso; intentar resistirlo con armadura no es la respuesta.</p>
 </article></div>
 </section>

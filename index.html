@@ -46,7 +46,7 @@ try{
 <div class="hero-copy">
 <span class="hero-kicker">CENTRO DE MANDO</span>
 <h1>Entra al Evento con un plan.</h1>
-<p>Encuentra rápido lo que necesitas antes de volver al servidor: progreso de Fase 3, preparación, jefes, Doom, economía, ruletas y supervivencia.</p>
+<p>Encuentra rápido lo que necesitas antes de volver al servidor: progreso por fases, clases de combate, jefes, Doom, economía, ruletas y supervivencia.</p>
 <div class="hero-actions"><a class="hero-btn" href="#rutas">Explorar la wiki</a><a class="hero-btn secondary" href="#ahora">Qué hacer ahora</a></div>
 </div>
 <aside aria-label="Estado actual del evento" class="hero-panel">
@@ -55,16 +55,21 @@ try{
 <span class="hero-phase-sub" id="page-phase-sub">Doom abierto - cacerías y expediciones de Pesadilla</span>
 <div class="hero-meter"><i id="page-threat-fill"></i></div>
 <span class="hero-threat">Amenaza: <b id="page-threat-label">SEVERA</b></span>
-<div class="home-phase-chips"><span>Doom abierto</span><span>Jefes de Fase 3</span><span>PvP por ciclo</span></div>
+<div class="home-phase-chips"><span>Doom abierto</span><span>Clases de combate</span><span>PvP por ciclo</span></div>
 </aside>
 </section>
-<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#rutas">Rutas</a><a href="#ahora">Prioridades</a><a href="#estado-fases">Fase actual</a><a href="#protocolos">Protocolos</a></nav>
+<section class="portal-status" id="portal-status">
+<div><span>OPERACIÓN ACTIVA</span><b>SCUAD RANDOM LAST TIME</b></div>
+<div><span>RUTA RECOMENDADA</span><b>PREPARA → LEE → EJECUTA</b></div>
+<div><span>PRIORIDAD</span><b>SOBREVIVIR AL PATRÓN</b></div>
+</section>
+<nav aria-label="Secciones de esta página" class="page-tabs"><a href="#rutas">Mapa</a><a href="#ahora">Prioridades</a><a href="#frente-final">Frentes</a><a href="#estado-fases">Fases</a><a href="#protocolos">Protocolos</a></nav>
 <div class="content-stack">
 <section id="rutas">
 <div class="section-heading-row"><div><span class="wiki-kicker">NAVEGACIÓN PRINCIPAL</span><h2 class="section-title">Elige tu frente</h2></div><p class="section-heading-copy">Cada sección tiene una función clara. Entra, consulta y vuelve al Evento sin perderte entre páginas.</p></div>
 <section aria-label="Rutas principales" class="hub-grid">
 <a class="hub-card" href="supervivencia.html"><span class="hub-number">01 / SOBREVIVIR</span><h2>Supervivencia</h2><p>Reglas, HUD, Homes, banco, resurrección, Parry y comandos útiles.</p><span class="hub-arrow">→</span></a>
-<a class="hub-card" href="arsenal.html"><span class="hub-number">02 / PREPARARTE</span><h2>Arsenal y recetas</h2><p>Consumibles, utilidades, invocadores, almas, armaduras y crafteos.</p><span class="hub-arrow">→</span></a>
+<a class="hub-card" href="arsenal.html"><span class="hub-number">02 / PREPARARTE</span><h2>Arsenal y recetas</h2><p>Consumibles, utilidades, invocadores, armaduras y las nuevas armas de clase.</p><span class="hub-arrow">→</span></a>
 <a class="hub-card hub-threat-card" href="enemigos.html"><span class="hub-number">03 / LEER LA PELEA</span><h2>Jefes y enemigos</h2><p>Patrones, señales de peligro, ejecuciones y cómo responder a cada amenaza.</p><span class="hub-arrow">→</span></a>
 <a class="hub-card" href="doom.html"><span class="hub-number">04 / DESCENDER</span><h2>Doom</h2><p>Expediciones, botín del Umbral, progreso y amenazas exclusivas de la dimensión.</p><span class="hub-arrow">→</span></a>
 <a class="hub-card" href="fases.html"><span class="hub-number">05 / ANTICIPAR</span><h2>Fases del mundo</h2><p>Consulta qué reglas ya están activas y qué presión añade cada etapa.</p><span class="hub-arrow">→</span></a>
@@ -72,13 +77,68 @@ try{
 <a class="hub-card" href="personalizacion.html"><span class="hub-number">07 / DEJAR MARCA</span><h2>Forja de Estelas</h2><p>Personaliza el nombre de tu equipo y copia el resultado listo para el yunque.</p><span class="hub-arrow">→</span></a>
 </section>
 </section>
-<section id="ahora" class="home-focus-section">
+<section class="home-focus-section" id="ahora">
 <div class="section-heading-row"><div><span class="wiki-kicker">FASE 3 / PESADILLA</span><h2 class="section-title">Qué importa ahora</h2></div><p class="section-heading-copy">Una ruta rápida para jugadores que regresan al Evento o no saben qué preparar primero.</p></div>
 <div class="grid home-focus-grid">
 <a class="card home-action-card" href="doom.html"><div class="card-header"><img alt="Catalizador del Doom" class="item-icon" src="img/items/doom_catalyst.png"/><div><span class="home-card-kicker">EXPEDICIÓN</span><h3>Doom ya está abierto</h3></div></div><p>Entra con consumibles, una salida preparada y espacio de inventario. Doom ya forma parte de la progresión de esta fase.</p><span class="home-card-link">Abrir guía de Doom →</span></a>
 <a class="card home-action-card" href="enemigos.html#fase-3-amenazas"><div class="card-header"><img alt="Invocador de Bestia del Eclipse" class="item-icon" src="img/items/invoker_eclipse_beast.png"/><div><span class="home-card-kicker">CACERÍAS</span><h3>Aprende antes de invocar</h3></div></div><p>Bestia del Eclipse, Arconte del Vacío y el Custodio del Nexo exigen leer patrones y reservar espacio para esquivar.</p><span class="home-card-link">Ver amenazas de Fase 3 →</span></a>
-<a class="card home-action-card" href="arsenal.html"><div class="card-header"><img alt="Baya Sobrecargada" class="item-icon" src="img/items/overcharged_berry.png"/><div><span class="home-card-kicker">PREPARACIÓN</span><h3>No llenes el inventario al azar</h3></div></div><p>Combina curación, movilidad y herramientas de emergencia. La pelea se gana antes de que aparezca el jefe.</p><span class="home-card-link">Revisar arsenal →</span></a>
+<a class="card home-action-card" href="arsenal.html"><div class="card-header"><img alt="Baya Sobrecargada" class="item-icon" src="img/items/overcharged_berry.png"/><div><span class="home-card-kicker">PREPARACIÓN</span><h3>No llenes el inventario al azar</h3></div></div><p>Combina curación, movilidad y un rol claro: espada, arma de fuego o varita. La pelea se gana antes de que aparezca el jefe.</p><span class="home-card-link">Revisar arsenal →</span></a>
 <a class="card home-action-card" href="supervivencia.html#novedades"><div class="card-header"><img alt="Corazón del Umbral" class="item-icon" src="img/items/threshold_heart.png"/><div><span class="home-card-kicker">EQUIPO</span><h3>Comparte la información</h3></div></div><p>Parry, avisos de tótem y resurrección hacen que la coordinación del grupo sea tan importante como el daño.</p><span class="home-card-link">Ver sistemas de supervivencia →</span></a>
+</div>
+</section>
+<section id="camino-evento">
+<div class="section-heading-row">
+<div>
+<span class="wiki-kicker">RUTA DEL JUGADOR</span>
+<h2 class="section-title">¿Qué hacer según la fase?</h2>
+</div>
+<p class="section-heading-copy">Esta guía rápida resume el camino natural del evento sin revelar más de lo que la fase actual debería mostrar.</p>
+</div>
+<div class="hub-grid">
+<a class="hub-card" href="supervivencia.html">
+<div class="hub-number">01</div>
+<h2>Preparación y supervivencia</h2>
+<p>Aprende las reglas del evento, administra recursos y entiende los sistemas básicos antes de entrar a la parte más dura.</p>
+<span class="hub-arrow">→</span>
+</a>
+<a class="hub-card" data-unlock-phase="3" href="arsenal.html#recetas-clases">
+<div class="hub-number">02</div>
+<h2>Arsenal avanzado</h2>
+<p>Desde la apertura de Doom se desbloquean nuevas armas, mejoras y munición especializada para jefes y expediciones largas.</p>
+<span class="hub-arrow">→</span>
+</a>
+<a class="hub-card" data-unlock-phase="3" href="doom.html">
+<div class="hub-number">03</div>
+<h2>Expediciones a Doom</h2>
+<p>Recorre estructuras, recoge materiales de progreso y prepárate para las fases donde el equipo y la coordinación importan más.</p>
+<span class="hub-arrow">→</span>
+</a>
+</div>
+</section>
+
+
+
+<section class="feature-banner" id="frente-final">
+<div class="section-heading-row">
+<div><span class="wiki-kicker">RUMBO AL CIERRE</span><h2 class="section-title">El frente final del Evento</h2></div>
+<p class="section-heading-copy">Cuando la progresión sube, ya no solo importa resistir. Importa saber qué equipo llevar, cómo responder a cada amenaza y qué papel cumple cada jugador en la pelea.</p>
+</div>
+<div class="feature-banner-grid">
+<article class="card loadout-card">
+<span class="class-label">PERDICIÓN</span>
+<h3>Golpe que abre la puerta</h3>
+<p>Marca la transición a un combate más agresivo. Aquí empiezan a sentirse las clases y la pelea deja de ser una simple prueba de armadura.</p>
+</article>
+<article class="card loadout-card">
+<span class="class-label">HORIZONTE</span>
+<h3>Daño con más control</h3>
+<p>El equipo gana presencia, la ofensiva escala y los jefes exigen mantener daño mientras la arena se vuelve más hostil.</p>
+</article>
+<article class="card loadout-card">
+<span class="class-label">RESONANCIA</span>
+<h3>Preparación para el cierre</h3>
+<p>La etapa final te pide inventario fino, lectura del patrón y confianza total en tu rol durante los enfrentamientos más duros del servidor.</p>
+</article>
 </div>
 </section>
 <section class="phase-command-center" id="estado-fases">
@@ -95,7 +155,7 @@ try{
 <div class="phase-node" data-node-phase="5"><span>5</span><b>Apocalipsis</b></div>
 </div>
 </section>
-<section id="protocolos" class="home-protocols">
+<section class="home-protocols" id="protocolos">
 <div class="section-heading-row"><div><span class="wiki-kicker">RECUERDA ESTO</span><h2 class="section-title">Protocolos de supervivencia</h2></div><p class="section-heading-copy">Cuatro reglas simples que evitan la mayoría de las muertes innecesarias.</p></div>
 <div class="grid protocol-grid">
 <div class="card"><span class="protocol-no">01</span><h3>Parry con intención</h3><p>Agáchate en el momento correcto del impacto. No gastes la oportunidad en un aviso que todavía no va a golpear.</p></div>

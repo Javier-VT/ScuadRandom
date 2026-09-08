@@ -596,6 +596,25 @@ const SR_LOCAL_AUDIO = {
   legend: "assets/audio/rarity_spark_legend.ogg"
 };
 
+
+function srConfigureAmbientByPage(){
+  const body=document.body;
+  const isDanger=body?.classList.contains("page-doom") || body?.classList.contains("page-threats") || body?.classList.contains("boss-detail");
+  const src=isDanger ? "assets/audio/danger_ambient.ogg" : "assets/audio/realm_ambient.ogg";
+  try{
+    if(!srPersistentAudio.ambient.src || !srPersistentAudio.ambient.src.endsWith(src)) {
+      const current=srPersistentAudio.ambient.currentTime||0;
+      srPersistentAudio.ambient.src=src;
+      srPersistentAudio.ambient.load();
+      if(current>0){
+        srPersistentAudio.ambient.addEventListener("loadedmetadata",()=>{
+          try{ srPersistentAudio.ambient.currentTime=Math.min(current, Math.max(0,(srPersistentAudio.ambient.duration||current)-0.1)); }catch{}
+        },{once:true});
+      }
+    }
+  }catch{}
+}
+
 const srPersistentAudio = {
   ambient: new Audio(SR_LOCAL_AUDIO.ambient),
   press: new Audio(SR_LOCAL_AUDIO.press),
@@ -616,29 +635,29 @@ srPersistentAudio.ambient.loop = true;
 srPersistentAudio.ambient.preload = "auto";
 srPersistentAudio.ambient.volume = 0;
 srPersistentAudio.press.preload = "auto";
-srPersistentAudio.press.volume = .15;
+srPersistentAudio.press.volume = .22;
 srPersistentAudio.transition.preload = "auto";
-srPersistentAudio.transition.volume = .09;
+srPersistentAudio.transition.volume = .16;
 srPersistentAudio.recipe.preload = "auto";
-srPersistentAudio.recipe.volume = .10;
+srPersistentAudio.recipe.volume = .18;
 srPersistentAudio.section.preload = "auto";
-srPersistentAudio.section.volume = .065;
+srPersistentAudio.section.volume = .11;
 srPersistentAudio.copy.preload = "auto";
-srPersistentAudio.copy.volume = .11;
+srPersistentAudio.copy.volume = .16;
 srPersistentAudio.phase.preload = "auto";
-srPersistentAudio.phase.volume = .085;
+srPersistentAudio.phase.volume = .18;
 srPersistentAudio.rarity1.preload = "auto";
-srPersistentAudio.rarity1.volume = .030;
+srPersistentAudio.rarity1.volume = .055;
 srPersistentAudio.rarity2.preload = "auto";
-srPersistentAudio.rarity2.volume = .038;
+srPersistentAudio.rarity2.volume = .070;
 srPersistentAudio.rarity3.preload = "auto";
-srPersistentAudio.rarity3.volume = .050;
+srPersistentAudio.rarity3.volume = .085;
 srPersistentAudio.rarity4.preload = "auto";
-srPersistentAudio.rarity4.volume = .065;
+srPersistentAudio.rarity4.volume = .10;
 srPersistentAudio.rarity5.preload = "auto";
-srPersistentAudio.rarity5.volume = .082;
+srPersistentAudio.rarity5.volume = .12;
 srPersistentAudio.legend.preload = "auto";
-srPersistentAudio.legend.volume = .078;
+srPersistentAudio.legend.volume = .14;
 
 let srAudioAllowed = localStorage.getItem("sr-wiki-sfx") !== "off";
 let srAmbientStarted = false;
@@ -680,7 +699,7 @@ async function srTryStartAmbient(){
       await a.play();
     }
     srAmbientStarted=true;
-    srAmbientFade(.052,1300);
+    srAmbientFade(document.body?.classList.contains("page-home") ? .068 : .074,1300);
     document.getElementById("site-sfx-btn")?.classList.add("ambient-playing","is-on");
     try{
       sessionStorage.setItem("sr-local-ambient-active","1");
@@ -1072,11 +1091,11 @@ function srInstallDelegatedSounds(){
   let lastHover=0;
 
   document.addEventListener("mouseover",e=>{
-    const target=e.target.closest(".site-nav-links a,.page-tabs a,.hub-card,.hero-btn");
+    const target=e.target.closest(".site-nav-links a,.page-tabs a,.hub-card,.hero-btn,.boss-guide-link,.mobile-dock a,.card");
     if(!target) return;
     if(target.contains(e.relatedTarget)) return;
     const now=performance.now();
-    if(now-lastHover<145) return;
+    if(now-lastHover<120) return;
     lastHover=now;
 
     if(!srAudioAllowed) return;
@@ -1084,9 +1103,9 @@ function srInstallDelegatedSounds(){
     try{
       a.pause();
       a.currentTime=0;
-      a.volume=.018;
+      a.volume=target.matches('.hero-btn,.boss-guide-link') ? .040 : .028;
       a.play().catch(()=>{});
-      setTimeout(()=>{ a.volume=.065; },120);
+      setTimeout(()=>{ a.volume=.11; },110);
     }catch{}
   });
 
@@ -1099,12 +1118,16 @@ function srInstallDelegatedSounds(){
       srLocalPlay("copy");
       return;
     }
-    if(e.target.closest(".site-menu-btn")){
+    if(e.target.closest(".site-menu-btn,.site-sfx-btn")){
       srLocalPlay("press");
       return;
     }
-    if(e.target.closest(".page-tabs a")){
+    if(e.target.closest(".page-tabs a,.site-nav-links a,.mobile-dock a")){
       srLocalPlay("section");
+      return;
+    }
+    if(e.target.closest(".hero-btn,.hub-card,.boss-guide-link,.card")){
+      srLocalPlay("transition");
     }
   });
 }
@@ -1171,7 +1194,7 @@ function srInitSectionAtmosphere(){
   if(!("IntersectionObserver" in window)) return;
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
-      if(entry.isIntersecting) entry.target.classList.add("section-live");
+      if(entry.isIntersecting){ entry.target.classList.add("section-live"); if(!entry.target.dataset.sectionSfx){ entry.target.dataset.sectionSfx="1"; if(srAudioAllowed){ const a=srPersistentAudio.section; try{ a.pause(); a.currentTime=0; a.volume=.032; a.play().catch(()=>{}); setTimeout(()=>{a.volume=.11;},110);}catch{} } } }
     });
   },{threshold:.20,rootMargin:"-8% 0px -42% 0px"});
   document.querySelectorAll(".content-stack > section").forEach(section=>obs.observe(section));
@@ -1345,7 +1368,16 @@ function srCreatePhaseLightFX(){
   document.body.prepend(layer);
 }
 
+
+window.addEventListener("keydown",e=>{
+  if((e.key||"").toLowerCase()==="m" && !/input|textarea|select/i.test(document.activeElement?.tagName||"")){
+    document.getElementById("site-sfx-btn")?.click();
+  }
+});
+
 document.addEventListener("DOMContentLoaded",()=>{
+  document.addEventListener("pointermove",ev=>{ document.documentElement.style.setProperty("--pointer-x",`${ev.clientX}px`); document.documentElement.style.setProperty("--pointer-y",`${ev.clientY}px`); },{passive:true});
+  srConfigureAmbientByPage();
   aplicarIdentidadDeFase();
   aplicarBloqueoDeFases();
   iniciarRecetas();
@@ -1356,7 +1388,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   srSetupAudioButtonV2();
   srInstallDelegatedSounds();
-  srInstallSpaNavigation();
+  // SPA navigation disabled so each page always loads its latest standalone HTML.
   srCreateWorldDecor();
   srCreatePhaseBackdrop();
   srCreatePhaseLightFX();
