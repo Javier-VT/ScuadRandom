@@ -3,7 +3,7 @@ const SR_EMBEDDED_PAGES = {"arsenal.html":{"title":"Arsenal y recetas - Scuad Ra
 // SCUAD RANDOM - WIKI DEL JUGADOR
 // Cambia solo este valor cuando avance el evento.
 // ======================================================
-const FASE_ACTUAL = 3;
+const FASE_ACTUAL = 4;
 
 const identidadFases = [
   { nombre:"PREPARACIÓN", subtitulo:"Paz aparente - reúne recursos", amenaza:"BAJA", pct:12 },
